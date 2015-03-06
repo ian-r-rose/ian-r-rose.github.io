@@ -1,59 +1,42 @@
-<!DOCTYPE HTML PUBLIC>
-<html>
-  <head>
-    <meta charset="utf-8"></meta>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
-    <title>Interactive Earth</title>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Ian Rose</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Ian Rose Atom Feed" />
 
-  <body>
-    <div class="page">
-      <div class="header">
-        <a href="/index.html" id="home">ian-r-rose.github.io</a>
-          <ul class="navbar">
-            <li><a href="/index.html">Home</a></li>
-          </ul>
-      </div>
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
 
-      <!-- emscripten canvas -->
-      <div class="emscripten_border">
-        <canvas class="emscripten" id="canvas" width="800" height="452" oncontextmenu="event.preventDefault()"></canvas>
-      </div>
-      <!-- emscripten output console -->
-      <textarea class="emscripten" id="output" rows="40" cols="80"></textarea>
-        <script type='text/javascript'>
-          // connect to canvas
-          var Module = {
-              preRun: [],
-              postRun: [],
-              print: (function() {
-                      var element = document.getElementById('output');
-                      element.value = ''; // clear browser cache
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Ian Rose </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+<h2>Pages</h2>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                      return function(text) {
-                        text = Array.prototype.slice.call(arguments).join(' ');
-                        element.value += text + "\n";
-                        element.scrollTop = 99999; // focus on bottom
-                        };
-              })(),
-              printErr: function(text) {
-                   text = Array.prototype.slice.call(arguments).join(' ');
-                   if (0) { // XXX disabled for safety typeof dump == 'function') {
-                     dump(text + '\n'); // fast, straight to the real console
-                   } else {
-                     console.log(text);
-                   }
-              },
-              canvas: document.getElementById('canvas'),
-              setStatus: function(text) {
-              },
-              totalDependencies: 0,
-              monitorRunDependencies: function(left) {
-              }
-          };
-        </script>
-      <script async type="text/javascript" src="interactive_earth.js"></script>
-    </div>
-  </body>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
 </html>
-

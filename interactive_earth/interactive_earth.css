@@ -1,0 +1,61 @@
+div.header {
+  font-size: 40px;
+  margin-bottom: 0cm;
+}
+
+a:link {
+    color: #ebebeb;
+}
+
+a:visited {
+    color: #ebebeb;
+}
+
+.navbar {
+  list-style-type: none;
+  padding-right: 32px;
+  padding-top: -10px;
+  float: right;
+}
+
+
+.navbar li{
+  font-size: 20px;
+  color: #ebebeb;
+  list-style-type: none;
+  padding-right: 16px;
+  float: right;
+  display: block;
+}
+
+div.image {
+    align: center;
+    margin: 16px;
+    padding: 16px;
+}
+
+div.image p {
+    text-align: center;
+    text-indent: 0;
+}
+
+body {
+  color: #ebebeb;
+  background-color: #000000;
+  margin: 20px 150px;
+}
+
+canvas.emscripten { 
+    border: 0px none; 
+    background-color: #000000;
+}
+
+.emscripten {
+    margin-left: auto; 
+    margin-right: auto; 
+    padding-right: 0; 
+    display: block;
+}
+div.emscripten_border { 
+    border: 1px solid black; 
+}

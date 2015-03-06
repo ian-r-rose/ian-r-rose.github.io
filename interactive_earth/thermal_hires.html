@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC>
+<html>
+  <head>
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+    <title>Interactive Earth</title>
+    <link rel="stylesheet" href="interactive_earth.css" type="text/css" media="all"></link>
+  </head>
+
+  <body>
+    <div class="page">
+      <div class="header">
+        <a href="index.html" id="home">Interactive Earth</a>
+      </div>
+
+      <!-- emscripten canvas -->
+      <div class="emscripten_border">
+        <canvas class="emscripten" id="canvas" width="1024" height="256" oncontextmenu="event.preventDefault()"></canvas>
+      </div>
+        <script type='text/javascript'>
+          // connect to canvas
+          var Module = {
+              canvas: document.getElementById('canvas')
+          };
+        </script>
+      <script async type="text/javascript" src="thermal_hires.js"></script>
+      <p> Left click to add heat, right click to remove heat.  Scroll up and down to change the Rayleigh number (the vigor of convection).</p>
+    </div>
+  </body>
+</html>
+
