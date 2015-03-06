@@ -12,10 +12,29 @@
       <div class="header">
         <a href="index.html" id="home">Interactive Earth</a>
       </div>
-      <p>This simulation should be quite portable across many different browsers and operating systems. That being said, it is difficult to test all the possible combinations.  I have known it to work on Linux, Mac OS, and Windows, running Firefox, Chrome, and Safari. </p>
-      <p>It uses WebGL for rendering, which is a fairly new web technology. If you have difficulty starting it, it may be due to WebGL being disabled on your browswer (usually you can enable it by going into the advanced settings somewhere).</p>
-      <p>Finally, it is quite computationally intensive, and some slower computers may have a difficult time running it.  If that is the case, you might try running the lower resolution versions.</p>
-      <p>If you have a problem that is not addressed here, feel free to open an issue on the GitHub page for this project <a href="https://github.com/ian-r-rose/interactive_earth">here</a></p>
+      <p>In the early days of our solar system the Earth assembled out of collisions of innumerable asteroids.  These collisions generated a phenomenal amount of heat: more than enough to melt the entire planet.  It probably did not take long for our melted planet to solidify, but even once it was solid, it was extremely hot. Somehow, it needed to get its heat out to the cold of space.</p>
+      <p>Imagine that we can represent the Earth as this layer of rock, which is cold on the top (where it is exposed to outer space), but is extremely hot at the bottom (just below the melting point of rock):</p>
+      <div class='image'>
+        <a><img width='720' src='conduction.png'/></a>
+      </div>
+      <p>Now, just like if you put a pot of water on the stove, this layer of rock will be perfectly happy to conduct its heat to outer space.  Eventually, it will completely cool off.</p>
+      <p>However, think of what happens if you take that pot of water on your stove, and turn the heat up. Sooner or later it will start to roil.  This is because the hotter fluid at the bottom becomes buoyant, and buoyant things want to rise.  If the heat coming from the stove is too low, the fluid at the bottom will cool off before it can lift off.  But if the heat is high enough, the buoyancy of the fluid will win, and the hot stuff at the bottom will rise, while the cold stuff at the top will sink.
+      <p>This process is known as convection, and it is important almost everywhere you look in Earth and planetary science: from oceans, to the atmosphere, to the core, and yes, even in Earth's solid mantle.</p>
+      <div class='image'>
+        <a><img width='720' src='low_ra.png'/></a>
+      </div>
+      <p>There is an important number in the study of convection which tells us exactly how much our layer of fluid wants to convect. It is called the Rayleigh number.  For our purposes, we can think of the Rayleigh number as related to the temperature difference between the top and the bottom of the fluid. At low Rayleigh number (or low temperature difference) buoyancy loses out and the fluid will conduct, just like in the first image.</p>
+      <p>However, there is a critical value of the Rayleigh number (called, funnily enough, the critical Rayleigh number) at which buoyancy starts to win.  At this stage, the fluid will begin to convect. The initial stages of convection tend to be nice and orderly, as shown in the second image.  Nice, well-formed upwellings and downwellings carry heat around in a stable pattern of what is known as "convection cells." </p>
+      <p>But once the Rayleigh number becomes high enough (at about a value of one million), those nice cells will start to go a little wobbly.  The heat is being carried around with such vigor, that the cells start to interfere with each other and break up.  Even so, you can still detect a roughly cellular pattern of convection:</p>
+      <div class='image'>
+        <a><img width='720' src='med_ra.png'/></a>
+      </div>
+      <p>If you continue to increase the Rayleigh number, all semblance of the orderly convection cells above is lost.  We start to see swirling plumes of hot stuff carrying heat to the top and sheets of cold stuff sinking and cooling off the bottom.  They mix chaotically and somewhat beautifully:
+      <div class='image'>
+        <a><img width='720' src='high_ra.png'/></a>
+      </div>
+      <p>This is closest to the state that we think Earth's mantle is in. It's Rayleigh number is quite high (about one-hundred million), and it appears to be convecting quite chaotically. In fact, the seemingly random motion of tectonic places at the surface is intimately related to this convecting system: they are the cold sheets that eventually dive down into the mantle to cool it off!</p>
+      <p>But wait, you might ask, isn't the mantle solid? How can it be a fluid at the same time? The key to this is to realize that Earth is operating on much longer timescales than we as humans are used to thinking about. Although rocks may seem to us to be completely stiff, if you apply enough force for a long enough time, they will indeed flow like a liquid. Earth, with it's 4.5 billion years of history, has had plenty of time for its mantle to convect quite vigorously.
     </div>
   </body>
 </html>
