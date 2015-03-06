@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC>
+<html>
+  <head>
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+    <title>Interactive Earth About</title>
+    <link rel="stylesheet" href="interactive_earth.css" type="text/css" media="all"></link>
+  </head>
+
+  <body>
+    <div class="page">
+      <div class="header">
+        <a href="index.html" id="home">Interactive Earth</a>
+      </div>
+      <p>Interactive Earth is a project that I have done on the side during my graduate studies in geodynamics at UC Berkeley.  It is intended as a teaching tool for demonstrating what mantle convection is, and how it depends on Rayleigh number.</p>
+      <p>Research codes for mantle convection use modern and accurate numerical methods, and typically take hours, days, or weeks to run. Here the goal is speed over accuracy. I rely on a mishmash of different computational methods for solving the governing equations, where each method is very carefully chosen to be as fast as possible.</p>
+      <p>I solve the Stokes equation spectrally using the stream-function formulation. Fourier transforms are performed by the awesome <a href="http://www.fftw.org/">FFTW</a> library. I solve the diffusion equation with a dimension-split finite difference approximation, allowing it to be solved in O(N) operations. I solve the advection equation with a semi-Lagrangian approach, allowing me to take timesteps significantly larger than the CFL number.</p>
+      <p>I use <a href="https://www.libsdl.org/">SDL2</a> for managing the OpenGL context and performing event handling.  Finally, the C++ codebase is transpiled to Javascript and WebGL using <a href="http://kripken.github.io/emscripten-site/">Emscripten.</a></p>
+    </div>
+  </body>
+</html>
+
