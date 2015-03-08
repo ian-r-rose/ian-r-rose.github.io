@@ -17,9 +17,42 @@
       <div class="emscripten_border">
         <canvas class="emscripten" id="canvas" width="1024" height="256" oncontextmenu="event.preventDefault()"></canvas>
       </div>
+      <p id="output"></p>
         <script type='text/javascript'>
           // connect to canvas
           var Module = {
+              print: (function() {
+                var element = document.getElementById('output');
+                if (element) element.value = ''; // clear browser cache
+                return function(text) {
+                  text = Array.prototype.slice.call(arguments).join(' ');
+                  // These replacements are necessary if you render to raw HTML
+                  text = text.replace(/&/g, "&amp;");
+                  text = text.replace(/</g, "&lt;");
+                  text = text.replace(/>/g, "&gt;");
+                  text = text.replace('\n', '<br>', 'g');
+                 
+                  //Do some processing of the string
+                  fields = text.split("\t");
+                  Ra = Number(fields[0].split(" ")[1]);
+                  var outtext = Ra;
+                  if (Ra > 1000) {
+                    exponent = Math.log10(Ra);
+                    exponent = Math.floor(exponent);
+                    lower = Ra/Math.pow(10, exponent);
+                    lower = Math.floor(lower)
+                    if(lower == 1){
+                      outtext = "10<sup>"+exponent+"</sup>";
+                    }
+                    else {
+                      outtext = String(lower)+"x10<sup>"+exponent+"</sup>";
+                    }
+                  }
+                  if (element) {
+                    element.innerHTML = "Ra = " + outtext
+                  }
+                };
+              })(),
               canvas: document.getElementById('canvas')
           };
         </script>

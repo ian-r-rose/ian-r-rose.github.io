@@ -18,6 +18,9 @@ a:visited {
   float: right;
 }
 
+p {
+  text-align: center;
+}
 
 .navbar li{
   font-size: 20px;
@@ -58,4 +61,17 @@ canvas.emscripten {
 }
 div.emscripten_border { 
     border: 1px solid black; 
+}
+
+#output {
+  width: 100%;
+  height: 100px;
+  margin: 0 auto;
+  margin-top: 10px;
+  display: block;
+  background-color: black;
+  color: white;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size:30px;
+  outline: none;
 }
