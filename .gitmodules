@@ -1,0 +1,3 @@
+[submodule "pelican-sober"]
+	path = pelican-sober
+	url = git@github.com:fle/pelican-sober.git
