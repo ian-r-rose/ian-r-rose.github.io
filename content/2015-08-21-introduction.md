@@ -9,7 +9,7 @@ Overall it is my hope that this blog will accomplish these three things, in no p
 
 * Get me to write more often and with less friction.
 * Provide a place to record various ideas, derivations, and perspectives so that I can refer to them later.
-* Maybe even be of some interest to some third party (though this may not ever be the case. If so, hello!).
+* Maybe even be of some interest to some third party (though this may not ever be the case. If somebody is reading: hello!).
 
 To start, I plan to write a series of posts on one of my favorite results in mathematical physics:
 the Buckingham Pi theorem.
