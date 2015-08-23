@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 AUTHOR = u'Ian Rose'
 SITENAME = u'Blueschisting'
 SITESUBTITLE = u'Thoughts on planetary science, fluid dynamics, and scientific computing'
-SITEURL='ian-r-rose.github.io'
+SITEURL=''
 PROFILE_IMAGE_URL='/images/ian_rose.jpg'
 
 PATH = 'content'
