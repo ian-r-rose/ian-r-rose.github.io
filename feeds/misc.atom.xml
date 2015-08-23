@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Geomusings</title><link href="/" rel="alternate"></link><link href="/feeds/misc.atom.xml" rel="self"></link><id>/</id><updated>2015-08-21T00:00:00-07:00</updated><entry><title>Introduction</title><link href="/introduction.html" rel="alternate"></link><updated>2015-08-21T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:,2015-08-21:introduction.html</id><summary type="html">&lt;p&gt;Welcome to the inaugural post of this blog, where I plan to write about anything that strikes me as interesting. 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Blueschisting</title><link href="/" rel="alternate"></link><link href="/feeds/misc.atom.xml" rel="self"></link><id>/</id><updated>2015-08-21T00:00:00-07:00</updated><entry><title>Introduction</title><link href="/introduction.html" rel="alternate"></link><updated>2015-08-21T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:,2015-08-21:introduction.html</id><summary type="html">&lt;p&gt;Welcome to the inaugural post of this blog, where I plan to write about anything that strikes me as interesting. 
 For the most part these things will be related to geology, geophysics, or scientific computing.
-At the moment I am titling the site "Geomusings," with which I am not necessarily in love, but I could 
-not think of something better when setting things up.&lt;/p&gt;
+At the moment I am titling the site "Blueschisting," with which I am not necessarily in love, but I could 
+not think of something better when setting things up. At the very least it does not appear to be taken.&lt;/p&gt;
 &lt;p&gt;Overall it is my hope that this blog will accomplish these three things, in no particular order:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Get me to write more often and with less friction.&lt;/li&gt;
