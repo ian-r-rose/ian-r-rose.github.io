@@ -31,7 +31,7 @@ A physical equation is something which is has the following properties:
 * The physical dimensions of these terms are the same.
 
 This may sound trivial, but we will see that many of the statements in dimensional analysis
-sound trivial but are, in fact, quite slippery. When a quantity has physical dimensions it 
+which sound trivial are, in fact, quite slippery. When a quantity has physical dimensions it 
 means that there is some standard that we have agreed upon to measure that quantity. We then can 
 determine any quantity of that type in multiples of the standard. This is quite abstract, 
 but it means that we can, for instance, define a [standard kilogram](https://en.wikipedia.org/wiki/Kilogram),
