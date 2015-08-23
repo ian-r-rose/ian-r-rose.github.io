@@ -2,8 +2,8 @@ Title: Introduction
 
 Welcome to the inaugural post of this blog, where I plan to write about anything that strikes me as interesting. 
 For the most part these things will be related to geology, geophysics, or scientific computing.
-At the moment I am titling the site "Geomusings," with which I am not necessarily in love, but I could 
-not think of something better when setting things up.
+At the moment I am titling the site "Blueschisting," with which I am not necessarily in love, but I could 
+not think of something better when setting things up. At the very least it does not appear to be taken.
 
 Overall it is my hope that this blog will accomplish these three things, in no particular order:
 
