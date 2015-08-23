@@ -2,8 +2,8 @@ Title: Introduction to dimensional analysis
 
 The Buckingham Pi theorem is probably the most important result in the field of dimensional analysis.
 That being said, many descriptions of the theorem leave something to be desired, and when 
-I used to read them I would come away as confused as when I started.  The Wikipedia article on the 
-topic describes it thusly:
+I used to read them I would come away as confused as when I started.  
+The [Wikipedia article](https://en.wikipedia.org/wiki/Buckingham_%CF%80_theorem) on the topic describes it thusly:
 
 > ...if there is a physically meaningful equation involving a certain number $n$ of physical variables, 
 > then the original equation can be rewritten in terms of a set of $p = n − k$  dimensionless parameters 
