@@ -23,6 +23,7 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
+ARTICLE_ORDER_BY = 'reversed-date'
 
 
 DEFAULT_PAGINATION = 10
@@ -36,6 +37,7 @@ THEME='pelican-crowsfoot'
 #THEME='pelican-octopress-theme'
 PLUGIN_PATHS=['pelican-plugins',]
 PLUGINS = ['summary', \
+           'render_math',\
            'liquid_tags.img',\
            'liquid_tags.include_code', \
            'liquid_tags.notebook',\
