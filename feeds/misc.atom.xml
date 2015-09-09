@@ -1,5 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Blueschisting</title><link href="/" rel="alternate"></link><link href="/feeds/misc.atom.xml" rel="self"></link><id>/</id><updated>2015-08-21T00:00:00-07:00</updated><entry><title>Introduction</title><link href="/introduction.html" rel="alternate"></link><updated>2015-08-21T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:,2015-08-21:introduction.html</id><summary type="html">&lt;p&gt;Welcome to the inaugural post of this blog, where I plan to write about anything that strikes me as interesting. 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Blueschisting</title><link href="/" rel="alternate"></link><link href="/feeds/misc.atom.xml" rel="self"></link><id>/</id><updated>2015-09-08T00:00:00-07:00</updated><entry><title>Introduction to dimensional analysis</title><link href="/introduction-to-dimensional-analysis.html" rel="alternate"></link><updated>2015-09-08T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:,2015-09-08:introduction-to-dimensional-analysis.html</id><summary type="html">&lt;p&gt;This is the beginning of what I intend to be a multi-part series on dimensional analysis.
+The goal for this post is to set the stage for why dimensional analysis is a powerful tool,
+and to ask the questions which will lead us to the Buckingham Pi theorem.&lt;/p&gt;
+&lt;p&gt;The Buckingham Pi theorem is probably the most important result in the field of dimensional analysis.
+That being said, many descriptions of the theorem leave something to be desired, and when 
+I used to read them I would come away as confused as when I started.&lt;br /&gt;
+The &lt;a href="https://en.wikipedia.org/wiki/Buckingham_%CF%80_theorem"&gt;Wikipedia article&lt;/a&gt; on the topic describes it thusly:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;...if there is a physically meaningful equation involving a certain number &lt;span class="math"&gt;\(n\)&lt;/span&gt; of physical variables, 
+then the original equation can be rewritten in terms of a set of &lt;span class="math"&gt;\(p = n − k\)&lt;/span&gt;  dimensionless parameters 
+&lt;span class="math"&gt;\(\pi_1\)&lt;/span&gt;, &lt;span class="math"&gt;\(\pi_2\)&lt;/span&gt;, ..., &lt;span class="math"&gt;\(\pi_p\)&lt;/span&gt; constructed from the original variables. (Here &lt;span class="math"&gt;\(k\)&lt;/span&gt; is the number of 
+physical dimensions involved; it is obtained as the rank of a particular matrix.)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is a true statement, but it is essentially the punchline of the theorem. Without the 
+context for what &lt;span class="math"&gt;\(p\)&lt;/span&gt;, &lt;span class="math"&gt;\(n\)&lt;/span&gt;, and &lt;span class="math"&gt;\(k\)&lt;/span&gt; are, how they relate to the &lt;span class="math"&gt;\(\pi_p\)&lt;/span&gt;, and why we care 
+about any of it, it is very difficult to understand.&lt;/p&gt;
+&lt;p&gt;I would like to develop some of that context, and to begin we will ask what is meant by 
+dimensional analysis in the first place. A lot of what follows will be similar to first-rate 
+treatements of dimensional analysis by &lt;a href="https://archive.org/details/dimensionalanaly00bridrich"&gt;Percy Bridgman&lt;/a&gt; 
+and by &lt;a href="http://www.cambridge.org/us/academic/subjects/mathematics/mathematical-modelling-and-methods/scaling?format=PB"&gt;G.I. Barenblatt&lt;/a&gt;.
+Both of these (short) books are excellent, and I have shamelessly borrowed from them.
+As an aside, Bridgman was a physicist at Harvard who did foundational work on high pressure 
+physics and materials science. Recently the most abundant mineral on Earth (in Earth?),
+&lt;a href="https://en.wikipedia.org/wiki/Silicate_perovskite"&gt;bridgmanite&lt;/a&gt;, was named in his honor.&lt;/p&gt;
+&lt;h2&gt;Physical equations&lt;/h2&gt;
+&lt;p&gt;Central to dimensional analysis is the concept of a physical equation. 
+A physical equation is something which is has the following properties:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It involves an equals sign (&lt;span class="math"&gt;\(=\)&lt;/span&gt;).&lt;/li&gt;
+&lt;li&gt;All the terms in the equation have physical dimensions.&lt;/li&gt;
+&lt;li&gt;The physical dimensions of these terms are the same.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The first point simply tells us we are dealing with equations, and the second part 
+tells us that we are dealing with equations regarding measurable things in the reals world.
+This may sound trivial, but we will see that many of the statements in dimensional analysis
+which sound trivial are, in fact, quite slippery. When a quantity has physical dimensions it 
+means that there is some standard that we have agreed upon to measure that quantity. We then can 
+determine any quantity of that type in multiples of the standard. This is quite abstract, 
+but it means that we can, for instance, define a &lt;a href="https://en.wikipedia.org/wiki/Kilogram"&gt;standard kilogram&lt;/a&gt;,
+and then measure the mass of any item by determining how many of that standard have 
+an equal mass to the item.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="kilogram" src="images/standard_kilogram.jpg" title="The standard kilogram" /&gt;&lt;/p&gt;
+&lt;p&gt;As another example, the initial definition of the meter had it as one ten-millionth 
+of the distance from the equator to the north pole. With that definition, anybody could
+(at least in principle), construct a meter-stick and measure the lengths of things to 
+their hearts content.&lt;/p&gt;
+&lt;p&gt;Okay, so this standardization of units is all well and good, but at the end of the day, the natural world 
+should not care at all what system of units we use for measuring things. There is nothing 
+special about one ten-millionth of one-fourth of the circumference of Earth
+(except, perhaps, when performing navigation or geography). 
+Since the choice of unit is arbitrary, we should be able to convert from one 
+system of units to another. For instance, if we are measuring length in inches, we can 
+convert to centimeters by multiplying our values in inches by 2.54.&lt;/p&gt;
+&lt;p&gt;This gets us to the third point in the above list. 
+In a physical equation, both sides of the equation must have the same units.
+People who have some physics background may find this statement to be obvious, 
+but when pressed, they may also have a hard time expressing why it has to be so.
+To others it may not even make sense. Unfortunately, some fairly 
+&lt;a href="https://en.wikipedia.org/wiki/Free_abelian_group"&gt;deep mathematics&lt;/a&gt; is involved,
+most of which I am not really qualified to address, so I will proceed with an example.&lt;/p&gt;
+&lt;p&gt;A common example given for why the units in a physical equation must match is something 
+along the lines of "you can't add apples and oranges!" &lt;/p&gt;
+&lt;p&gt;&lt;img alt="apple_plus_orange" src="images/apple_plus_orange.jpeg" title="Was this worth my time? Probably not..." /&gt;&lt;/p&gt;
+&lt;p&gt;This is kind of an unfortunate argument, since there are conceivably situations 
+where it makes perfect sense to add apples and oranges. What if I am trying to 
+organize a school lunch program, and there are bushels (how's that for a unit?) 
+of apples and oranges in the cafeteria? How many pieces of fruit do I have to 
+distribute? I challenge you to figure it out without adding apples and oranges.&lt;/p&gt;
+&lt;p&gt;So we are going to try a more extreme example. What would it mean to to have an equation
+that added minutes and meters which combined to make a new unit, say minumeters? 
+Something along the lines of&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+x \; \mathrm{minutes} + y \; \mathrm{meters} = z \; \mathrm{minumeters}
+\label{minumeters}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;However, we know that physics should not care about the units that we choose,
+so what happens if we want to use seconds, feet, and a new (fictitious) unit, feeconds?
+Well, we know that we can convert meters to feet by multiplying by ~3.3 
+(the number of feet in a meter), and we can convert minutes to seconds by multiplying 
+by 60 (the number of seconds in a minute). 
+Furthermore, since we presume minutmeters and feeconds to be valid units, there should 
+be a scale to convert them between each other (both being the result of adding length and time together),
+which we denote by &lt;span class="math"&gt;\(s\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;So we should be able to convert Equation \eqref{minumeters} to feeconds by 
+scaling all the terms in it appropriately: 
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+60 x \; \mathrm{seconds} + 3.3 y \; \mathrm{feet} = s\;z \;\mathrm{feeconds}
+\label{feeconds}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;Here is where we run into trouble. Inspecting Equations \eqref{minumeters} and
+\eqref{feeconds}, we begin to see that the unit conversion on the left hand side
+is not a simple scaling operation. Indeed, there is no single value for &lt;span class="math"&gt;\(s\)&lt;/span&gt; which 
+can satisfy Equation \eqref{feeconds} for all values of &lt;span class="math"&gt;\(x\)&lt;/span&gt; and &lt;span class="math"&gt;\(y\)&lt;/span&gt; (give it a shot!).&lt;/p&gt;
+&lt;p&gt;We have arrived at a contradictory result, so there must have been a problem somewhere
+in the analysis. This problem, of course, is that we should not have added quantites
+of different dimensions. Do that, and you quickly run afoul the "physics does not care
+about our choice of measures" rule.&lt;/p&gt;
+&lt;h2&gt;Example: a simple pendulum&lt;/h2&gt;
+&lt;p&gt;The requirement that all the terms of the equation have the same units is actually stronger 
+than it may seem at first, and it lies at the heart of dimensional analysis. 
+If we have a physical system that we are trying to understand, it likely has some parameters which characterize it.
+Any physical equation that we cook up must satisfy the rules of dimensional analysis, and therefore 
+the parameters have to be combined in such a way that they have the right units. 
+Any other combination of these parameters has to be nonsense.&lt;/p&gt;
+&lt;p&gt;For instance, let us say that we are trying to understand how the pendulum in a grandfather clock works.
+It does a very good job of marking time, and it occurs to us that somebody has 
+designed the pendulum so that its period is exactly one second.
+We decide to figure out what sets the period (&lt;span class="math"&gt;\(T\)&lt;/span&gt;) of the pendulum.
+&lt;img alt="clock" src="images/grandfather_clock.jpg" title="It felt like there was a lot of text, here is a clock!" /&gt;
+After studying the clock for a few minutes, we decide that the most important parameters 
+must be the mass (&lt;span class="math"&gt;\(M\)&lt;/span&gt;) of the bob, which makes it swing back and forth, and the length (&lt;span class="math"&gt;\(L\)&lt;/span&gt;) of the pendulum.
+Therefore, we begin looking for an equation that relates the period to the mass and length, or 
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+T = f( M, L )
+\label{incorrect-period}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+Seems simple enough.  But as soon as we look at the units, we run into a problem.
+The unit of &lt;span class="math"&gt;\(T\)&lt;/span&gt; is seconds, the unit of &lt;span class="math"&gt;\(M\)&lt;/span&gt; is kilograms, and the unit of &lt;span class="math"&gt;\(L\)&lt;/span&gt; is meters.
+There is simply no way to combine the parameters &lt;span class="math"&gt;\(M\)&lt;/span&gt; and &lt;span class="math"&gt;\(L\)&lt;/span&gt; to make something in seconds,
+so you cannot actually find a relation like \eqref{incorrect-period}.&lt;/p&gt;
+&lt;p&gt;So what was our mistake? Well, it turns out that our accounting of the important parameters missed one.
+A pendulum also needs gravity, otherwise there is no reason for it to swing back towards the ground.
+Therefore we add the acceleration due to gravity &lt;span class="math"&gt;\(g\)&lt;/span&gt; to our list of parameters, which has units of  &lt;span class="math"&gt;\(m/s^2\)&lt;/span&gt;.
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+T = f( M, L, g )
+\label{correct-period}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+Now we have a parameter that has seconds as a component, so it may be possible to combine the units 
+to match the units of the period &lt;span class="math"&gt;\(T\)&lt;/span&gt;.
+Indeed, after some playing around, we figure out that there is really only one way to combine 
+the units to make seconds, which is to say
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+T \sim \sqrt{ \frac{L}{g} }
+\label{period}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+Not only is this the only way to make something with units of seconds, but there is no place for the mass of the bob on the pendulum. 
+This turns out to be correct: for simple pendula, the mass is irrelevant: only gravity and the length matter.
+Now, the &lt;a href="https://en.wikipedia.org/wiki/Pendulum_%28mathematics%29#Simple_gravity_pendulum"&gt;full formula&lt;/a&gt;
+for the period of a simple pendulum has a factor of &lt;span class="math"&gt;\(2\pi\)&lt;/span&gt;, so we were 
+not 100% correct, but we got pretty close, and we captured the essential physics of the pendulum without 
+actually solving any equations. Instead, all we considered were the dimensions of the thing we were looking for,
+and the dimensions of the parameters.&lt;/p&gt;
+&lt;h2&gt;Asking the right questions&lt;/h2&gt;
+&lt;p&gt;So all this is well and good, but the initial guess about the relevant parameters forgot about gravity, 
+and it included a superfluous parameter. We had to play around with the parameters a bit in order to figure 
+out how to combine them in the correct way. And even then, it is not necessarily obvious that there is only 
+one correct way to combine them.
+It would be nice to have a way to go about this more systematic and rigorous way.&lt;/p&gt;
+&lt;p&gt;We now have the context to ask more specific questions.
+Given a system to study and some relevant paramters, we want to answer:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Can these parameters represent the physics we are interested in?&lt;/li&gt;
+&lt;li&gt;How many ways can we combine them to get the correct units?&lt;/li&gt;
+&lt;li&gt;What are allowable functional forms of the solution according to the rules of dimensional analysis? &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These are the fundamental questions of dimensional analysis: 
+questions which are more or less answered by the Buckingham Pi theorem.
+Along the way we will encounter nondimensional numbers, which turn out to be, in a sense,
+the most natural system of units to represent the physics of the system.
+And hopefully at the end we will be able to go back to the above Wikipedia quote and understand what it means.&lt;/p&gt;
+&lt;p&gt;In my next post, I will be taking a qualitative look at the content of the Buckingham Pi theorem.
+&lt;img alt="new-cuayma" src="images/new-cuyama.jpg" title="My kind of place" /&gt;&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript'; 
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary></entry><entry><title>Introduction</title><link href="/introduction.html" rel="alternate"></link><updated>2015-08-21T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:,2015-08-21:introduction.html</id><summary type="html">&lt;p&gt;Welcome to the inaugural post of this blog, where I plan to write about anything that strikes me as interesting. 
 For the most part these things will be related to geology, geophysics, or scientific computing.
 At the moment I am titling the site "Blueschisting," with which I am not necessarily in love, but I could 
 not think of something better when setting things up. At the very least it does not appear to be taken.&lt;/p&gt;
@@ -7,7 +231,7 @@ not think of something better when setting things up. At the very least it does 
 &lt;ul&gt;
 &lt;li&gt;Get me to write more often and with less friction.&lt;/li&gt;
 &lt;li&gt;Provide a place to record various ideas, derivations, and perspectives so that I can refer to them later.&lt;/li&gt;
-&lt;li&gt;Maybe even be of some interest to some third party (though this may not ever be the case. If so, hello!).&lt;/li&gt;
+&lt;li&gt;Maybe even be of some interest to some third party (though this may not ever be the case. If somebody is reading: hello!).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;To start, I plan to write a series of posts on one of my favorite results in mathematical physics:
 the Buckingham Pi theorem.&lt;/p&gt;</summary></entry></feed>
