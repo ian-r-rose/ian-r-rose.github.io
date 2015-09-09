@@ -1,5 +1,9 @@
 Title: Introduction to dimensional analysis
 
+This is the beginning of what I intend to be a multi-part series on dimensional analysis.
+The goal for this post is to set the stage for why dimensional analysis is a powerful tool,
+and to ask the questions which will lead us to the Buckingham Pi theorem.
+
 The Buckingham Pi theorem is probably the most important result in the field of dimensional analysis.
 That being said, many descriptions of the theorem leave something to be desired, and when 
 I used to read them I would come away as confused as when I started.  
@@ -29,9 +33,11 @@ Central to dimensional analysis is the concept of a physical equation.
 A physical equation is something which is has the following properties:
 
 * It involves an equals sign ($=$).
-* The terms on both sides of the equals sign have physical dimensions.
+* All the terms in the equation have physical dimensions.
 * The physical dimensions of these terms are the same.
 
+The first point simply tells us we are dealing with equations, and the second part 
+tells us that we are dealing with equations regarding measurable things in the reals world.
 This may sound trivial, but we will see that many of the statements in dimensional analysis
 which sound trivial are, in fact, quite slippery. When a quantity has physical dimensions it 
 means that there is some standard that we have agreed upon to measure that quantity. We then can 
@@ -40,11 +46,12 @@ but it means that we can, for instance, define a [standard kilogram](https://en.
 and then measure the mass of any item by determining how many of that standard have 
 an equal mass to the item.
 
+![kilogram](images/standard_kilogram.jpg "The standard kilogram")
+
 As another example, the initial definition of the meter had it as one ten-millionth 
 of the distance from the equator to the north pole. With that definition, anybody could
 (at least in principle), construct a meter-stick and measure the lengths of things to 
 their hearts content.
-![kilogram](images/standard_kilogram.jpg "The standard kilogram")
 
 Okay, so this standardization of units is all well and good, but at the end of the day, the natural world 
 should not care at all what system of units we use for measuring things. There is nothing 
@@ -56,22 +63,74 @@ convert to centimeters by multiplying our values in inches by 2.54.
 
 This gets us to the third point in the above list. 
 In a physical equation, both sides of the equation must have the same units.
+People who have some physics background may find this statement to be obvious, 
+but when pressed, they may also have a hard time expressing why it has to be so.
+To others it may not even make sense. Unfortunately, some fairly 
+[deep mathematics](https://en.wikipedia.org/wiki/Free_abelian_group) is involved,
+most of which I am not really qualified to address, so I will proceed with an example.
+
+A common example given for why the units in a physical equation must match is something 
+along the lines of "you can't add apples and oranges!" 
+
+![apple_plus_orange](images/apple_plus_orange.jpeg "Was this worth my time? Probably not...")
+
+This is kind of an unfortunate argument, since there are conceivably situations 
+where it makes perfect sense to add apples and oranges. What if I am trying to 
+organize a school lunch program, and there are bushels (how's that for a unit?) 
+of apples and oranges in the cafeteria? How many pieces of fruit do I have to 
+distribute? I challenge you to figure it out without adding apples and oranges.
+
+So we are going to try a more extreme example. What would it mean to to have an equation
+that added minutes and meters which combined to make a new unit, say minumeters? 
+Something along the lines of
+
+\begin{equation}
+x \; \mathrm{minutes} + y \; \mathrm{meters} = z \; \mathrm{minumeters}
+\label{minumeters}
+\end{equation}
+
+However, we know that physics should not care about the units that we choose,
+so what happens if we want to use seconds, feet, and a new (fictitious) unit, feeconds?
+Well, we know that we can convert meters to feet by multiplying by ~3.3 
+(the number of feet in a meter), and we can convert minutes to seconds by multiplying 
+by 60 (the number of seconds in a minute). 
+Furthermore, since we presume minutmeters and feeconds to be valid units, there should 
+be a scale to convert them between each other (both being the result of adding length and time together),
+which we denote by $s$.
+
+So we should be able to convert Equation \eqref{minumeters} to feeconds by 
+scaling all the terms in it appropriately: 
+\begin{equation}
+60 x \; \mathrm{seconds} + 3.3 y \; \mathrm{feet} = s\;z \;\mathrm{feeconds}
+\label{feeconds}
+\end{equation}
+
+Here is where we run into trouble. Inspecting Equations \eqref{minumeters} and
+\eqref{feeconds}, we begin to see that the unit conversion on the left hand side
+is not a simple scaling operation. Indeed, there is no single value for $s$ which 
+can satisfy Equation \eqref{feeconds} for all values of $x$ and $y$ (give it a shot!).
+
+We have arrived at a contradictory result, so there must have been a problem somewhere
+in the analysis. This problem, of course, is that we should not have added quantites
+of different dimensions. Do that, and you quickly run afoul the "physics does not care
+about our choice of measures" rule.
 
 ## Example: a simple pendulum
 
-The constraint that both sides of the equation have the same units is actually stronger than it may seem at first. 
+The requirement that all the terms of the equation have the same units is actually stronger 
+than it may seem at first, and it lies at the heart of dimensional analysis. 
 If we have a physical system that we are trying to understand, it likely has some parameters which characterize it.
 Any physical equation that we cook up must satisfy the rules of dimensional analysis, and therefore 
 the parameters have to be combined in such a way that they have the right units. 
 Any other combination of these parameters has to be nonsense.
 
-For instance, let us say that we are trying to understand how a the pendulum in a grandfather clock works.
+For instance, let us say that we are trying to understand how the pendulum in a grandfather clock works.
 It does a very good job of marking time, and it occurs to us that somebody has 
 designed the pendulum so that its period is exactly one second.
 We decide to figure out what sets the period ($T$) of the pendulum.
 ![clock](images/grandfather_clock.jpg "It felt like there was a lot of text, here is a clock!")
 After studying the clock for a few minutes, we decide that the most important parameters 
-must be the mass ($M$) of the penulum, which makes it swing back and forth, and the length ($L$) of the pendulum.
+must be the mass ($M$) of the bob, which makes it swing back and forth, and the length ($L$) of the pendulum.
 Therefore, we begin looking for an equation that relates the period to the mass and length, or 
 \begin{equation}
 T = f( M, L )
@@ -79,7 +138,7 @@ T = f( M, L )
 \end{equation}
 Seems simple enough.  But as soon as we look at the units, we run into a problem.
 The unit of $T$ is seconds, the unit of $M$ is kilograms, and the unit of $L$ is meters.
-There is simply no way to combine the parameters $m$ and $L$ to make something in seconds,
+There is simply no way to combine the parameters $M$ and $L$ to make something in seconds,
 so you cannot actually find a relation like \eqref{incorrect-period}.
 
 So what was our mistake? Well, it turns out that our accounting of the important parameters missed one.
@@ -127,3 +186,4 @@ the most natural system of units to represent the physics of the system.
 And hopefully at the end we will be able to go back to the above Wikipedia quote and understand what it means.
 
 In my next post, I will be taking a qualitative look at the content of the Buckingham Pi theorem.
+![new-cuayma](images/new-cuyama.jpg "My kind of place")
