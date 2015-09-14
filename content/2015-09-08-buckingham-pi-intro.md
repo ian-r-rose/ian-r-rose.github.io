@@ -185,5 +185,6 @@ Along the way we will encounter nondimensional numbers, which turn out to be, in
 the most natural system of units to represent the physics of the system.
 And hopefully at the end we will be able to go back to the above Wikipedia quote and understand what it means.
 
-In my next post, I will be taking a qualitative look at the content of the Buckingham Pi theorem.
+In my [next post](nondimensional-numbers-and-the-buckingham-pi-theorem.html),
+I will be taking a qualitative look at the content of the Buckingham Pi theorem.
 ![new-cuayma](images/new-cuyama.jpg "My kind of place")
