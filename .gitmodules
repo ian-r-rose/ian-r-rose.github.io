@@ -4,6 +4,3 @@
 [submodule "crowsfoot"]
 	path = pelican-crowsfoot
 	url = git@github.com:porterjamesj/crowsfoot.git
-[submodule "pelican-octopress-theme"]
-	path = pelican-octopress-theme
-	url = git@github.com:duilio/pelican-octopress-theme.git
