@@ -70,11 +70,13 @@ geometry of the setup $\eta/\rho D$. So which one is the correct scale?
 Which one is more appropriate for trying to learn about the velocity of the fluid?
 
 The answer, you may not be surprised to learn, is that both are important.
-Moreover, the most useful way of looking at this problem is by looking at the ratio of the two different "scales."
-How the fluid behaves is determined by this ratio: if the driving velocity is
+Moreover, the most useful way of looking at this problem is to compare 
+the relative size of these two different fluid velocity scales.
+How the fluid behaves is determined by this comparison: if the driving velocity is
 much larger than the natural fluid velocity scale, the Couette flow 
 will look very different than if the driving velocity is much smaller than the fluid velocity scale.
 
+We can express this comparison mathematically by calculating the ratio of the two velocity scales.
 In fact, this ratio is so important for the Couette flow setup (and others like it)
 that it goes by a special name, the Reynolds number:
 
@@ -82,7 +84,28 @@ that it goes by a special name, the Reynolds number:
 \mathrm{Re} = \frac{\rho u_0 D}{\eta}
 \end{equation}
 
+The Reynolds number has a nice physical interpretation: it represents the 
+relative importance of the inertia of the fluid (which is driven by
+the wall motion, and tends to keep the fluid moving) and the viscous 
+forces in the fluid (which is tends to damp out fluid motions).
+If the Reynolds is large, inertia is more important, and the 
+fluid will have whorls, vortices, and be very chaotic.
+If the Reynolds number is small, the fluid will move slowly
+and regularly, in a fashion that is known as "laminar."
+
 ## Nondimensional numbers
+
+Something very important happened when we compared the two velocity scales
+by computing the Reynolds number: we divided something with units of velocity
+by something with units of velocity. By doing so we canceled out all the units 
+in the number: we could compute the Reynolds number by measuring velocity 
+in meters per second, we could compute it using feet per hour, we could compute 
+it using light years per fortnight, and we would always come up with the same
+Reynolds number. And the Reynolds number will still have the 
+physical interpretation of inertial-to-viscous effects.
+
 
 
 ## The Buckingham Pi theorem
+
+Let's try to put the observations we've made so far into a coherent whole.
