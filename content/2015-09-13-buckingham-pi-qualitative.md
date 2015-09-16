@@ -101,11 +101,39 @@ by something with units of velocity. By doing so we canceled out all the units
 in the number: we could compute the Reynolds number by measuring velocity 
 in meters per second, we could compute it using feet per hour, we could compute 
 it using light years per fortnight, and we would always come up with the same
-Reynolds number. And the Reynolds number will still have the 
+Reynolds number. And that Reynolds number will still have the 
 physical interpretation of inertial-to-viscous effects.
 
+Circling back to our initial goal of characterizing the velocity solution 
+in terms of our parameters, we found that we can represent the units 
+correctly by doing either of the following:
+\begin{equation}
+\mathbf{u} \sim u_0
+\end{equation}
+\begin{equation}
+\mathbf{u} \sim \frac{\eta}{\rho D}
+\end{equation}
+Unlike the pendulum example, there is an additional wrinkle.
+Sure, those expressions correctly represent the units of velocity,
+but I can multiply the right hand sides by the Reynolds number, 
+which has no dimensions, and still have the correct units.
+Even more, I can multiply by *any arbitrary function of 
+the Reynolds number*, with no effect on the units.
 
+Expressed in terms of an equation, I can write 
+\begin{equation}
+\mathbf{u} = u_0 \; f( \mathrm{Re} )
+\end{equation}
+\begin{equation}
+\mathbf{u} = \frac{\eta}{\rho D} \; g( \mathrm{Re} )
+\end{equation}
+Which expression is more correct? For the most part, it does not matter.
+It is not hard to show from the above equations that
+\begin{equation}
+g(\mathrm{Re}) = \mathrm{Re} \; f(\mathrm{Re})
+\end{equation}
+so these two expressions are really just different ways of writing the same thing.
 
 ## The Buckingham Pi theorem
 
-Let's try to put the observations we've made so far into a coherent whole.
+Let's try to put the observations we've made so far into a coherent picture.
