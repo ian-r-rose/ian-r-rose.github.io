@@ -1,5 +1,269 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Blueschisting</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2015-09-08T00:00:00-07:00</updated><entry><title>Introduction to dimensional analysis</title><link href="/introduction-to-dimensional-analysis.html" rel="alternate"></link><updated>2015-09-08T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:,2015-09-08:introduction-to-dimensional-analysis.html</id><summary type="html">&lt;p&gt;This is the beginning of what I intend to be a multi-part series on dimensional analysis.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Blueschisting</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2015-09-21T00:00:00-07:00</updated><entry><title>Nondimensional numbers and the Buckingham Pi theorem</title><link href="/nondimensional-numbers-and-the-buckingham-pi-theorem.html" rel="alternate"></link><updated>2015-09-21T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:,2015-09-21:nondimensional-numbers-and-the-buckingham-pi-theorem.html</id><summary type="html">&lt;p&gt;In my &lt;a href="introduction-to-dimensional-analysis.html"&gt;previous post&lt;/a&gt; I 
+tried to establish the context for nondimensional analysis, which 
+allowed us to ask the central questions that the Buckingham Pi theorem
+will allow us to answer. At the heart of the matter was the relationship
+between the units of the physical parameters which are important for a given problem,
+and the units of the quantity which we are trying to determine.&lt;/p&gt;
+&lt;p&gt;For the example of the period of the pendulum in a grandfather clock,
+we surmised that the important parameters were the length of the pendulum &lt;span class="math"&gt;\(L\)&lt;/span&gt;,
+the mass of the bob &lt;span class="math"&gt;\(M\)&lt;/span&gt;, and the acceleration due to gravity &lt;span class="math"&gt;\(g\)&lt;/span&gt;.
+When we tried to come up with something that matched the units of the period (seconds),
+we found that there was only one way to do that:
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+T \sim \sqrt{\frac{L}{g}}
+\label{period}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+Since there was only one way to make something with the right units,
+we were pretty sure that the solution to this problem would look a lot like
+Equation \eqref{period}, and indeed that was correct, up to a factor of &lt;span class="math"&gt;\(2 \pi\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h2&gt;Couette flow&lt;/h2&gt;
+&lt;p&gt;It is not always the case that there is only one way to make something of the correct units.
+In many more complicated problems there can be several ways to rearrange the parameters to get the units we want.
+A good example of this is &lt;a href="https://en.wikipedia.org/wiki/Couette_flow"&gt;Couette flow&lt;/a&gt;,
+which is among the simpler classical fluid dynamics problems, but still exhibits
+a huge amount of richness and complexity, and research on this style of flow is still being done.&lt;/p&gt;
+&lt;p&gt;In Couette flow there are two parallel plates with a fluid between them.
+The fluid has a viscosity &lt;span class="math"&gt;\(\eta \; (\mathrm{kg}/\mathrm{m s})\)&lt;/span&gt; and a density &lt;span class="math"&gt;\(\rho \; (\mathrm{kg}/\mathrm{m}^3)\)&lt;/span&gt;,
+and the plates are separated by a distance &lt;span class="math"&gt;\(D \; (\mathrm{m})\)&lt;/span&gt;. The top plate is 
+being moved in the &lt;span class="math"&gt;\(x\)&lt;/span&gt;-direction at velocity &lt;span class="math"&gt;\(u_0 \; (\mathrm{m/s})\)&lt;/span&gt;. We presume
+that the plates are large enough laterally that we can neglect their edges.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="couette" src="images/couette.svg" title="Couette flow" /&gt;&lt;/p&gt;
+&lt;p&gt;We are interested in determining the velocity and pressure in the 
+fluid, which means that, in general, you have to solve 
+the Navier-Stokes equations for an incompressible fluid:
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\rho \frac{D \mathbf{u}}{Dt} = -\nabla P + \eta \nabla^2 \mathbf{u}
+\end{equation}&lt;/div&gt;
+&lt;div class="math"&gt;\begin{equation}
+\nabla \cdot \mathbf{u} = 0
+\end{equation}&lt;/div&gt;
+&lt;p&gt;The Navier-Stokes equations are notoriously difficult to solve:
+there is a rather &lt;a href="http://www.claymath.org/millennium-problems/navier%E2%80%93stokes-equation"&gt;large prize&lt;/a&gt;
+available to anybody able to make some foundational progress towards a general solution.
+How much can we learn about this system from a dimensional standpoint?&lt;/p&gt;
+&lt;p&gt;Well, let's do the same accounting we did for the pendulum problem. We would like to
+know the velocity of the fluid between the plates, and the relevant parameters 
+for the problem are the fluid viscosity &lt;span class="math"&gt;\(\eta\)&lt;/span&gt;, the fluid density &lt;span class="math"&gt;\(\rho\)&lt;/span&gt;, the distance
+between the two plates &lt;span class="math"&gt;\(D\)&lt;/span&gt;, and the velocity of the upper plate &lt;span class="math"&gt;\(u_0\)&lt;/span&gt;. which is driving 
+the fluid flow. How can we use those to make something with units of velocity (&lt;span class="math"&gt;\(\mathrm{m/s}\)&lt;/span&gt;)?&lt;/p&gt;
+&lt;p&gt;You might think at first that this is easier than the pendulum problem. The driving 
+velocity &lt;span class="math"&gt;\(u_0\)&lt;/span&gt; has the right units, so we are already done!
+A closer look, though, reveals another way to make something of the right units:
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{\eta}{\rho D}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;There are, in fact, two different ways to represent the units of the velocity &lt;span class="math"&gt;\(\mathbf{u}\)&lt;/span&gt;.
+We can look at this system as having two different velocity "scales," of a sort.
+There is the scale which is determined by the driving velocity &lt;span class="math"&gt;\(u_0\)&lt;/span&gt;, but there 
+is also the scale which is determined by the properties of the fluid and the 
+geometry of the setup &lt;span class="math"&gt;\(\eta/\rho D\)&lt;/span&gt;. So which one is the correct scale? 
+Which one is more appropriate for trying to learn about the velocity of the fluid?&lt;/p&gt;
+&lt;p&gt;The answer, you may not be surprised to learn, is that both are important.
+Moreover, the most useful way of looking at this problem is to compare 
+the relative size of these two different fluid velocity scales.
+How the fluid behaves is determined by this comparison: if the driving velocity is
+much larger than the natural fluid velocity scale, the Couette flow 
+will look very different than if the driving velocity is much smaller than the fluid velocity scale.&lt;/p&gt;
+&lt;p&gt;We can express this comparison mathematically by calculating the ratio of the two velocity scales.
+In fact, this ratio is so important for the Couette flow setup (and others like it)
+that it goes by a special name, the Reynolds number:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\mathrm{Re} = \frac{\rho u_0 D}{\eta}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;The Reynolds number has a nice physical interpretation: it represents the 
+relative importance of the inertia of the fluid (which is driven by
+the wall motion, and tends to keep the fluid moving) and the viscous 
+forces in the fluid (which tend to damp out fluid motions).
+If the Reynolds is large, inertia is more important, and the 
+fluid will have whorls, vortices, and be very chaotic.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="kanagawa" src="images/kanagawa.jpg" title="A high Reynolds number fluid (the waves, not the boats)" /&gt;&lt;/p&gt;
+&lt;p&gt;If the Reynolds number is small, the fluid will move slowly
+and regularly, in a fashion that is known as "laminar."&lt;/p&gt;
+&lt;p&gt;&lt;img alt="honey" src="images/honey.jpg" title="A low Reynolds number fluid (the honey, not the stick)" /&gt;&lt;/p&gt;
+&lt;h2&gt;Nondimensional numbers&lt;/h2&gt;
+&lt;p&gt;Something very important happened when we compared the two velocity scales
+by computing the Reynolds number: we divided something with units of velocity
+by something with units of velocity. By doing so we canceled out all the units 
+in the number: we could compute the Reynolds number by measuring velocity 
+in meters per second, we could compute it using feet per hour, we could compute 
+it using light years per fortnight, and we would always come up with the same
+Reynolds number. And that Reynolds number will still have the 
+physical interpretation of inertial-to-viscous effects.&lt;/p&gt;
+&lt;p&gt;Circling back to our initial goal of characterizing the velocity solution 
+in terms of our parameters, we found that we can represent the units 
+correctly by doing either of the following:
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\mathbf{u} \sim u_0
+\end{equation}&lt;/div&gt;
+&lt;div class="math"&gt;\begin{equation}
+\mathbf{u} \sim \frac{\eta}{\rho D}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+Unlike the pendulum example, there is an additional wrinkle.
+Sure, those expressions correctly represent the units of velocity,
+but we can multiply the right hand sides by the Reynolds number, 
+which has no dimensions, and still get the correct units.
+Even more, we can multiply by &lt;em&gt;any arbitrary function of 
+the Reynolds number&lt;/em&gt;, and have no effect on the units.&lt;/p&gt;
+&lt;p&gt;Expressed in terms of an equation, we can write 
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\mathbf{u} = u_0 \; f( \mathrm{Re} )
+\label{u_0_dimensions}
+\end{equation}&lt;/div&gt;
+&lt;div class="math"&gt;\begin{equation}
+\mathbf{u} = \frac{\eta}{\rho D} \; g( \mathrm{Re} )
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+Which expression is more correct? For the most part, it does not matter.
+It is not hard to show from the above equations that
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+g(\mathrm{Re}) = \mathrm{Re} \; f(\mathrm{Re})
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+so these two expressions are really just different ways of writing the same thing.
+And furthermore, that thing is not just a curiosity.
+We now know that every form of the solution for the velocity field &lt;span class="math"&gt;\(\mathbf{u}\)&lt;/span&gt;
+can be written like Equation \ref{u_0_dimensions}, since that is the only way
+to make the units work out right. Therefore, every form of the solution
+&lt;em&gt;must be expressible in terms of the Reynolds number&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;The Reynolds number is, in a sense, the most natural way to describe Couette flow:
+it tells us something about the physics of the setup and it does not depend 
+on the system of units that we have chosen for our measurements. Even better,
+now we know that the system is expressible using a single parameter (&lt;span class="math"&gt;\(\mathrm{Re}\)&lt;/span&gt;),
+as opposed to the four parameters we started out with (&lt;span class="math"&gt;\(\rho\)&lt;/span&gt;, &lt;span class="math"&gt;\(u_0\)&lt;/span&gt;, &lt;span class="math"&gt;\(D\)&lt;/span&gt;, and &lt;span class="math"&gt;\(\eta\)&lt;/span&gt;). 
+That can potentially give us a huge savings of effort: instead of trying to understand how 
+Couette flow works if we change around the four parameters, we now know that we only 
+have to explore how things work if we change the Reynolds number.&lt;/p&gt;
+&lt;p&gt;It is beyond the scope of this article, but there is a large literature 
+on Couette flow and how it behaves at different Reynolds numbers.
+At low &lt;span class="math"&gt;\(\mathrm{Re}\)&lt;/span&gt; it is laminar, which is shown in the above schematic diagram.
+As &lt;span class="math"&gt;\(\mathrm{Re}\)&lt;/span&gt; becomes larger, however, instabilities in the flow start to 
+appear, causing complex and turbulent flow features.&lt;/p&gt;
+&lt;h2&gt;The Buckingham Pi theorem&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="pie" src="images/pie.jpg" title="A low-rent pun. It probably won't be the last" /&gt;&lt;/p&gt;
+&lt;p&gt;Let's try to put the observations we've made so far into a coherent picture.
+When working out the period of a pendulum, there was only one way to make something 
+with the right units. However, when we tried a more complicated problem in Couette flow,
+which has more parameters in it, there were two ways to make something with the right units.
+This redundancy meant that we were able to construct a nondimensional number, and resulting 
+solutions could include arbitrary functions of this nondimensional number.&lt;/p&gt;
+&lt;p&gt;It seems to be a general feature of dimensional analysis that as we add more parameters 
+which are important to the problem, there start to be more ways that we can represent 
+any given units. Furthermore, if we can represent a given unit in several ways, we should
+be able to construct several nondimensional numbers out of those ways, just as we did with the Reynolds number.&lt;/p&gt;
+&lt;p&gt;The Buckingham Pi theorem allows us to be quantitative about this observation:
+given a set of parameters, it tells you how many "ways" you can make a unit,
+and how many nondimensional numbers can be constructed out of those parameters.&lt;/p&gt;
+&lt;p&gt;The basic procedure for the Buckingham Pi theorem is as follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;First, we count the number of fundamental units in the problem.
+These are units which are not built out of other units, things like mass: time, or length.
+Density would not qualify, as it is built out of mass and length units (&lt;span class="math"&gt;\(\mathrm{kg}/\mathrm{m}^3\)&lt;/span&gt;).
+Call that number of fundamental units &lt;span class="math"&gt;\(k\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Second, we count the number of parameters in the problem. Call that number &lt;span class="math"&gt;\(n\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The number of nondimensional numbers is then given by &lt;span class="math"&gt;\(p = n-k\)&lt;/span&gt;. We can express
+any solution to the problem in terms of those &lt;span class="math"&gt;\(p\)&lt;/span&gt; nondimensional numbers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Let's apply this procedure two our two example problems:&lt;/p&gt;
+&lt;p&gt;The pendulum problem had the paramters &lt;span class="math"&gt;\(L\)&lt;/span&gt; and &lt;span class="math"&gt;\(g\)&lt;/span&gt;, so &lt;span class="math"&gt;\(n=2\)&lt;/span&gt;.
+The fundamental units in the problem are length and time, so &lt;span class="math"&gt;\(k=2\)&lt;/span&gt;.
+Therefore, the number of nondimensional numbers is 
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+p=2-2=0
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+Very complicated math. But it confirms what we found before, that there
+are no ways to make any nondimensional numbers, and therefore only
+one way to represent the units of the pendulum's period (the astute reader
+may wonder what would have happened if we included the mass of the bob in our
+parameter list, as we mistakenly did earlier: I hope to get to that later!).&lt;/p&gt;
+&lt;p&gt;The Couette flow problem had the parameters &lt;span class="math"&gt;\(\eta\)&lt;/span&gt;, &lt;span class="math"&gt;\(\rho\)&lt;/span&gt;, &lt;span class="math"&gt;\(D\)&lt;/span&gt;, and &lt;span class="math"&gt;\(u_0\)&lt;/span&gt;, so &lt;span class="math"&gt;\(n=4\)&lt;/span&gt;.
+The fundamental units in that problem were mass, time, and length, so &lt;span class="math"&gt;\(k = 3\)&lt;/span&gt;.
+Therefore we can calculate the number of nondimensional numbers as 
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+p=4-3=1
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+Again, this is consistent with our discovery of a single nondimensional number: the Reynolds number.&lt;/p&gt;
+&lt;p&gt;You may notice that the description of the Buckingham Pi theorem above
+is essentially the same as the quote from the Wikipedia article in the previous post. 
+Hopefully it should make more sense this time around. 
+However, it still may not be clear why it is true.
+The answer is that the Buckingham Pi theorem is, at heart,
+an application of the most important result in linear algebra: the rank-nullity theorem.
+In my next post, I will revisit the theorem from that perspective.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript'; 
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary></entry><entry><title>Introduction to dimensional analysis</title><link href="/introduction-to-dimensional-analysis.html" rel="alternate"></link><updated>2015-09-08T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:,2015-09-08:introduction-to-dimensional-analysis.html</id><summary type="html">&lt;p&gt;This is the beginning of what I intend to be a multi-part series on dimensional analysis.
 The goal for this post is to set the stage for why dimensional analysis is a powerful tool,
 and to ask the questions which will lead us to the Buckingham Pi theorem.&lt;/p&gt;
 &lt;p&gt;The Buckingham Pi theorem is probably the most important result in the field of dimensional analysis.
@@ -166,7 +430,8 @@ questions which are more or less answered by the Buckingham Pi theorem.
 Along the way we will encounter nondimensional numbers, which turn out to be, in a sense,
 the most natural system of units to represent the physics of the system.
 And hopefully at the end we will be able to go back to the above Wikipedia quote and understand what it means.&lt;/p&gt;
-&lt;p&gt;In my next post, I will be taking a qualitative look at the content of the Buckingham Pi theorem.
+&lt;p&gt;In my &lt;a href="nondimensional-numbers-and-the-buckingham-pi-theorem.html"&gt;next post&lt;/a&gt;,
+I will be taking a qualitative look at the content of the Buckingham Pi theorem.
 &lt;img alt="new-cuayma" src="images/new-cuyama.jpg" title="My kind of place" /&gt;&lt;/p&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
