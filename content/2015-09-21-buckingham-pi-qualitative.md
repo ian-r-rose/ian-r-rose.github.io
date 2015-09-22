@@ -222,4 +222,4 @@ Hopefully it should make more sense this time around.
 However, it still may not be clear why it is true.
 The answer is that the Buckingham Pi theorem is, at heart,
 an application of the most important result in linear algebra: the rank-nullity theorem.
-In my next post, I will revisit the theorem from that perspective.
+In my [next post](linear-algebra-and-the-buckingham-pi-theorem.html), I will revisit the theorem from that perspective.
