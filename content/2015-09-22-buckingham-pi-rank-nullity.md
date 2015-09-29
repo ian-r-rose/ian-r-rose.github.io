@@ -25,6 +25,8 @@ convention we most commonly use the SI measures for length (m),
 time (s), temperature (K), mass (kg), quantity (mol), current (A),
 and luminosity (cd).
 
+![lightbulb](images/lightbulb.png "not entirely sure how luminosity got in there")
+
 So, let's say that the quantity of interest is called $\Omega$, and that
 there are $n$ parameters $\omega_i$, where $i$ goes from one to $n$.
 We denote the units of something by enclosing it in square brackets,
