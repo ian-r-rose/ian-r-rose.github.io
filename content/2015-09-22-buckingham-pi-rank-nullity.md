@@ -4,7 +4,7 @@ We previously spent [two](introduction-to-dimensional-analysis.html)
 [longish](nondimensional-numbers-and-the-buckingham-pi-theorem.html)
 posts on motivating, and then semi-quantitatively describing the Buckingham Pi theorem.
 Here we will try to describe the theorem more precisely and more generally, and the tool
-we use will be linear algebra. As is always the case with mathematics a more
+we use will be linear algebra. As is always the case with mathematics, a more
 precise and general solution is going to be more abstract. But bear with me,
 hopefully it will not be too bad.
 
@@ -12,12 +12,11 @@ As we've seen, the general statement of the problem is that we have
 some quantity in which we are interested, and some set of parameters
 which we think describe the physics of that quantity. 
 We know that the parameters must combine in some way to 
-make something of the correct units (if not they cannot possibly
+make something of the correct units (if not, they cannot possibly
 be the correct set of parameters for the problem!).
-We can describe this setup in terms of a set of "fundamental units,"
-which we defined previously to be units which cannot be 
-made out combining other units.  
 
+We can describe this setup in terms of a set of "fundamental units,"
+which we define to be units which cannot be made by combining other units.  
 For instance, meters and seconds are both fundamental units,
 but velocity is not, since it can be made by dividing meters by seconds.
 The choice of fundamental units is not necessarily unique, but by 
@@ -44,11 +43,11 @@ so the symbolic representation of the problem is
 
 That is to say, we expect to be able to make the units of $\Omega$
 by combining the parameters $\omega_i$ in some way, where each parameter
-is raised to some exponent $\alpha_i$.
-Furthermore, since we have chosen some set of fundamental units, which we 
+is raised to some power $\alpha_i$.
+Furthermore, we have chosen some set of fundamental units which we 
 call $f_j$, where the index is for the $j$th fundamental unit that appears
-in the problem (call that number $k$). 
-We can also represent the units of $\Omega$ using those units:
+in the problem. We denote the number of fundemental units by $k$. 
+Another way of representing the units of $\Omega$ is by using those fundamental units:
 \begin{equation}
 \begin{bmatrix}
 \Omega
@@ -72,7 +71,7 @@ f_1^{\beta_1}f_2^{\beta_2} \cdots f_m^{\beta_k}
 where the $\beta_j$ are the powers of the fundamental units that
 make up the units of $\Omega$.
 This next step gets a little ugly: we also know that each 
-of the parameters $\omega_i$ have some units, so we 
+of the parameters $\omega_i$ has some units, so we 
 can also represent them using the $f_j$:
 \begin{equation}
 \begin{bmatrix}
@@ -81,7 +80,7 @@ can also represent them using the $f_j$:
 =
 f_1^{\gamma_{1i}}f_2^{\gamma_{2i}} \cdots f_k^{\gamma_{ki}}
 \end{equation}
-where the $\gamma_{mi}$ are the powers for the $m$th fundamental unit
+where the $\gamma_{ji}$ are the powers for the $j$th fundamental unit
 in the $i$th parameter.
 We can substitute this representation of the units of the $\omega_i$
 into \eqref{intermediate}:
@@ -104,7 +103,7 @@ f_k^{\gamma_{kn}\alpha_n} \\\\
 \end{equation}
 
 Almost there. We can now collect together each $f_j$ so that they
-only appear once on the left hand side, so by the rules of exponents,
+only appear once on the left hand side, so by the rules of exponents
 their powers are added:
 
 \begin{equation}
@@ -118,7 +117,7 @@ their powers are added:
 \end{equation}
 Here is the cool part: because we chose the $f_j$ to be a set of fundamental
 units, there is no way to make them out of the other fundamental units.
-Therefore, if that equation is going to be true, then the exponents for 
+Therefore, if the above equation is true, then the exponents for 
 each of the $f_j$ on both sides of the equation have to be equal!
 So this (terribly) ugly equation is really just a set of much simpler
 equations where we set the exponents of each $f_j$ to be equal:
@@ -163,14 +162,14 @@ you should be very happy. This is primarily for two reasons:
 
 * Linear algebra and matrix equations are an extremely well-developed
 and well-understood branch of mathematics, with a rich set of tools
-and very elegant theory. If your problem is a linear algebra problem,
+and very elegant theory. If your problem is a linear algebra problem
 you can use all that.
 
 * Computers are quite good at doing linear algebra. The only thing
 better than doing linear algebra is having a computer do it for you
 [[citation needed]](linear-algebra-and-the-buckingham-pi-theorem.html).
 
-Equation \eqref{dimension_matrix} is fairly abstract, but it still represents
+Equation \eqref{dimension_matrix} is fairly abstract, but it represents
 the same basic idea that we dealt with in the previous post: we 
 need to combine the parameters (in a recipe defined by the $\alpha$'s)
 in such a way to get the right dimensions (defined by the $\beta$'s).
@@ -185,14 +184,14 @@ We can rewrite Equation \eqref{dimension_matrix} in a more compact notation:
 \end{equation}
 where one overbar indicates a vector, and two overbars indicate a matrix.
 
-A particular solution to \eqref{dimension_equation} tells us how to 
+A particular solution to \eqref{dimension_equation} tells us one way to 
 combine the parameters to get the right units.
-However, we saw previously that there were cases where there was more than one
+However, we saw previously that in some cases there was more than one
 way to combine the parameters to get the right units, and this 
-led to parameter combinations without any dimension: so-called nondimensional numbers.
+led to parameter combinations without any dimensions: so-called nondimensional numbers.
 We could multiply by any function of these nondimensional numbers
 and still get the units we wanted. We can represent this phenomenon using
-our dimensional equation. Suppose that we have a particular
+our dimensional equation: suppose that we have a particular
 combination of the $\alpha$'s that satisfies Equation \eqref{dimension_equation},
 which we denote by $\bar{\alpha}_0$. Suppose furthermore that we have some
 nondimensional number, denoted by $\bar{\pi}$. Since
@@ -217,21 +216,22 @@ We can subtract the above two equations to get
 \end{equation}
 
 This is a very special equation in linear algebra, the solution to which is the 
-*[nullspace](https://en.wikipedia.org/wiki/Kernel_(linear_algebra))*.
+*[nullspace](https://en.wikipedia.org/wiki/Kernel_(linear_algebra))* of the matrix $\bar{\bar{\gamma}}$.
 The nullspace is the set of vectors which, when acted upon by a matrix, give the zero vector.
 From a dimensional standpoint, equation \eqref{nullspace} is just saying that the 
-nondimensional number vectors $\bar{\pi}$ do indeed have no dimensions.
+nondimensional number vectors $\bar{\pi}$ indeed have no dimensions.
 However, now we know that the nullspace of the matrix $\bar{\bar{\gamma}}$ is *exactly*
 the same thing as the set of nondimensional numbers for that problem.
 
 So why is the matrix representation of dimensional analysis useful?
 The answer is that it allows us to apply one of the most important results of linear algebra: the 
 [rank-nullity theorem](https://en.wikipedia.org/wiki/Rank%E2%80%93nullity_theorem).
-The matrix $\gamma$ is, in general, not square: it has dimension $m$ rows 
+The matrix $\bar{\bar{\gamma}}$ is, in general, not square: it has shape $k$ rows 
 (the number of fundamental units) by $n$ columns (the number of parameters).
 The rank-nullity theorem is a statement about the relationship between 
-the dimensionality of the image of a matrix (or rank), dimensionality of the nullspace of 
-a matrix, and the number of columns of a matrix.
+the dimensionality of the [image](https://en.wikipedia.org/wiki/Row_and_column_spaces)
+of a matrix (i.e. its rank), the dimensionality of the nullspace of 
+that matrix, and the number of columns of that matrix.
 The theorem states:
 
 \begin{equation}
@@ -241,7 +241,7 @@ The theorem states:
 \end{equation}
 
 If the rows of the matrix are linearly independent (which is not always the case!)
-then the rank is just the number of rows $m$.
+then the rank is just the number of rows $k$.
 The dimensionality of the nullspace of $\bar{\bar{\gamma}}$ is the number of 
 nondimensional numbers in our problem $p$.
 
@@ -271,9 +271,9 @@ The fundamental units are mass ($kg$), length ($m$), and time ($s$).
 
 ![couette](images/couette.svg "Couette flow")
 
-We therefore have four parameters and three fundamental units, meaning that
+We therefore have three fundamental units and four parameters, meaning that
 our dimensional matrix (defined in Equation \eqref{dimension_matrix})
-must have three rows (one for each fundamental unit) and four columns (one for each parameter).
+must have three rows (one for each fundamental unit), and four columns (one for each parameter).
 The entries of the matrix correspond to the exponent of that row's unit in that column's parameter.
 We order the units $kg$, $m$, and $s$, and order the parameters $\eta$, $\rho$, $D$, and $u_0$,
 allowing us to construct the matrix:
@@ -287,7 +287,7 @@ allowing us to construct the matrix:
 \end{bmatrix}
 \end{equation}
 
-I won't solve it here, but this 3x4 matrix has one vector in its nullspace, which is given by
+I won't solve it here, but this 3x4 matrix has exactly one vector in its nullspace, which is given by
 
 \begin{equation}
 \bar{\pi} =
