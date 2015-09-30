@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+      <title>Blueschisting</title>
+      <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css' />
+      <link href='http://fonts.googleapis.com/css?family=Merriweather:300' rel='stylesheet' type='text/css'/>
+      <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:200,400,700' rel='stylesheet' type='text/css'/>
+      <link rel="stylesheet" type="text/css" href="/theme/css/icons.css"/>
+      <link rel="stylesheet" type="text/css" href="/theme/css/styles.css"/>
+      <meta charset="utf-8" />
+  </head>
+
+  <body id="index">
+    <!-- header -->
+    <header class="siteheader">
+      <!-- site image -->
+        <div class= "siteimage">
+          <a class="nodec" href=/images/ian_rose.jpg>
+            <img width="200" height="200" src=/images/ian_rose.jpg>
+          </a>
+        </div>
+
+      <div class = "sitebanner">
+        <h1><a class="sitetitle nodec" href="">Blueschisting</a></h1>
+        <h3 class ="sitesubtitle">Thoughts on planetary science, fluid dynamics, and scientific computing</h3>
+        <!-- nav -->
+        <nav class="menu">
+          <ul>
+            <!-- menu items-->
+              <li><a class="nodec" href="/">blog</a></li>
+              <li><a class="nodec" href="/interactive_earth/index.html">interactive earth</a></li>
+            <!--pages-->
+                <li><a class="nodec" href="/pages/about.html">about</a></li>
+            <!-- services icons -->
+              <li><a class="nodec icon-github" href="http://github.com/ian-r-rose"></a></li>
+              <li><a class="nodec icon-twitter" href="http://twitter.com/IanRRose"></a></li>
+          </ul>
+        </nav>
+      </div> <!-- sitebanner -->
+    </header>
+
+    <!-- content -->
+
+<section class="content">
+
+  <h3 class="posttitle">
+    <a class="nodec" href="/linear-algebra-and-the-buckingham-pi-theorem.html" rel="bookmark" title="Permalink to Linear algebra and the Buckingham Pi theorem">
+      Linear algebra and the Buckingham Pi theorem
+    </a>
+  </h3>
+
+  <div class="postinfo">
+    <p class="published" title="2015-09-29T00:00:00-07:00">
+      Tue 29 September 2015
+    </p>
+
+  </div><!-- .postinfo -->
+
+  <div class="article">
+    <p>We previously spent <a href="introduction-to-dimensional-analysis.html">two</a>
+<a href="nondimensional-numbers-and-the-buckingham-pi-theorem.html">longish</a>
+posts on motivating, and then semi-quantitatively describing the Buckingham Pi theorem.
+Here we will try to describe the theorem more precisely and more generally, and the tool
+we use will be linear algebra. As is always the case with mathematics, a more
+precise and general solution is going to be more abstract. But bear with me,
+hopefully it will not be too bad.</p>
+<p>As we've seen, the general statement of the problem is that we have 
+some quantity in which we are interested, and some set of parameters
+which we think describe the physics of that quantity. 
+We know that the parameters must combine in some way to 
+make something of the correct units (if not, they cannot possibly
+be the correct set of parameters for the problem!).</p>
+<p>We can describe this setup in terms of a set of "fundamental units,"
+which we define to be units which cannot be made by combining other units.<br />
+For instance, meters and seconds are both fundamental units,
+but velocity is not, since it can be made by dividing meters by seconds.
+The choice of fundamental units is not necessarily unique, but by 
+convention we most commonly use the SI measures for length (m),
+time (s), temperature (K), mass (kg), quantity (mol), current (A),
+and luminosity (cd).</p>
+<p><img alt="lightbulb" src="images/lightbulb.png" title="not entirely sure how luminosity got in there" /></p>
+<p>So, let's say that the quantity of interest is called <span class="math">\(\Omega\)</span>, and that
+there are <span class="math">\(n\)</span> parameters <span class="math">\(\omega_i\)</span>, where <span class="math">\(i\)</span> goes from one to <span class="math">\(n\)</span>.
+We denote the units of something by enclosing it in square brackets,
+so the symbolic representation of the problem is
+</p>
+<div class="math">\begin{equation}
+\begin{bmatrix}
+\Omega
+\end{bmatrix}
+=
+\begin{bmatrix}
+\omega_1^{\alpha_1}\omega_2^{\alpha_2}...\omega_n^{\alpha_n}
+\end{bmatrix}
+\label{parameters}
+\end{equation}</div>
+<p>That is to say, we expect to be able to make the units of <span class="math">\(\Omega\)</span>
+by combining the parameters <span class="math">\(\omega_i\)</span> in some way, where each parameter
+is raised to some power <span class="math">\(\alpha_i\)</span>.
+Furthermore, we have chosen some set of fundamental units which we 
+call <span class="math">\(f_j\)</span>, where the index is for the <span class="math">\(j\)</span>th fundamental unit that appears
+in the problem. We denote the number of fundemental units by <span class="math">\(k\)</span>. 
+Another way of representing the units of <span class="math">\(\Omega\)</span> is by using those fundamental units:
+</p>
+<div class="math">\begin{equation}
+\begin{bmatrix}
+\Omega
+\end{bmatrix}
+=
+f_1^{\beta_1}f_2^{\beta_2} \cdots f_m^{\beta_k}
+\label{fundamental_units}
+\end{equation}</div>
+<p>
+where the <span class="math">\(\beta_j\)</span> are the powers of the fundamental units that
+make up the units of <span class="math">\(\Omega\)</span>.
+Since both \eqref{parameters} and \eqref{fundamental_units} are equal to 
+the same thing, we can set them equal to each other:
+</p>
+<div class="math">\begin{equation}
+\begin{bmatrix}
+\omega_1^{\alpha_1}\omega_2^{\alpha_2} \cdots \omega_n^{\alpha_n}
+\end{bmatrix}
+=
+f_1^{\beta_1}f_2^{\beta_2} \cdots f_m^{\beta_k}
+\label{intermediate}
+\end{equation}</div>
+<p>
+where the <span class="math">\(\beta_j\)</span> are the powers of the fundamental units that
+make up the units of <span class="math">\(\Omega\)</span>.
+This next step gets a little ugly: we also know that each 
+of the parameters <span class="math">\(\omega_i\)</span> has some units, so we 
+can also represent them using the <span class="math">\(f_j\)</span>:
+</p>
+<div class="math">\begin{equation}
+\begin{bmatrix}
+\omega_i
+\end{bmatrix}
+=
+f_1^{\gamma_{1i}}f_2^{\gamma_{2i}} \cdots f_k^{\gamma_{ki}}
+\end{equation}</div>
+<p>
+where the <span class="math">\(\gamma_{ji}\)</span> are the powers for the <span class="math">\(j\)</span>th fundamental unit
+in the <span class="math">\(i\)</span>th parameter.
+We can substitute this representation of the units of the <span class="math">\(\omega_i\)</span>
+into \eqref{intermediate}:</p>
+<div class="math">\begin{equation}
+\begin{aligned}
+&amp; f_1^{\gamma_{11}\alpha_1}
+f_2^{\gamma_{21}\alpha_1}\cdots
+f_k^{\gamma_{k1}\alpha_1}  \times \\\\
+&amp; f_1^{\gamma_{12}\alpha_2}
+f_2^{\gamma_{22}\alpha_2}\cdots
+f_k^{\gamma_{k2}\alpha_2} \times \\\\
+&amp; \vdots \\\\
+&amp; f_1^{\gamma_{1n}\alpha_n}
+f_2^{\gamma_{2n}\alpha_n}\cdots
+f_k^{\gamma_{kn}\alpha_n} \\\\
+=
+&amp; f_1^{\beta_1}f_2^{\beta_2}...f_k^{\beta_k}
+\end{aligned}
+\end{equation}</div>
+<p>Almost there. We can now collect together each <span class="math">\(f_j\)</span> so that they
+only appear once on the left hand side, so by the rules of exponents
+their powers are added:</p>
+<div class="math">\begin{equation}
+\begin{aligned}
+&amp; f_1^{\gamma_{11}\alpha_1 + \gamma_{12}\alpha_2 \cdots \gamma_{1n} \alpha_n } \times \\\\
+&amp; f_2^{\gamma_{21}\alpha_1 + \gamma_{22}\alpha_2 \cdots \gamma_{2n} \alpha_n } \times \\\\
+&amp; \vdots \\\\
+&amp; f_k^{\gamma_{k1}\alpha_1 + \gamma_{k2}\alpha_2 \cdots \gamma_{kn} \alpha_n } \\\\
+&amp;= f_1^{\beta_1}f_2^{\beta_2}...f_k^{\beta_k}
+\end{aligned}
+\end{equation}</div>
+<p>
+Here is the cool part: because we chose the <span class="math">\(f_j\)</span> to be a set of fundamental
+units, there is no way to make them out of the other fundamental units.
+Therefore, if the above equation is true, then the exponents for 
+each of the <span class="math">\(f_j\)</span> on both sides of the equation have to be equal!
+So this (terribly) ugly equation is really just a set of much simpler
+equations where we set the exponents of each <span class="math">\(f_j\)</span> to be equal:</p>
+<div class="math">\begin{equation}
+\begin{aligned}
+\gamma_{11}\alpha_1 + \gamma_{12}\alpha_2 \cdots \gamma_{1n} \alpha_n &amp;= \beta_1 \\\\
+\gamma_{21}\alpha_1 + \gamma_{22}\alpha_2 \cdots \gamma_{2n} \alpha_n &amp;= \beta_2 \\\\
+\vdots \\\\
+\gamma_{k1}\alpha_1 + \gamma_{k2}\alpha_2 \cdots \gamma_{kn} \alpha_n &amp;= \beta_k\\\\
+\end{aligned}
+\end{equation}</div>
+<p>If you have ever learned linear algebra, this should start to look very familiar:
+it is actually a matrix equation:</p>
+<div class="math">\begin{equation}
+\begin{bmatrix}
+\gamma_{11} &amp; \gamma_{12} &amp; \cdots &amp; \gamma_{1n} \\\\
+\gamma_{21} &amp; \gamma_{22} &amp; \cdots &amp; \gamma_{2n} \\\\
+\vdots &amp; \ddots &amp; &amp; \vdots \\\\
+\gamma_{k1} &amp; \gamma_{k2} &amp; \cdots &amp; \gamma_{kn} \\\\
+\end{bmatrix}
+\begin{bmatrix}
+\alpha_1 \\\\
+\alpha_2 \\\\
+\vdots \\\\
+\alpha_n \\\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+\beta_1 \\\\
+\beta_2 \\\\
+\vdots \\\\
+\beta_k \\\\
+\end{bmatrix}
+\label{dimension_matrix}
+\end{equation}</div>
+<p>Any time you can make your math problem look like a matrix equation,
+you should be very happy. This is primarily for two reasons:</p>
+<ul>
+<li>
+<p>Linear algebra and matrix equations are an extremely well-developed
+and well-understood branch of mathematics, with a rich set of tools
+and very elegant theory. If your problem is a linear algebra problem
+you can use all that.</p>
+</li>
+<li>
+<p>Computers are quite good at doing linear algebra. The only thing
+better than doing linear algebra is having a computer do it for you
+<a href="linear-algebra-and-the-buckingham-pi-theorem.html">[citation needed]</a>.</p>
+</li>
+</ul>
+<p>Equation \eqref{dimension_matrix} is fairly abstract, but it represents
+the same basic idea that we dealt with in the previous post: we 
+need to combine the parameters (in a recipe defined by the <span class="math">\(\alpha\)</span>'s)
+in such a way to get the right dimensions (defined by the <span class="math">\(\beta\)</span>'s).
+The matrix <span class="math">\(\gamma_{ji}\)</span> tells us how to convert between the parameters
+and the dimensions.</p>
+<p>We can rewrite Equation \eqref{dimension_matrix} in a more compact notation:</p>
+<div class="math">\begin{equation}
+\bar{\bar{\gamma}} \bar{\alpha} = \bar{\beta}
+\label{dimension_equation}
+\end{equation}</div>
+<p>
+where one overbar indicates a vector, and two overbars indicate a matrix.</p>
+<p>A particular solution to \eqref{dimension_equation} tells us one way to 
+combine the parameters to get the right units.
+However, we saw previously that in some cases there was more than one
+way to combine the parameters to get the right units, and this 
+led to parameter combinations without any dimensions: so-called nondimensional numbers.
+We could multiply by any function of these nondimensional numbers
+and still get the units we wanted. We can represent this phenomenon using
+our dimensional equation: suppose that we have a particular
+combination of the <span class="math">\(\alpha\)</span>'s that satisfies Equation \eqref{dimension_equation},
+which we denote by <span class="math">\(\bar{\alpha}_0\)</span>. Suppose furthermore that we have some
+nondimensional number, denoted by <span class="math">\(\bar{\pi}\)</span>. Since</p>
+<div class="math">\begin{equation}
+\bar{\bar{\gamma}} \bar{\alpha}_0 = \bar{\beta}
+\end{equation}</div>
+<p>we must also have</p>
+<div class="math">\begin{equation}
+\bar{\bar{\gamma}} \left( \bar{\alpha}_0 + \bar{\pi} \right) = \bar{\beta}
+\end{equation}</div>
+<p>This is just a statement that the nondimensional number
+<span class="math">\(\bar{\pi}\)</span> does not change the units of the answer.
+We can subtract the above two equations to get</p>
+<div class="math">\begin{equation}
+\bar{\bar{\gamma}} \bar{\pi} = 0
+\label{nullspace}
+\end{equation}</div>
+<p>This is a very special equation in linear algebra, the solution to which is the 
+<em><a href="https://en.wikipedia.org/wiki/Kernel_(linear_algebra)">nullspace</a></em> of the matrix <span class="math">\(\bar{\bar{\gamma}}\)</span>.
+The nullspace is the set of vectors which, when acted upon by a matrix, give the zero vector.
+From a dimensional standpoint, equation \eqref{nullspace} is just saying that the 
+nondimensional number vectors <span class="math">\(\bar{\pi}\)</span> indeed have no dimensions.
+However, now we know that the nullspace of the matrix <span class="math">\(\bar{\bar{\gamma}}\)</span> is <em>exactly</em>
+the same thing as the set of nondimensional numbers for that problem.</p>
+<p>So why is the matrix representation of dimensional analysis useful?
+The answer is that it allows us to apply one of the most important results of linear algebra: the 
+<a href="https://en.wikipedia.org/wiki/Rank%E2%80%93nullity_theorem">rank-nullity theorem</a>.
+The matrix <span class="math">\(\bar{\bar{\gamma}}\)</span> is, in general, not square: it has shape <span class="math">\(k\)</span> rows 
+(the number of fundamental units) by <span class="math">\(n\)</span> columns (the number of parameters).
+The rank-nullity theorem is a statement about the relationship between 
+the dimensionality of the <a href="https://en.wikipedia.org/wiki/Row_and_column_spaces">image</a>
+of a matrix (i.e. its rank), the dimensionality of the nullspace of 
+that matrix, and the number of columns of that matrix.
+The theorem states:</p>
+<div class="math">\begin{equation}
+\mathrm{dim}(\mathrm{image}( \bar{\bar{\gamma}} ) ) + 
+\mathrm{dim}(\mathrm{nullspace}(\bar{\bar{\gamma}}) ) = \mathrm{number \; of \; columns}
+\label{rank-nullity}
+\end{equation}</div>
+<p>If the rows of the matrix are linearly independent (which is not always the case!)
+then the rank is just the number of rows <span class="math">\(k\)</span>.
+The dimensionality of the nullspace of <span class="math">\(\bar{\bar{\gamma}}\)</span> is the number of 
+nondimensional numbers in our problem <span class="math">\(p\)</span>.</p>
+<p>For our central problem of dimensional analysis, the number of rows is
+the number of fundamental units <span class="math">\(k\)</span>, and the number of columns
+is the number of parameters <span class="math">\(n\)</span>.
+Then, by the rank-nullity theorem, the number of nondimensional numbers is just
+</p>
+<div class="math">\begin{equation}
+p = n - k
+\end{equation}</div>
+<p>which is exactly the statement of the Buckingham pi theorem! 
+So we see, when reformulated in terms of linear algebra,
+the Buckingham pi theorem is just an application of the rank-nullity theorem.
+Not only is this an interesting mathematical result by itself,
+it allows for a more careful treatment of dimensional analysis problems
+in more complicated cases where the actual list of parameters is
+unclear, or when they may be linearly dependent on each other.</p>
+<p>To be more concrete, we can return to the example of 
+<a href="https://en.wikipedia.org/wiki/Couette_flow">Couette flow</a>.
+The parameters are the viscosity <span class="math">\(\eta \; (\mathrm{kg}/\mathrm{m s})\)</span>, 
+the density <span class="math">\(\rho \; (\mathrm{kg}/\mathrm{m}^3)\)</span>,
+the separation distance <span class="math">\(D \; (\mathrm{m})\)</span>, 
+and the upper plate velocity <span class="math">\(u_0 \; (\mathrm{m/s})\)</span>.
+The fundamental units are mass (<span class="math">\(kg\)</span>), length (<span class="math">\(m\)</span>), and time (<span class="math">\(s\)</span>).</p>
+<p><img alt="couette" src="images/couette.svg" title="Couette flow" /></p>
+<p>We therefore have three fundamental units and four parameters, meaning that
+our dimensional matrix (defined in Equation \eqref{dimension_matrix})
+must have three rows (one for each fundamental unit), and four columns (one for each parameter).
+The entries of the matrix correspond to the exponent of that row's unit in that column's parameter.
+We order the units <span class="math">\(kg\)</span>, <span class="math">\(m\)</span>, and <span class="math">\(s\)</span>, and order the parameters <span class="math">\(\eta\)</span>, <span class="math">\(\rho\)</span>, <span class="math">\(D\)</span>, and <span class="math">\(u_0\)</span>,
+allowing us to construct the matrix:</p>
+<div class="math">\begin{equation}
+\bar{\bar{\gamma}} = 
+\begin{bmatrix}
+1 &amp; 1 &amp; 0 &amp; 0 \\\\
+-1 &amp; -3 &amp; 1 &amp; 1 \\\\
+-1 &amp; 0 &amp; 0 &amp; -1 \\\\
+\end{bmatrix}
+\end{equation}</div>
+<p>I won't solve it here, but this 3x4 matrix has exactly one vector in its nullspace, which is given by</p>
+<div class="math">\begin{equation}
+\bar{\pi} =
+\begin{bmatrix}
+-1 \\\\
+1 \\\\
+1 \\\\
+1 \\\\
+\end{bmatrix}
+\end{equation}</div>
+<p>You can verify that this does indeed make the zero vector when you apply <span class="math">\(\bar{\bar{\gamma}}\)</span> to it.
+This vector <span class="math">\(\bar{\pi}\)</span> can be converted back into its symbolic unit description:
+</p>
+<div class="math">\begin{equation}
+\frac{\rho u_0 D}{\eta}
+\end{equation}</div>
+<p>This, you may not be surprised to see, is the nondimensional number associated with
+Couette flow, the Reynolds number!</p>
+<p>To summarize, we have seen that the problem of dimensional analysis, which we 
+described in some detail in the previous two articles, can be written
+equivalently in terms of matrix-vector operations. This allows us 
+to bring the whole edifice of linear algebra to bear on the problem.
+It also suggests an interesting possibility: since computers are <em>extremely</em>
+good at linear algebra, it should be possible to write some 
+code that does dimensional analysis for us, with a minimum of 
+effort on our part. That is what I will be attempting in my next article.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript'; 
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div><!-- .content -->
+
+</section>
+
+
+    <!-- footer -->
+    <footer>
+      <p>
+        © Ian Rose, license <a href=""> </a>
+        unless otherwise noted.
+        Generated by <a href= "http://docs.getpelican.com/">Pelican</a> with
+        <a href="http://github.com/porterjamesj/crowsfoot">crowsfoot</a> theme.
+      </p>
+    </footer>
+  </body>
+</html>

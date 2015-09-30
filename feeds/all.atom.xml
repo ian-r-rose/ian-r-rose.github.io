@@ -1,5 +1,355 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Blueschisting</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2015-09-21T00:00:00-07:00</updated><entry><title>Nondimensional numbers and the Buckingham Pi theorem</title><link href="/nondimensional-numbers-and-the-buckingham-pi-theorem.html" rel="alternate"></link><updated>2015-09-21T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:,2015-09-21:nondimensional-numbers-and-the-buckingham-pi-theorem.html</id><summary type="html">&lt;p&gt;In my &lt;a href="introduction-to-dimensional-analysis.html"&gt;previous post&lt;/a&gt; I 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Blueschisting</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2015-09-29T00:00:00-07:00</updated><entry><title>Linear algebra and the Buckingham Pi theorem</title><link href="/linear-algebra-and-the-buckingham-pi-theorem.html" rel="alternate"></link><updated>2015-09-29T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:,2015-09-29:linear-algebra-and-the-buckingham-pi-theorem.html</id><summary type="html">&lt;p&gt;We previously spent &lt;a href="introduction-to-dimensional-analysis.html"&gt;two&lt;/a&gt;
+&lt;a href="nondimensional-numbers-and-the-buckingham-pi-theorem.html"&gt;longish&lt;/a&gt;
+posts on motivating, and then semi-quantitatively describing the Buckingham Pi theorem.
+Here we will try to describe the theorem more precisely and more generally, and the tool
+we use will be linear algebra. As is always the case with mathematics, a more
+precise and general solution is going to be more abstract. But bear with me,
+hopefully it will not be too bad.&lt;/p&gt;
+&lt;p&gt;As we've seen, the general statement of the problem is that we have 
+some quantity in which we are interested, and some set of parameters
+which we think describe the physics of that quantity. 
+We know that the parameters must combine in some way to 
+make something of the correct units (if not, they cannot possibly
+be the correct set of parameters for the problem!).&lt;/p&gt;
+&lt;p&gt;We can describe this setup in terms of a set of "fundamental units,"
+which we define to be units which cannot be made by combining other units.&lt;br /&gt;
+For instance, meters and seconds are both fundamental units,
+but velocity is not, since it can be made by dividing meters by seconds.
+The choice of fundamental units is not necessarily unique, but by 
+convention we most commonly use the SI measures for length (m),
+time (s), temperature (K), mass (kg), quantity (mol), current (A),
+and luminosity (cd).&lt;/p&gt;
+&lt;p&gt;&lt;img alt="lightbulb" src="images/lightbulb.png" title="not entirely sure how luminosity got in there" /&gt;&lt;/p&gt;
+&lt;p&gt;So, let's say that the quantity of interest is called &lt;span class="math"&gt;\(\Omega\)&lt;/span&gt;, and that
+there are &lt;span class="math"&gt;\(n\)&lt;/span&gt; parameters &lt;span class="math"&gt;\(\omega_i\)&lt;/span&gt;, where &lt;span class="math"&gt;\(i\)&lt;/span&gt; goes from one to &lt;span class="math"&gt;\(n\)&lt;/span&gt;.
+We denote the units of something by enclosing it in square brackets,
+so the symbolic representation of the problem is
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\begin{bmatrix}
+\Omega
+\end{bmatrix}
+=
+\begin{bmatrix}
+\omega_1^{\alpha_1}\omega_2^{\alpha_2}...\omega_n^{\alpha_n}
+\end{bmatrix}
+\label{parameters}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;That is to say, we expect to be able to make the units of &lt;span class="math"&gt;\(\Omega\)&lt;/span&gt;
+by combining the parameters &lt;span class="math"&gt;\(\omega_i\)&lt;/span&gt; in some way, where each parameter
+is raised to some power &lt;span class="math"&gt;\(\alpha_i\)&lt;/span&gt;.
+Furthermore, we have chosen some set of fundamental units which we 
+call &lt;span class="math"&gt;\(f_j\)&lt;/span&gt;, where the index is for the &lt;span class="math"&gt;\(j\)&lt;/span&gt;th fundamental unit that appears
+in the problem. We denote the number of fundemental units by &lt;span class="math"&gt;\(k\)&lt;/span&gt;. 
+Another way of representing the units of &lt;span class="math"&gt;\(\Omega\)&lt;/span&gt; is by using those fundamental units:
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\begin{bmatrix}
+\Omega
+\end{bmatrix}
+=
+f_1^{\beta_1}f_2^{\beta_2} \cdots f_m^{\beta_k}
+\label{fundamental_units}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+where the &lt;span class="math"&gt;\(\beta_j\)&lt;/span&gt; are the powers of the fundamental units that
+make up the units of &lt;span class="math"&gt;\(\Omega\)&lt;/span&gt;.
+Since both \eqref{parameters} and \eqref{fundamental_units} are equal to 
+the same thing, we can set them equal to each other:
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\begin{bmatrix}
+\omega_1^{\alpha_1}\omega_2^{\alpha_2} \cdots \omega_n^{\alpha_n}
+\end{bmatrix}
+=
+f_1^{\beta_1}f_2^{\beta_2} \cdots f_m^{\beta_k}
+\label{intermediate}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+where the &lt;span class="math"&gt;\(\beta_j\)&lt;/span&gt; are the powers of the fundamental units that
+make up the units of &lt;span class="math"&gt;\(\Omega\)&lt;/span&gt;.
+This next step gets a little ugly: we also know that each 
+of the parameters &lt;span class="math"&gt;\(\omega_i\)&lt;/span&gt; has some units, so we 
+can also represent them using the &lt;span class="math"&gt;\(f_j\)&lt;/span&gt;:
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\begin{bmatrix}
+\omega_i
+\end{bmatrix}
+=
+f_1^{\gamma_{1i}}f_2^{\gamma_{2i}} \cdots f_k^{\gamma_{ki}}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+where the &lt;span class="math"&gt;\(\gamma_{ji}\)&lt;/span&gt; are the powers for the &lt;span class="math"&gt;\(j\)&lt;/span&gt;th fundamental unit
+in the &lt;span class="math"&gt;\(i\)&lt;/span&gt;th parameter.
+We can substitute this representation of the units of the &lt;span class="math"&gt;\(\omega_i\)&lt;/span&gt;
+into \eqref{intermediate}:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\begin{aligned}
+&amp;amp; f_1^{\gamma_{11}\alpha_1}
+f_2^{\gamma_{21}\alpha_1}\cdots
+f_k^{\gamma_{k1}\alpha_1}  \times \\\\
+&amp;amp; f_1^{\gamma_{12}\alpha_2}
+f_2^{\gamma_{22}\alpha_2}\cdots
+f_k^{\gamma_{k2}\alpha_2} \times \\\\
+&amp;amp; \vdots \\\\
+&amp;amp; f_1^{\gamma_{1n}\alpha_n}
+f_2^{\gamma_{2n}\alpha_n}\cdots
+f_k^{\gamma_{kn}\alpha_n} \\\\
+=
+&amp;amp; f_1^{\beta_1}f_2^{\beta_2}...f_k^{\beta_k}
+\end{aligned}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;Almost there. We can now collect together each &lt;span class="math"&gt;\(f_j\)&lt;/span&gt; so that they
+only appear once on the left hand side, so by the rules of exponents
+their powers are added:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\begin{aligned}
+&amp;amp; f_1^{\gamma_{11}\alpha_1 + \gamma_{12}\alpha_2 \cdots \gamma_{1n} \alpha_n } \times \\\\
+&amp;amp; f_2^{\gamma_{21}\alpha_1 + \gamma_{22}\alpha_2 \cdots \gamma_{2n} \alpha_n } \times \\\\
+&amp;amp; \vdots \\\\
+&amp;amp; f_k^{\gamma_{k1}\alpha_1 + \gamma_{k2}\alpha_2 \cdots \gamma_{kn} \alpha_n } \\\\
+&amp;amp;= f_1^{\beta_1}f_2^{\beta_2}...f_k^{\beta_k}
+\end{aligned}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+Here is the cool part: because we chose the &lt;span class="math"&gt;\(f_j\)&lt;/span&gt; to be a set of fundamental
+units, there is no way to make them out of the other fundamental units.
+Therefore, if the above equation is true, then the exponents for 
+each of the &lt;span class="math"&gt;\(f_j\)&lt;/span&gt; on both sides of the equation have to be equal!
+So this (terribly) ugly equation is really just a set of much simpler
+equations where we set the exponents of each &lt;span class="math"&gt;\(f_j\)&lt;/span&gt; to be equal:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\begin{aligned}
+\gamma_{11}\alpha_1 + \gamma_{12}\alpha_2 \cdots \gamma_{1n} \alpha_n &amp;amp;= \beta_1 \\\\
+\gamma_{21}\alpha_1 + \gamma_{22}\alpha_2 \cdots \gamma_{2n} \alpha_n &amp;amp;= \beta_2 \\\\
+\vdots \\\\
+\gamma_{k1}\alpha_1 + \gamma_{k2}\alpha_2 \cdots \gamma_{kn} \alpha_n &amp;amp;= \beta_k\\\\
+\end{aligned}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;If you have ever learned linear algebra, this should start to look very familiar:
+it is actually a matrix equation:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\begin{bmatrix}
+\gamma_{11} &amp;amp; \gamma_{12} &amp;amp; \cdots &amp;amp; \gamma_{1n} \\\\
+\gamma_{21} &amp;amp; \gamma_{22} &amp;amp; \cdots &amp;amp; \gamma_{2n} \\\\
+\vdots &amp;amp; \ddots &amp;amp; &amp;amp; \vdots \\\\
+\gamma_{k1} &amp;amp; \gamma_{k2} &amp;amp; \cdots &amp;amp; \gamma_{kn} \\\\
+\end{bmatrix}
+\begin{bmatrix}
+\alpha_1 \\\\
+\alpha_2 \\\\
+\vdots \\\\
+\alpha_n \\\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+\beta_1 \\\\
+\beta_2 \\\\
+\vdots \\\\
+\beta_k \\\\
+\end{bmatrix}
+\label{dimension_matrix}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;Any time you can make your math problem look like a matrix equation,
+you should be very happy. This is primarily for two reasons:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Linear algebra and matrix equations are an extremely well-developed
+and well-understood branch of mathematics, with a rich set of tools
+and very elegant theory. If your problem is a linear algebra problem
+you can use all that.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Computers are quite good at doing linear algebra. The only thing
+better than doing linear algebra is having a computer do it for you
+&lt;a href="linear-algebra-and-the-buckingham-pi-theorem.html"&gt;[citation needed]&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Equation \eqref{dimension_matrix} is fairly abstract, but it represents
+the same basic idea that we dealt with in the previous post: we 
+need to combine the parameters (in a recipe defined by the &lt;span class="math"&gt;\(\alpha\)&lt;/span&gt;'s)
+in such a way to get the right dimensions (defined by the &lt;span class="math"&gt;\(\beta\)&lt;/span&gt;'s).
+The matrix &lt;span class="math"&gt;\(\gamma_{ji}\)&lt;/span&gt; tells us how to convert between the parameters
+and the dimensions.&lt;/p&gt;
+&lt;p&gt;We can rewrite Equation \eqref{dimension_matrix} in a more compact notation:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\bar{\bar{\gamma}} \bar{\alpha} = \bar{\beta}
+\label{dimension_equation}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+where one overbar indicates a vector, and two overbars indicate a matrix.&lt;/p&gt;
+&lt;p&gt;A particular solution to \eqref{dimension_equation} tells us one way to 
+combine the parameters to get the right units.
+However, we saw previously that in some cases there was more than one
+way to combine the parameters to get the right units, and this 
+led to parameter combinations without any dimensions: so-called nondimensional numbers.
+We could multiply by any function of these nondimensional numbers
+and still get the units we wanted. We can represent this phenomenon using
+our dimensional equation: suppose that we have a particular
+combination of the &lt;span class="math"&gt;\(\alpha\)&lt;/span&gt;'s that satisfies Equation \eqref{dimension_equation},
+which we denote by &lt;span class="math"&gt;\(\bar{\alpha}_0\)&lt;/span&gt;. Suppose furthermore that we have some
+nondimensional number, denoted by &lt;span class="math"&gt;\(\bar{\pi}\)&lt;/span&gt;. Since&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\bar{\bar{\gamma}} \bar{\alpha}_0 = \bar{\beta}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;we must also have&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\bar{\bar{\gamma}} \left( \bar{\alpha}_0 + \bar{\pi} \right) = \bar{\beta}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;This is just a statement that the nondimensional number
+&lt;span class="math"&gt;\(\bar{\pi}\)&lt;/span&gt; does not change the units of the answer.
+We can subtract the above two equations to get&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\bar{\bar{\gamma}} \bar{\pi} = 0
+\label{nullspace}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;This is a very special equation in linear algebra, the solution to which is the 
+&lt;em&gt;&lt;a href="https://en.wikipedia.org/wiki/Kernel_(linear_algebra)"&gt;nullspace&lt;/a&gt;&lt;/em&gt; of the matrix &lt;span class="math"&gt;\(\bar{\bar{\gamma}}\)&lt;/span&gt;.
+The nullspace is the set of vectors which, when acted upon by a matrix, give the zero vector.
+From a dimensional standpoint, equation \eqref{nullspace} is just saying that the 
+nondimensional number vectors &lt;span class="math"&gt;\(\bar{\pi}\)&lt;/span&gt; indeed have no dimensions.
+However, now we know that the nullspace of the matrix &lt;span class="math"&gt;\(\bar{\bar{\gamma}}\)&lt;/span&gt; is &lt;em&gt;exactly&lt;/em&gt;
+the same thing as the set of nondimensional numbers for that problem.&lt;/p&gt;
+&lt;p&gt;So why is the matrix representation of dimensional analysis useful?
+The answer is that it allows us to apply one of the most important results of linear algebra: the 
+&lt;a href="https://en.wikipedia.org/wiki/Rank%E2%80%93nullity_theorem"&gt;rank-nullity theorem&lt;/a&gt;.
+The matrix &lt;span class="math"&gt;\(\bar{\bar{\gamma}}\)&lt;/span&gt; is, in general, not square: it has shape &lt;span class="math"&gt;\(k\)&lt;/span&gt; rows 
+(the number of fundamental units) by &lt;span class="math"&gt;\(n\)&lt;/span&gt; columns (the number of parameters).
+The rank-nullity theorem is a statement about the relationship between 
+the dimensionality of the &lt;a href="https://en.wikipedia.org/wiki/Row_and_column_spaces"&gt;image&lt;/a&gt;
+of a matrix (i.e. its rank), the dimensionality of the nullspace of 
+that matrix, and the number of columns of that matrix.
+The theorem states:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\mathrm{dim}(\mathrm{image}( \bar{\bar{\gamma}} ) ) + 
+\mathrm{dim}(\mathrm{nullspace}(\bar{\bar{\gamma}}) ) = \mathrm{number \; of \; columns}
+\label{rank-nullity}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;If the rows of the matrix are linearly independent (which is not always the case!)
+then the rank is just the number of rows &lt;span class="math"&gt;\(k\)&lt;/span&gt;.
+The dimensionality of the nullspace of &lt;span class="math"&gt;\(\bar{\bar{\gamma}}\)&lt;/span&gt; is the number of 
+nondimensional numbers in our problem &lt;span class="math"&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;For our central problem of dimensional analysis, the number of rows is
+the number of fundamental units &lt;span class="math"&gt;\(k\)&lt;/span&gt;, and the number of columns
+is the number of parameters &lt;span class="math"&gt;\(n\)&lt;/span&gt;.
+Then, by the rank-nullity theorem, the number of nondimensional numbers is just
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+p = n - k
+\end{equation}&lt;/div&gt;
+&lt;p&gt;which is exactly the statement of the Buckingham pi theorem! 
+So we see, when reformulated in terms of linear algebra,
+the Buckingham pi theorem is just an application of the rank-nullity theorem.
+Not only is this an interesting mathematical result by itself,
+it allows for a more careful treatment of dimensional analysis problems
+in more complicated cases where the actual list of parameters is
+unclear, or when they may be linearly dependent on each other.&lt;/p&gt;
+&lt;p&gt;To be more concrete, we can return to the example of 
+&lt;a href="https://en.wikipedia.org/wiki/Couette_flow"&gt;Couette flow&lt;/a&gt;.
+The parameters are the viscosity &lt;span class="math"&gt;\(\eta \; (\mathrm{kg}/\mathrm{m s})\)&lt;/span&gt;, 
+the density &lt;span class="math"&gt;\(\rho \; (\mathrm{kg}/\mathrm{m}^3)\)&lt;/span&gt;,
+the separation distance &lt;span class="math"&gt;\(D \; (\mathrm{m})\)&lt;/span&gt;, 
+and the upper plate velocity &lt;span class="math"&gt;\(u_0 \; (\mathrm{m/s})\)&lt;/span&gt;.
+The fundamental units are mass (&lt;span class="math"&gt;\(kg\)&lt;/span&gt;), length (&lt;span class="math"&gt;\(m\)&lt;/span&gt;), and time (&lt;span class="math"&gt;\(s\)&lt;/span&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;img alt="couette" src="images/couette.svg" title="Couette flow" /&gt;&lt;/p&gt;
+&lt;p&gt;We therefore have three fundamental units and four parameters, meaning that
+our dimensional matrix (defined in Equation \eqref{dimension_matrix})
+must have three rows (one for each fundamental unit), and four columns (one for each parameter).
+The entries of the matrix correspond to the exponent of that row's unit in that column's parameter.
+We order the units &lt;span class="math"&gt;\(kg\)&lt;/span&gt;, &lt;span class="math"&gt;\(m\)&lt;/span&gt;, and &lt;span class="math"&gt;\(s\)&lt;/span&gt;, and order the parameters &lt;span class="math"&gt;\(\eta\)&lt;/span&gt;, &lt;span class="math"&gt;\(\rho\)&lt;/span&gt;, &lt;span class="math"&gt;\(D\)&lt;/span&gt;, and &lt;span class="math"&gt;\(u_0\)&lt;/span&gt;,
+allowing us to construct the matrix:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\bar{\bar{\gamma}} = 
+\begin{bmatrix}
+1 &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 \\\\
+-1 &amp;amp; -3 &amp;amp; 1 &amp;amp; 1 \\\\
+-1 &amp;amp; 0 &amp;amp; 0 &amp;amp; -1 \\\\
+\end{bmatrix}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;I won't solve it here, but this 3x4 matrix has exactly one vector in its nullspace, which is given by&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\bar{\pi} =
+\begin{bmatrix}
+-1 \\\\
+1 \\\\
+1 \\\\
+1 \\\\
+\end{bmatrix}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;You can verify that this does indeed make the zero vector when you apply &lt;span class="math"&gt;\(\bar{\bar{\gamma}}\)&lt;/span&gt; to it.
+This vector &lt;span class="math"&gt;\(\bar{\pi}\)&lt;/span&gt; can be converted back into its symbolic unit description:
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{\rho u_0 D}{\eta}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;This, you may not be surprised to see, is the nondimensional number associated with
+Couette flow, the Reynolds number!&lt;/p&gt;
+&lt;p&gt;To summarize, we have seen that the problem of dimensional analysis, which we 
+described in some detail in the previous two articles, can be written
+equivalently in terms of matrix-vector operations. This allows us 
+to bring the whole edifice of linear algebra to bear on the problem.
+It also suggests an interesting possibility: since computers are &lt;em&gt;extremely&lt;/em&gt;
+good at linear algebra, it should be possible to write some 
+code that does dimensional analysis for us, with a minimum of 
+effort on our part. That is what I will be attempting in my next article.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript'; 
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary></entry><entry><title>Nondimensional numbers and the Buckingham Pi theorem</title><link href="/nondimensional-numbers-and-the-buckingham-pi-theorem.html" rel="alternate"></link><updated>2015-09-21T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:,2015-09-21:nondimensional-numbers-and-the-buckingham-pi-theorem.html</id><summary type="html">&lt;p&gt;In my &lt;a href="introduction-to-dimensional-analysis.html"&gt;previous post&lt;/a&gt; I 
 tried to establish the context for nondimensional analysis, which 
 allowed us to ask the central questions that the Buckingham Pi theorem
 will allow us to answer. At the heart of the matter was the relationship
@@ -207,7 +557,7 @@ Hopefully it should make more sense this time around.
 However, it still may not be clear why it is true.
 The answer is that the Buckingham Pi theorem is, at heart,
 an application of the most important result in linear algebra: the rank-nullity theorem.
-In my next post, I will revisit the theorem from that perspective.&lt;/p&gt;
+In my &lt;a href="linear-algebra-and-the-buckingham-pi-theorem.html"&gt;next post&lt;/a&gt;, I will revisit the theorem from that perspective.&lt;/p&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
