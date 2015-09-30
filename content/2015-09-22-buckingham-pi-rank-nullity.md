@@ -166,8 +166,9 @@ and well-understood branch of mathematics, with a rich set of tools
 and very elegant theory. If your problem is a linear algebra problem,
 you can use all that.
 
-* Computers are extremely good at doing linear algebra. The only thing
-better than doing linear algebra is having a computer do it for you.
+* Computers are quite good at doing linear algebra. The only thing
+better than doing linear algebra is having a computer do it for you
+[[citation needed]](linear-algebra-and-the-buckingham-pi-theorem.html).
 
 Equation \eqref{dimension_matrix} is fairly abstract, but it still represents
 the same basic idea that we dealt with in the previous post: we 
@@ -176,13 +177,89 @@ in such a way to get the right dimensions (defined by the $\beta$'s).
 The matrix $\gamma_{ji}$ tells us how to convert between the parameters
 and the dimensions.
 
+We can rewrite Equation \eqref{dimension_matrix} in a more compact notation:
+
+\begin{equation}
+\bar{\bar{\gamma}} \bar{\alpha} = \bar{\beta}
+\label{dimension_equation}
+\end{equation}
+where one overbar indicates a vector, and two overbars indicate a matrix.
+
+A particular solution to \eqref{dimension_equation} tells us how to 
+combine the parameters to get the right units.
+However, we saw previously that there were cases where there was more than one
+way to combine the parameters to get the right units, and this 
+led to parameter combinations without any dimension: so-called nondimensional numbers.
+We could multiply by any function of these nondimensional numbers
+and still get the units we wanted. We can represent this phenomenon using
+our dimensional equation. Suppose that we have a particular
+combination of the $\alpha$'s that satisfies Equation \eqref{dimension_equation},
+which we denote by $\bar{\alpha}_0$. Suppose furthermore that we have some
+nondimensional number, denoted by $\bar{\pi}$. Since
+
+\begin{equation}
+\bar{\bar{\gamma}} \bar{\alpha}_0 = \bar{\beta}
+\end{equation}
+
+we must also have
+
+\begin{equation}
+\bar{\bar{\gamma}} \left( \bar{\alpha}_0 + \bar{\pi} \right) = \bar{\beta}
+\end{equation}
+
+This is just a statement that the nondimensional number
+$\bar{\pi}$ does not change the units of the answer.
+We can subtract the above two equations to get
+
+\begin{equation}
+\bar{\bar{\gamma}} \bar{\pi} = 0
+\label{nullspace}
+\end{equation}
+
+This is a very special equation in linear algebra, the solution to which is the 
+*[nullspace](https://en.wikipedia.org/wiki/Kernel_(linear_algebra))*.
+The nullspace is the set of vectors which, when acted upon by a matrix, give the zero vector.
+From a dimensional standpoint, equation \eqref{nullspace} is just saying that the 
+nondimensional number vectors $\bar{\pi}$ do indeed have no dimensions.
+However, now we know that the nullspace of the matrix $\bar{\bar{\gamma}}$ is *exactly*
+the same thing as the set of nondimensional numbers for that problem.
+
 So why is the matrix representation of dimensional analysis useful?
-The answer is that it allows us to apply one of the most important results
-of linear algebra: the rank-nullity theorem.
-The matrix $\gamma$ is, in general, not square: it
-has dimension $m$ rows (the number of fundamental units) by $n$
-columns (the number of parameters).
-The rank-nullity tells us that a matrix 
+The answer is that it allows us to apply one of the most important results of linear algebra: the 
+[rank-nullity theorem](https://en.wikipedia.org/wiki/Rank%E2%80%93nullity_theorem).
+The matrix $\gamma$ is, in general, not square: it has dimension $m$ rows 
+(the number of fundamental units) by $n$ columns (the number of parameters).
+The rank-nullity theorem is a statement about the relationship between 
+the dimensionality of the image of a matrix (or rank), dimensionality of the nullspace of 
+a matrix, and the number of columns of a matrix.
+The theorem states:
+
+\begin{equation}
+\mathrm{dim}(\mathrm{image}( \bar{\bar{\gamma}} ) ) + 
+\mathrm{dim}(\mathrm{nullspace}(\bar{\bar{\gamma}}) ) = \mathrm{number \; of \; columns}
+\label{rank-nullity}
+\end{equation}
+
+If the rows of the matrix are linearly independent (which is not always the case!)
+then the rank is just the number of rows $m$.
+The dimensionality of the nullspace of $\bar{\bar{\gamma}}$ is the number of 
+nondimensional numbers in our problem $p$.
+
+For our central problem of dimensional analysis, the number of rows is
+the number of fundamental units $k$, and the number of columns
+is the number of parameters $n$.
+Then, by the rank-nullity theorem, the number of nondimensional numbers is just
+\begin{equation}
+p = n - k
+\end{equation}
+
+which is exactly the statement of the Buckingham pi theorem! 
+So we see, when reformulated in terms of linear algebra,
+the Buckingham pi theorem is just an application of the rank-nullity theorem.
+Not only is this an interesting mathematical result by itself,
+it allows for a more careful treatment of dimensional analysis problems
+in more complicated cases where the actual list of parameters is
+unclear, or when they may be linearly dependent on each other.
 
 To be more concrete, we can return to the example of 
 [Couette flow](https://en.wikipedia.org/wiki/Couette_flow).
@@ -202,10 +279,40 @@ We order the units $kg$, $m$, and $s$, and order the parameters $\eta$, $\rho$, 
 allowing us to construct the matrix:
 
 \begin{equation}
-\gamma = 
+\bar{\bar{\gamma}} = 
 \begin{bmatrix}
 1 & 1 & 0 & 0 \\\\
 -1 & -3 & 1 & 1 \\\\
 -1 & 0 & 0 & -1 \\\\
 \end{bmatrix}
 \end{equation}
+
+I won't solve it here, but this 3x4 matrix has one vector in its nullspace, which is given by
+
+\begin{equation}
+\bar{\pi} =
+\begin{bmatrix}
+-1 \\\\
+1 \\\\
+1 \\\\
+1 \\\\
+\end{bmatrix}
+\end{equation}
+
+You can verify that this does indeed make the zero vector when you apply $\bar{\bar{\gamma}}$ to it.
+This vector $\bar{\pi}$ can be converted back into its symbolic unit description:
+\begin{equation}
+\frac{\rho u_0 D}{\eta}
+\end{equation}
+
+This, you may not be surprised to see, is the nondimensional number associated with
+Couette flow, the Reynolds number!
+
+To summarize, we have seen that the problem of dimensional analysis, which we 
+described in some detail in the previous two articles, can be written
+equivalently in terms of matrix-vector operations. This allows us 
+to bring the whole edifice of linear algebra to bear on the problem.
+It also suggests an interesting possibility: since computers are *extremely*
+good at linear algebra, it should be possible to write some 
+code that does dimensional analysis for us, with a minimum of 
+effort on our part. That is what I will be attempting in my next article.
