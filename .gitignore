@@ -1,3 +1,4 @@
 output/*
 *.pyc
 cache/*
+_nb_header.html

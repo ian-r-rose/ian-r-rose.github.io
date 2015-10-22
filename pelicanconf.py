@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
+import os
 
 AUTHOR = u'Ian Rose'
 SITENAME = u'Blueschisting'
@@ -11,7 +12,6 @@ PROFILE_IMAGE_URL='/images/ian_rose.jpg'
 PATH = 'content'
 
 TIMEZONE = 'America/Los_Angeles'
-
 
 DEFAULT_LANG = u'en'
 STATIC_PATHS=['interactive_earth', 'images']
@@ -34,7 +34,6 @@ MENUITEMS=[('blog', '/'), ('interactive earth', '/interactive_earth/index.html')
 #RELATIVE_URLS = True
 
 THEME='pelican-crowsfoot'
-#THEME='pelican-octopress-theme'
 PLUGIN_PATHS=['pelican-plugins',]
 PLUGINS = ['summary', \
            'render_math',\
@@ -42,6 +41,12 @@ PLUGINS = ['summary', \
            'liquid_tags.include_code', \
            'liquid_tags.notebook',\
            'liquid_tags.literal']
+
+if not os.path.exists('my_nb_header.html'):
+    import warnings
+    warnings.warn("my_nb_header.html not found. Notebooks may not render properly")
+else:
+    NOTEBOOK_HEADER = open('my_nb_header.html').read().decode('utf-8')
 
 GITHUB_ADDRESS = 'http://github.com/ian-r-rose'
 TWITTER_ADDRESS = 'http://twitter.com/IanRRose'
