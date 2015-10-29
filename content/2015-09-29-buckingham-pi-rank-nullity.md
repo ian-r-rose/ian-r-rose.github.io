@@ -315,4 +315,4 @@ to bring the whole edifice of linear algebra to bear on the problem.
 It also suggests an interesting possibility: since computers are *extremely*
 good at linear algebra, it should be possible to write some 
 code that does dimensional analysis for us, with a minimum of 
-effort on our part. That is what I will be attempting in my next article.
+effort on our part. That is what I will be attempting in my [next article](automated-dimensional-analysis.html).
