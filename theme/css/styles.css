@@ -241,5 +241,5 @@ footer {
     color: grey;
     font-size: .7em;
     height: 30px;
-    position: absolute;
+    position: relative;
 }
