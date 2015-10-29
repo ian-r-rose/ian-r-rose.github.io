@@ -298,7 +298,7 @@ and having the answers as floating point numbers makes these integers more of a 
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="kn">import</span> <span class="nn">sympy</span>
-<span class="n">sympy</span><span class="o">.</span><span class="n">init_printing</span><span class="p">(</span><span class="n">use_latex</span><span class="o">=</span><span class="s">&#39;png&#39;</span><span class="p">)</span>
+<span class="n">sympy</span><span class="o">.</span><span class="n">init_printing</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -505,27 +505,8 @@ Now we need to be able to construct the dimension matrix described in the previo
 <div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
 
 
-<div class="output_png output_subarea output_execute_result">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKgAAABLCAMAAADTRTyqAAAAPFBMVEX///8AAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAo1xBWAAAAE3RSTlMA
-MquZdlQQQOkwRM0iu+/dZolsKH0JNQAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAydJREFUaAXtm+ty
-4yAMhYlv7cb35f3fdQ1ZO8dUgtMpSdMp/mNBjqSvwrUdDTEX64/KvOgx3/iMudi62Y72RTnN4ugq
-60Avr8p451o00L67izSrq9emTv+RpAyyCMkV0GG0BGi/XS3dPEAG0SRlh6+YXATtxroiQJfJxV77
-I4NskLLdWUkugm4+DQE6+vtEm1KSsh1USf4VUOtBrzZxuyBljwPtbO2CX20DOT6apAwdpeX8QkUH
-u7rol9sJE51sUoY+vxW0u5UyvfS+8CnZAytqbtdom/xn8pdyUgakmZfezKMLvqRuT6TsgaCNv+HX
-qRs+KXsgqJndI3RKPuxJ2Z2UX/q6muxcLXdX2erW7fUryWlI2Z5DTq7dR3evlzkX0NxLUSpaKpq7
-ArnjlWu0VDR3BXLHi1+jw7quY/S7m9AqkBBJWegKblHQwb3ytlZ/ORFbBWE2Y0hZ6Hhyi4I2/uXd
-zmGE/2OlVRCqSVnCLQp6na7bC6eNvBlLb45hxm1MykJPdIuCesfY0rMEmDGkiYzRLQ3a++9mSjgM
-pUjcNCkLI6BbAvSyzjFOlgAzhjSRMbolQLcoa+xLEYYiM0Zk4UcY/QTa9fNx9Md3oWnSW6UYKkwD
-Y0YmJEc3B/r2/geCgjn4Hu0Y6TBgKHAMTVIWc/v7HunhW99bGCN3fJKAlMVAT0sfCiffCpmt3vwm
-CUhZmB/doqCLe3i2sf4nhgrTwJiUgYc30S0Kaq51XY/b00k55FbBBzEpC/3ObnHQ0PcbxwU0d/FL
-RUtFc1cgd7xyjZaK5q5A7njyNUruWSBlwAwdBZhVTZDLoOSeBVJ2cJw6CsesapzkIii5Z4GU7SCf
-bEQEchGU3LNAynbQ7YwvmDCtmSgXQck9C6QMMDAzTGsmyiVQcs8CKUMKzIzzio1yCZTcs0DKEAIz
-47xio/xHg2ba2pDoKIRVTMilij53a0MIDOPU0j93awOAhWYSlNyzQMogPWaGac1Eubj0T93aoFFu
-82lQcs8CKdtRzh2FfVY9n+VyRVXn7/uggOaufanoL6/oD/nBQOc25DeN3rDNvYyfjOd/MNA05h+8
-jDD/8S3cqAAAAABJRU5ErkJggg==
-"
->
+<div class="output_latex output_subarea output_execute_result">
+$$\left[\begin{matrix}1 & 0 & 0 & 1\\-3 & 1 & 1 & -1\\0 & 0 & -1 & -1\end{matrix}\right]$$
 </div>
 
 </div>
@@ -566,19 +547,8 @@ jDD/8S3cqAAAAABJRU5ErkJggg==
 <div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
 
 
-<div class="output_png output_subarea output_execute_result">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABkCAMAAAAMlLaLAAAAPFBMVEX///8AAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAo1xBWAAAAE3RSTlMA
-MquZdlQQQO0wRM3dIrvvZnxszoE71QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAXFJREFUWAntmcF2
-gyAURFEpptWkNvz/v0Z4QGc8ZBF0kXgei4QLOMoAPlHT+Zh6ExOTlPHvLO1TYaHOD3ZNX1LOxAJC
-S2jd+1RVqPMdtGaCCs4uWSYWB+IDmfjYyRVul7ne/H4Zdxv6A2TW7liVwVlUBjhkWrxx01zSJMot
-MnQdAipD6x0cGvpfP/dLKmlfmiBpjMqQHQTqDdlBcB5vNNwdGhlolgh8/i395XA3+hGMYIIKDr5/
-9NAWiB/TmJ7K7Fia7zRSGu42w08DjrBjwD9Jxtn/HYUxTNgPyl8tYiBeRUzYlvLnsVjDnYY7mdph
-TvP0z/R6uLt8w3IZiaCCw939glWB8vmlnAnbNm1ZSUBAw92zvSabdZ67H/RLOwVmbLIn8AbiXOpc
-Q6foLWarzOYtZqvMehzer1QmOZD+1BsxohY138kb3tbtmMU8/JEaVnhFRd+J1kxJZTWLD/la5sLX
-L2t/5DxMteuJ38ds3t1legBHnjhGihawdAAAAABJRU5ErkJggg==
-"
->
+<div class="output_latex output_subarea output_execute_result">
+$$\left [ \left[\begin{matrix}-1\\-1\\-1\\1\end{matrix}\right]\right ]$$
 </div>
 
 </div>
@@ -681,7 +651,7 @@ Note that it makes no difference that this is the inverse of the traditionally d
 
 <span class="c"># This is a bit of a hack: Here I am subclassing</span>
 <span class="c"># the builtin Python list type and adding a</span>
-<span class="c"># function for _repr_latex_(). This allows</span>
+<span class="c"># function for print_latex(). This allows</span>
 <span class="c"># IPython to be able to render a list of </span>
 <span class="c"># nondimensional numbers as well as a single one.</span>
 <span class="k">class</span> <span class="nc">NondimensionalNumberList</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
@@ -696,9 +666,14 @@ Note that it makes no difference that this is the inverse of the traditionally d
                 <span class="n">string_representation</span> <span class="o">+=</span> <span class="s">&#39;, &#39;</span>
         <span class="k">return</span> <span class="n">string_representation</span>
     
-    <span class="c">#Let IPython know how this may be typeset with LaTeX</span>
-    <span class="k">def</span> <span class="nf">_repr_latex_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c">#Add symbols for typesetting with LaTeX</span>
+    <span class="k">def</span> <span class="nf">print_latex</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s">&#39;$$&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">__str__</span><span class="p">()</span><span class="o">+</span><span class="s">&#39;$$&#39;</span> 
+
+<span class="c"># Register the print function with IPython</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">display_formatter</span><span class="o">.</span><span class="n">formatters</span><span class="p">[</span><span class="s">&#39;text/latex&#39;</span><span class="p">]</span><span class="o">.</span>\
+    <span class="n">for_type</span><span class="p">(</span><span class="n">NondimensionalNumberList</span><span class="p">,</span> \
+             <span class="n">NondimensionalNumberList</span><span class="o">.</span><span class="n">print_latex</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -914,7 +889,7 @@ The image below depicts the deflection of Earth's surface at a volcano in the Ga
 <p>We would like to understand how the Earth deforms due to the overpressure in the magma chamber.
 Using a dollop of intuition, we suppose that the deflection of the surface depends on the radius of the magma chamber $R$, the depth of the magma chamber $D$, and the overpressure $\Delta P$. 
 Furthermore, it must depend on the elastic properties of the rock (which control how the rock deforms due to some stress).
-We can describe these elastic properties using a shear modulus $\mu$ and the dimensionless Poisson's ratio $\nu$.</p>
+We can describe these elastic properties using the shear modulus $\mu$ and the dimensionless Poisson's ratio $\nu$.</p>
 <p>Using the package we have developed, we can define these five parameters and find the nondimensional numbers.</p>
 
 </div>
@@ -963,7 +938,7 @@ $$ \nu, \frac{ \mu}{ \Delta P}, \frac{ R}{ D}$$
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We find that the relevant nondimensional numbers are Poisson's ratio (already dimensionless), the ratio of the shear modulus to the overpressure, and the ratio of the radius of the magma chamber to its depth.
-Comparison with the analytical solution to this system, the Mogi source, shows that these three nondimensional numbers are the important controls on the system.</p>
+Comparison with an analytical approximation to this system, the Mogi source, shows that these three nondimensional numbers are the important controls on the system.</p>
 
 </div>
 </div>

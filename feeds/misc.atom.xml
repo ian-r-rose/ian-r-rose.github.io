@@ -44,7 +44,7 @@ and having the answers as floating point numbers makes these integers more of a 
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sympy&lt;/span&gt;
-&lt;span class="n"&gt;sympy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;init_printing&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;use_latex&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;png&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;sympy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;init_printing&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -251,27 +251,8 @@ Now we need to be able to construct the dimension matrix described in the previo
 &lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[7]:&lt;/div&gt;
 
 
-&lt;div class="output_png output_subarea output_execute_result"&gt;
-&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKgAAABLCAMAAADTRTyqAAAAPFBMVEX///8AAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAo1xBWAAAAE3RSTlMA
-MquZdlQQQOkwRM0iu+/dZolsKH0JNQAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAydJREFUaAXtm+ty
-4yAMhYlv7cb35f3fdQ1ZO8dUgtMpSdMp/mNBjqSvwrUdDTEX64/KvOgx3/iMudi62Y72RTnN4ugq
-60Avr8p451o00L67izSrq9emTv+RpAyyCMkV0GG0BGi/XS3dPEAG0SRlh6+YXATtxroiQJfJxV77
-I4NskLLdWUkugm4+DQE6+vtEm1KSsh1USf4VUOtBrzZxuyBljwPtbO2CX20DOT6apAwdpeX8QkUH
-u7rol9sJE51sUoY+vxW0u5UyvfS+8CnZAytqbtdom/xn8pdyUgakmZfezKMLvqRuT6TsgaCNv+HX
-qRs+KXsgqJndI3RKPuxJ2Z2UX/q6muxcLXdX2erW7fUryWlI2Z5DTq7dR3evlzkX0NxLUSpaKpq7
-ArnjlWu0VDR3BXLHi1+jw7quY/S7m9AqkBBJWegKblHQwb3ytlZ/ORFbBWE2Y0hZ6Hhyi4I2/uXd
-zmGE/2OlVRCqSVnCLQp6na7bC6eNvBlLb45hxm1MykJPdIuCesfY0rMEmDGkiYzRLQ3a++9mSjgM
-pUjcNCkLI6BbAvSyzjFOlgAzhjSRMbolQLcoa+xLEYYiM0Zk4UcY/QTa9fNx9Md3oWnSW6UYKkwD
-Y0YmJEc3B/r2/geCgjn4Hu0Y6TBgKHAMTVIWc/v7HunhW99bGCN3fJKAlMVAT0sfCiffCpmt3vwm
-CUhZmB/doqCLe3i2sf4nhgrTwJiUgYc30S0Kaq51XY/b00k55FbBBzEpC/3ObnHQ0PcbxwU0d/FL
-RUtFc1cgd7xyjZaK5q5A7njyNUruWSBlwAwdBZhVTZDLoOSeBVJ2cJw6CsesapzkIii5Z4GU7SCf
-bEQEchGU3LNAynbQ7YwvmDCtmSgXQck9C6QMMDAzTGsmyiVQcs8CKUMKzIzzio1yCZTcs0DKEAIz
-47xio/xHg2ba2pDoKIRVTMilij53a0MIDOPU0j93awOAhWYSlNyzQMogPWaGac1Eubj0T93aoFFu
-82lQcs8CKdtRzh2FfVY9n+VyRVXn7/uggOaufanoL6/oD/nBQOc25DeN3rDNvYyfjOd/MNA05h+8
-jDD/8S3cqAAAAABJRU5ErkJggg==
-"
-&gt;
+&lt;div class="output_latex output_subarea output_execute_result"&gt;
+$$\left[\begin{matrix}1 &amp; 0 &amp; 0 &amp; 1\\-3 &amp; 1 &amp; 1 &amp; -1\\0 &amp; 0 &amp; -1 &amp; -1\end{matrix}\right]$$
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -312,19 +293,8 @@ jDD/8S3cqAAAAABJRU5ErkJggg==
 &lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[8]:&lt;/div&gt;
 
 
-&lt;div class="output_png output_subarea output_execute_result"&gt;
-&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABkCAMAAAAMlLaLAAAAPFBMVEX///8AAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAo1xBWAAAAE3RSTlMA
-MquZdlQQQO0wRM3dIrvvZnxszoE71QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAXFJREFUWAntmcF2
-gyAURFEpptWkNvz/v0Z4QGc8ZBF0kXgei4QLOMoAPlHT+Zh6ExOTlPHvLO1TYaHOD3ZNX1LOxAJC
-S2jd+1RVqPMdtGaCCs4uWSYWB+IDmfjYyRVul7ne/H4Zdxv6A2TW7liVwVlUBjhkWrxx01zSJMot
-MnQdAipD6x0cGvpfP/dLKmlfmiBpjMqQHQTqDdlBcB5vNNwdGhlolgh8/i395XA3+hGMYIIKDr5/
-9NAWiB/TmJ7K7Fia7zRSGu42w08DjrBjwD9Jxtn/HYUxTNgPyl8tYiBeRUzYlvLnsVjDnYY7mdph
-TvP0z/R6uLt8w3IZiaCCw939glWB8vmlnAnbNm1ZSUBAw92zvSabdZ67H/RLOwVmbLIn8AbiXOpc
-Q6foLWarzOYtZqvMehzer1QmOZD+1BsxohY138kb3tbtmMU8/JEaVnhFRd+J1kxJZTWLD/la5sLX
-L2t/5DxMteuJ38ds3t1legBHnjhGihawdAAAAABJRU5ErkJggg==
-"
-&gt;
+&lt;div class="output_latex output_subarea output_execute_result"&gt;
+$$\left [ \left[\begin{matrix}-1\\-1\\-1\\1\end{matrix}\right]\right ]$$
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -427,7 +397,7 @@ Note that it makes no difference that this is the inverse of the traditionally d
 
 &lt;span class="c"&gt;# This is a bit of a hack: Here I am subclassing&lt;/span&gt;
 &lt;span class="c"&gt;# the builtin Python list type and adding a&lt;/span&gt;
-&lt;span class="c"&gt;# function for _repr_latex_(). This allows&lt;/span&gt;
+&lt;span class="c"&gt;# function for print_latex(). This allows&lt;/span&gt;
 &lt;span class="c"&gt;# IPython to be able to render a list of &lt;/span&gt;
 &lt;span class="c"&gt;# nondimensional numbers as well as a single one.&lt;/span&gt;
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;NondimensionalNumberList&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -442,9 +412,14 @@ Note that it makes no difference that this is the inverse of the traditionally d
                 &lt;span class="n"&gt;string_representation&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;, &amp;#39;&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;string_representation&lt;/span&gt;
     
-    &lt;span class="c"&gt;#Let IPython know how this may be typeset with LaTeX&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_repr_latex_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="c"&gt;#Add symbols for typesetting with LaTeX&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;print_latex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;$$&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;$$&amp;#39;&lt;/span&gt; 
+
+&lt;span class="c"&gt;# Register the print function with IPython&lt;/span&gt;
+&lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_ipython&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;display_formatter&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;formatters&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;text/latex&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;\
+    &lt;span class="n"&gt;for_type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;NondimensionalNumberList&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; \
+             &lt;span class="n"&gt;NondimensionalNumberList&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;print_latex&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -660,7 +635,7 @@ The image below depicts the deflection of Earth's surface at a volcano in the Ga
 &lt;p&gt;We would like to understand how the Earth deforms due to the overpressure in the magma chamber.
 Using a dollop of intuition, we suppose that the deflection of the surface depends on the radius of the magma chamber $R$, the depth of the magma chamber $D$, and the overpressure $\Delta P$. 
 Furthermore, it must depend on the elastic properties of the rock (which control how the rock deforms due to some stress).
-We can describe these elastic properties using a shear modulus $\mu$ and the dimensionless Poisson's ratio $\nu$.&lt;/p&gt;
+We can describe these elastic properties using the shear modulus $\mu$ and the dimensionless Poisson's ratio $\nu$.&lt;/p&gt;
 &lt;p&gt;Using the package we have developed, we can define these five parameters and find the nondimensional numbers.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -709,7 +684,7 @@ $$ \nu, \frac{ \mu}{ \Delta P}, \frac{ R}{ D}$$
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;We find that the relevant nondimensional numbers are Poisson's ratio (already dimensionless), the ratio of the shear modulus to the overpressure, and the ratio of the radius of the magma chamber to its depth.
-Comparison with the analytical solution to this system, the Mogi source, shows that these three nondimensional numbers are the important controls on the system.&lt;/p&gt;
+Comparison with an analytical approximation to this system, the Mogi source, shows that these three nondimensional numbers are the important controls on the system.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1021,7 +996,7 @@ to bring the whole edifice of linear algebra to bear on the problem.
 It also suggests an interesting possibility: since computers are &lt;em&gt;extremely&lt;/em&gt;
 good at linear algebra, it should be possible to write some 
 code that does dimensional analysis for us, with a minimum of 
-effort on our part. That is what I will be attempting in my next article.&lt;/p&gt;
+effort on our part. That is what I will be attempting in my &lt;a href="automated-dimensional-analysis.html"&gt;next article&lt;/a&gt;.&lt;/p&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
