@@ -5,7 +5,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Motivation"&gt;Motivation&lt;a class="anchor-link" href="#Motivation"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;a href="linear-algebra-and-the-buckingham-pi-theorem.html"&gt;Last time&lt;/a&gt; we showed that the Buckingham Pi theorem follows directly from one of the central results of linear algebra:
+&lt;p&gt;&lt;a href="linear-algebra-and-the-buckingham-pi-theorem.html"&gt;Last time&lt;/a&gt; we showed that the Buckingham Pi theorem follows directly from one of the central results of linear algebra:
 the &lt;a href="https://en.wikipedia.org/wiki/Rank%E2%80%93nullity_theorem"&gt;rank-nullity theorem&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The normal approach to dimensional analysis involves a certain amount of playing with the parameters, reorganizing them, and looking for their nondimensional combinations.
 The understanding from a linear algebra standpoint suggests the possibility of making a computer perform dimensional analysis for you.
