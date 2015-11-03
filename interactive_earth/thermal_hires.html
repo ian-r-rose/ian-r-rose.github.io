@@ -35,21 +35,23 @@
                   //Do some processing of the string
                   fields = text.split("\t");
                   Ra = Number(fields[0].split(" ")[1]);
-                  var outtext = Ra;
+                  Nu = Number(fields[1].split(" ")[1]);
+                  var outRa = Ra;
+                  var outNu = String(Math.round(Nu))
                   if (Ra > 1000) {
                     exponent = Math.log10(Ra);
                     exponent = Math.floor(exponent);
                     lower = Ra/Math.pow(10, exponent);
                     lower = Math.floor(lower)
                     if(lower == 1){
-                      outtext = "10<sup>"+exponent+"</sup>";
+                      outRa = "10<sup>"+exponent+"</sup>";
                     }
                     else {
-                      outtext = String(lower)+"x10<sup>"+exponent+"</sup>";
+                      outRa = String(lower)+"x10<sup>"+exponent+"</sup>";
                     }
                   }
                   if (element) {
-                    element.innerHTML = "Ra = " + outtext
+                    element.innerHTML = "Ra = " + outRa + "&nbsp; &nbsp; &nbsp;" + "Nu = " + outNu
                   }
                 };
               })(),
