@@ -96,6 +96,7 @@ in one (and only one) way:
 
 \begin{equation}
 I \sim \frac{k_B T \nu^3}{c^2}
+\label{rayleigh-jeans}
 \end{equation}
 
 Up to __ this equation is known as the Rayleigh-Jeans equation. It was 
@@ -110,4 +111,17 @@ that gives the energy radiated as a function of frequency. As far as we know,
 no frequencies of light are special: all are equally allowable. We can go
 to higher and higher frequencies just by inserting more "wiggles."
 
-So we should be able to get the total energy by integrating
+So we should be able to get the total energy per unit area per time radiating from the 
+body by integrating over all the possible frequencies. That is to say,
+we need to integrate equation \eqref{rayleigh-jeans} with respect to frequency from zero to infinity:
+
+\begin{equation}
+E = \int_0^\infty \frac{k_B T \nu^3}{c^2} d\nu
+\end{equation}
+
+Uh oh. There is a problem. There is no way that this integral can possibly converge
+on a finite answer, since the $\nu^3$ factor must blow up as we integrate to infinity.
+We are therefore led to the conclusion that a body which is radiating to space
+has to radiate an infinite amount of energy. This cannot possibly be true,
+otherwise we would have been building power plants around all manner of trash to
+harness some of that power.
