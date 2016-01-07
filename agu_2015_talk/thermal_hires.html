@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC>
+<html>
+  <head>
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+    <title>Interactive Earth</title>
+    <link rel="stylesheet" href="interactive_earth.css" type="text/css" media="all"></link>
+  </head>
+
+  <body>
+    <div class="page">
+      <div class="header">
+        <p>Interactive Earth</p>
+      </div>
+
+      <!-- emscripten canvas -->
+      <div class="emscripten_border">
+        <canvas class="emscripten" id="canvas" width="1024" height="256" oncontextmenu="event.preventDefault()"></canvas>
+      </div>
+      <p id="output"></p>
+        <script type='text/javascript'>
+          // connect to canvas
+          var Module = {
+              print: (function() {
+                var element = document.getElementById('output');
+                if (element) element.value = ''; // clear browser cache
+                return function(text) {
+                  text = Array.prototype.slice.call(arguments).join(' ');
+                  // These replacements are necessary if you render to raw HTML
+                  text = text.replace(/&/g, "&amp;");
+                  text = text.replace(/</g, "&lt;");
+                  text = text.replace(/>/g, "&gt;");
+                  text = text.replace('\n', '<br>', 'g');
+                 
+                  //Do some processing of the string
+                  fields = text.split("\t");
+                  Ra = Number(fields[0].split(" ")[1]);
+                  Nu = Number(fields[1].split(" ")[1]);
+                  var outRa = Ra;
+                  var outNu = String(Math.round(Nu))
+                  if (Ra > 1000) {
+                    exponent = Math.log10(Ra);
+                    exponent = Math.floor(exponent);
+                    lower = Ra/Math.pow(10, exponent);
+                    lower = Math.floor(lower)
+                    if(lower == 1){
+                      outRa = "10<sup>"+exponent+"</sup>";
+                    }
+                    else {
+                      outRa = String(lower)+"x10<sup>"+exponent+"</sup>";
+                    }
+                  }
+                  if (element) {
+                    element.innerHTML = "Ra = " + outRa + "&nbsp; &nbsp; &nbsp;" + "Nu = " + outNu
+                  }
+                };
+              })(),
+              canvas: document.getElementById('canvas')
+          };
+        </script>
+      <script async type="text/javascript" src="thermal_hires.js"></script>
+      <a href="index.html#/8" id="home">Next</a>
+    </div>
+  </body>
+</html>
+
