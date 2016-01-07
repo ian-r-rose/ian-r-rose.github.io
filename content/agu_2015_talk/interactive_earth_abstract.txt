@@ -1,0 +1,17 @@
+Interactive investigations into planetary interiors
+
+Many processes in Earth science are difficult to observe or visualize due to the large timescales and lengthscales over which they operate.
+The dynamics of planetary mantles are particularly challenging as we cannot even look at the rocks involved.
+As a result, much teaching material on mantle dynamics relies on static images and cartoons, many of which are decades old.
+Recent improvements in computing power and technology (largely driven by game and web development) have allowed for advances in
+real-time physics simulations and visualizations, but these have been slow to affect Earth science education.
+
+Here I demonstrate a teaching tool for mantle convection and seismology which solves the equations for conservation of mass, 
+momentum, and energy in real time, allowing users make changes to the simulation and immediately see the effects.
+The user can ask and answer questions about what happens when they add heat in one place, or take it away from another place,
+or increase the temperature at the base of the mantle. They can also pause the simulation, and 
+while it is paused, create and visualize seismic waves traveling through the mantle. These allow for investigations into and 
+discussions about plate tectonics, earthquakes, hot spot volcanism, and planetary cooling.
+
+The simulation is rendered to the screen using OpenGL, and is cross-platform.
+It can be run as a native application for maximum performance, but it can also be embedded in a web browser for easy deployment and portability.

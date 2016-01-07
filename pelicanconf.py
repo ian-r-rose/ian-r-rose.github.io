@@ -14,7 +14,7 @@ PATH = 'content'
 TIMEZONE = 'America/Los_Angeles'
 
 DEFAULT_LANG = u'en'
-STATIC_PATHS=['interactive_earth', 'images']
+STATIC_PATHS=['interactive_earth', 'images', 'agu_2015_talk']
 READERS = {'html':None }
 
 # Feed generation is usually not desired when developing
