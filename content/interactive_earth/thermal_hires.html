@@ -15,7 +15,7 @@
 
       <!-- emscripten canvas -->
       <div class="emscripten_border">
-        <canvas class="emscripten" id="canvas" width="1024" height="256" oncontextmenu="event.preventDefault()"></canvas>
+        <canvas class="emscripten" id="canvas" width="768" height="768" oncontextmenu="event.preventDefault()"></canvas>
       </div>
       <p id="output"></p>
         <script type='text/javascript'>
@@ -36,6 +36,8 @@
                   fields = text.split("\t");
                   Ra = Number(fields[0].split(" ")[1]);
                   Nu = Number(fields[1].split(" ")[1]);
+                  Ra = 1.e7
+                  Nu = 10.
                   var outRa = Ra;
                   var outNu = String(Math.round(Nu))
                   if (Ra > 1000) {
