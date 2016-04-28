@@ -136,6 +136,10 @@ E \sim \int_0^\infty \frac{k_B T \nu^2}{c^2} d\nu
 \label{integrated_rayleigh_jeans}
 \end{equation}
 
+Here is a plot of that integral:
+
+![ultraviolet](images/ultraviolet_catastrophe.png "A catastrophe indeed")
+
 Uh oh. There is a problem. There is no way that this integral can possibly converge
 on a finite answer, since the $\nu^2$ factor must blow up as we integrate to infinity.
 We are therefore led to the conclusion that a body which is radiating to space
@@ -224,6 +228,11 @@ f(\xi) = \frac{1}{e^{\xi} - 1}
 
 This does indeed converge when you perform the integration in equation \eqref{almost_stefan_boltzmann}
 (though I do not evaluate the integral here).
+
+Here is the plot of what is now known as Planck's law, relating frequency to spectral radiance.
+As you can see, the area underneath the curve does not blow up:
+
+![planck_law](images/planck_law.png "Catastrophe averted")
 
 ## The Stefan-Boltzmann law
 
