@@ -1,8 +1,10 @@
 Title: Ultriviolet catastrophe and the beginning of quantum mechanics
 
 We just finished a very long explication of the fundamentals of dimensional
-analysis and the Buckingham Pi theorem. That could be the end of this series,
-but it would be a shame to end it without showing at least one
+analysis and the Buckingham Pi theorem 
+(well, not "just", since it took me significantly longer 
+than I anticipated to finish up this post).
+That could be the end of this series, but it would be a shame to end it without showing at least one
 example of some of the cool analysis that can be done in a more complicated
 system than the ones we have considered so far.
 
@@ -20,12 +22,21 @@ At its heart, the ultraviolet catastrophe has to do with the question of how
 hot objects cool off (as somebody who studies convection and the thermal
 evolution of planets, I am biased towards thinking that a great many problems in 
 science boil down to a question of how hot things cool off).
-It was observed that objects at high temperature would radiate electromagnetic
-waves to the space around them in a process known as radiative cooling.
-The frequency of that radiation was not a single value, but was instead 
-a spectrum. Furthermore, the shape of that spectrum and its peak
-frequency seemed to be a function of what temperature the object was
-at. At lower temperatures, the object would give off predominantly 
+Nineteenth century scientists observed that objects at high temperatures
+would radiate electromagnetic waves to space around them in a process known as radiative cooling.
+We are all quite familiar with the effects of radiative cooling, even if we
+do not recognize it: the sun is an immensely hot ball of matter, and that heat is
+radiated to space as electromagnetic waves, which we percieve as as the
+warmth and brightness of a sunny day.
+
+Scientists further observed that hot bodies such as the sun did 
+not radiate light at a single frequency but rather as a spectrum:
+
+![solar spectrum](images/solar_spectrum.svg "Wavelength (rather than frequency) vs radiance of the sun. (image from Global Warming Art)")
+
+Furthermore, the shape of that spectrum and its peak
+frequency seemed to be a function of the body's temperature. 
+At lower temperatures, the object would give off predominantly 
 lower frequency radiation and at higher temperatures it would give off
 predominantly higher frequency radiation.
 
@@ -33,7 +44,7 @@ Most objects that we interact with on a daily basis are at too low of
 temperatures to radiate in the visible spectrum, but you have probably
 seen a hot poker glow red, which means it is certainly too hot to touch.
 If it gets a lot hotter than that, it may start to glow white, reflecting
-the temperature dependence of the radiative spectrum.
+the presence of higher frequency radiation.
 
 The question of the radiative spectrum that a body emits is not just of 
 theoretical interest: it is intensely practical in many areas of science
@@ -44,7 +55,14 @@ We just need to be able to see it. This would allow us to know the temperature
 of stars and planets, as well as measure the temperature of many otherwise
 difficult to access laboratory experiments.
 
-![sun](images/sun.jpg "WHAT IS MY TEMPERATURE")
+Indeed, let's frame the question of spectral radiance in terms of our
+initial example: the sun. We would like to be able to look at the spectrum
+of the light given off by the sun and answer two fundamental questions:
+
+1. How hot is the sun?
+2. How much energy does the sun radiate to space?
+
+![sun](images/sun.jpg "WHAT IS MY TEMPERATURE (NASA/JPL)")
 
 Okay, so with that prelude, let's take a crack at the dimensional analysis of this problem.
 The observation that we are trying to explain is the radiation of 
@@ -71,8 +89,8 @@ angle. It is otherwise unimportant here.
 We now need to list the parameters that are important for this problem.
 We already know several based upon the observations. First, we know that the frequency
 of the radiation $\nu$ plays a role. Second, we know that the temperature $T$
-of the body in question must matter, since that is a large part of the
-motivation for this problem. And if temperature is important, Boltzmann's
+of the body in question must matter, since the temperature dependence of the spectrum
+is one of our fundamental observations. And if temperature is important, Boltzmann's
 constant $k_B$ cannot be far behind, since that is statistical mechanics'
 bridge between temperature and energy. Finally, we are talking about heat
 transfer by the propagation of electromagnetic waves through space before
@@ -114,17 +132,25 @@ B \sim \frac{k_B T \nu^2}{c^2}
 Up to a factor of two, this equation is known as the 
 [Rayleigh-Jeans](https://en.wikipedia.org/wiki/Rayleigh%E2%80%93Jeans_law) law. 
 It was developed to explain the spectrum of radiating bodies, and, at least for
-lower temperatures, it did a pretty good job. So we could pat ourselves on
-the back. Another dimensional analysis job well done.
+lower temperatures, it did a pretty good job. All we need to do is fit our observed
+spectrum to the Rayleigh-Jeans law to determine the temperatures.
+So we could pat ourselves on the back. Another dimensional analysis job well done.
 
 ## The Ultraviolet Catastrophe
 
-But wait, what if we enquire further about the total energy that this 
-body is giving off? After all, we are not only interested in the spectrum, 
-but also the rate of cooling of an object. Well, we have an expression
-that gives the energy radiated as a function of frequency. As far as we know,
-no frequencies of light are special: all are equally allowable. We can go
-to higher and higher frequencies just by inserting more wiggles
+When we try to use the Rayleigh-Jeans law to fit a spectrum that looks
+like that of the sun (shown above), we might start to get a little nervous.
+After all, the Rayleigh-Jeans law is quadratic in the frequency, which
+should make a parabola on a frequency-radiance plot. The solar spectrum
+certainly does not look like a parabola.
+
+Things start to really go sideways when we try to answer our second question
+about the sun: how much energy is it radiating to space?
+After all, we are not only interested in its temperature, but also its
+ability to heat other planets, and its thermal evolution over the history of the solar system.
+Well, we have an expression that gives the energy radiated as a function of frequency. 
+As far as we know, no frequencies of light are special: all are equally possible.
+We can go to arbitrarily high frequencies by inserting more wiggles
 (for more on this, read about the [equipartition theorem](https://en.wikipedia.org/wiki/Equipartition_theorem)).
 
 So we should be able to get the total energy per unit area per time radiating from the 
@@ -171,7 +197,9 @@ These quanta were related to the frequency of the radiation via a constant $h$:
 E_{\mathrm{quanta}} = h \nu
 \end{equation}
 
-The ramifications of this assumption were enormous (many of which made Planck, and later Einstein, uncomfortable). These consequences, however, are well outside of the scope of this article.
+The ramifications of this assumption were enormous
+(many of which made Planck, and later Einstein, uncomfortable). 
+These consequences, however, are well outside of the scope of this article.
 For our purposes, this new parameter $h$ will have some pretty significant consequences
 for our dimensional analysis.
 
@@ -206,7 +234,7 @@ B \sim \frac{h \nu^3}{c^2} f(\xi)
 Notice that if $f(\xi) = 1/\xi$ then we can recover the Rayleigh-Jeans law.
 However, dimensionally speaking, $f(\xi)$ can be anything.
 As before, we can ask the question of what the total energy radiating
-from the body is. The analogue to equation \eqref{integrated_rayleigh_jeans} is
+from the sun is. The analogue to equation \eqref{integrated_rayleigh_jeans} is
 
 \begin{equation}
 E \sim \int_0^\infty \frac{h \nu^3}{c^2} f(\xi) d\nu
@@ -215,7 +243,7 @@ E \sim \int_0^\infty \frac{h \nu^3}{c^2} f(\xi) d\nu
 
 Unlike equation \eqref{integrated_rayleigh_jeans}, this actually
 has a chance of converging. As long as $f(\xi)$ goes to zero
-fast enough as $\nu$ goes to infinity, the total amount of energy
+fast enough as $\nu^3$ goes to infinity, the total amount of energy
 will remain bounded. Do we have any guarantees that $f(\xi)$ will do that?
 Unfortunately not. This is just about as far as dimensional analysis can take us.
 
@@ -230,9 +258,15 @@ This does indeed converge when you perform the integration in equation \eqref{al
 (though I do not evaluate the integral here).
 
 Here is the plot of what is now known as Planck's law, relating frequency to spectral radiance.
-As you can see, the area underneath the curve does not blow up:
+As you can see, the shape of the curve looks much more like that of the observed solar spectrum
+and the area underneath the curve does not blow up:
 
 ![planck_law](images/planck_law.png "Catastrophe averted")
+
+We can now safely fit the solar spectrum to Planck's law to determine the temperature
+of the sun, all without actually going there. And though we used the sun as our primary
+example, this works for basically anything: using Planck's law we know to pretty high
+accuracy the temperature of most visible astronomical objects.
 
 ## The Stefan-Boltzmann law
 
@@ -298,7 +332,7 @@ of the theorem that answers that question: the Buckingham Pi theorem.
 Then we gave an [informal proof](linear-algebra-and-the-buckingham-pi-theorem.html) of the theorem. 
 The proof wound up relying on some pretty standard results from linear algebra
 (which computers are very good at doing), and so we 
-wrote (automated-dimensional-analysis.html) a
+[wrote](automated-dimensional-analysis.html) a
 [small Python package](https://github.com/ian-r-rose/buckinghampy)
 that applies the Buckingham Pi theorem to an arbitrary set of parameters.
 Finally, in this article we investigated a problem of some historical importance
