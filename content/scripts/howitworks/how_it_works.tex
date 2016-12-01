@@ -1,0 +1,77 @@
+\documentclass[final,hyperref={pdfpagelabels=false}]{beamer}
+\mode<presentation>{\usetheme{eyu}}
+\usepackage[orientation=landscape, scale=5.1]{beamerposter}
+\setlength{\paperwidth}{18in}
+\setlength{\paperheight}{18in}
+
+\usepackage[framemethod=TikZ]{mdframed}
+
+\usepackage{blindtext}
+\usepackage{anyfontsize}
+
+\definecolor{background}{HTML}{000000}
+\definecolor{text}{HTML}{EBEBEB}
+\setbeamercolor{background canvas}{bg=background}
+\setbeamercolor{normal text}{fg=text}
+
+
+\tikzset{every picture/.style={line width=1pt}}
+% 
+
+
+% \def\newblock{\hskip .11em plus .33em minus .07em}
+
+\begin{document}
+\begin{frame}
+\begin{overpic}[height=1pt]{mac-keyboard}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\put(50,-50){\begin{parbox}{0.9\paperwidth}{
+\begin{tikzpicture}[line width=10pt, smooth]
+\draw[rounded corners=27pt]  (0,0) rectangle (39.5, 42);
+\end{tikzpicture}}
+\end{parbox}
+}
+
+\put(100,480){\begin{parbox}[t]{0.9\paperwidth}{\textsc{\bf \scriptsize How it works}\vspace{.4cm}\newline
+}
+\end{parbox}
+}
+
+\put(100,280){\includegraphics[width=1.5in]{mouse_left}}
+\put(250, 360){\begin{parbox}[t]{5in}{ \fontsize{42pt}{45pt}\selectfont  Create a\\ hot spot}\end{parbox}}
+
+\put(650,280){\includegraphics[width=1.5in]{mouse_right}}
+\put(800, 360){\begin{parbox}[t]{5in}{ \fontsize{42pt}{45pt}\selectfont  Create a\\ cold spot}\end{parbox}}
+
+\put(100, 80){\includegraphics[width=1.5in]{mouse_scroll}}
+\put(250, 190){\begin{parbox}[t]{10in}{ \fontsize{42pt}{45pt}\selectfont Scroll up/down to\\ increase/decrease the \\ temperature difference (Ra)}\end{parbox}}
+
+
+
+\put(200,-390){\includegraphics[width=11in]{mac-keyboard-negative}}
+
+\put(800,-38){\begin{parbox}[t]{5in}{ \fontsize{42pt}{47pt}\selectfont \textsc{backspace}:\\ Pause to draw}\end{parbox}}
+\put(950, -145){\begin{tikzpicture}[line width=3pt, smooth]
+                  \draw (0,0) -- (0,1.8);
+                 \end{tikzpicture}}
+
+\put(100,10){\begin{parbox}[t]{8in}{ \fontsize{42pt}{45pt}\selectfont \textsc{tab}:\\ Toggle between thermal\\ and chemical field}\end{parbox}}
+\put(245, -196){\begin{tikzpicture}[line width=3pt, smooth]
+                  \draw (0,0) -- (1,3.7);
+                 \end{tikzpicture}}
+
+\put(100,-450){\begin{parbox}[t]{5in}{ \fontsize{42pt}{45pt}\selectfont \textsc{c}:\\ Change\\ colors}\end{parbox}}
+\put(170, -450){\begin{tikzpicture}[line width=3pt, smooth]
+                  \draw (0,0) -- (10,5);
+                 \end{tikzpicture}}
+
+\put(400,-440){\begin{parbox}[t]{11in}{ \fontsize{42pt}{45pt}\selectfont \textsc{space}:\\ Pause for earthquakes\\ \textsc{right click}: Place the seismograph\\ \textsc{left click}: Initiate an earthquake }\end{parbox}}
+\put(560, -440){\begin{tikzpicture}[line width=3pt, smooth]
+                  \draw (-2,0) -- (0,-3.);
+                 \end{tikzpicture}}
+
+\end{overpic}
+\end{frame}
+\end{document}

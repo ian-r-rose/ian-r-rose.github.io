@@ -1,0 +1,182 @@
+\ProvidesPackage{beamerthemeeyu}  % 
+
+%%%%%%%%%%%%% Useful packages %%%%%%%%%%%%%%%%%%%
+
+\usepackage{etex}
+\usepackage[UKenglish]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage[abs]{overpic}
+\usepackage{animate}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usetikzlibrary{decorations.fractals}
+\usepackage{setspace}
+% \usepackage{lato}
+% \usepackage{palatino}
+\usepackage{tgadventor}
+\usepackage[T1,euler-digits]{eulervm}
+
+\usefonttheme{professionalfonts}
+\usepackage{booktabs}
+\usepackage{rotating}
+
+
+%%%%%%%%%%% Define colours %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%DLR colours
+\definecolor{black}{RGB}{0,0,0}
+\definecolor{white}{RGB}{255,255,255}
+% \definecolor{white}{RGB}{0,0,0}
+% \definecolor{black}{RGB}{255,255,255}
+
+\definecolor{dgrey}{RGB}{91,91,91}
+\definecolor{grey}{RGB}{131,131,131}
+\definecolor{gray}{RGB}{70,70,70}
+\definecolor{lgrey}{RGB}{186,186,186}
+\definecolor{silver}{RGB}{220,220,220}
+\definecolor{orange}{RGB}{255,69,0}
+\definecolor{green}{RGB}{0,100,0}
+\definecolor{maroon}{RGB}{238,48,167}
+% \definecolor{blue}{RGB}{30,144,255}
+\definecolor{rbctop}{RGB}{0,103,154}
+\definecolor{rbcbottom}{RGB}{152,0,76}
+\definecolor{dblue}{RGB}{0,0,139}
+\definecolor{pink}{RGB}{235,72,129}
+\definecolor{blue}{RGB}{41,188,249}
+\definecolor{water}{RGB}{100,149,237}
+
+\ifpdf\pdfpageattr{/Group <</S /Transparency /I true /CS /DeviceRGB>>}\fi 
+
+%%%%%%%%%%%%% usefull abbreviations %%%%%%%%%%%%%%%%%%%%%%5
+\newcommand\Nu{N\!u}
+\newcommand\Ra{R\!a}
+\newcommand\Ro{R\!o}
+\newcommand\Rey{R\!e}
+\newcommand\Pran{P\!r}
+\newcommand\Ta{T\!a}
+\newcommand\Ek{E\!k}
+\newcommand\Fr{F\!r}
+\newcommand\Gr{G\!r}
+\newcommand\rf{{r\!e\!f}}
+\newcommand\OB{{O\!B}}
+\newcommand\NOB{{N\!O\!B}}
+\newcommand\DNS{{D\!N\!S}}
+
+%%%%%%%%%%%%%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%
+\mode<presentation>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{headline}{fg=silver,bg=black}
+\setbeamercolor{footline}{fg=silver, bg=black}
+\setbeamerfont{footline}{size=\large,series=\tt}
+\setbeamercolor{separation line}{bg=maroon}
+\setbeamercolor{title in headline}{fg=blue}
+\setbeamercolor{author in headline}{fg=black}
+\setbeamercolor{institute in headline}{fg=maroon}
+
+\setbeamercolor{framesubtitle}{fg=pink, bg=gray}
+\setbeamercolor{author in head/foot}{fg=pink, bg=black}
+\setbeamercolor{title in head/foot}{fg=pink, bg=black}
+
+\setbeamercolor*{normal text}{fg=black, bg=white}
+\setbeamercolor{lower separation line head}{fg=black}
+
+\setbeamertemplate{navigation symbols}{}  % no navigation on a poster
+
+\setbeamersize{text margin left=0mm}
+\setbeamersize{text margin right=0mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% box style %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\tikzstyle{mybox} = [draw=rbctop, ultra thick, rectangle, rounded corners=1cm,text=black, inner sep=1.5em, inner ysep=1.5em]
+
+\tikzstyle{fancytitle} =[fill=rbctop, text=white]
+
+\newcommand{\boxtitle}[2]{
+ \node[fancytitle, rounded corners, right=2em] at (#1) { \textsc{\Large \bf \strut #2}};
+}
+\newcommand{\smallbox}[2]{%
+\begin{tikzpicture}
+   \node[mybox] (label){%
+    \begin{minipage}[t]{.92\linewidth}%
+      \large #2 \strut
+    \end{minipage}
+  };
+\boxtitle{label.north west}{#1}
+\end{tikzpicture}
+\vspace*{1.em}
+}
+
+\newcommand{\bigbox}[2]{%
+\begin{tikzpicture}
+   \node[mybox] (label){%
+    \begin{minipage}[t]{.965\linewidth}%
+      \large #2 \strut
+    \end{minipage}
+  };
+\boxtitle{label.north west}{#1}
+\end{tikzpicture}
+\vspace*{1.em}
+}
+
+\newcommand{\mediumbox}[2]{%
+\begin{tikzpicture}
+   \node[mybox] (label){%
+    \begin{minipage}[t]{.94\linewidth}%
+      \large #2 \strut
+    \end{minipage}
+  };
+\boxtitle{label.north west}{#1}
+\end{tikzpicture}
+\vspace*{1.em}
+}
+
+\newcommand{\smallerbox}[2]{%
+\begin{tikzpicture}
+   \node[mybox] (label){%
+    \begin{minipage}[t]{.91\linewidth}%
+      \large #2 \strut
+    \end{minipage}
+  };
+\boxtitle{label.north west}{#1}
+\end{tikzpicture}
+\vspace*{1.em}
+}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \setbeamertemplate{headline}{  
+%   \leavevmode
+%     \begin{columns}[T]
+%       \begin{column}{.1\paperwidth}
+%         \vskip4ex
+% %           \includegraphics[width=.1\paperwidth]{MPG_black}
+%       \end{column}
+%       \begin{column}{.8\paperwidth}
+%         \vskip4ex
+%         \raggedright
+%         \color{rbctop}{\textbf{\Huge{\inserttitle \strut}}\\}
+%         \color{black}{\textbf{\huge{\insertauthor \strut}} \\}
+% %         \color{black}{\textbf{\huge{\insertshortauthor \strut}} \\}
+%         \color{rbcbottom}{\textbf{\huge{\insertinstitute}}\\}
+%       \end{column}
+%       \begin{column}{.02\paperwidth}
+%       \end{column}
+%     \end{columns}
+%         \vskip4ex
+% }
+
+% \newcommand{\myitem}{\item[$\circ$]}
+\setbeamertemplate{itemize item}{\color{black} $\circ$\hspace*{-1em}}
+\setbeamertemplate{itemize subitem}{\color{black}$\circ$}
+ \setlength\itemindent{-10ex}
+% \addtolength{\labelsep}{3ex}
+
+
+% \beamertemplategridbackground[1cm]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mode<all>

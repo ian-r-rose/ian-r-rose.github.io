@@ -33,7 +33,7 @@
           var element = document.getElementById('output');
           if (element) element.value = ''; // clear browser cache
 
-          var outRa = Ra;
+          var outRa;
           var outNu = String(Math.round(Nu))
           if (Ra > 1000) {
             exponent = Math.log10(Ra);
@@ -46,6 +46,8 @@
             else {
               outRa = String(lower)+"x10<sup>"+exponent+"</sup>";
             }
+          } else {
+            outRa = String(Math.round(Ra));
           }
           if (element) {
             element.innerHTML = "Ra = " + outRa + "&nbsp; &nbsp; &nbsp;" + "Nu = " + outNu
@@ -53,7 +55,10 @@
         };
         setInterval( outputData, 100);
       </script>
-      <p> Click to add dense chemical piles.  Scroll up and down to change the Rayleigh number (the vigor of convection).  Press TAB to toggle between drawing the chemical field and the temperature field.  Press SPACE to pause the simulation. While it is paused, you may click to add earthquakes.</p>
+      <div class='image'>
+        <p><img width='720' src='how_it_works.svg' /></p>
+      </div>
+      <div class='image'>
     </div>
   </body>
 </html>
