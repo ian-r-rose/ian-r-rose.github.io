@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
-import os
 
 AUTHOR = u'Ian Rose'
 SITENAME = u'Blueschisting'
@@ -16,6 +15,7 @@ TIMEZONE = 'America/Los_Angeles'
 DEFAULT_LANG = u'en'
 STATIC_PATHS=['interactive_earth', 'images', 'agu_2015_talk']
 READERS = {'html':None }
+MARKUP = ('md', 'ipynb')
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -37,16 +37,8 @@ THEME='pelican-crowsfoot'
 PLUGIN_PATHS=['pelican-plugins',]
 PLUGINS = ['summary', \
            'render_math',\
-           'liquid_tags.img',\
-           'liquid_tags.include_code', \
-           'liquid_tags.notebook',\
-           'liquid_tags.literal']
-
-if not os.path.exists('my_nb_header.html'):
-    import warnings
-    warnings.warn("my_nb_header.html not found. Notebooks may not render properly")
-else:
-    NOTEBOOK_HEADER = open('my_nb_header.html').read().decode('utf-8')
+           'pelican-ipynb.markup',\
+           'liquid_tags']
 
 GITHUB_ADDRESS = 'http://github.com/ian-r-rose'
 TWITTER_ADDRESS = 'http://twitter.com/IanRRose'

@@ -3,4 +3,7 @@
 	url = git@github.com:getpelican/pelican-plugins.git
 [submodule "crowsfoot"]
 	path = pelican-crowsfoot
-	url = git@github.com:porterjamesj/crowsfoot.git
+	url = git@github.com:ian-r-rose/crowsfoot.git
+[submodule "ipynb"]
+	path = pelican-ipynb
+	url = git@github.com:danielfrg/pelican-ipynb.git
