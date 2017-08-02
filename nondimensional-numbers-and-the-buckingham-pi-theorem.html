@@ -31,7 +31,6 @@
               <li><a class="nodec" href="/">blog</a></li>
               <li><a class="nodec" href="/interactive_earth/index.html">interactive earth</a></li>
             <!--pages-->
-                <li><a class="nodec" href="/pages/about.html">about</a></li>
             <!-- services icons -->
               <li><a class="nodec icon-github" href="http://github.com/ian-r-rose"></a></li>
               <li><a class="nodec icon-twitter" href="http://twitter.com/IanRRose"></a></li>
@@ -91,7 +90,7 @@ The fluid has a viscosity <span class="math">\(\eta \; (\mathrm{kg}/\mathrm{m s}
 and the plates are separated by a distance <span class="math">\(D \; (\mathrm{m})\)</span>. The top plate is 
 being moved in the <span class="math">\(x\)</span>-direction at velocity <span class="math">\(u_0 \; (\mathrm{m/s})\)</span>. We presume
 that the plates are large enough laterally that we can neglect their edges.</p>
-<p><img alt="couette" src="images/couette.svg" title="Couette flow" /></p>
+<p><img alt="couette" src="images/couette.svg" title="Couette flow"></p>
 <p>We are interested in determining the velocity and pressure in the 
 fluid, which means that, in general, you have to solve 
 the Navier-Stokes equations for an incompressible fluid:
@@ -142,10 +141,10 @@ the wall motion, and tends to keep the fluid moving) and the viscous
 forces in the fluid (which tend to damp out fluid motions).
 If the Reynolds is large, inertia is more important, and the 
 fluid will have whorls, vortices, and be very chaotic.</p>
-<p><img alt="kanagawa" src="images/kanagawa.jpg" title="A high Reynolds number fluid (the waves, not the boats)" /></p>
+<p><img alt="kanagawa" src="images/kanagawa.jpg" title="A high Reynolds number fluid (the waves, not the boats)"></p>
 <p>If the Reynolds number is small, the fluid will move slowly
 and regularly, in a fashion that is known as "laminar."</p>
-<p><img alt="honey" src="images/honey.jpg" title="A low Reynolds number fluid (the honey, not the stick)" /></p>
+<p><img alt="honey" src="images/honey.jpg" title="A low Reynolds number fluid (the honey, not the stick)"></p>
 <h2>Nondimensional numbers</h2>
 <p>Something very important happened when we compared the two velocity scales
 by computing the Reynolds number: we divided something with units of velocity
@@ -209,7 +208,7 @@ At low <span class="math">\(\mathrm{Re}\)</span> it is laminar, which is shown i
 As <span class="math">\(\mathrm{Re}\)</span> becomes larger, however, instabilities in the flow start to 
 appear, causing complex and turbulent flow features.</p>
 <h2>The Buckingham Pi theorem</h2>
-<p><img alt="pie" src="images/pie.jpg" title="A low-rent pun. It probably won't be the last" /></p>
+<p><img alt="pie" src="images/pie.jpg" title="A low-rent pun. It probably won't be the last"></p>
 <p>Let's try to put the observations we've made so far into a coherent picture.
 When working out the period of a pendulum, there was only one way to make something 
 with the right units. However, when we tried a more complicated problem in Couette flow,
@@ -281,11 +280,9 @@ In my <a href="linear-algebra-and-the-buckingham-pi-theorem.html">next post</a>,
     }
 
     var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +

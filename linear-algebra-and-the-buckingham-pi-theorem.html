@@ -31,7 +31,6 @@
               <li><a class="nodec" href="/">blog</a></li>
               <li><a class="nodec" href="/interactive_earth/index.html">interactive earth</a></li>
             <!--pages-->
-                <li><a class="nodec" href="/pages/about.html">about</a></li>
             <!-- services icons -->
               <li><a class="nodec icon-github" href="http://github.com/ian-r-rose"></a></li>
               <li><a class="nodec icon-twitter" href="http://twitter.com/IanRRose"></a></li>
@@ -74,14 +73,14 @@ We know that the parameters must combine in some way to
 make something of the correct units (if not, they cannot possibly
 be the correct set of parameters for the problem!).</p>
 <p>We can describe this setup in terms of a set of "fundamental units,"
-which we define to be units which cannot be made by combining other units.<br />
+which we define to be units which cannot be made by combining other units.<br>
 For instance, meters and seconds are both fundamental units,
 but velocity is not, since it can be made by dividing meters by seconds.
 The choice of fundamental units is not necessarily unique, but by 
 convention we most commonly use the SI measures for length (m),
 time (s), temperature (K), mass (kg), quantity (mol), current (A),
 and luminosity (cd).</p>
-<p><img alt="lightbulb" src="images/lightbulb.png" title="not entirely sure how luminosity got in there" /></p>
+<p><img alt="lightbulb" src="images/lightbulb.png" title="not entirely sure how luminosity got in there"></p>
 <p>So, let's say that the quantity of interest is called <span class="math">\(\Omega\)</span>, and that
 there are <span class="math">\(n\)</span> parameters <span class="math">\(\omega_i\)</span>, where <span class="math">\(i\)</span> goes from one to <span class="math">\(n\)</span>.
 We denote the units of something by enclosing it in square brackets,
@@ -314,7 +313,7 @@ the density <span class="math">\(\rho \; (\mathrm{kg}/\mathrm{m}^3)\)</span>,
 the separation distance <span class="math">\(D \; (\mathrm{m})\)</span>, 
 and the upper plate velocity <span class="math">\(u_0 \; (\mathrm{m/s})\)</span>.
 The fundamental units are mass (<span class="math">\(kg\)</span>), length (<span class="math">\(m\)</span>), and time (<span class="math">\(s\)</span>).</p>
-<p><img alt="couette" src="images/couette.svg" title="Couette flow" /></p>
+<p><img alt="couette" src="images/couette.svg" title="Couette flow"></p>
 <p>We therefore have three fundamental units and four parameters, meaning that
 our dimensional matrix (defined in Equation \eqref{dimension_matrix})
 must have three rows (one for each fundamental unit), and four columns (one for each parameter).
@@ -367,11 +366,9 @@ effort on our part. That is what I will be attempting in my <a href="automated-d
     }
 
     var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
