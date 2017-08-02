@@ -6,4 +6,4 @@
 	url = git@github.com:ian-r-rose/crowsfoot.git
 [submodule "ipynb"]
 	path = pelican-ipynb
-	url = git@github.com:danielfrg/pelican-ipynb.git
+	url = git@github.com:ian-r-rose/pelican-ipynb.git
