@@ -16,6 +16,7 @@ DEFAULT_LANG = u'en'
 STATIC_PATHS=['interactive_earth', 'coding/images', 'images', 'agu_2015_talk']
 READERS = {'html':None }
 MARKUP = ('md', 'ipynb')
+IGNORE_FILES=['*ipynb_checkpoints*']
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None

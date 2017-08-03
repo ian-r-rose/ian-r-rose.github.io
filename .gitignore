@@ -2,4 +2,4 @@ output/*
 *.pyc
 cache/*
 _nb_header.html
-content/notebooks/.ipynb_checkpoints/*
+content/.ipynb_checkpoints/*
