@@ -1,4 +1,5 @@
 Title: Nondimensional numbers and the Buckingham Pi theorem
+Summary: ![kanagawa](/images/kanagawa.jpg)
 
 In my [previous post](introduction-to-dimensional-analysis.html) I 
 tried to establish the context for nondimensional analysis, which 

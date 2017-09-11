@@ -1,4 +1,5 @@
 Title: Linear algebra and the Buckingham Pi theorem
+Summary: \begin{equation*} p = n-k \end{equation*} ![lightbulb](/images/lightbulb.png)
 
 We previously spent [two](introduction-to-dimensional-analysis.html)
 [longish](nondimensional-numbers-and-the-buckingham-pi-theorem.html)

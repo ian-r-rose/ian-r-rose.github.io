@@ -2,8 +2,8 @@
 	path = pelican-plugins
 	url = git@github.com:getpelican/pelican-plugins.git
 [submodule "crowsfoot"]
-	path = pelican-crowsfoot
-	url = git@github.com:ian-r-rose/crowsfoot.git
+	path = pelican-blueschisting
+	url = git@github.com:ian-r-rose/pelican-blueschisting.git
 [submodule "ipynb"]
 	path = pelican-ipynb
 	url = git@github.com:ian-r-rose/pelican-ipynb.git

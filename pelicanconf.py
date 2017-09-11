@@ -27,13 +27,16 @@ ARTICLE_ORDER_BY = 'reversed-date'
 
 
 DEFAULT_PAGINATION = 10
-
-MENUITEMS=[('blog', '/'), ('interactive earth', '/interactive_earth/index.html')]
+INDEX_SAVE_AS = '/blog_index.html'
+MENUITEMS=[('blog', '/blog_index.html'),
+           ('interactive earth', '/interactive_earth/index.html'),
+           ('about', 'pages/about.html')
+          ]
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
-THEME='pelican-crowsfoot'
+THEME='pelican-blueschisting'
 PLUGIN_PATHS=['pelican-plugins',]
 PLUGINS = ['summary', \
            'render_math',\

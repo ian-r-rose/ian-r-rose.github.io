@@ -1,4 +1,5 @@
 Title: Ultriviolet catastrophe and the beginning of quantum mechanics
+Summary: ![sun](/images/sun.jpg)
 
 We just finished a very long explication of the fundamentals of dimensional
 analysis and the Buckingham Pi theorem 

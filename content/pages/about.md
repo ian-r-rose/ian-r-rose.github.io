@@ -1,4 +1,5 @@
-Title: about
+Title: About me
+URL: pages/about.html
 
 I am a graduate student in geophysics at UC Berkeley. 
 This blog is meant to be a place to write down various musings that

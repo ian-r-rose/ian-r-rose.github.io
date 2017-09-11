@@ -1,4 +1,5 @@
 Title: Introduction to dimensional analysis
+Summary: ![apple_plus_orange](/images/apple_plus_orange.jpeg)
 
 This is the beginning of what I intend to be a multi-part series on dimensional analysis.
 The goal for this post is to set the stage for why dimensional analysis is a powerful tool,
