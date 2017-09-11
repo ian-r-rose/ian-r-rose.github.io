@@ -41,6 +41,7 @@ PLUGIN_PATHS=['pelican-plugins',]
 PLUGINS = ['summary', \
            'render_math',\
            'pelican-ipynb.markup',\
+           'autopages',
            'liquid_tags']
 IPYNB_USE_META_SUMMARY = True
 
