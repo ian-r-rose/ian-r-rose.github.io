@@ -42,6 +42,7 @@ PLUGINS = ['summary', \
            'render_math',\
            'pelican-ipynb.markup',\
            'liquid_tags']
+IPYNB_USE_META_SUMMARY = True
 
 GITHUB_ADDRESS = 'http://github.com/ian-r-rose'
 TWITTER_ADDRESS = 'http://twitter.com/IanRRose'
