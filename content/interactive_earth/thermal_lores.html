@@ -10,55 +10,39 @@
   <body>
     <div class="page">
       <div class="header">
-        <a href="index.html" id="home">Interactive Earth</a>
+        <h1>Thermal convection</h1>
       </div>
 
-      <!-- emscripten canvas -->
-      <div class="emscripten_border">
-        <canvas class="emscripten" id="canvas" width="768" height="768" oncontextmenu="event.preventDefault()"></canvas>
-      </div>
-      <p id="output"></p>
-      <script type='text/javascript'>
-        // connect to canvas
-        var Module = {
-            canvas: document.getElementById('canvas')
-        };
-      </script>
-      <script async type="text/javascript" src="thermal_lores.js"></script>
-      <script async type="text/javascript">
-        function outputData () {
-          var Ra = Module.rayleigh();
-          var Nu = Module.nusselt();
+      <div class="panel">
+        <div class="activity">
+          <!-- emscripten canvas -->
+          <div class="emscripten_border">
+            <canvas class="emscripten" id="canvas" width="768" height="768" oncontextmenu="event.preventDefault()"></canvas>
+          </div>
+          <p id="output"></p>
+          <script type='text/javascript'>
+            // connect to canvas
+            var Module = {
+                canvas: document.getElementById('canvas')
+            };
+          </script>
+          <script async type="text/javascript" src="thermal_lores.js"></script>
+          <script async type="text/javascript" src="display_rayleigh.js" >
+          </script>
+        </div>
 
-          var element = document.getElementById('output');
-          if (element) element.value = ''; // clear browser cache
-
-          var outRa;
-          var outNu = String(Math.round(Nu))
-          if (Ra > 1000) {
-            exponent = Math.log10(Ra);
-            exponent = Math.floor(exponent);
-            lower = Ra/Math.pow(10, exponent);
-            lower = Math.floor(lower)
-            if(lower == 1){
-              outRa = "10<sup>"+exponent+"</sup>";
-            }
-            else {
-              outRa = String(lower)+"x10<sup>"+exponent+"</sup>";
-            }
-          } else {
-            outRa = String(Math.round(Ra));
-          }
-          if (element) {
-            element.innerHTML = "Ra = " + outRa + "&nbsp; &nbsp; &nbsp;" + "Nu = " + outNu
-          }
-        };
-        setInterval( outputData, 100);
-      </script>
-      <div class='image'>
-        <p><img width='720' src='how_it_works.svg' /></p>
+        <div class='activity'>
+          <img src='how_it_works.svg' />
+        </div>
       </div>
-      <div class='image'>
+      <div class="footer">
+        <ul class="navbar">
+          <li><a href="index.html">Back</a></li>
+          <li><a href="thermal_hires.html">Too fast?</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="explanation.html">Explanation</a></li>
+        </ul>
+      </div>
     </div>
   </body>
 </html>

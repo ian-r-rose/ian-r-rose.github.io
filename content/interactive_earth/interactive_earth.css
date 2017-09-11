@@ -1,6 +1,11 @@
-div.header {
-  font-size: 40px;
-  margin-bottom: 2cm;
+.footer {
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+  font-size: 56px;
 }
 
 a:link {
@@ -11,42 +16,50 @@ a:visited {
     color: #ebebeb;
 }
 
-.navbar {
-  list-style-type: none;
-  padding-right: 32px;
-  padding-top: -10px;
-  float: right;
+.panel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
-p {
-  text-align: center;
-  font-size: 24px;
+.navbar {
+  list-style-type: none;
+  float: left;
 }
 
 .navbar li{
-  font-size: 20px;
+  font-size: 22px;
   color: #ebebeb;
-  list-style-type: none;
   padding-right: 16px;
   float: right;
   display: block;
 }
 
-div.image {
-    align: center;
-    margin: 16px;
-    padding: 16px;
+.activity {
+  max-width: 768px;
 }
 
-div.image p {
-    text-align: center;
-    text-indent: 0;
+.activity p {
+  text-align: center;
+  font-size: 18px;
+  text-align: left;
+  margin: 20px;
+}
+
+.activity h2 {
+  font-size: 30px;
+  text-align: center;
+}
+
+.activity img {
+  width: 768px;
 }
 
 body {
-  color: #ebebeb;
+  color: #dfdfdf;
+  font-family: Helvetica, Arial, sans-serif;
   background-color: #000000;
-  margin: 20px 150px;
 }
 
 canvas.emscripten { 
@@ -60,19 +73,12 @@ canvas.emscripten {
     padding-right: 0; 
     display: block;
 }
-div.emscripten_border { 
+.emscripten_border { 
     border: 1px solid black; 
 }
 
 #output {
-  width: 100%;
-  height: 100px;
-  margin: 0 auto;
-  margin-top: 10px;
-  display: block;
-  background-color: black;
-  color: white;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-  font-size:30px;
-  outline: none;
+  font-size: 28px;
+  font-family: serif;
+  text-align: center;
 }
