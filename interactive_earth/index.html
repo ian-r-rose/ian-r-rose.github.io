@@ -5,44 +5,52 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
     <title>Interactive Earth</title>
     <link rel="stylesheet" href="interactive_earth.css" type="text/css" media="all"></link>
-
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-60554403-1', 'auto');
-      ga('send', 'pageview');
-    </script>
   </head>
 
   <body>
     <div class="page">
-      <div class="header">
-        <a> Interactive Earth </a>
+
+      <h1> Interactive Earth </h1>
+      <div class = "panel">
+        <div class='activity'>
+          <h2>Thermal convection </h2>
+          <p>
+            Earth was extremely hot when it formed,
+            but the cold of outer space has been cooling it off since the start.
+            The hotter, lighter rock in the interior rises,
+            while the colder, denser rock on the outside sinks. This process is known as thermal convection.
+            <br>
+            <br>
+            Click here to play with thermal convection!
+          </p>
+          <a href=thermal_hires.html>
+            <img src='thermal_hires.png' />
+          </a>
+        </div>
+        
+        <div class='activity'>
+          <h2>Thermochemical convection</h2>
+          <p>
+            Earth is not all one chemical makeup,
+            but instead contains many different kinds of rocks.
+            Different rocks of different densities can interact with thermal convection in complex and surprising ways,
+            in a process called thermochemical convection.
+            <br>
+            <br>
+            Click here to play with thermochemical convection!
+          </p>
+          <a href=thermochemical_hires.html>
+            <img src='thermochemical_hires.png' />
+          </a>
+        </div>
+
+      </div>
+      <div class="footer">
         <ul class="navbar">
           <li><a href="https://ian-r-rose.github.io">Home</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="help.html">Help</a></li>
           <li><a href="explanation.html">Explanation</a></li>
         </ul>
-      </div>
-      <div class='image'>
-        <p><a href='thermal_hires.html'><img width='720' src='thermal_hires.png' /></a></p>
-        <p> Thermal convection (high resolution) </p>
-      </div>
-      <div class='image'>
-        <p><a href='thermochemical_hires.html'><img width='720' src='thermochemical_hires.png' /></a></p>
-        <p> Thermochemical convection (high resolution) </p>
-      </div>
-      <div class='image'>
-        <p><a href='thermal_lores.html'><img width='720' src='thermal_lores.png' /></a></p>
-        <p> Thermal convection (low resolution) </p>
-      </div>
-      <div class='image'>
-        <p><a href='thermochemical_lores.html'><img width='720' src='thermochemical_lores.png' /></a></p>
-        <p> Thermochemical convection (low resolution) </p>
       </div>
     </div>
   </body>
