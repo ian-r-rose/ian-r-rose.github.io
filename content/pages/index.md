@@ -21,18 +21,18 @@ save_as: index.html
     </a>
   </div>
   <div class="card">
-    <a href=/category/dimensional_analysis.html>
+    <a href=/pages/transit.html>
       <div class="card-text">Transit</div>
       <div class="card-image">
-        <img src=/images/kanagawa.jpg />
+        <img src=/images/bus.svg />
       </div>
     </a>
   </div>
   <div class="card">
-    <a href=/category/dimensional_analysis.html>
+    <a href=/pages/coding.html>
       <div class="card-text">Coding</div>
       <div class="card-image">
-        <img src=/images/couette.svg />
+        <img src=/images/coding.png />
       </div>
     </a>
   </div>

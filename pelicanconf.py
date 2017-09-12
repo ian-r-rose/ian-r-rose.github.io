@@ -30,7 +30,7 @@ DEFAULT_PAGINATION = 10
 INDEX_SAVE_AS = '/blog_index.html'
 MENUITEMS=[('blog', '/blog_index.html'),
            ('interactive earth', '/interactive_earth/index.html'),
-           ('about', 'pages/about.html')
+           ('about', '/pages/about.html')
           ]
 
 # Uncomment following line if you want document-relative URLs when developing
