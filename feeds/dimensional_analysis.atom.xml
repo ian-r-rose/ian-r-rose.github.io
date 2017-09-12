@@ -1307,6 +1307,11 @@ h6:hover .anchor-link {
 
 .ansi-bold { font-weight: bold; }
 &lt;/style&gt;
+    &lt;style type="text/css"&gt;
+    .cell .input {
+      overflow: hidden;
+    }
+    &lt;/style&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;a href="linear-algebra-and-the-buckingham-pi-theorem.html"&gt;Last time&lt;/a&gt; we showed that the Buckingham Pi theorem follows directly from one of the central results of linear algebra:
