@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Ian Rose'
 SITENAME = u'Blueschisting'
-SITESUBTITLE = u'Thoughts on planetary science, fluid dynamics, and scientific computing'
+SITESUBTITLE = u'Thoughts on planetary science, fluid dynamics, transit, and scientific computing'
 SITEURL=''
 PROFILE_IMAGE_URL='/images/ian_rose.jpg'
 
@@ -29,7 +29,6 @@ ARTICLE_ORDER_BY = 'reversed-date'
 DEFAULT_PAGINATION = 10
 INDEX_SAVE_AS = '/blog_index.html'
 MENUITEMS=[('blog', '/blog_index.html'),
-           ('interactive earth', '/interactive_earth/index.html'),
            ('about', '/pages/about.html')
           ]
 
