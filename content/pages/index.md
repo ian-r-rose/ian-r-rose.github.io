@@ -1,7 +1,6 @@
-Title:
+Title: Welcome! Here are some things I wrote:
 Slug: home
 save_as: index.html
-
 
 <div class="layout">
   <div class="card">

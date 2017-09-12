@@ -1,4 +1,4 @@
-Title: About me
+Title: Ian Rose
 Slug: about
 
 I am a postdoctoral fellow at the [Berkeley Institute for Data Science](https://bids.berkeley.edu/),

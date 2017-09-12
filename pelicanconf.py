@@ -28,8 +28,9 @@ ARTICLE_ORDER_BY = 'reversed-date'
 
 DEFAULT_PAGINATION = 10
 INDEX_SAVE_AS = '/blog_index.html'
-MENUITEMS=[('blog', '/blog_index.html'),
-           ('about', '/pages/about.html')
+MENUITEMS=[
+           ('Ian Rose', '/pages/about.html'),
+           ('blog', '/blog_index.html')
           ]
 
 # Uncomment following line if you want document-relative URLs when developing
