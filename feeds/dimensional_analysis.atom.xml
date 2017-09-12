@@ -1307,9 +1307,7 @@ h6:hover .anchor-link {
 
 .ansi-bold { font-weight: bold; }
 &lt;/style&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;a href="linear-algebra-and-the-buckingham-pi-theorem.html"&gt;Last time&lt;/a&gt; we showed that the Buckingham Pi theorem follows directly from one of the central results of linear algebra:
 the &lt;a href="https://en.wikipedia.org/wiki/Rank%E2%80%93nullity_theorem"&gt;rank-nullity theorem&lt;/a&gt;.&lt;/p&gt;
@@ -1328,9 +1326,7 @@ If you can teach a computer to do something, you probably have a reasonably good
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Buckinghampy"&gt;Buckinghampy&lt;a class="anchor-link" href="#Buckinghampy"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Here we will be developing a small Python package for automating dimensional analysis. I have named it, in one of the worst (best?) pun applications, Buckinghampy. If you want to play with the code, you can download the package &lt;a href="https://github.com/ian-r-rose/buckinghampy"&gt;here&lt;/a&gt;, or download and run this IPython notebook &lt;a href="https://github.com/ian-r-rose/ian-r-rose.github.io/blob/source/content/notebooks/automated_dimensional_analysis.ipynb"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The main tool we will use for automating dimensional analysis will be the Python symbolic algebra package &lt;a href="www.sympy.org"&gt;SymPy&lt;/a&gt;. 
@@ -1345,7 +1341,7 @@ and having the answers as floating point numbers makes these integers more of a 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[1]:&lt;/div&gt;
+
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sympy&lt;/span&gt;
@@ -1357,9 +1353,7 @@ and having the answers as floating point numbers makes these integers more of a 
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The first step will be to describe what we mean be a parameter.
 For this, we will be defining a lightweight class:&lt;/p&gt;
@@ -1369,7 +1363,7 @@ For this, we will be defining a lightweight class:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[2]:&lt;/div&gt;
+
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Parameter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -1383,9 +1377,7 @@ For this, we will be defining a lightweight class:&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;where &lt;code&gt;symbol&lt;/code&gt; is a string that we will use for typesetting the final results and &lt;code&gt;units&lt;/code&gt; is a Python dictionary that defines a mapping between a fundamental unit and the power of that unit in the parameter. For instance, we can define a parameter for the acceleration due to gravity $g$, which has units $\mathrm{m}/\mathrm{s}^2$ by writing&lt;/p&gt;
 
@@ -1394,7 +1386,7 @@ For this, we will be defining a lightweight class:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[3]:&lt;/div&gt;
+
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;gravity&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Parameter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;g&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;m&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;s&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
@@ -1405,9 +1397,7 @@ For this, we will be defining a lightweight class:&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;or we can define a parameter for density $\rho$, which has units $\mathrm{kg}/\mathrm{m}^3$&lt;/p&gt;
 
@@ -1416,7 +1406,7 @@ For this, we will be defining a lightweight class:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[4]:&lt;/div&gt;
+
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;density&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Parameter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s1"&gt;rho&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;kg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;m&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
@@ -1427,18 +1417,14 @@ For this, we will be defining a lightweight class:&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;In this instance the &lt;code&gt;symbol&lt;/code&gt; string is the $\LaTeX$ symbol for $\rho$.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Okay, so we have a type defining the relevant information for a given parameter.
 Now we need to be able to construct the dimension matrix described in the previous article. As a reminder, the dimension matrix is an $k$ by $n$ matrix, where $n$ is the number of parameters and $k$ is the number of fundamental units that appear in the parameters. The entries of the matrix are the exponent of the given unit in the given parameter.&lt;/p&gt;
@@ -1449,7 +1435,7 @@ Now we need to be able to construct the dimension matrix described in the previo
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[5]:&lt;/div&gt;
+
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;construct_dimension_matrix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;parameters&lt;/span&gt; &lt;span class="p"&gt;):&lt;/span&gt;
@@ -1488,9 +1474,7 @@ Now we need to be able to construct the dimension matrix described in the previo
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The function returns the list of fundamental units and the dimension matrix for the set of parameters.&lt;/p&gt;
 &lt;p&gt;As an example, we can try the case of Couette flow from the previous articles. In case you have forgotten, Couette flow involves the motion of a fluid between two plates. The fluid has a density $\rho$ and a viscosity $\eta$. The two plates are separated by a distance $D$ and the top plate is shearing the fluid with a velocity $u_0$.&lt;/p&gt;
@@ -1502,7 +1486,7 @@ Now we need to be able to construct the dimension matrix described in the previo
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[6]:&lt;/div&gt;
+
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;viscosity&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Parameter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s1"&gt;eta&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;kg&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;m&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;s&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
@@ -1518,9 +1502,7 @@ Now we need to be able to construct the dimension matrix described in the previo
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;With the parameters defined, we can give them as a list to the &lt;code&gt;construct_dimension_matrix&lt;/code&gt; function and output the resulting matrix:&lt;/p&gt;
 
@@ -1529,7 +1511,7 @@ Now we need to be able to construct the dimension matrix described in the previo
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[7]:&lt;/div&gt;
+
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;units&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dimension_matrix&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; \
@@ -1545,11 +1527,7 @@ Now we need to be able to construct the dimension matrix described in the previo
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 
-
 &lt;div class="output_area"&gt;
-
-&lt;div class="prompt output_prompt"&gt;Out[7]:&lt;/div&gt;
-
 
 
 
@@ -1563,9 +1541,7 @@ $$\left[\begin{matrix}1 &amp; 0 &amp; 0 &amp; 1\\-3 &amp; 1 &amp; 1 &amp; -1\\0 
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;As you can verify, the columns correspond to the parameters in the order in which they were given. The rows correspond to the fundamental units in alphabetical order, so the first row is kilograms, the second row is meters, and the last row is seconds. So, reading down the third row, we can see that the velocity parameter $u_0$ has units of $\mathrm{m}/\mathrm{s}$.&lt;/p&gt;
 &lt;p&gt;We learned previously that the nondimensional numbers which you can make out of the parameters provide, in a sense, a fundamental description of the problem. Furthermore, when we cast the problem in terms of the dimension matrix, the nondimensional numbers are precisely the set of vectors which span the nullspace of the matrix.&lt;/p&gt;
@@ -1576,7 +1552,7 @@ $$\left[\begin{matrix}1 &amp; 0 &amp; 0 &amp; 1\\-3 &amp; 1 &amp; 1 &amp; -1\\0 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[8]:&lt;/div&gt;
+
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;nullspace&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;dimension_matrix&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nullspace&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -1590,11 +1566,7 @@ $$\left[\begin{matrix}1 &amp; 0 &amp; 0 &amp; 1\\-3 &amp; 1 &amp; 1 &amp; -1\\0 
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 
-
 &lt;div class="output_area"&gt;
-
-&lt;div class="prompt output_prompt"&gt;Out[8]:&lt;/div&gt;
-
 
 
 
@@ -1608,9 +1580,7 @@ $$\left [ \left[\begin{matrix}-1\\-1\\-1\\1\end{matrix}\right]\right ]$$
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;As we can see, the nullspace of this matrix is a single vector. This vector is a recipe for how to combine the parameters in such a way that the result has no dimensions. So the vector tells us that we have one power of $\eta$, and negative one power of each of $\rho$, $u_0$, and $D$, or&lt;/p&gt;
 &lt;p&gt;\begin{equation}
@@ -1623,9 +1593,7 @@ Note that it makes no difference that this is the inverse of the traditionally d
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;At this point, we have successfuly written some code that takes some parameters, assembles the dimension matrix and finds the nondimensional numbers associated with that problem. We could be done. It would be nice, however, not to have to read the parameters off of a vector of rational numbers, as we did above. Fortunately, it is not too difficult to write a new class, &lt;code&gt;NondimensionalNumber&lt;/code&gt;, which takes care of these details.&lt;/p&gt;
 &lt;p&gt;The class is initialized with the list of parameters and a particular vector in the dimensional nullspace. It has an internal function &lt;code&gt;_parse_nondimensional_number()&lt;/code&gt; which takes that vector and parses it into a nice string which can be typeset via $\LaTeX$. If you are not comfortable with $\LaTeX$ typesetting, feel free to skip this block, it is mostly cosmetic:&lt;/p&gt;
@@ -1635,7 +1603,7 @@ Note that it makes no difference that this is the inverse of the traditionally d
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[9]:&lt;/div&gt;
+
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;NondimensionalNumber&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -1731,9 +1699,7 @@ Note that it makes no difference that this is the inverse of the traditionally d
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;We can now use this function to typeset the Reynolds number:&lt;/p&gt;
 
@@ -1742,7 +1708,7 @@ Note that it makes no difference that this is the inverse of the traditionally d
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[10]:&lt;/div&gt;
+
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Re&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;NondimensionalNumber&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;parameters&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nullspace&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
@@ -1756,11 +1722,7 @@ Note that it makes no difference that this is the inverse of the traditionally d
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 
-
 &lt;div class="output_area"&gt;
-
-&lt;div class="prompt output_prompt"&gt;Out[10]:&lt;/div&gt;
-
 
 
 
@@ -1774,9 +1736,7 @@ $$\frac{ \eta}{ \rho D u_0}$$
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;To finish this coding exercise, we can tie it all up into a single function that takes a list of parameters and returns a list of nondimensional numbers. Remember, the overall steps to this process were&lt;/p&gt;
 &lt;ol&gt;
@@ -1791,7 +1751,7 @@ $$\frac{ \eta}{ \rho D u_0}$$
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[11]:&lt;/div&gt;
+
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;find_nondimensional_numbers&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;parameters&lt;/span&gt; &lt;span class="p"&gt;):&lt;/span&gt;
@@ -1814,9 +1774,7 @@ $$\frac{ \eta}{ \rho D u_0}$$
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;And now we can find the Reynolds number by calling this function:&lt;/p&gt;
 
@@ -1825,7 +1783,7 @@ $$\frac{ \eta}{ \rho D u_0}$$
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[12]:&lt;/div&gt;
+
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;nondim&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;find_nondimensional_numbers&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;parameters&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1839,11 +1797,7 @@ $$\frac{ \eta}{ \rho D u_0}$$
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 
-
 &lt;div class="output_area"&gt;
-
-&lt;div class="prompt output_prompt"&gt;Out[12]:&lt;/div&gt;
-
 
 
 
@@ -1857,18 +1811,14 @@ $$\frac{ \eta}{ \rho D u_0}$$
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;That's more like it! We now have the problem of finding the nondimensional numbers associated with a particular problem down to a single function call!&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="More-involved-examples"&gt;More involved examples&lt;a class="anchor-link" href="#More-involved-examples"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The problem we have been working with is a relatively simple problem, with a single nondimensional number. More complicated problems can have many nondimensional numbers, each describing some aspect of the physics of the problem. That is to say, as we add more physics, we expect to have more nondimensional numbers at play. I'd like to close out this article with a coupld of examples of this.&lt;/p&gt;
 &lt;p&gt;First, we can consider an elaboration on shearing flow: what if the fluid was a river? Like Couette flow, rivers exist in a channel, but they also move under the influence of gravity. The force of gravity determines the dynamics of ripples and waves along its surface and the speed at which the river moves downhill. It also is extremely important for characterizing the rate of &lt;a href="https://en.wikipedia.org/wiki/Saltation_%28geology%29"&gt;sediment transport&lt;/a&gt; downstream, which has important geomorphological, agricultural, and environmental consequences.&lt;/p&gt;
@@ -1880,7 +1830,7 @@ $$\frac{ \eta}{ \rho D u_0}$$
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[13]:&lt;/div&gt;
+
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;parameters&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;density&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;velocity&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;viscosity&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;gravity&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
@@ -1895,11 +1845,7 @@ $$\frac{ \eta}{ \rho D u_0}$$
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 
-
 &lt;div class="output_area"&gt;
-
-&lt;div class="prompt output_prompt"&gt;Out[13]:&lt;/div&gt;
-
 
 
 
@@ -1913,9 +1859,7 @@ $$\frac{ \eta}{ \rho D u_0}, \frac{ D g}{ u_0^{2}}$$
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;We see that, as before, we get one over the Reynolds number $1/Re$. However, now there is a second nondimensional number, given by
 \begin{equation}
@@ -1932,9 +1876,7 @@ so what we actually found was $1/\mathrm{Fr}^2$. But remember, this is just a co
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;We'll consider a final example from geodesy of the solid Earth.
 When a magma chamber underneath a volcano gets a fresh infusion of magma, the chamber gets overpressured.
@@ -1952,7 +1894,7 @@ We can describe these elastic properties using the shear modulus $\mu$ and the d
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[14]:&lt;/div&gt;
+
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;overpressure&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Parameter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s1"&gt;Delta P&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;kg&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;m&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;s&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
@@ -1973,11 +1915,7 @@ We can describe these elastic properties using the shear modulus $\mu$ and the d
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 
-
 &lt;div class="output_area"&gt;
-
-&lt;div class="prompt output_prompt"&gt;Out[14]:&lt;/div&gt;
-
 
 
 
@@ -1991,9 +1929,7 @@ $$ \nu, \frac{ \mu}{ \Delta P}, \frac{ R}{ D}$$
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;We find that the relevant nondimensional numbers are Poisson's ratio (already dimensionless), the ratio of the shear modulus to the overpressure, and the ratio of the radius of the magma chamber to its depth.
 Comparison with an analytical approximation to this system, the Mogi source, shows that these three nondimensional numbers are the important controls on the system.&lt;/p&gt;
@@ -2001,9 +1937,7 @@ Comparison with an analytical approximation to this system, the Mogi source, sho
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Conclusion"&gt;Conclusion&lt;a class="anchor-link" href="#Conclusion"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;That was a bit of a longer article than I intended, but I hope it provided an interesting perspective on dimensional analysis. 
 I welcome comments and improvements to &lt;a href="https://github.com/ian-r-rose/buckinghampy"&gt;Buckinghampy&lt;/a&gt;, which I intend to be a teaching tool for this topic.
