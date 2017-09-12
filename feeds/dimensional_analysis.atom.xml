@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Blueschisting</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2016-06-06T00:00:00-07:00</updated><entry><title>Ultriviolet catastrophe and the beginning of quantum mechanics</title><link href="/ultriviolet-catastrophe-and-the-beginning-of-quantum-mechanics.html" rel="alternate"></link><published>2016-06-06T00:00:00-07:00</published><updated>2016-06-06T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2016-06-06:/ultriviolet-catastrophe-and-the-beginning-of-quantum-mechanics.html</id><summary type="html">&lt;p&gt;&lt;img alt="sun" src="/images/sun.jpg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;We just finished a very long explication of the fundamentals of dimensional
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Blueschisting - dimensional_analysis</title><link href="/" rel="alternate"></link><link href="/feeds/dimensional_analysis.atom.xml" rel="self"></link><id>/</id><updated>2016-06-06T00:00:00-07:00</updated><entry><title>Ultriviolet catastrophe and the beginning of quantum mechanics</title><link href="/ultriviolet-catastrophe-and-the-beginning-of-quantum-mechanics.html" rel="alternate"></link><published>2016-06-06T00:00:00-07:00</published><updated>2016-06-06T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2016-06-06:/ultriviolet-catastrophe-and-the-beginning-of-quantum-mechanics.html</id><summary type="html">&lt;p&gt;&lt;img alt="sun" src="/images/sun.jpg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;We just finished a very long explication of the fundamentals of dimensional
 analysis and the Buckingham Pi theorem 
 (well, not "just", since it took me significantly longer 
 than I anticipated to finish up this post).
@@ -2937,17 +2937,4 @@ I will be taking a qualitative look at the content of the Buckingham Pi theorem.
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content></entry><entry><title>Introduction</title><link href="/introduction.html" rel="alternate"></link><published>2015-08-21T00:00:00-07:00</published><updated>2015-08-21T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2015-08-21:/introduction.html</id><summary type="html">&lt;p&gt;Welcome to the inaugural post of this blog, where I plan to write about anything that strikes me as interesting. 
-For the most part these things will be related to geology, geophysics, or scientific computing.
-At the moment I am titling the site "Blueschisting," with which I am not necessarily …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Welcome to the inaugural post of this blog, where I plan to write about anything that strikes me as interesting. 
-For the most part these things will be related to geology, geophysics, or scientific computing.
-At the moment I am titling the site "Blueschisting," with which I am not necessarily in love, but I could 
-not think of something better when setting things up. At the very least it does not appear to be taken.&lt;/p&gt;
-&lt;p&gt;Overall it is my hope that this blog will accomplish these three things, in no particular order:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Get me to write more often and with less friction.&lt;/li&gt;
-&lt;li&gt;Provide a place to record various ideas, derivations, and perspectives so that I can refer to them later.&lt;/li&gt;
-&lt;li&gt;Maybe even be of some interest to some third party (though this may not ever be the case. If somebody is reading: hello!).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;To start, I plan to write a series of posts on one of my favorite results in mathematical physics:
-the Buckingham Pi theorem.&lt;/p&gt;</content></entry></feed>
+&lt;/script&gt;</content></entry></feed>

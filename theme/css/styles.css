@@ -43,9 +43,6 @@ body {
     font-family: 'Merriweather';
     font-weight: 300;
     font-size: 4em;
-    padding-left: 10px; /* Hack to dodge :hover issue. */
-    position: relative; /* Hack to dodge :hover issue. */
-    left: -10px; /* Hack to dodge :hover issue. */
 }
 
 .sitesubtitle {
@@ -65,19 +62,13 @@ body {
 
 .menu li {
     display: inline;
-    margin-right: 10px;
+    margin-right: 80px;
 }
 
 /* Article list on index page. */
 
 .posttitle {
     font-size: 1.6em;
-}
-
-.posttitle a {
-    padding-left: 10px; /* Hack to dodge :hover issue. */
-    position: relative; /* Hack to dodge :hover issue. */
-    left: -10px; /* Hack to dodge :hover issue. */
 }
 
 .postinfo {
@@ -112,12 +103,12 @@ a { /* Generic link styling, greyish and underlined. */
     text-decoration: none;
 }
 
-a:hover { /* Hover style: transition to orange. Cool! */
+a:hover { /* Hover style: transition to blue. Cool! */
     -o-transition:color .2s ease-in-out;
     -webkit-transition:color .2s ease-in-out;
     -moz-transition:color .2s ease-in-out;
     transition:color .2s ease-in-out;
-    color: orange;
+    color: #2874A6;
 }
 
 /* Generic to all content. */
@@ -232,6 +223,60 @@ sub {
 .article code {
     font-family: 'Source Code Pro';
     font-size: 1em;
+}
+
+/* Category */
+
+.category-description h1 {
+  font-size: 2.2em;
+  margin: 20px;
+}
+
+.category-description p {
+  font-size: 1.1em;
+  margin: 20px;
+}
+
+/* Landing page */
+
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.layout .card {
+  width: 300px;
+  height: 350px;
+  margin: 20px;
+  padding: 10px;
+  display: block;
+  border: solid 2px lightgray;
+  border-radius: 10px;
+}
+
+.layout .card:hover {
+  box-shadow: 10px 10px 5px lightgray;
+}
+
+.layout .card .card-text {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.layout .card a {
+  text-decoration: none;
+}
+
+.layout .card .card-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.layout .card .card-image img {
+  max-width: 300px;
+  max-height: 300px;
 }
 
 /* Footer at page bottom */
