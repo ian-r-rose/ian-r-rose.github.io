@@ -71,6 +71,36 @@ not think of something better when setting things up. At the very least it does 
 </ul>
 <p>To start, I plan to write a series of posts on one of my favorite results in mathematical physics:
 the Buckingham Pi theorem.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">construct_dimension_matrix</span><span class="p">(</span> <span class="n">parameters</span> <span class="p">):</span>
+    <span class="c1"># Storing the units in a set means that we ignore</span>
+    <span class="c1"># duplicate units, and will just have a set of all</span>
+    <span class="c1"># the units which appear at least once in the problem:</span>
+    <span class="n">units</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">units</span><span class="p">:</span>
+            <span class="n">units</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+    <span class="c1"># The downside of a set is that it is unordered. It is</span>
+    <span class="c1"># nice to have the units be alphabetized for easier </span>
+    <span class="c1"># inspection of the matrix, so we convert the units </span>
+    <span class="c1"># set to a list, then alphabetize that.</span>
+    <span class="n">units</span> <span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">units</span><span class="p">)</span>
+    <span class="n">units</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+
+    <span class="c1">#Construct a matrix of the appropriate shape</span>
+    <span class="n">dimension_matrix</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">units</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span> <span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">u</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">units</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
+            <span class="c1"># Determine the matrix entry for i,j</span>
+            <span class="c1"># If the unit appears in the parameter,</span>
+            <span class="c1"># then it is the power of that unit,</span>
+            <span class="c1"># otherwise it is zero</span>
+            <span class="n">entry</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">units</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="k">if</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">units</span> <span class="k">else</span> <span class="mi">0</span>
+            <span class="n">dimension_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">entry</span>
+
+    <span class="k">return</span> <span class="n">units</span><span class="p">,</span> <span class="n">dimension_matrix</span>
+</pre></div>
   </div><!-- .content -->
 
 </section>

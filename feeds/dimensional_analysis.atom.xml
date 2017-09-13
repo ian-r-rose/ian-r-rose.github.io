@@ -1308,8 +1308,13 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 &lt;/style&gt;
     &lt;style type="text/css"&gt;
-    .cell .input {
-      overflow: hidden;
+
+    div.output_area .MathJax_Display {
+      text-align: center !important;
+    }
+
+    div.output_area {
+      justify-content: center;
     }
     &lt;/style&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
