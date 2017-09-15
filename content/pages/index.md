@@ -20,7 +20,7 @@ save_as: index.html
     </a>
   </div>
   <div class="card">
-    <a href=/pages/transit.html>
+    <a href=/category/transit.html>
       <div class="card-text">Transit</div>
       <div class="card-image">
         <img src=/images/bus.svg />
