@@ -1,0 +1,25 @@
+<html>
+  <head>
+  <script type="text/javascript" src="render.js"></script>
+  </head>
+  
+  <body style="margin: 0">
+    <canvas id='route' width=700 height=700></canvas>
+
+  <script>
+    const bus = new Image();
+    bus.src = 'bus.svg';
+    let ctx = document.getElementById('route').getContext('2d');
+    let angles = [0, 120, 240];
+
+    setInterval(() => {
+      for (let i = 0; i < angles.length; ++i) {
+        angles[i]++;
+      }
+      drawScene(ctx, 0, angles);
+    }, 20);
+
+  </script>
+
+  </body>
+</html>

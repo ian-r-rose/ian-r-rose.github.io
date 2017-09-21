@@ -13,7 +13,13 @@ PATH = 'content'
 TIMEZONE = 'America/Los_Angeles'
 
 DEFAULT_LANG = u'en'
-STATIC_PATHS=['interactive_earth', 'coding/images', 'images', 'agu_2015_talk']
+STATIC_PATHS=[
+        'interactive_earth',
+        'coding/images',
+        'images',
+        'agu_2015_talk',
+        'visualization'
+        ]
 READERS = {'html':None }
 MARKUP = ('md', 'ipynb')
 IGNORE_FILES=['*ipynb_checkpoints*']
