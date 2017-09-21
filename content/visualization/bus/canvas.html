@@ -1,20 +1,26 @@
 <html>
   <head>
   <script type="text/javascript" src="render.js"></script>
+  <script type="text/javascript" src="time.js"></script>
   </head>
   
   <body style="margin: 0">
-    <canvas id='route' width=600 height=600></canvas>
+    <canvas id='route' width=500 height=500></canvas>
 
   <script>
     const bus = new Image();
     bus.src = 'bus.svg';
     let ctx = document.getElementById('route').getContext('2d');
-    let angles = [0, 120, 240];
+    let angles = initialConditions(3);
 
     setInterval(() => {
+      let dydt = (t, y) => {
+        return thetaVelocity(y, 1, 0.1);
+      };
+      const dt = 1.0;
+      let next = integrate(angles, 0, dydt, dt);
       for (let i = 0; i < angles.length; ++i) {
-        angles[i]++;
+        angles[i] = next[i]
       }
       drawScene(ctx, 0, angles);
     }, 20);
