@@ -79,6 +79,7 @@ let drawBus = function(ctx, angle) {
  * bus angles, draw a bus scene.
  */
 let drawScene = function(ctx, roadAngle, busAngles) {
+  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
   drawRoad(ctx, roadAngle);
   for (let angle of busAngles) {
     drawBus(ctx, angle);

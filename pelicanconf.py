@@ -13,6 +13,7 @@ PATH = 'content'
 TIMEZONE = 'America/Los_Angeles'
 
 DEFAULT_LANG = u'en'
+ARTICLE_PATHS=['articles']
 STATIC_PATHS=[
         'interactive_earth',
         'coding/images',
@@ -50,6 +51,7 @@ PLUGINS = ['summary', \
            'pelican-ipynb.markup',\
            'autopages',
            'liquid_tags']
+CATEGORY_PAGE_PATH = PATH + '/categories'
 IPYNB_USE_META_SUMMARY = True
 
 GITHUB_ADDRESS = 'http://github.com/ian-r-rose'
