@@ -8,7 +8,7 @@ function drawRoad(ctx, angle) {
   const R = size/2;
   const d2r = Math.PI/180;
 
-  const roadWidth = 100;
+  const roadWidth = size/7;
   const curbWidth = 2;
   const dividerWidth = 5;
   const rot = angle || 0;
@@ -62,7 +62,7 @@ let drawBus = function(ctx, angle) {
   const center = size/2;
   const R = size/2;
   const d2r = Math.PI/180;
-  const busWidth = 120;
+  const busWidth = size/6;
   const rot = angle || 0;
 
   ctx.save();
