@@ -6,7 +6,6 @@ function drawRoad(ctx, angle) {
   const size = Math.min(ctx.canvas.width, ctx.canvas.height);
   const center = size/2;
   const R = size/2;
-  const d2r = Math.PI/180;
 
   const roadWidth = size/7;
   const curbWidth = 2;
@@ -16,13 +15,13 @@ function drawRoad(ctx, angle) {
   // Prepare the context
   ctx.save();
   ctx.translate(center, center);
-  ctx.lineDashOffset = -(R-roadWidth/2)*rot*d2r;
+  ctx.lineDashOffset = -(R-roadWidth/2)*rot;
 
   // Draw the road pavement
   ctx.lineWidth = roadWidth;
   ctx.strokeStyle = '#AAB7B8';
   ctx.beginPath();
-  ctx.arc(0, 0, R-roadWidth/2, 0*d2r,
+  ctx.arc(0, 0, R-roadWidth/2, 0,
     2.*Math.PI, anticlockwise=true);
   ctx.stroke();
 
@@ -30,11 +29,11 @@ function drawRoad(ctx, angle) {
   ctx.lineWidth = curbWidth;
   ctx.strokeStyle = 'black';
   ctx.beginPath();
-  ctx.arc(0, 0, R-curbWidth, 0*d2r,
+  ctx.arc(0, 0, R-curbWidth, 0,
     2.*Math.PI, anticlockwise=true);
   ctx.stroke();
   ctx.beginPath();
-  ctx.arc(0, 0, R-roadWidth, 0*d2r,
+  ctx.arc(0, 0, R-roadWidth, 0,
     2.*Math.PI, anticlockwise=true);
   ctx.stroke();
 
@@ -43,7 +42,7 @@ function drawRoad(ctx, angle) {
   ctx.strokeStyle = '#F1C40F';
   ctx.setLineDash([20,25]);
   ctx.beginPath();
-  ctx.arc(0, 0, R-roadWidth/2, 0*d2r,
+  ctx.arc(0, 0, R-roadWidth/2, 0,
     2.*Math.PI, anticlockwise=true);
   ctx.stroke();
 
@@ -61,13 +60,12 @@ let drawBus = function(ctx, angle) {
   const size = Math.min(ctx.canvas.width, ctx.canvas.height);
   const center = size/2;
   const R = size/2;
-  const d2r = Math.PI/180;
   const busWidth = size/6;
   const rot = angle || 0;
 
   ctx.save();
   ctx.translate(center, center);
-  ctx.rotate(-angle * d2r + Math.PI/2);
+  ctx.rotate(-angle + Math.PI/2);
 
   ctx.drawImage(bus, -busWidth/2, -center-10, busWidth, busWidth);
 

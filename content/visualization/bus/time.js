@@ -1,3 +1,10 @@
+
+/**
+ * Load in the bus image.
+ */
+const bus = new Image();
+bus.src = 'bus.svg';
+
 /**
  * Generate the stable initial conditions for n buses
  * on a loop, which is just equally spaced.
@@ -5,7 +12,7 @@
 function initialConditions(n) {
   let arr = new Array(n);
   for (let i = 0; i < n; i++) {
-    arr[i] = i * 360/n;
+    arr[i] = i * 2*Math.PI/n + (Math.random()-0.5)*1.e-2;
   }
   return arr;
 }
@@ -18,12 +25,28 @@ function initialConditions(n) {
  */
 function thetaVelocity( thetas, v0, gamma ) {
   const velocities = thetas.slice();
-  for (let i = 0; i<thetas.length; i++) {
-    let dist = i === thetas.length-1 ?
-               thetas[0]-thetas[i] :
-               thetas[i+1] - thetas[i];
-    dist = (dist < 0 ? dist + 2*Math.PI : dist) % 2*Math.PI;
-    velocities[i] = v0 * (1 - gamma * dist);
+  const near = 0.4;
+
+  // Compute the velocity of a bus, given its position
+  // and that of the one ahead of it.
+  for (let i = 0; i<thetas.length-1; i++) {
+    velocities[i] = v0 * (1 - gamma * (thetas[i+1]-thetas[i]));
+  }
+  velocities[thetas.length-1] =
+    v0 * (1 - gamma * (thetas[0]-thetas[thetas.length-1] + 2*Math.PI));
+
+  // If a bus has caught up with the one ahead of it,
+  // match speeds. Note: we pass through twice to make
+  // sure it is self-consistent.
+  for (let j = 0; j < 2; j++) {
+    if (thetas[0]-thetas[thetas.length-1]+2*Math.PI < near) {
+      velocities[thetas.length-1] = velocities[0];
+    }
+    for (let i = thetas.length-2; i >= 0; i--) {
+      if (thetas[i+1]-thetas[i] < near) {
+        velocities[i] = velocities[i+1];
+      }
+    }
   }
   return velocities;
 }
