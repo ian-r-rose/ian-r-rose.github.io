@@ -1,4 +1,4 @@
-Title: Buses are bosons, or How I learned to stop worrying and love AC Transit
+Title: Buses are bosons, or How I learned to stop worrying and love AC Transit (Part one)
 Slug: bus-bunching-1
 
 If you have spent any amount of time using mass transit,
@@ -29,45 +29,6 @@ Now suppose that the speed of a bus is slowed down by a longer headway between i
 \frac{\partial \theta_n}{\partial t} = 
  v_0 \left[ 1 - \gamma (\theta_{n+1} - \theta_n) \right]
 \end{equation}
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.animation as animation
-from IPython.display import HTML
-
-N = 23
-theta = np.linspace(0, 2.*np.pi*(1.-1/N), N)
-r = np.ones_like(theta)
-
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='polar', frameon=False)
-line, = ax.plot(theta, r, marker='o', ls='None')
-ax.set_yticklabels([])
-ax.set_axis_off()
-# Setup time stepping
-dt = .01
-global time, theta
-time = 0 
-
-# Define callbacks for the animation
-def init():
-    line.set_data([], [])
-    return line,
-    
-def animate(i):
-  global theta,time
-  theta = theta + dt
-  time = time+dt
-  line.set_data(theta,r)
-  return line,
-ani = animation.FuncAnimation(fig, animate, interval=50, blit=True, init_func=init)
-ani.save('images/rotate2.mp4')
-HTML(ani.to_html5_video())
-
-```
-
-<video src="images/rotate2.mp4" autoplay loop controls></video>
 
 A change of coordinates makes this system a bit easier to reason about.
 Let's boost ourselves into a coordinate system moving at the normal bus speed $v_0$:
