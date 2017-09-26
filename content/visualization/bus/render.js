@@ -40,7 +40,7 @@ function drawRoad(ctx, angle) {
   // Draw the divider line
   ctx.lineWidth = dividerWidth;
   ctx.strokeStyle = '#F1C40F';
-  ctx.setLineDash([20,25]);
+  ctx.setLineDash([30,35]);
   ctx.beginPath();
   ctx.arc(0, 0, R-roadWidth/2, 0,
     2.*Math.PI, anticlockwise=true);

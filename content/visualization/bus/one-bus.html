@@ -9,13 +9,13 @@
 
   <script>
     let ctx = document.getElementById('route').getContext('2d');
-    let angles = initialConditions(7);
+    let angles = initialConditions(1);
 
     setInterval(() => {
       let dydt = (t, y) => {
-        return thetaVelocity(y, 1.0, 1/4/Math.PI);
+        return y.map( () => 1.0 );
       };
-      const dt = .05;
+      const dt = .03;
       let next = integrate(angles, 0, dydt, dt);
       for (let i = 0; i < angles.length; ++i) {
         angles[i] = next[i]

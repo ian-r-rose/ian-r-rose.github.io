@@ -1,0 +1,29 @@
+<html>
+  <head>
+  <script type="text/javascript" src="render.js"></script>
+  <script type="text/javascript" src="time.js"></script>
+  </head>
+  
+  <body style="margin: 0">
+    <canvas id='route' width=500 height=500></canvas>
+
+  <script>
+    let ctx = document.getElementById('route').getContext('2d');
+    let angles = initialConditions(5);
+
+    setInterval(() => {
+      let dydt = (t, y) => {
+        return thetaVelocity(y, 1.0, 0);
+      };
+      const dt = .03;
+      let next = integrate(angles, 0, dydt, dt);
+      for (let i = 0; i < angles.length; ++i) {
+        angles[i] = next[i]
+      }
+      drawScene(ctx, 0, angles);
+    }, 20);
+
+  </script>
+
+  </body>
+</html>
