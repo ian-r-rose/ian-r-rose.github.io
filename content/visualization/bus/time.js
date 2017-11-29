@@ -1,10 +1,3 @@
-
-/**
- * Load in the bus image.
- */
-const bus = new Image();
-bus.src = 'bus.svg';
-
 /**
  * Generate the stable initial conditions for n buses
  * on a loop, which is just equally spaced.

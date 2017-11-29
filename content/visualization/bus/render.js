@@ -1,4 +1,10 @@
 /**
+ * Load in the bus image.
+ */
+const bus = new Image();
+bus.src = 'bus.svg';
+
+/**
  * Given a context, draw a circular road into it.
  * Optionally also give an angle to rotate the road.
  */
@@ -82,4 +88,32 @@ let drawScene = function(ctx, roadAngle, busAngles) {
   for (let angle of busAngles) {
     drawBus(ctx, angle);
   }
+}
+
+/**
+ * Given a canvas context, initial conditions and a a time
+ * derivative function, animate the scene.
+ */
+function animate(ctx, Y, dYdT, dRdT) {
+  let prevTime = undefined;
+  let roadAngle = 0;
+  const update = (time) => {
+    // Compute the timestep, or have it be
+    // zero if we are just starting
+    dt = prevTime ? (time - prevTime)/1000. : 0.0;
+    prevTime = time;
+    // Integrate the positions in time
+    let next = integrate(Y, 0, dYdT, dt);
+    for (let i = 0; i < Y.length; ++i) {
+      Y[i] = next[i]
+    }
+    // Possibly update the road position
+    if (dRdT) {
+      roadAngle += dt * dRdT;
+    }
+    drawScene(ctx, roadAngle, angles);
+    requestAnimationFrame(update);
+  };
+
+  requestAnimationFrame(update);
 }

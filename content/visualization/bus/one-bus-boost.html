@@ -10,18 +10,9 @@
   <script>
     let ctx = document.getElementById('route').getContext('2d');
     let angles = initialConditions(1);
-    let roadAngle = 0;
-
-    setInterval(() => {
-      let dydt = (t, y) => {
-        return [1.0];
-      };
-      const dt = .03;
-      let next = integrate([roadAngle], 0, dydt, dt);
-      roadAngle = next[0];
-      drawScene(ctx, -roadAngle, angles);
-    }, 20);
-
+    const speed = 2.0*Math.PI/3.;
+    let dYdT = (t, y) => y.map( () => 0.0 );
+    animate(ctx, angles, dYdT, -speed);
   </script>
 
   </body>

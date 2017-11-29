@@ -10,19 +10,9 @@
   <script>
     let ctx = document.getElementById('route').getContext('2d');
     let angles = initialConditions(5);
-
-    setInterval(() => {
-      let dydt = (t, y) => {
-        return thetaVelocity(y, 1.0, 0);
-      };
-      const dt = .03;
-      let next = integrate(angles, 0, dydt, dt);
-      for (let i = 0; i < angles.length; ++i) {
-        angles[i] = next[i]
-      }
-      drawScene(ctx, 0, angles);
-    }, 20);
-
+    const speed = 2.0*Math.PI/3.;
+    let dYdT = (t, y) => thetaVelocity(y, speed, 0);
+    animate(ctx, angles, dYdT, 0);
   </script>
 
   </body>
