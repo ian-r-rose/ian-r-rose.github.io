@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <meta charset="utf-8">
+  <head>
+  <script type="text/javascript" src="bus-bunching.js"></script>
+  </head>
+  
+  <body style="margin: 0">
+    <div style="width:100%">
+      <canvas id='route' width=700 height=700 style="margin: auto; display: block"></canvas>
+    </div>
+
+  <script>
+    function getQueryVariable(variable) {
+      const query = window.location.search.substring(1);
+      const vars = query.split('&');
+      for (let i = 0; i < vars.length; i++) {
+        const pair = vars[i].split('=');
+          if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+          }
+      }
+      return undefined;
+    }
+
+    const n = parseInt(getQueryVariable('n')) || 1;
+    const boost = getQueryVariable('boost') === 'true' || false;
+    const gamma = parseFloat(getQueryVariable('gamma')) || 0.0;
+
+    let angles = initialConditions(n);
+    const ctx = document.getElementById('route').getContext('2d');
+    const speed = 2.0*Math.PI/3.;
+    const v0 = boost ? 0.0 : speed;
+    const roadSpeed = boost ? -speed : 0.0;
+    const dYdT = (t, y) => thetaVelocity(y, v0, gamma);
+    animate(ctx, angles, dYdT, roadSpeed);
+  </script>
+
+  </body>
+</html>
