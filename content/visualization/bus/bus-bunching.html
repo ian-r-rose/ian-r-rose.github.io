@@ -3,11 +3,54 @@
   <meta charset="utf-8">
   <head>
   <script type="text/javascript" src="bus-bunching.js"></script>
+  <style>
+  body {
+    width: 100%;
+    margin: 0;
+  }
+  #container {
+    position: relative;
+    width: 700px;
+    margin: auto;
+  }
+  #overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+  #buttons {
+    margin: auto;
+    width: 150px;
+    text-align: center;
+  }
+  #route {
+    margin: auto;
+    display: block;
+  }
+  #container button {
+    font-size: 24pt;
+    margin: 5px;
+    border-style: solid;
+  }
+  .hidden {
+    display: none;
+  }
+  </style>
   </head>
   
   <body style="margin: 0">
-    <div style="width:100%">
-      <canvas id='route' width=700 height=700 style="margin: auto; display: block"></canvas>
+    <div id="container">
+      <canvas id="route" width=700 height=700></canvas>
+      <div id="overlay">
+        <div id="buttons">
+          <button onclick="increase()">+</button>
+          <button onclick="decrease()">-</button>
+          <button onclick="reset()">reset</button>
+        </div>
+      </div>
     </div>
 
   <script>
@@ -22,18 +65,36 @@
       }
       return undefined;
     }
-
-    const n = parseInt(getQueryVariable('n')) || 1;
-    const boost = getQueryVariable('boost') === 'true' || false;
+    let n = parseInt(getQueryVariable('n')) || 1;
+    const boost = getQueryVariable('boost') === 'true';
     const gamma = parseFloat(getQueryVariable('gamma')) || 0.0;
+    const interactive = getQueryVariable('interactive') === 'true';
+    if (!interactive) {
+      document.getElementById('buttons').className = 'hidden';
+    }
 
-    let angles = initialConditions(n);
-    const ctx = document.getElementById('route').getContext('2d');
     const speed = 2.0*Math.PI/3.;
     const v0 = boost ? 0.0 : speed;
     const roadSpeed = boost ? -speed : 0.0;
-    const dYdT = (t, y) => thetaVelocity(y, v0, gamma);
-    animate(ctx, angles, dYdT, roadSpeed);
+
+    function increase() {
+      if (n < 10) { model.angles = initialConditions(++n); }
+    }
+    function decrease() {
+      if (n > 1) { model.angles = initialConditions(--n); }
+    }
+    function reset() {
+      model.angles = initialConditions(n);
+    }
+
+    let model = {
+      angles: initialConditions(n),
+      dYdT: (t, y) => thetaVelocity(y, v0, gamma),
+      roadSpeed
+    }
+
+    const ctx = document.getElementById('route').getContext('2d');
+    animate(ctx, model);
   </script>
 
   </body>

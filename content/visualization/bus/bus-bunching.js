@@ -94,7 +94,7 @@ let drawScene = function(ctx, roadAngle, busAngles) {
  * Given a canvas context, initial conditions and a a time
  * derivative function, animate the scene.
  */
-function animate(ctx, Y, dYdT, dRdT) {
+function animate(ctx, model) {
   let prevTime = undefined;
   let roadAngle = 0;
   const update = (time) => {
@@ -103,15 +103,15 @@ function animate(ctx, Y, dYdT, dRdT) {
     dt = prevTime ? (time - prevTime)/1000. : 0.0;
     prevTime = time;
     // Integrate the positions in time
-    let next = integrate(Y, 0, dYdT, dt);
-    for (let i = 0; i < Y.length; ++i) {
-      Y[i] = next[i]
+    let next = integrate(model.angles, 0, model.dYdT, dt);
+    for (let i = 0; i < model.angles.length; ++i) {
+      model.angles[i] = next[i]
     }
     // Possibly update the road position
-    if (dRdT) {
-      roadAngle += dt * dRdT;
+    if (model.roadSpeed) {
+      roadAngle += dt * model.roadSpeed;
     }
-    drawScene(ctx, roadAngle, angles);
+    drawScene(ctx, roadAngle, model.angles);
     requestAnimationFrame(update);
   };
 
