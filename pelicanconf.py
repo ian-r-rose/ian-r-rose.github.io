@@ -5,16 +5,22 @@ from __future__ import unicode_literals
 AUTHOR = u'Ian Rose'
 SITENAME = u'Blueschisting'
 SITESUBTITLE = u'Thoughts on planetary science, fluid dynamics, transit, and scientific computing'
-SITEURL=''
-PROFILE_IMAGE_URL='/images/ian_rose.jpg'
+SITEURL = ''
+PROFILE_IMAGE_URL = '/images/ian_rose.jpg'
 
 PATH = 'content'
 
 TIMEZONE = 'America/Los_Angeles'
 
 DEFAULT_LANG = u'en'
-STATIC_PATHS=['interactive_earth', 'images', 'agu_2015_talk']
-READERS = {'html':None }
+
+# Traversing static paths for articles can be expensive, so skip them.
+STATICS = ['agu_2015_talk', 'images', 'interactive_earth', 'MathJax']
+STATIC_PATHS = STATICS
+ARTICLE_EXCLUDES = STATICS
+PAGE_EXCLUDES = STATICS
+
+READERS = {'html': None}
 MARKUP = ('md', 'ipynb')
 
 # Feed generation is usually not desired when developing
@@ -28,22 +34,23 @@ ARTICLE_ORDER_BY = 'reversed-date'
 
 DEFAULT_PAGINATION = 10
 INDEX_SAVE_AS = '/blog_index.html'
-MENUITEMS=[
-           ('Ian Rose', '/pages/about.html'),
-           ('blog', '/blog_index.html')
-          ]
+MENUITEMS = [
+    ('Ian Rose', '/pages/about.html'),
+    ('blog', '/blog_index.html')
+]
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
-THEME='pelican-blueschisting'
-PLUGIN_PATHS=['pelican-plugins',]
+THEME = 'pelican-blueschisting'
+PLUGIN_PATHS = ['pelican-plugins',]
 PLUGINS = ['summary', \
            'render_math',\
            'pelican-ipynb.markup',\
            'autopages',
            'liquid_tags']
 IPYNB_USE_META_SUMMARY = True
+MATH_JAX = {'source': '"MathJax/MathJax.js?config=TeX-MML-AM_CHTML"'}
 
 GITHUB_ADDRESS = 'http://github.com/ian-r-rose'
 TWITTER_ADDRESS = 'http://twitter.com/IanRRose'
