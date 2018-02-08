@@ -6,8 +6,6 @@ you know the frustration of waiting for the better part of an hour for a bus to 
 only to see two or three of them roll up in quick succession.
 This phenomenon is a common enough problem that it has a name: "bus bunching".
 
-<object data=/visualization/bus/bus-bunching.html?boost=false&gamma=0&n=1 width=700 height=700></object>
-
 Some reflection on the mechanics of running a bus line suggests a reason for bus bunching.
 A traveling bus constantly picks up and drops off passengers as it makes its way around its route.
 This process takes time (as anyone who has watched a passenger fumble with change upon boarding knows).
@@ -18,13 +16,34 @@ including time-of-day, scheduling, and population density.
 I will hypothesize that a big contributor is the amount of time since the last bus is also a big factor:
 the more time that has passed, the more passengers will have arrived for pickup.
 
-Consider the simplest model for bus speed:
+Let's construct a model for the speed of a bus.
+We will assume that the bus is on a fixed route, on which it travels all day.
+That route may be on any number of different streets, wend through different
+neighborhoods, and generally make very little sense 
+(like my beloved [12 line](http://www.actransit.org/pdf/maps/version_38/12.pdf)).
+However, if it travels back and forth on this same route, we can model it as a loop,
+and its position on that loop can be mapped to an angle on a circle $\theta$.
+We can then identify the speed of the bus with the time derivative of $\theta$.
+
+The simplest model for $d\theta/ dt$ is for the bus to travel at a constant speed $v_0$:
+\begin{equation}
+\frac{\partial \theta}{\partial t} = v_0
+\end{equation}
+Or, expressed in a simulation:
+<object data=/visualization/bus/bus-bunching.html?interactive=false&boost=false&gamma=0&n=1 width=700 height=700></object>
+This model isn't very interesting. There is only a single bus, and it is travelling at a fixed speed,
+so it has no hope of exhibiting the kind of bunching behavior that we want to explain.
+So let's start by adding some more buses:
 \begin{equation}
 \frac{\partial \theta_n}{\partial t} = v_0
 \end{equation}
-This is very boring.
-Now suppose that the speed of a bus is slowed down by a longer headway between it and the bus before it:
-
+In this equation the subscript indicates the $n$th bus on the route,
+so a simulation with five buses would look like:
+<object data=/visualization/bus/bus-bunching.html?interactive=false&boost=false&gamma=0&n=5 width=700 height=700></object>
+Okay, so this is starting to more closely resemble a bus route,
+but the buses still are moving at a constant speed, and have no effect on each other.
+What we need is some way of modeling the fact that buses are slowed down
+by loading and unloading of passengers.
 \begin{equation}
 \frac{\partial \theta_n}{\partial t} = 
  v_0 \left[ 1 - \gamma (\theta_{n+1} - \theta_n) \right]
