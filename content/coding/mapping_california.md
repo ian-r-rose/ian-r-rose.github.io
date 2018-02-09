@@ -1,4 +1,11 @@
-# Mapping California Cities
+Title: Mapping California Cities
+Date: 2018-02-08
+Summary: ![la_cities](/coding/images/la_cities_small.png)
+
+TL;DR: We are making these maps:
+
+![](/coding/images/la_cities_small.png)
+![](/coding/images/bay_area_cities_small.png)
 
 A couple of weeks ago a colleague told me that she was moving out of Oakland, California,
 to a city on the San Francisco peninsula called San Carlos.
@@ -115,7 +122,8 @@ ax.imshow(z_data, cmap='gist_gray', alpha=0.5, origin='upper',
           transform=ccrs.PlateCarree(), extent=srtm_extent)
 plt.savefig('images/socal_elev.png', bbox_inches='tight', dpi=300)
 ```
-![socal_elev](images/socal_elev.png 'Southern California Elevation')
+
+![socal_elev](/coding/images/socal_elev.png)
 
 Okay, so this does indeed show the topography of the LA metro area.
 The San Gabriel Mountains are in the bright spot in the center,
@@ -144,7 +152,7 @@ ax.imshow(intensity, cmap='gist_gray', alpha=0.5, origin='upper',
           transform=ccrs.PlateCarree(), extent=srtm_extent)
 plt.savefig('images/socal_hillshade.png', bbox_inches='tight', dpi=300)
 ```
-![socal_hillshade](images/socal_hillshade.png 'Southern California Topography')
+![socal_hillshade](/coding/images/socal_hillshade.png)
 
 Much better! We can much more easily see the topographic features of the region,
 including the coastal plain, the San Fernando and San Gabriel Valleys, and the San
@@ -176,7 +184,7 @@ ax.imshow(water, cmap=cm, origin='upper', alpha=1.0, extent=srtm_extent, zorder=
 
 plt.savefig('images/socal_hillshade_water.png', bbox_inches='tight', dpi=300)
 ```
-![socal_hillshade](images/socal_hillshade_water.png 'Southern California Topography With Water')
+![socal_hillshade](/coding/images/socal_hillshade_water.png)
 Okay, *this* is something we can work with.
 
 ### Plotting the cities
@@ -201,7 +209,7 @@ for record in reader.records():
                       alpha=0.3, edgecolor='k', lw=0.5, zorder=5)
 plt.savefig('images/socal_cities.png', bbox_inches='tight', dpi=300)
 ```
-![](images/socal_cities.png 'Southern California Cities')
+![](/coding/images/socal_cities.png)
 
 This map isn't terrible, but it is awfully monochromatic.
 We would like to have a map where the cities colored so that
@@ -227,7 +235,7 @@ for record in reader.records():
                       alpha=0.3, edgecolor='k', lw=0.5, zorder=5)
 plt.savefig('images/socal_cities_color.png', bbox_inches='tight', dpi=300)
 ```
-![](images/socal_cities_color.png 'Southern California Cities')
+![](/coding/images/socal_cities_color.png)
 
 This is looking much better! However, if you look closely,
 you can see that there are many places where neighboring cities
@@ -325,7 +333,7 @@ for record in reader.records():
                       alpha=0.3, edgecolor='k', lw=0.5, zorder=5)
 plt.savefig('images/socal_cities_color_2.png', bbox_inches='tight', dpi=300)
 ```
-![](images/socal_cities_color_2.png 'Southern California Cities')
+![](/coding/images/socal_cities_color_2.png)
 Much better!
 
 #### Adding labels
@@ -353,7 +361,8 @@ for record in reader.records():
             ha='center', va='center', transform=ccrs.PlateCarree())
 plt.savefig('images/socal_cities_color_labels.png', bbox_inches='tight', dpi=300)
 ```
-![](images/socal_cities_color_labels.png 'Southern California Cities')
+
+![](/codingimages/socal_cities_color_labels.png)
 This is okay, but in some of the densest areas, the labels are overlapping each other.
 Furthermore, it would be nice for the labels for large, populous cities (like LA proper)
 to have larger labels than tiny towns. We could scale the label sizes with the population
@@ -403,7 +412,7 @@ for record in reader.records():
             ha='center', va='center', transform=ccrs.PlateCarree())
 plt.savefig('images/socal_cities_color_labels_2.png', bbox_inches='tight', dpi=300)
 ```
-![](images/socal_cities_color_labels_2.png 'Southern California Cities')
+![](/coding/images/socal_cities_color_labels_2.png)
 
 ### Putting it all together
 
@@ -446,7 +455,7 @@ cm = LinearSegmentedColormap.from_list('water', [(169/255, 204/255, 227/255),(16
 ax.imshow(water, cmap=cm, origin='upper', alpha=1.0, extent=srtm_extent, zorder=10)
 plt.savefig('images/socal_total.png', bbox_inches='tight', dpi=300)
 ```
-![](images/socal_total.png 'Southern California Cities')
+![](/coding/images/socal_total.png)
 And we are basically done!
 
 ## Conclusions
