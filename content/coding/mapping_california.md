@@ -29,26 +29,28 @@ but still was missing some of the information that I wanted.
 
 So, like any self-respecting geologist, I set out to make the maps I wanted.
 These maps would do the following:
+
 1. Show the incorporated municipalities in the metropolitan area.
 No counties, no parks, no neighborhoods, no unincorporated areas,
 no [census-designated places](https://en.wikipedia.org/wiki/Census-designated_place).
 1. Show some of the physiography of the area. The placement and shape of human settlements
 are controlled by oceans, rivers, hills, and mountains.
 I find it annoying and confusing to look at maps that omit these,
-as the pattern of settlement looks much more random than it actually is.
+as the pattern of settlement winds up looking much more random than it actually is.
 3. Be somewhat nice to look at.
 
-So, let's get started. I'll use the LA area as an example here, but at the end
-I'll add links to high-resolution images of both LA and the Bay Area.
+So, let's get started. I'll use the LA area as an example here, I used
+essentially the same code to generate the high-resolution map of the Bay Area.
 
-## Acquiring the data
+# Acquiring the data
 
 To begin, we need to download the data, both political and physical.
 
-### Political data
+## Political data
 
-The biggest source of open mapping data comes from the [OpenStreetMap](https://www.openstreetmap.org) community. They have a truly staggering
-amount of data that is reasonably up-to-date.
+The biggest source of open mapping data comes from the
+[OpenStreetMap](https://www.openstreetmap.org) community.
+They have a truly staggering amount of data that is reasonably up-to-date.
 
 The downside of this is that the data is so vast that it becomes difficult
 to download and parse. [This](http://extract.bbbike.org/) website was useful
@@ -56,7 +58,7 @@ to me in constructing the request for downloading a subset of the OSM data
 (in this case, a box around the LA metropolitan area).
 
 The data is downloaded in an large binary database, which you then need to
-query for the data you need. There are a number of OSM readers available:
+query for the data you want. There are a number of OSM readers available:
 I chose to use the [Geospatial Data Abstraction Library (GDAL)](http://www.gdal.org/),
 which has the ability to read and transform vector and raster GIS data
 in just about any format.
@@ -69,7 +71,7 @@ ogr2ogr -sql "SELECT * FROM multipolygons WHERE admin_level='8'"\
         -f "ESRI Shapefile" data/la_cities data/los_angeles.osm.pbf
 ```
 This command selects from the database all of the multipolygons
-(your basic GIS shape, in which city borders are included)
+(your basic GIS data structure for shapes, including city borders)
 where the `admin_level` property is set to `'8'`, indicating a municipality.
 The output format is set to [ESRI Shapefile](https://www.esri.com/library/whitepapers/pdfs/shapefile.pdf),
 and the data is placed in the `la_cities` directory.
@@ -83,17 +85,17 @@ ogr2ogr -sql "SELECT * FROM points WHERE population IS NOT NULL and name IS NOT 
         -f "GeoJSON" data/la_cities.geojson data/los_angeles.osm.pbf
 ```
 
-### Physical data
+## Physical data
 
 We will use elevation data from NASA to construct the physiographic part of the map.
 The [Shuttle Radar Topography Mission](https://www2.jpl.nasa.gov/srtm/) generated
 worldwide topography data at 10 meter resolution, which is good enough to make
 a very attractive map. Unfortunately, the data is a bit tricky to download, and
 the NASA website itself has a lot of dead links. [This](http://dwtkns.com/srtm30m/)
-website provided a much better way of downloading the underlying data.
+website provided a much better interface for downloading the same underlying data.
 
-Once we have the data in 1 degree by 1 degree chunks, we can stich them together
-into one GeoTiff using the GDAL command-line tool `gdal_merge.py`:
+The data is, by default, downloadable in 1 degree by 1 degree chunks.
+We can stich them together into one GeoTiff using the GDAL command-line tool `gdal_merge.py`:
 
 ```bash
 gdal_merge.py -o data/socal.tif -of png data/N3?W1??.hgt
@@ -102,27 +104,28 @@ gdal_merge.py -o data/socal.tif -of png data/N3?W1??.hgt
 Once the physical and political data are downloaded and preprocessed,
 we are ready to start making the map!
 
-## Making the map
-
-### Plotting the terrain
+# Plotting the terrain
 
 We can load the raw elevation data into our Python session using GDAL,
-and then plot it using the mapping library cartopy:
+and then plot it using the mapping library [cartopy](http://scitools.org.uk/cartopy/):
 ```python
 import gdal
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 
+# Load the data
 socal = gdal.Open('data/socal.tif')
 z_data = socal.ReadAsArray()
+
+# Plot the data
 ax = plt.axes(projection=ccrs.PlateCarree())
 ax.set_extent([-119.31,-116.9998611, 33.32, 34.74]) # Full LA metro area
 srtm_extent=[-120.0001389, -116.9998611, 32.9998611, 35.0001389]
 ax.imshow(z_data, cmap='gist_gray', alpha=0.5, origin='upper',
           transform=ccrs.PlateCarree(), extent=srtm_extent)
+
 plt.savefig('images/socal_elev.png', bbox_inches='tight', dpi=300)
 ```
-
 ![socal_elev](/coding/images/socal_elev.png)
 
 Okay, so this does indeed show the topography of the LA metro area.
@@ -131,7 +134,7 @@ the Santa Monica Mountains/Hollywood Hills are to the southwest of them.
 The Palos Verdes peninsula is visible to the south of those, and Catalina
 Island can be seen at the bottom.
 
-However, this image doesn't really pop to the eyes. It turns out that
+However, this image doesn't really pop. It turns out that
 visualization of topography works better with what is known as hillshading.
 This takes elevation data and shades it as if a light were shining on the
 slopes (usually with some vertical exaggeration). The resulting lumination
@@ -150,6 +153,7 @@ ax = plt.axes(projection=ccrs.PlateCarree())
 ax.set_extent([-119.31,-116.9998611, 33.32, 34.74]) # Full LA metro area
 ax.imshow(intensity, cmap='gist_gray', alpha=0.5, origin='upper',
           transform=ccrs.PlateCarree(), extent=srtm_extent)
+
 plt.savefig('images/socal_hillshade.png', bbox_inches='tight', dpi=300)
 ```
 ![socal_hillshade](/coding/images/socal_hillshade.png)
@@ -179,7 +183,8 @@ ax.imshow(intensity, cmap='gist_gray', alpha=0.5, origin='upper',
           transform=ccrs.PlateCarree(), extent=srtm_extent)
 
 #Make a pure blue colormap, and plot the water mask
-cm = LinearSegmentedColormap.from_list('water', [(169/255, 204/255, 227/255),(169/255, 204/255, 227/255)])
+cm = LinearSegmentedColormap.from_list('water',
+     [(169/255, 204/255, 227/255),(169/255, 204/255, 227/255)])
 ax.imshow(water, cmap=cm, origin='upper', alpha=1.0, extent=srtm_extent, zorder=10)
 
 plt.savefig('images/socal_hillshade_water.png', bbox_inches='tight', dpi=300)
@@ -187,13 +192,13 @@ plt.savefig('images/socal_hillshade_water.png', bbox_inches='tight', dpi=300)
 ![socal_hillshade](/coding/images/socal_hillshade_water.png)
 Okay, *this* is something we can work with.
 
-### Plotting the cities
+# Plotting the cities
 
-#### Drawing shapes
+## Drawing shapes
 
 Unlike the above, which was raster data, the city boundaries are vector data,
 and require a different pipeline for plotting them.
-We have already output the data as shapefiles above, for which cartopy has a reader.
+We have already preprocessed the data into shapefiles above, for which cartopy has a reader.
 
 We can loop over the entries in the shapefiles and plot them by running the following:
 
@@ -201,12 +206,16 @@ We can loop over the entries in the shapefiles and plot them by running the foll
 from cartopy.io import shapereader
 reader = shapereader.Reader('data/la_cities/multipolygons.shp')
 
+# Set up the map axes
 ax = plt.axes(projection=ccrs.PlateCarree())
+
+# Plot the shapes in the database
 ax.set_extent([-119.31,-116.9998611, 33.32, 34.74]) # Full LA metro area
 for record in reader.records():
     geometry = record.geometry
     ax.add_geometries([geometry], ccrs.PlateCarree(), 
                       alpha=0.3, edgecolor='k', lw=0.5, zorder=5)
+
 plt.savefig('images/socal_cities.png', bbox_inches='tight', dpi=300)
 ```
 ![](/coding/images/socal_cities.png)
@@ -215,7 +224,7 @@ This map isn't terrible, but it is awfully monochromatic.
 We would like to have a map where the cities colored so that
 it is easier to distinguish them.
 
-#### Assigning colors
+## Assigning colors
 
 Let's start by getting a qualitative colormap from the great
 [ColorBrewer](http://colorbrewer2.org/#type=qualitative&scheme=Set1&n=6),
@@ -224,11 +233,15 @@ and cycling throught them to assign colors to the map.
 ```python
 from itertools import cycle
 
+# Create the color cycle
 colors =['#e41a1c', '#377eb8', '#4daf4a', '#984ea3', '#ff7f00', '#ffff33']
 colorcycle = cycle(colors)
 
+# Set up the map axes
 ax = plt.axes(projection=ccrs.PlateCarree())
 ax.set_extent([-119.31,-116.9998611, 33.32, 34.74]) # Full LA metro area
+
+# Plot the city shapes
 for record in reader.records():
     geometry = record.geometry
     ax.add_geometries([geometry], ccrs.PlateCarree(), color=next(colorcycle),
@@ -239,12 +252,14 @@ plt.savefig('images/socal_cities_color.png', bbox_inches='tight', dpi=300)
 
 This is looking much better! However, if you look closely,
 you can see that there are many places where neighboring cities
-have been assigned the same color, which looks kind of funky.
+have been assigned the same color, which looks kind of funky,
+and makes the boundaries between them difficult to spot.
 We would like to set it up so that neighboring cities are not the same color.
 
 As it happens, this problem is a classic one in graph theory, known
 as [graph coloring](https://en.wikipedia.org/wiki/Graph_coloring). One of
-the most famous theorems in mathematics is the [four color theorem],
+the most famous theorems in mathematics is the 
+[four color theorem](https://en.wikipedia.org/wiki/Four_color_theorem),
 which (roughly) states that you can color a map so that no regions have a
 neighbor of the same color using only four colors. This theorem was among
 the first to be proved using a computer.
@@ -253,13 +268,17 @@ For our purposes, we can come up with a map coloring somewhat more easily
 by using more colors than four (six, in our case), and applying a
 [greedy algorithm](https://en.wikipedia.org/wiki/Greedy_algorithm).
 The algorithm goes as follows:
-1. Compute the neighbors of each city by checking whether the intersect.
-2. Sort the cities from most neighbors to least.
+
+1. Compute the neighbors of each city by checking whether their boundaries intersect.
+2. Sort the cities in order of having the most neighbors to the least.
 3. Iterate through the list of cities in order. For each city pick a color that none of its neighbors are currently assigned.
 
 As long as we have enough colors, we should be able to finds a coloring that
 works using this algorithm.
-We can accomplish points one and two by using the `intersects()` function on the shapefile geometries:
+We can check the intersection of two boundaries using the `intersects()`
+function on the shapefile geometries.
+The following function accomplishes that,
+along with sorting the resulting dictionary:
 
 ```python
 from collections import OrderedDict
@@ -285,7 +304,7 @@ def generate_intersections(reader):
                 intersections[name1].append(name2)
     # Once we have the intersections dictionary, sort them from most to least neighbors
     return OrderedDict((name, intersections[name]) for name in \
-                        sorted(intersections, key=lambda k: len(intersections[k]), reverse=True))
+           sorted(intersections, key=lambda k: len(intersections[k]), reverse=True))
 ```
 Once we have the ordered neighbors map from `generate_intersections()`,
 we can apply the greedy color assignment (step 3):
@@ -320,15 +339,23 @@ So the whole calculation for color assignment looks like:
 colors =['#e41a1c', '#377eb8', '#4daf4a', '#984ea3', '#ff7f00', '#ffff33']
 colormap = greedy_coloring(generate_intersections(reader), colors)
 ```
+
 And we can then create recreate the map using these color assignments:
+
 ```python
+# Set up the map axes
 ax = plt.axes(projection=ccrs.PlateCarree())
 ax.set_extent([-119.31,-116.9998611, 33.32, 34.74]) # Full LA metro area
+
+# Plot the city shapes 
 for record in reader.records():
     name = record.attributes['name']
+    geometry = record.geometry
+    # Skip regions with invalid names
     if name == '':
         continue
-    geometry = record.geometry
+
+    # Draw the shapes with their assigned color
     ax.add_geometries([geometry], ccrs.PlateCarree(), color=colormap[name],
                       alpha=0.3, edgecolor='k', lw=0.5, zorder=5)
 plt.savefig('images/socal_cities_color_2.png', bbox_inches='tight', dpi=300)
@@ -336,33 +363,40 @@ plt.savefig('images/socal_cities_color_2.png', bbox_inches='tight', dpi=300)
 ![](/coding/images/socal_cities_color_2.png)
 Much better!
 
-#### Adding labels
+## Adding labels
 
 This map is still not that useful if we want to know the names of any of the cities shown.
 We can naively try to plot them at the center of each city:
 
 ```python
+# Set up the map axes
 ax = plt.axes(projection=ccrs.PlateCarree())
 ax.set_extent([-119.31,-116.9998611, 33.32, 34.74]) # Full LA metro area
 
+# Plot the city shapes
 for record in reader.records():
     name = record.attributes['name']
     geometry = record.geometry
+    # Skip regions with invalid names
     if name == '':
         continue
+
+    # Draw the shapes with their assigned color
     ax.add_geometries([geometry], ccrs.PlateCarree(), 
                       alpha=0.3, color=colormap[name], 
                       edgecolor='k', lw=0.1, zorder=5)
+
     # Get the x and y position of the labels
     x = geometry.centroid.x
     y = geometry.centroid.y
-
+    # Add the label text
     ax.text(x, y, name, fontsize=2, zorder=20, clip_on=True,
             ha='center', va='center', transform=ccrs.PlateCarree())
+
 plt.savefig('images/socal_cities_color_labels.png', bbox_inches='tight', dpi=300)
 ```
+![](/coding/images/socal_cities_color_labels.png)
 
-![](/codingimages/socal_cities_color_labels.png)
 This is okay, but in some of the densest areas, the labels are overlapping each other.
 Furthermore, it would be nice for the labels for large, populous cities (like LA proper)
 to have larger labels than tiny towns. We could scale the label sizes with the population
@@ -371,6 +405,7 @@ four hundred times the size of the label for the City of Industry (population tw
 Instead, we will scale the label size with the log of the population.
 
 First, we can create a dictionary holding the population of each city:
+
 ```python
 import json
 
@@ -386,19 +421,25 @@ for record in city_data['features']:
     population[name] = pop
 ```
 
-Now, we can recreate the label map using the appropriately-scaled labels:
+Now, we can recreate the labeled map using the appropriately-scaled labels:
+
 ```python
+# Set up the axes
 ax = plt.axes(projection=ccrs.PlateCarree())
 ax.set_extent([-119.31,-116.9998611, 33.32, 34.74]) # Full LA metro area
 
+# Draw the city shapes
 for record in reader.records():
     name = record.attributes['name']
     geometry = record.geometry
+
+    # Skip regions with invalid names
     if name == '':
         continue
     ax.add_geometries([geometry], ccrs.PlateCarree(), 
                       alpha=0.3, color=colormap[name], 
                       edgecolor='k', lw=0.1, zorder=5)
+
     # Get the x and y position of the labels
     x = geometry.centroid.x
     y = geometry.centroid.y
@@ -410,11 +451,12 @@ for record in reader.records():
         size = np.log10(10000)/3.
     ax.text(x, y, name, fontsize=size, zorder=20, clip_on=True,
             ha='center', va='center', transform=ccrs.PlateCarree())
+
 plt.savefig('images/socal_cities_color_labels_2.png', bbox_inches='tight', dpi=300)
 ```
 ![](/coding/images/socal_cities_color_labels_2.png)
 
-### Putting it all together
+# Putting it all together
 
 We are now ready to make the final map. We will plot the following, in order:
 1. SRTM hillshade data
@@ -423,6 +465,7 @@ We are now ready to make the final map. We will plot the following, in order:
 1. City labels
 
 ```python
+# Set up the map axes
 ax = plt.axes(projection=ccrs.PlateCarree())
 ax.set_extent([-119.31,-116.9998611, 33.32, 34.74]) # Full LA metro area
 
@@ -430,14 +473,20 @@ ax.set_extent([-119.31,-116.9998611, 33.32, 34.74]) # Full LA metro area
 ax.imshow(intensity, cmap='gist_gray', alpha=0.5, origin='upper',
           transform=ccrs.PlateCarree(), extent=srtm_extent)
 
+# Draw the city shapes
 for record in reader.records():
     name = record.attributes['name']
     geometry = record.geometry
+
+    # Skip regions with invalid names
     if name == '':
         continue
+
+    # Draw the shapes with their assigned color
     ax.add_geometries([geometry], ccrs.PlateCarree(), 
                       alpha=0.3, color=colormap[name], 
                       edgecolor='k', lw=0.1, zorder=5)
+
     # Get the x and y position of the labels
     x = geometry.centroid.x
     y = geometry.centroid.y
@@ -451,14 +500,16 @@ for record in reader.records():
             ha='center', va='center', transform=ccrs.PlateCarree())
 
 #Make a pure blue colormap, and plot the water mask
-cm = LinearSegmentedColormap.from_list('water', [(169/255, 204/255, 227/255),(169/255, 204/255, 227/255)])
+cm = LinearSegmentedColormap.from_list('water',
+     [(169/255, 204/255, 227/255),(169/255, 204/255, 227/255)])
 ax.imshow(water, cmap=cm, origin='upper', alpha=1.0, extent=srtm_extent, zorder=10)
+
 plt.savefig('images/socal_total.png', bbox_inches='tight', dpi=300)
 ```
 ![](/coding/images/socal_total.png)
 And we are basically done!
 
-## Conclusions
+# Conclusions
 
 There are a bunch of more detailed tweaks that can make this map better than
 what I have shown here. There are duplicate entries to remove, labels to move around,
