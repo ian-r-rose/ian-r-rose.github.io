@@ -1,4 +1,4 @@
-Title: Welcome! Here are some things I wrote:
+Title: Welcome! Here are some things I have written about:
 Slug: home
 save_as: index.html
 
@@ -28,7 +28,7 @@ save_as: index.html
     </a>
   </div>
   <div class="card">
-    <a href=/pages/coding.html>
+    <a href=/category/coding.html>
       <div class="card-text">Coding</div>
       <div class="card-image">
         <img src=/images/coding.png />

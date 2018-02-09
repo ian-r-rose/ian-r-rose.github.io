@@ -6,7 +6,7 @@ AUTHOR = u'Ian Rose'
 SITENAME = u'Blueschisting'
 SITESUBTITLE = u'Thoughts on planetary science, fluid dynamics, transit, and scientific computing'
 SITEURL=''
-PROFILE_IMAGE_URL='/images/ian_rose.jpg'
+PROFILE_IMAGE_URL='/images/escape_of_the_core.png'
 
 PATH = 'content'
 
