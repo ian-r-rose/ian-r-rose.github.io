@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+      <title>Blueschisting</title>
+      <link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32" />
+      <link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16" />
+      <link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css' />
+      <link href='//fonts.googleapis.com/css?family=Merriweather:300' rel='stylesheet' type='text/css'/>
+      <link href='//fonts.googleapis.com/css?family=Source+Code+Pro:200,400,700' rel='stylesheet' type='text/css'/>
+      <link rel="stylesheet" type="text/css" href="/theme/css/icons.css"/>
+      <link rel="stylesheet" type="text/css" href="/theme/css/styles.css"/>
+      <meta charset="utf-8" />
+  </head>
+
+  <body id="index">
+    <!-- header -->
+    <header class="siteheader">
+      <!-- site image -->
+        <div class= "siteimage">
+          <a class="nodec" href=/images/escape_of_the_core.png>
+            <img width="200" height="200" src=/images/escape_of_the_core.png>
+          </a>
+        </div>
+
+      <div class = "sitebanner">
+        <h1><a class="sitetitle nodec" href="/index.html">Blueschisting</a></h1>
+        <h3 class ="sitesubtitle">Thoughts on planetary science, fluid dynamics, transit, and scientific computing</h3>
+        <!-- nav -->
+        <nav class="menu">
+          <ul>
+            <!-- menu items-->
+              <li><a class="nodec" href="/pages/about.html">Ian Rose</a></li>
+              <li><a class="nodec" href="/blog_index.html">blog</a></li>
+            <!--pages-->
+            <!-- services icons -->
+              <li><a class="nodec icon-github" href="http://github.com/ian-r-rose"></a></li>
+              <li><a class="nodec icon-twitter" href="http://twitter.com/IanRRose"></a></li>
+          </ul>
+        </nav>
+      </div> <!-- sitebanner -->
+    </header>
+
+    <!-- content -->
+    <div id="main">
+      <div id="content">
+
+<section class="content">
+
+  <h3 class="posttitle">
+    <a class="nodec" href="/mapping-california-cities.html" rel="bookmark" title="Permalink to Mapping California Cities">
+      Mapping California Cities
+    </a>
+  </h3>
+
+  <div class="postinfo">
+    <p class="published" title="2018-02-08T00:00:00-08:00">
+      Thu 08 February 2018
+    </p>
+
+  </div><!-- .postinfo -->
+
+  <div class="article">
+    <p>TL;DR: We are making these maps:</p>
+<p><img alt="" src="/coding/images/la_cities_small.png">
+<img alt="" src="/coding/images/bay_area_cities_small.png"></p>
+<p>A couple of weeks ago a colleague told me that she was moving out of Oakland, California,
+to a city on the San Francisco peninsula called San Carlos.
+I had been a resident of the Bay Area for most of my life,
+and consider myself reasonably geographically aware, and I had never heard of San Carlos.</p>
+<p>That sent me down a rabbit hole of trying to find a political map of the Bay Area
+that showed all of the incorporated municipalities. The Wikipedia article on the
+<a href="https://en.wikipedia.org/wiki/San_Francisco_Bay_Area#Government_and_politics">Bay Area</a>
+claims that there are 101 cities and towns within the nine counties that make up
+the larger metropolitan area. Surprisingly, I was
+<a href="https://www.google.com/search?q=map+of+bay+area+cities&amp;client=ubuntu&amp;hs=BWu&amp;channel=fs&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ved=0ahUKEwjo-ImVhZfZAhVJ0WMKHbw1DoUQ_AUICigB&amp;biw=1472&amp;bih=722">unable</a>
+to come up with a map that actually showed those cities and their boundaries,
+or really anything close to that.</p>
+<p>Meanwhile, I moved to Los Angeles. This is a new metropolitan area to me,
+and I am much less familiar with the patchwork of cities that comprise it.
+Again, I tried to find a map that showed these cities. I had a bit more success
+(<a href="http://www.laalmanac.com/geography/ge30ba.php">this</a> map gets pretty close),
+but still was missing some of the information that I wanted.</p>
+<p>So, like any self-respecting geologist, I set out to make the maps I wanted.
+These maps would do the following:</p>
+<ol>
+<li>Show the incorporated municipalities in the metropolitan area.
+No counties, no parks, no neighborhoods, no unincorporated areas,
+no <a href="https://en.wikipedia.org/wiki/Census-designated_place">census-designated places</a>.</li>
+<li>Show some of the physiography of the area. The placement and shape of human settlements
+are controlled by oceans, rivers, hills, and mountains.
+I find it annoying and confusing to look at maps that omit these,
+as the pattern of settlement winds up looking much more random than it actually is.</li>
+<li>Be somewhat nice to look at.</li>
+</ol>
+<p>So, let's get started. I'll use the LA area as an example here, I used
+essentially the same code to generate the high-resolution map of the Bay Area.</p>
+<h1>Acquiring the data</h1>
+<p>To begin, we need to download the data, both political and physical.</p>
+<h2>Political data</h2>
+<p>The biggest source of open mapping data comes from the
+<a href="https://www.openstreetmap.org">OpenStreetMap</a> community.
+They have a truly staggering amount of data that is reasonably up-to-date.</p>
+<p>The downside of this is that the data is so vast that it becomes difficult
+to download and parse. <a href="http://extract.bbbike.org/">This</a> website was useful
+to me in constructing the request for downloading a subset of the OSM data
+(in this case, a box around the LA metropolitan area).</p>
+<p>The data is downloaded in an large binary database, which you then need to
+query for the data you want. There are a number of OSM readers available:
+I chose to use the <a href="http://www.gdal.org/">Geospatial Data Abstraction Library (GDAL)</a>,
+which has the ability to read and transform vector and raster GIS data
+in just about any format.</p>
+<p>The extract of all Southern California vector data is about 1 GB in size,
+but we can extract the subset we are interested using a SQL-ish command
+line argument for the GDAL program <code>ogr2ogr</code>:</p>
+<div class="highlight"><pre><span></span>ogr2ogr -sql <span class="s2">&quot;SELECT * FROM multipolygons WHERE admin_level=&#39;8&#39;&quot;</span><span class="se">\</span>
+        -f <span class="s2">&quot;ESRI Shapefile&quot;</span> data/la_cities data/los_angeles.osm.pbf
+</pre></div>
+
+
+<p>This command selects from the database all of the multipolygons
+(your basic GIS data structure for shapes, including city borders)
+where the <code>admin_level</code> property is set to <code>'8'</code>, indicating a municipality.
+The output format is set to <a href="https://www.esri.com/library/whitepapers/pdfs/shapefile.pdf">ESRI Shapefile</a>,
+and the data is placed in the <code>la_cities</code> directory.</p>
+<p>We will also have need for the populations of the cities, which is
+located in the same database, but in a different table.
+The following command extracts those populations, and stores them
+in a GeoJSON file <code>la_cities.geojson</code>:</p>
+<div class="highlight"><pre><span></span>ogr2ogr -sql <span class="s2">&quot;SELECT * FROM points WHERE population IS NOT NULL and name IS NOT NULL&quot;</span><span class="se">\</span>
+        -f <span class="s2">&quot;GeoJSON&quot;</span> data/la_cities.geojson data/los_angeles.osm.pbf
+</pre></div>
+
+
+<h2>Physical data</h2>
+<p>We will use elevation data from NASA to construct the physiographic part of the map.
+The <a href="https://www2.jpl.nasa.gov/srtm/">Shuttle Radar Topography Mission</a> generated
+worldwide topography data at 10 meter resolution, which is good enough to make
+a very attractive map. Unfortunately, the data is a bit tricky to download, and
+the NASA website itself has a lot of dead links. <a href="http://dwtkns.com/srtm30m/">This</a>
+website provided a much better interface for downloading the same underlying data.</p>
+<p>The data is, by default, downloadable in 1 degree by 1 degree chunks.
+We can stich them together into one GeoTiff using the GDAL command-line tool <code>gdal_merge.py</code>:</p>
+<div class="highlight"><pre><span></span>gdal_merge.py -o data/socal.tif -of png data/N3?W1??.hgt
+</pre></div>
+
+
+<p>Once the physical and political data are downloaded and preprocessed,
+we are ready to start making the map!</p>
+<h1>Plotting the terrain</h1>
+<p>We can load the raw elevation data into our Python session using GDAL,
+and then plot it using the mapping library <a href="http://scitools.org.uk/cartopy/">cartopy</a>:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gdal</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="kn">as</span> <span class="nn">ccrs</span>
+
+<span class="c1"># Load the data</span>
+<span class="n">socal</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s1">&#39;data/socal.tif&#39;</span><span class="p">)</span>
+<span class="n">z_data</span> <span class="o">=</span> <span class="n">socal</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span>
+
+<span class="c1"># Plot the data</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mf">119.31</span><span class="p">,</span><span class="o">-</span><span class="mf">116.9998611</span><span class="p">,</span> <span class="mf">33.32</span><span class="p">,</span> <span class="mf">34.74</span><span class="p">])</span> <span class="c1"># Full LA metro area</span>
+<span class="n">srtm_extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">120.0001389</span><span class="p">,</span> <span class="o">-</span><span class="mf">116.9998611</span><span class="p">,</span> <span class="mf">32.9998611</span><span class="p">,</span> <span class="mf">35.0001389</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">z_data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gist_gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span>
+          <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">extent</span><span class="o">=</span><span class="n">srtm_extent</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/socal_elev.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="socal_elev" src="/coding/images/socal_elev.png"></p>
+<p>Okay, so this does indeed show the topography of the LA metro area.
+The San Gabriel Mountains are in the bright spot in the center,
+the Santa Monica Mountains/Hollywood Hills are to the southwest of them.
+The Palos Verdes peninsula is visible to the south of those, and Catalina
+Island can be seen at the bottom.</p>
+<p>However, this image doesn't really pop. It turns out that
+visualization of topography works better with what is known as hillshading.
+This takes elevation data and shades it as if a light were shining on the
+slopes (usually with some vertical exaggeration). The resulting lumination
+map makes it much clearer to the human eye.
+Thankfully, matplotlib contains an illumination tool that does the job for us:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LightSource</span>
+
+<span class="c1"># Generate the hillshaded intensity</span>
+<span class="n">ls</span> <span class="o">=</span> <span class="n">LightSource</span><span class="p">()</span>
+<span class="n">intensity</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">hillshade</span><span class="p">(</span><span class="n">z_data</span><span class="p">,</span> <span class="n">vert_exag</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Plot the intensity</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mf">119.31</span><span class="p">,</span><span class="o">-</span><span class="mf">116.9998611</span><span class="p">,</span> <span class="mf">33.32</span><span class="p">,</span> <span class="mf">34.74</span><span class="p">])</span> <span class="c1"># Full LA metro area</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">intensity</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gist_gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span>
+          <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">extent</span><span class="o">=</span><span class="n">srtm_extent</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/socal_hillshade.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="socal_hillshade" src="/coding/images/socal_hillshade.png"></p>
+<p>Much better! We can much more easily see the topographic features of the region,
+including the coastal plain, the San Fernando and San Gabriel Valleys, and the San
+Andreas fault.</p>
+<p>Finally, it would be nice to have the water show up as blue.
+We can do this by making a masked array for where the elevation is zero,
+and color that blue:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy.ma</span> <span class="kn">as</span> <span class="nn">ma</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LinearSegmentedColormap</span>
+
+<span class="c1"># Construct a mask for water</span>
+<span class="n">water</span> <span class="o">=</span> <span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">z_data</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">z_data</span><span class="p">))</span>
+
+<span class="c1"># Set up the axes</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mf">119.31</span><span class="p">,</span><span class="o">-</span><span class="mf">116.9998611</span><span class="p">,</span> <span class="mf">33.32</span><span class="p">,</span> <span class="mf">34.74</span><span class="p">])</span> <span class="c1"># Full LA metro area</span>
+
+<span class="c1"># Plot the hillshade</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">intensity</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gist_gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span>
+          <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">extent</span><span class="o">=</span><span class="n">srtm_extent</span><span class="p">)</span>
+
+<span class="c1">#Make a pure blue colormap, and plot the water mask</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;water&#39;</span><span class="p">,</span>
+     <span class="p">[(</span><span class="mi">169</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span> <span class="mi">204</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span> <span class="mi">227</span><span class="o">/</span><span class="mi">255</span><span class="p">),(</span><span class="mi">169</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span> <span class="mi">204</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span> <span class="mi">227</span><span class="o">/</span><span class="mi">255</span><span class="p">)])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">water</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">srtm_extent</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/socal_hillshade_water.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="socal_hillshade" src="/coding/images/socal_hillshade_water.png">
+Okay, <em>this</em> is something we can work with.</p>
+<h1>Plotting the cities</h1>
+<h2>Drawing shapes</h2>
+<p>Unlike the above, which was raster data, the city boundaries are vector data,
+and require a different pipeline for plotting them.
+We have already preprocessed the data into shapefiles above, for which cartopy has a reader.</p>
+<p>We can loop over the entries in the shapefiles and plot them by running the following:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartopy.io</span> <span class="kn">import</span> <span class="n">shapereader</span>
+<span class="n">reader</span> <span class="o">=</span> <span class="n">shapereader</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="s1">&#39;data/la_cities/multipolygons.shp&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set up the map axes</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="c1"># Plot the shapes in the database</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mf">119.31</span><span class="p">,</span><span class="o">-</span><span class="mf">116.9998611</span><span class="p">,</span> <span class="mf">33.32</span><span class="p">,</span> <span class="mf">34.74</span><span class="p">])</span> <span class="c1"># Full LA metro area</span>
+<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">reader</span><span class="o">.</span><span class="n">records</span><span class="p">():</span>
+    <span class="n">geometry</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">geometry</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_geometries</span><span class="p">([</span><span class="n">geometry</span><span class="p">],</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> 
+                      <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/socal_cities.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="" src="/coding/images/socal_cities.png"></p>
+<p>This map isn't terrible, but it is awfully monochromatic.
+We would like to have a map where the cities colored so that
+it is easier to distinguish them.</p>
+<h2>Assigning colors</h2>
+<p>Let's start by getting a qualitative colormap from the great
+<a href="http://colorbrewer2.org/#type=qualitative&amp;scheme=Set1&amp;n=6">ColorBrewer</a>,
+and cycling throught them to assign colors to the map.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">cycle</span>
+
+<span class="c1"># Create the color cycle</span>
+<span class="n">colors</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;#e41a1c&#39;</span><span class="p">,</span> <span class="s1">&#39;#377eb8&#39;</span><span class="p">,</span> <span class="s1">&#39;#4daf4a&#39;</span><span class="p">,</span> <span class="s1">&#39;#984ea3&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff7f00&#39;</span><span class="p">,</span> <span class="s1">&#39;#ffff33&#39;</span><span class="p">]</span>
+<span class="n">colorcycle</span> <span class="o">=</span> <span class="n">cycle</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+
+<span class="c1"># Set up the map axes</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mf">119.31</span><span class="p">,</span><span class="o">-</span><span class="mf">116.9998611</span><span class="p">,</span> <span class="mf">33.32</span><span class="p">,</span> <span class="mf">34.74</span><span class="p">])</span> <span class="c1"># Full LA metro area</span>
+
+<span class="c1"># Plot the city shapes</span>
+<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">reader</span><span class="o">.</span><span class="n">records</span><span class="p">():</span>
+    <span class="n">geometry</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">geometry</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_geometries</span><span class="p">([</span><span class="n">geometry</span><span class="p">],</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="nb">next</span><span class="p">(</span><span class="n">colorcycle</span><span class="p">),</span>
+                      <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/socal_cities_color.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="" src="/coding/images/socal_cities_color.png"></p>
+<p>This is looking much better! However, if you look closely,
+you can see that there are many places where neighboring cities
+have been assigned the same color, which looks kind of funky,
+and makes the boundaries between them difficult to spot.
+We would like to set it up so that neighboring cities are not the same color.</p>
+<p>As it happens, this problem is a classic one in graph theory, known
+as <a href="https://en.wikipedia.org/wiki/Graph_coloring">graph coloring</a>. One of
+the most famous theorems in mathematics is the 
+<a href="https://en.wikipedia.org/wiki/Four_color_theorem">four color theorem</a>,
+which (roughly) states that you can color a map so that no regions have a
+neighbor of the same color using only four colors. This theorem was among
+the first to be proved using a computer.</p>
+<p>For our purposes, we can come up with a map coloring somewhat more easily
+by using more colors than four (six, in our case), and applying a
+<a href="https://en.wikipedia.org/wiki/Greedy_algorithm">greedy algorithm</a>.
+The algorithm goes as follows:</p>
+<ol>
+<li>Compute the neighbors of each city by checking whether their boundaries intersect.</li>
+<li>Sort the cities in order of having the most neighbors to the least.</li>
+<li>Iterate through the list of cities in order. For each city pick a color that none of its neighbors are currently assigned.</li>
+</ol>
+<p>As long as we have enough colors, we should be able to finds a coloring that
+works using this algorithm.
+We can check the intersection of two boundaries using the <code>intersects()</code>
+function on the shapefile geometries.
+The following function accomplishes that,
+along with sorting the resulting dictionary:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+
+<span class="k">def</span> <span class="nf">generate_intersections</span><span class="p">(</span><span class="n">reader</span><span class="p">):</span>
+    <span class="c1"># Make a dictionary to store the neighbors list of each city</span>
+    <span class="n">intersections</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="c1"># Iterate over the cities</span>
+    <span class="k">for</span> <span class="n">city1</span> <span class="ow">in</span> <span class="n">reader</span><span class="o">.</span><span class="n">records</span><span class="p">():</span>
+        <span class="n">name1</span> <span class="o">=</span> <span class="n">city1</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+        <span class="c1"># Break early if there is an invalid or duplicate name</span>
+        <span class="k">if</span> <span class="n">name1</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span> <span class="ow">or</span> <span class="n">name1</span> <span class="ow">in</span> <span class="n">intersections</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">intersections</span><span class="p">[</span><span class="n">name1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># Check if each other city intersects the current one</span>
+        <span class="k">for</span> <span class="n">city2</span> <span class="ow">in</span> <span class="n">reader</span><span class="o">.</span><span class="n">records</span><span class="p">():</span>
+            <span class="n">name2</span> <span class="o">=</span> <span class="n">city2</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+            <span class="c1"># Break early if there is an invalid or duplicate name</span>
+            <span class="k">if</span> <span class="n">name2</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span> <span class="ow">or</span> <span class="n">name1</span> <span class="o">==</span> <span class="n">name2</span> <span class="ow">or</span> <span class="n">name2</span> <span class="ow">in</span> <span class="n">intersections</span><span class="p">[</span><span class="n">name1</span><span class="p">]:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">city1</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">city2</span><span class="o">.</span><span class="n">geometry</span><span class="p">):</span>
+                <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{name1} intersects {name2}&#39;</span><span class="p">)</span>
+                <span class="n">intersections</span><span class="p">[</span><span class="n">name1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name2</span><span class="p">)</span>
+    <span class="c1"># Once we have the intersections dictionary, sort them from most to least neighbors</span>
+    <span class="k">return</span> <span class="n">OrderedDict</span><span class="p">((</span><span class="n">name</span><span class="p">,</span> <span class="n">intersections</span><span class="p">[</span><span class="n">name</span><span class="p">])</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> \
+           <span class="nb">sorted</span><span class="p">(</span><span class="n">intersections</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">k</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">intersections</span><span class="p">[</span><span class="n">k</span><span class="p">]),</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Once we have the ordered neighbors map from <code>generate_intersections()</code>,
+we can apply the greedy color assignment (step 3):</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">greedy_coloring</span><span class="p">(</span><span class="n">neighbors_map</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+    <span class="c1"># Make a dictionary for storing the city colors</span>
+    <span class="n">colormap</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="c1"># For this each city, try to find a color</span>
+    <span class="k">for</span> <span class="n">city</span><span class="p">,</span> <span class="n">neighbors</span> <span class="ow">in</span> <span class="n">neighbors_map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="c1"># loop over the colors</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
+            <span class="c1"># Check if that color has not been used by one of the neighbors</span>
+            <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">colormap</span> <span class="ow">and</span> <span class="n">colormap</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">==</span> <span class="n">color</span><span class="p">:</span>
+                    <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># We found a color for the city that has not been used by a neighbor!</span>
+                <span class="n">colormap</span><span class="p">[</span><span class="n">city</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
+                <span class="k">break</span>
+        <span class="k">if</span> <span class="n">city</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">colormap</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Could not find color for {city}&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">colormap</span>
+</pre></div>
+
+
+<p>So the whole calculation for color assignment looks like:</p>
+<div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;#e41a1c&#39;</span><span class="p">,</span> <span class="s1">&#39;#377eb8&#39;</span><span class="p">,</span> <span class="s1">&#39;#4daf4a&#39;</span><span class="p">,</span> <span class="s1">&#39;#984ea3&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff7f00&#39;</span><span class="p">,</span> <span class="s1">&#39;#ffff33&#39;</span><span class="p">]</span>
+<span class="n">colormap</span> <span class="o">=</span> <span class="n">greedy_coloring</span><span class="p">(</span><span class="n">generate_intersections</span><span class="p">(</span><span class="n">reader</span><span class="p">),</span> <span class="n">colors</span><span class="p">)</span>
+</pre></div>
+
+
+<p>And we can then create recreate the map using these color assignments:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Set up the map axes</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mf">119.31</span><span class="p">,</span><span class="o">-</span><span class="mf">116.9998611</span><span class="p">,</span> <span class="mf">33.32</span><span class="p">,</span> <span class="mf">34.74</span><span class="p">])</span> <span class="c1"># Full LA metro area</span>
+
+<span class="c1"># Plot the city shapes </span>
+<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">reader</span><span class="o">.</span><span class="n">records</span><span class="p">():</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+    <span class="n">geometry</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">geometry</span>
+    <span class="c1"># Skip regions with invalid names</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="k">continue</span>
+
+    <span class="c1"># Draw the shapes with their assigned color</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_geometries</span><span class="p">([</span><span class="n">geometry</span><span class="p">],</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="n">colormap</span><span class="p">[</span><span class="n">name</span><span class="p">],</span>
+                      <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/socal_cities_color_2.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="" src="/coding/images/socal_cities_color_2.png">
+Much better!</p>
+<h2>Adding labels</h2>
+<p>This map is still not that useful if we want to know the names of any of the cities shown.
+We can naively try to plot them at the center of each city:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Set up the map axes</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mf">119.31</span><span class="p">,</span><span class="o">-</span><span class="mf">116.9998611</span><span class="p">,</span> <span class="mf">33.32</span><span class="p">,</span> <span class="mf">34.74</span><span class="p">])</span> <span class="c1"># Full LA metro area</span>
+
+<span class="c1"># Plot the city shapes</span>
+<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">reader</span><span class="o">.</span><span class="n">records</span><span class="p">():</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+    <span class="n">geometry</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">geometry</span>
+    <span class="c1"># Skip regions with invalid names</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="k">continue</span>
+
+    <span class="c1"># Draw the shapes with their assigned color</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_geometries</span><span class="p">([</span><span class="n">geometry</span><span class="p">],</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> 
+                      <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colormap</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> 
+                      <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="c1"># Get the x and y position of the labels</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">x</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">y</span>
+    <span class="c1"># Add the label text</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">clip_on</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+            <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/socal_cities_color_labels.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="" src="/coding/images/socal_cities_color_labels.png"></p>
+<p>This is okay, but in some of the densest areas, the labels are overlapping each other.
+Furthermore, it would be nice for the labels for large, populous cities (like LA proper)
+to have larger labels than tiny towns. We could scale the label sizes with the population
+size, but then the label for Los Angeles  (population several million) would be about
+four hundred times the size of the label for the City of Industry (population two-hundred).
+Instead, we will scale the label size with the log of the population.</p>
+<p>First, we can create a dictionary holding the population of each city:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/la_cities.geojson&#39;</span><span class="p">)</span>
+<span class="n">city_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">population</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">city_data</span><span class="p">[</span><span class="s1">&#39;features&#39;</span><span class="p">]:</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+    <span class="c1"># Some populations contain commas, so strip those</span>
+    <span class="n">pop</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="s1">&#39;population&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">population</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="n">population</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">pop</span>
+</pre></div>
+
+
+<p>Now, we can recreate the labeled map using the appropriately-scaled labels:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Set up the axes</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mf">119.31</span><span class="p">,</span><span class="o">-</span><span class="mf">116.9998611</span><span class="p">,</span> <span class="mf">33.32</span><span class="p">,</span> <span class="mf">34.74</span><span class="p">])</span> <span class="c1"># Full LA metro area</span>
+
+<span class="c1"># Draw the city shapes</span>
+<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">reader</span><span class="o">.</span><span class="n">records</span><span class="p">():</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+    <span class="n">geometry</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">geometry</span>
+
+    <span class="c1"># Skip regions with invalid names</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_geometries</span><span class="p">([</span><span class="n">geometry</span><span class="p">],</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> 
+                      <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colormap</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> 
+                      <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="c1"># Get the x and y position of the labels</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">x</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">y</span>
+    <span class="c1"># If the population is in the population map (as it is for most cities),</span>
+    <span class="c1"># assign the font size to the log of the population</span>
+    <span class="k">if</span> <span class="n">population</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">population</span><span class="p">[</span><span class="n">name</span><span class="p">])</span><span class="o">/</span><span class="mf">3.</span> <span class="k">if</span> <span class="n">population</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span><span class="o">/</span><span class="mf">3.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">clip_on</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+            <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/socal_cities_color_labels_2.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="" src="/coding/images/socal_cities_color_labels_2.png"></p>
+<h1>Putting it all together</h1>
+<p>We are now ready to make the final map. We will plot the following, in order:
+1. SRTM hillshade data
+1. City polygons
+1. Water mask
+1. City labels</p>
+<div class="highlight"><pre><span></span><span class="c1"># Set up the map axes</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mf">119.31</span><span class="p">,</span><span class="o">-</span><span class="mf">116.9998611</span><span class="p">,</span> <span class="mf">33.32</span><span class="p">,</span> <span class="mf">34.74</span><span class="p">])</span> <span class="c1"># Full LA metro area</span>
+
+<span class="c1"># Plot the hillshade</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">intensity</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gist_gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span>
+          <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">extent</span><span class="o">=</span><span class="n">srtm_extent</span><span class="p">)</span>
+
+<span class="c1"># Draw the city shapes</span>
+<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">reader</span><span class="o">.</span><span class="n">records</span><span class="p">():</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+    <span class="n">geometry</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">geometry</span>
+
+    <span class="c1"># Skip regions with invalid names</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="k">continue</span>
+
+    <span class="c1"># Draw the shapes with their assigned color</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_geometries</span><span class="p">([</span><span class="n">geometry</span><span class="p">],</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> 
+                      <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colormap</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> 
+                      <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="c1"># Get the x and y position of the labels</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">x</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">y</span>
+    <span class="c1"># If the population is in the population map (as it is for most cities),</span>
+    <span class="c1"># assign the font size to the log of the population</span>
+    <span class="k">if</span> <span class="n">population</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">population</span><span class="p">[</span><span class="n">name</span><span class="p">])</span><span class="o">/</span><span class="mf">3.</span> <span class="k">if</span> <span class="n">population</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span><span class="o">/</span><span class="mf">3.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">clip_on</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+            <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="c1">#Make a pure blue colormap, and plot the water mask</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;water&#39;</span><span class="p">,</span>
+     <span class="p">[(</span><span class="mi">169</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span> <span class="mi">204</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span> <span class="mi">227</span><span class="o">/</span><span class="mi">255</span><span class="p">),(</span><span class="mi">169</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span> <span class="mi">204</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span> <span class="mi">227</span><span class="o">/</span><span class="mi">255</span><span class="p">)])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">water</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">srtm_extent</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/socal_total.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="" src="/coding/images/socal_total.png">
+And we are basically done!</p>
+<h1>Conclusions</h1>
+<p>There are a bunch of more detailed tweaks that can make this map better than
+what I have shown here. There are duplicate entries to remove, labels to move around,
+and colors to shift. The maps shown at the top of this post have those tweaks incorporated.</p>
+<p>I'll close with a few scattered thoughts about the process of making this map:</p>
+<p>First, the data provided by OpenStreetMap is pretty great. It is free, downloadable,
+and has a <em>huge</em> amount of information. The downside is that the databases you download
+from OSM are poorly documented, and the data often needs to be substantially cleaned up.
+There are a lot of duplicate, contradictory, or nonsense entries. Some things are misclassified.</p>
+<p>Second, the quantity and quality of data downloadable from USGS or NASA is awesome.
+However, as above, the web interfaces for locating and downloading it are confusing
+and poorly documented.</p>
+<p>Finally, GDAL is indispensable for any kind of GIS processing. It understands just about
+any format you can throw at it, and is <em>really</em> fast. Unfortunately, it also has
+confusing and incomplete documentation (are you sensing a theme here?).</p>
+<p>Feel free to let me know if you find this useful!</p>
+  </div><!-- .content -->
+
+</section>
+
+      </div>
+     </div>
+
+    <!-- footer -->
+    <footer>
+      <p>
+        Copyright © Ian Rose.
+        Generated by <a href= "http://docs.getpelican.com/">Pelican</a> with
+        <a href="http://github.com/ian-r-rose/pelican-blueschisting">blueschisting</a> theme.
+      </p>
+    </footer>
+  </body>
+</html>
