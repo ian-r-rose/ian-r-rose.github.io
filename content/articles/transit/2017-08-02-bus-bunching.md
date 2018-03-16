@@ -47,10 +47,33 @@ by loading and unloading of passengers.
 \begin{equation}
 \frac{\partial \theta_n}{\partial t} = 
  v_0 \left[ 1 - \gamma (\theta_{n+1} - \theta_n) \right]
+\label{evolution}
 \end{equation}
 
+This set of ordinary differential equations will be the primary 
+evolution equation for our system of buses.
+We will analyze it by answering the following two questions.
+
+1. Is there an equilibrium solution to these equations?
+That is to say, is there a solution that does not evolve in time?
+
+2. If there is an equilibrium solution, is it stable? A stable solution,
+when perturbed, will return to the equilibrium. An unstable one will get further and further.
+
+Strictly speaking, an equilibrium solution cannot exist for the system of equations as described:
+as long as the buses have a nonzero velocity, their positions will evolve in time.
+However, with a slight reframing of the question it makes sense to talk about an equilibrium:
+is there a configuration and velocity for which the velocity is constant,
+and that the distance *between* the buses is not changing?
+That is to say, can we find a solution where the buses are traveling steadily,
+getting no closer to or further from the others?
+
+It seems intuitive that an equilibrium solution, if it exists,
+should have the buses equally spaced, so let's start looking for a solution of that form.
+Let's further guess that the equilibrium velocity is the base bus speed $v_0$.
+
 A change of coordinates makes this system a bit easier to reason about.
-Let's boost ourselves into a coordinate system moving at the normal bus speed $v_0$:
+Let's boost ourselves into moving a coordinate system $\psi$, defined by:
 \begin{equation}
 \psi_n \equiv \theta_n - v_0 t
 \end{equation}
@@ -63,7 +86,8 @@ From this we can also get the relations
 \theta_n =
 \psi_n + v_0 t
 \end{equation}
-Substituting this into __ , we find
+Substituting these into equation \eqref{evolution},
+we get the governing equations in terms of $\psi_n$:
 \begin{equation}
 \frac{\partial \psi_n}{\partial t} + v_0 = 
 v_0 \left[ 1 - \gamma (\psi_{n+1} - \psi_n) \right]
@@ -72,45 +96,52 @@ v_0 \left[ 1 - \gamma (\psi_{n+1} - \psi_n) \right]
 \frac{\partial \psi_n}{\partial t} = 
 v_0 \gamma (\psi_{n} - \psi_{n+1})
 \end{equation}
-This component-wise equation can be grouped into a single vector equation:
-\begin{equation}
-\frac{\partial \Theta}{\partial t} = 
-\mathbf{A}\Theta
-\end{equation}
-where
-\begin{equation}
-\mathbf{A} = 
-v_0 \gamma 
-\begin{bmatrix}
-1 & -1 & 0 & 0 & \ldots & 0 \\
-0 & 1 & -1 & 0 & \ldots & 0 \\
-0 & 0 & 1 & -1 & \ldots & 0 \\
-\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
--1 & 0 & 0 & 0 & \ldots & 1\\
-\end{bmatrix}
-\end{equation}
-We are interested in the eigenvalues of this matrix.
-We can calculate the eigenvalues by forming the characteristic equation:
 
+When the buses are equally spaced around the loop, then the distance
+between them is the whole loop length divided between the number of buses, or
+$\psi_{n+1} - \psi_n = \frac{2 \pi}{N}$,
+which makes the governing equations in the $\psi$ coordinates
 \begin{equation}
-det(\mathbf{A}) = 
-(v_0 \gamma)^n 
-\begin{vmatrix}
-1-\lambda & -1 & 0 & 0 & \ldots & 0 \\
-0 & 1-\lambda & -1 & 0 & \ldots & 0 \\
-0 & 0 & 1-\lambda & -1 & \ldots & 0 \\
-\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
--1 & 0 & 0 & 0 & \ldots & 1-\lambda\\
-\end{vmatrix}
+\frac{\partial \psi_n}{\partial t} = 
+\frac{ 2 \pi v_0 \gamma }{N}
+\end{equation}
+-Unless the interaction term $\gamma$ is zero, the time evolution of $\psi_n$ is nonzero,
+making this configuration a non-equilibrium solution to the system.
+
+This should make sense, as we defined $v_0$ to be the speed of the bus
+in the absense of any delays due to loading and unloading of passengers.
+As soon as we include that delay, the buses will be slower than that.
+Instead, let's construct a speed for buses that takes into account the
+delay due to passengers.
+
+Again, presume that the buses are equally spaced,
+such that the distance between them is $2 \pi/N$.
+Then, given the evolution equation \eqref{evolution}, we can calculate the speed $v_e$:
+\begin{equation}
+v_e = \frac{\partial \theta_n}{\partial_t} = v_0 \left[ 1 - \frac{2 \pi \gamma}{N} \right]
+\end{equation}
+Let's boost into a *new* coordinate system $\phi_n$, defined by
+\begin{equation}
+\phi_n \equiv \theta_n - v_e t
 \end{equation}
 
-By applying the recursive determinant algorithm, we find
+Substituting this into equation \eqref{evolution}, we find
 \begin{equation}
-det(\mathbf{A}) = 
-(v_0 \gamma)^n \left[ (1-\lambda)^n + (-1)(-1)^{n+1}(-1)^{n-1} \right] = 0
+\frac{\partial \phi_n}{\partial t} + v_e =
+v_0 \left[ 1 - \gamma \left(\phi_{n+1} - \phi_n \right) \right]
 \end{equation}
-
+Again, when the buses are equally spaced, $\phi_{n+1} - \phi_n = 2 \pi/N$:
 \begin{equation}
-(1-\lambda)^n = 1
+\frac{\partial \phi_n}{\partial t} + v_e =
+v_0 \left[ 1 - \frac{2 \pi \gamma}{N}  \right] = v_e
 \end{equation}
+Subtracting $v_e$ from both sides, we get
+\begin{equation}
+\frac{\partial \phi_n}{\partial t} = 0
+\end{equation}
+which is exactly what we wanted! In the $v_e$ coordinate system,
+equally-spaced buses are all in equilibrium.
 
+In the next installment of this two-part series,
+we are going to answer the second queation asked above:
+is this equilibrium solution stable? (Spoiler: it's not.)
