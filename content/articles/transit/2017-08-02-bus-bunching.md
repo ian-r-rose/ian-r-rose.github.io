@@ -30,7 +30,7 @@ The simplest model for $d\theta/ dt$ is for the bus to travel at a constant spee
 \frac{\partial \theta}{\partial t} = v_0
 \end{equation}
 Or, expressed in a simulation:
-<object data=/visualization/bus/bus-bunching.html?interactive=false&boost=false&gamma=0&n=1 width=700 height=700></object>
+<object data=/visualization/bus/bus-bunching.html?interactive=false&boost=false&equilibrium=true&gamma=0&n=1 width=700 height=700></object>
 This model isn't very interesting. There is only a single bus, and it is travelling at a fixed speed,
 so it has no hope of exhibiting the kind of bunching behavior that we want to explain.
 So let's start by adding some more buses:
@@ -39,7 +39,7 @@ So let's start by adding some more buses:
 \end{equation}
 In this equation the subscript indicates the $n$th bus on the route,
 so a simulation with five buses would look like:
-<object data=/visualization/bus/bus-bunching.html?interactive=false&boost=false&gamma=0&n=5 width=700 height=700></object>
+<object data=/visualization/bus/bus-bunching.html?interactive=false&equilibrium=true&boost=false&gamma=0&n=5 width=700 height=700></object>
 Okay, so this is starting to more closely resemble a bus route,
 but the buses still are moving at a constant speed, and have no effect on each other.
 What we need is some way of modeling the fact that buses are slowed down
@@ -145,3 +145,4 @@ equally-spaced buses are all in equilibrium.
 In the next installment of this two-part series,
 we are going to answer the second queation asked above:
 is this equilibrium solution stable? (Spoiler: it's not.)
+<object data=/visualization/bus/bus-bunching.html?interactive=true&equilibrium=true&boost=false&gamma=0.15&n=5 width=700 height=700></object>

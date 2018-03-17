@@ -71,6 +71,7 @@
     }
     let n = parseInt(getQueryVariable('n')) || 1;
     const boost = getQueryVariable('boost') === 'true';
+    const equilibrium = getQueryVariable('equilibrium') === 'true';
     const gamma = parseFloat(getQueryVariable('gamma')) || 0.0;
     const interactive = getQueryVariable('interactive') === 'true';
     if (!interactive) {
@@ -80,6 +81,18 @@
     const speed = 2.0*Math.PI/3.;
     const v0 = boost ? 0.0 : speed;
     const roadSpeed = boost ? -speed : 0.0;
+    let dYdT = undefined;
+    if (equilibrium) {
+      dYdT = (t, y) => equilibriumThetaVelocity(y, v0, gamma);
+    } else {
+      dYdT = (t, y) => thetaVelocity(y, v0, gamma);
+    }
+
+    let model = {
+      angles: initialConditions(n),
+      dYdT,
+      roadSpeed
+    }
 
     function increase() {
       if (n < 10) { model.angles = initialConditions(++n); }
@@ -89,12 +102,6 @@
     }
     function reset() {
       model.angles = initialConditions(n);
-    }
-
-    let model = {
-      angles: initialConditions(n),
-      dYdT: (t, y) => thetaVelocity(y, v0, gamma),
-      roadSpeed
     }
 
     const ctx = document.getElementById('route').getContext('2d');

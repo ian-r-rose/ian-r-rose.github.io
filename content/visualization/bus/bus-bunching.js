@@ -132,6 +132,14 @@ function initialConditions(n) {
 
 
 /**
+ * Given positions, v0, and gamma, return the equilibrium
+ * velocities of the buses.
+ */
+function equilibriumThetaVelocity( thetas, v0, gamma ) {
+  return thetas.map(t => v0 * (1. - 2 * Math.PI * gamma / thetas.length));
+}
+
+/**
  * Given positions, v0, and gamma,
  * return the angular velocity of
  * buses.
