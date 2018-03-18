@@ -1,5 +1,5 @@
 Title: Introduction to dimensional analysis
-Summary: ![apple_plus_orange](/images/apple_plus_orange.jpeg)
+Summary: ![apple_plus_orange](/articles/dimensional_analysis/images/apple_plus_orange.jpeg)
 
 This is the beginning of what I intend to be a multi-part series on dimensional analysis.
 The goal for this post is to set the stage for why dimensional analysis is a powerful tool,
@@ -47,7 +47,7 @@ but it means that we can, for instance, define a [standard kilogram](https://en.
 and then measure the mass of any item by determining how many of that standard have 
 an equal mass to the item.
 
-![kilogram](images/standard_kilogram.jpg "The standard kilogram")
+![kilogram](articles/dimensional_analysis/images/standard_kilogram.jpg "The standard kilogram")
 
 As another example, the initial definition of the meter had it as one ten-millionth 
 of the distance from the equator to the north pole. With that definition, anybody could
@@ -73,7 +73,7 @@ most of which I am not really qualified to address, so I will proceed with an ex
 A common example given for why the units in a physical equation must match is something 
 along the lines of "you can't add apples and oranges!" 
 
-![apple_plus_orange](images/apple_plus_orange.jpeg "Was this worth my time? Probably not...")
+![apple_plus_orange](articles/dimensional_analysis/images/apple_plus_orange.jpeg "Was this worth my time? Probably not...")
 
 This is kind of an unfortunate argument, since there are conceivably situations 
 where it makes perfect sense to add apples and oranges. What if I am trying to 
@@ -188,4 +188,4 @@ And hopefully at the end we will be able to go back to the above Wikipedia quote
 
 In my [next post](nondimensional-numbers-and-the-buckingham-pi-theorem.html),
 I will be taking a qualitative look at the content of the Buckingham Pi theorem.
-![new-cuayma](images/new-cuyama.jpg "My kind of place")
+![new-cuayma](articles/dimensional_analysis/images/new-cuyama.jpg "My kind of place")

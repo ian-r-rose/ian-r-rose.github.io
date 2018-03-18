@@ -6,6 +6,8 @@ you know the frustration of waiting for the better part of an hour for a bus to 
 only to see two or three of them roll up in quick succession.
 This phenomenon is a common enough problem that it has a name: "bus bunching".
 
+![18-bunch2](articles/transit/images/18-bunch2.jpg "Bunching in the 18 bus")
+
 Some reflection on the mechanics of running a bus line suggests a reason for bus bunching.
 A traveling bus constantly picks up and drops off passengers as it makes its way around its route.
 This process takes time (as anyone who has watched a passenger fumble with change upon boarding knows).

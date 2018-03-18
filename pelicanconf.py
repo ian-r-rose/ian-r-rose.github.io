@@ -16,7 +16,9 @@ DEFAULT_LANG = u'en'
 ARTICLE_PATHS=['articles']
 STATIC_PATHS=[
         'interactive_earth',
-        'coding/images',
+        'articles/coding/images',
+        'articles/dimensional_analysis/images',
+        'articles/transit/images',
         'images',
         'agu_2015_talk',
         'visualization'

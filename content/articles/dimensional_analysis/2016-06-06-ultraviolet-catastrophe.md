@@ -1,5 +1,5 @@
 Title: Ultriviolet catastrophe and the beginning of quantum mechanics
-Summary: ![sun](/images/sun.jpg)
+Summary: ![sun](/articles/dimensional_analysis/images/sun.jpg)
 
 We just finished a very long explication of the fundamentals of dimensional
 analysis and the Buckingham Pi theorem 
@@ -33,7 +33,7 @@ warmth and brightness of a sunny day.
 Scientists further observed that hot bodies such as the sun did 
 not radiate light at a single frequency but rather as a spectrum:
 
-![solar spectrum](images/solar_spectrum.svg "Wavelength (rather than frequency) vs radiance of the sun. (image from Global Warming Art)")
+![solar spectrum](/articles/dimensional_analysis/images/solar_spectrum.svg "Wavelength (rather than frequency) vs radiance of the sun. (image from Global Warming Art)")
 
 Furthermore, the shape of that spectrum and its peak
 frequency seemed to be a function of the body's temperature. 
@@ -63,7 +63,7 @@ of the light given off by the sun and answer two fundamental questions:
 1. How hot is the sun?
 2. How much energy does the sun radiate to space?
 
-![sun](images/sun.jpg "WHAT IS MY TEMPERATURE (NASA/JPL)")
+![sun](/articles/dimensional_analysis/images/sun.jpg "WHAT IS MY TEMPERATURE (NASA/JPL)")
 
 Okay, so with that prelude, let's take a crack at the dimensional analysis of this problem.
 The observation that we are trying to explain is the radiation of 
@@ -165,7 +165,7 @@ E \sim \int_0^\infty \frac{k_B T \nu^2}{c^2} d\nu
 
 Here is a plot of that integral:
 
-![ultraviolet](images/ultraviolet_catastrophe.png "A catastrophe indeed")
+![ultraviolet](/articles/dimensional_analysis/images/ultraviolet_catastrophe.png "A catastrophe indeed")
 
 Uh oh. There is a problem. There is no way that this integral can possibly converge
 on a finite answer, since the $\nu^2$ factor must blow up as we integrate to infinity.
@@ -186,7 +186,7 @@ extra physics, which will, in turn, enrich the parameter space and provide us an
 
 Enter [Max Planck](https://en.wikipedia.org/wiki/Max_Planck).
 
-![planck](images/planck.gif "Hey there, good looking")
+![planck](/articles/dimensional_analysis/images/planck.gif "Hey there, good looking")
 
 Planck was a German physicist working on on this problem around the turn of the twentieth century. 
 In an effort to better match the observations, 
@@ -262,7 +262,7 @@ Here is the plot of what is now known as Planck's law, relating frequency to spe
 As you can see, the shape of the curve looks much more like that of the observed solar spectrum
 and the area underneath the curve does not blow up:
 
-![planck_law](images/planck_law.png "Catastrophe averted")
+![planck_law](/articles/dimensional_analysis/images/planck_law.png "Catastrophe averted")
 
 We can now safely fit the solar spectrum to Planck's law to determine the temperature
 of the sun, all without actually going there. And though we used the sun as our primary

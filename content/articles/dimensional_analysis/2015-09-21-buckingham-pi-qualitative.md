@@ -1,5 +1,5 @@
 Title: Nondimensional numbers and the Buckingham Pi theorem
-Summary: ![kanagawa](/images/kanagawa.jpg)
+Summary: ![kanagawa](/articles/dimensional_analysis/images/kanagawa.jpg)
 
 In my [previous post](introduction-to-dimensional-analysis.html) I 
 tried to establish the context for nondimensional analysis, which 
@@ -35,7 +35,7 @@ and the plates are separated by a distance $D \; (\mathrm{m})$. The top plate is
 being moved in the $x$-direction at velocity $u_0 \; (\mathrm{m/s})$. We presume
 that the plates are large enough laterally that we can neglect their edges.
 
-![couette](images/couette.svg "Couette flow")
+![couette](/articles/dimensional_analysis/images/couette.svg "Couette flow")
 
 We are interested in determining the velocity and pressure in the 
 fluid, which means that, in general, you have to solve 
@@ -94,12 +94,12 @@ forces in the fluid (which tend to damp out fluid motions).
 If the Reynolds is large, inertia is more important, and the 
 fluid will have whorls, vortices, and be very chaotic.
 
-![kanagawa](images/kanagawa.jpg "A high Reynolds number fluid (the waves, not the boats)")
+![kanagawa](/articles/dimensional_analysis/images/kanagawa.jpg "A high Reynolds number fluid (the waves, not the boats)")
 
 If the Reynolds number is small, the fluid will move slowly
 and regularly, in a fashion that is known as "laminar."
 
-![honey](images/honey.jpg "A low Reynolds number fluid (the honey, not the stick)")
+![honey](/articles/dimensional_analysis/images/honey.jpg "A low Reynolds number fluid (the honey, not the stick)")
 
 ## Nondimensional numbers
 
@@ -165,7 +165,7 @@ appear, causing complex and turbulent flow features.
 
 ## The Buckingham Pi theorem
 
-![pie](images/pie.jpg "A low-rent pun. It probably won't be the last")
+![pie](/articles/dimensional_analysis/images/pie.jpg "A low-rent pun. It probably won't be the last")
 
 Let's try to put the observations we've made so far into a coherent picture.
 When working out the period of a pendulum, there was only one way to make something 

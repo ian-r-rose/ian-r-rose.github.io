@@ -1,5 +1,5 @@
 Title: Linear algebra and the Buckingham Pi theorem
-Summary: \begin{equation*} p = n-k \end{equation*} ![lightbulb](/images/lightbulb.png)
+Summary: \begin{equation*} p = n-k \end{equation*} ![lightbulb](/articles/dimensional_analysis/images/lightbulb.png)
 
 We previously spent [two](introduction-to-dimensional-analysis.html)
 [longish](nondimensional-numbers-and-the-buckingham-pi-theorem.html)
@@ -25,7 +25,7 @@ convention we most commonly use the SI measures for length (m),
 time (s), temperature (K), mass (kg), quantity (mol), current (A),
 and luminosity (cd).
 
-![lightbulb](images/lightbulb.png "not entirely sure how luminosity got in there")
+![lightbulb](/articles/dimensional_analysis/images/lightbulb.png "not entirely sure how luminosity got in there")
 
 So, let's say that the quantity of interest is called $\Omega$, and that
 there are $n$ parameters $\omega_i$, where $i$ goes from one to $n$.
@@ -270,7 +270,7 @@ the separation distance $D \; (\mathrm{m})$,
 and the upper plate velocity $u_0 \; (\mathrm{m/s})$.
 The fundamental units are mass ($kg$), length ($m$), and time ($s$).
 
-![couette](images/couette.svg "Couette flow")
+![couette](/articles/dimensional_analysis/images/couette.svg "Couette flow")
 
 We therefore have three fundamental units and four parameters, meaning that
 our dimensional matrix (defined in Equation \eqref{dimension_matrix})
