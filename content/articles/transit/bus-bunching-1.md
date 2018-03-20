@@ -1,6 +1,7 @@
 Title: Buses are bosons, or How I learned to stop worrying and love AC Transit (Part one)
 Slug: bus-bunching-1
 Summary: ![bunch](/articles/transit/images/18-bunch.jpg)
+Date: 19 March 2018
 
 If you have spent any amount of time using mass transit,
 you know the frustration of waiting for the better part of an hour for a bus to arrive,
