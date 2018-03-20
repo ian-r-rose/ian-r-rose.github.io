@@ -35,7 +35,7 @@ The simplest model for $d\theta/ dt$ is for the bus to travel at a constant spee
 \frac{d \theta}{d t} = v_0
 \end{equation}
 Or, expressed in a simulation:
-<object data=/visualization/bus/bus-bunching.html?interactive=false&boost=false&equilibrium=true&gamma=0&n=1 width=700 height=700></object>
+<iframe src=/visualization/bus/bus-bunching.html?interactive=false&boost=false&equilibrium=true&gamma=0&n=1 width=700 height=700></iframe>
 
 Now, this model isn't very interesting.
 There is only a single bus, and it is traveling at a fixed speed,
@@ -48,7 +48,7 @@ We can increase the complexity by adding some more buses:
 \end{equation}
 In this equation the subscript indicates the $n$th bus out of $N$ on the route,
 so a simulation with five buses looks like this:
-<object data=/visualization/bus/bus-bunching.html?interactive=false&equilibrium=true&boost=false&gamma=0&n=5 width=700 height=700></object>
+<iframe src=/visualization/bus/bus-bunching.html?interactive=false&equilibrium=true&boost=false&gamma=0&n=5 width=700 height=700></iframe>
 Okay, so this is starting to more closely resemble a bus route.
 However, the buses are still moving at a constant speed, and have no effect on each other.
 In order for our model to exhibit the richer characteristics of a system that can bunch,
@@ -110,7 +110,7 @@ getting no closer to or further from the others?
 In a coordinate system traveling with the buses at equilibrium speed
 the solution to the system would then look like:
 
-<object data=/visualization/bus/bus-bunching.html?interactive=false&equilibrium=true&boost=true&gamma=0&n=5 width=700 height=700></object>
+<iframe src=/visualization/bus/bus-bunching.html?interactive=false&equilibrium=true&boost=true&gamma=0&n=5 width=700 height=700></iframe>
 
 It seems intuitive that an equilibrium solution, if it exists,
 should have the buses equally spaced, so let's start looking for a solution of that form.
@@ -197,7 +197,7 @@ experiment with this interactive simulation, which shows the buses
 traveling at their equilibrium speed and spacing
 (in the $\phi$ coordinate system that moves with them).
 
-<object data=/visualization/bus/bus-bunching.html?interactive=true&equilibrium=true&boost=true&gamma=0.15&n=5 width=700 height=700></object>
+<iframe src=/visualization/bus/bus-bunching.html?interactive=true&equilibrium=true&boost=true&gamma=0.15&n=5 width=700 height=700></iframe>
 
 You can see that as the number of buses increases and the headway between the buses gets smaller,
 the equilibrium speed increases, reflecting the decreased number of passengers each has to pick up.
