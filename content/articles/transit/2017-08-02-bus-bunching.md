@@ -84,6 +84,7 @@ In this equation, a bus picking up *no* passengers
 (which happens if there has been no time for them to accumulate since the previous bus) travels at $v_0$.
 As the distance between a bus and the one ahead of it increases,
 the speed of the bus slows down, reflecting the additional time spent boarding and disembarking.
+The dimensionless parameter $\gamma$ sets how sensitive the buses are to differences in headway.
 
 Equation \eqref{evolution} is a set of ordinary differential equations
 (one equation for each of the $N$ buses).
@@ -97,7 +98,7 @@ That is to say, is there a solution that does not evolve in time?
 when perturbed, will return to the equilibrium.
 An unstable one will get further and further from equilibrium until the buses bunch.
 
-Strictly speaking, an equilibrium solution cannot exist for the system of equations as described:
+Strictly speaking, an equilibrium solution does not exist for the system of equations as described:
 as long as the buses have a nonzero velocity, their positions will evolve in time.
 However, with a slight reframing of the question it makes sense to talk about an equilibrium:
 is there a configuration for which the bus velocities are constant,
@@ -142,7 +143,7 @@ v_0 \gamma (\psi_{n} - \psi_{n+1})
 
 When the buses are equally spaced around the loop, then the distance
 between them is the whole loop length divided between the number of buses, or
-$\psi_{n+1} - \psi_n = \frac{2 \pi}{N}$,
+$\psi_{n+1} - \psi_n = 2 \pi/N$,
 which makes the governing equations in the $\psi$ coordinates
 
 \begin{equation}
@@ -190,10 +191,18 @@ The right-hand-side is exactly $v_e$, so we can subtract it from both sides to g
 which is exactly what we wanted! In the $v_e$ coordinate system,
 equally-spaced buses are all in equilibrium.
 
+In order to get a feel for the equilibrium solution,
+experiment with this interactive simulation, which shows the buses
+traveling at their equilibrium speed and spacing
+(in the $\phi$ coordinate system that moves with them).
+
 <object data=/visualization/bus/bus-bunching.html?interactive=true&equilibrium=true&boost=true&gamma=0.15&n=5 width=700 height=700></object>
 
-In the next installment of this series,
-we are going to answer the second queation asked above:
+You can see that as the number of buses increases and the headway between the buses gets smaller,
+the equilibrium speed increases, reflecting the decreased number of passengers each has to pick up.
+
+At this point we have answered the first of the two above questions: there is an equilibrium solution.
+In the next installment of this series, we are going to answer the second question:
 is this equilibrium solution stable? (Spoiler: it's not.)
 
 ![streetcar](/articles/transit/images/streetcar-bunch.jpg "New Orleans streetcars can be bunched too")
