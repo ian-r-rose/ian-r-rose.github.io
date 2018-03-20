@@ -81,14 +81,26 @@
       document.getElementById('button-reset').className = 'hidden';
     }
 
-    const speed = 2.0*Math.PI/3.;
-    const v0 = boost ? 0.0 : speed;
-    const roadSpeed = boost ? -speed : 0.0;
+    const v0 = 2.0*Math.PI/3.;
+    let equilibrium_velocity =  v0 * (1. - 2 * Math.PI * gamma / n);
     let dYdT = undefined;
-    if (equilibrium) {
+    let roadSpeed = undefined;
+
+    if (equilibrium && !boost) {
       dYdT = (t, y) => equilibriumThetaVelocity(y, v0, gamma);
-    } else {
+      roadSpeed = 0.0;
+    } else if (equilibrium && boost) {
+      dYdT = (t, y) => y.map(el => 0.0);
+      roadSpeed = equilibrium_velocity;
+    } else if (!equilibrium && !boost) {
       dYdT = (t, y) => thetaVelocity(y, v0, gamma);
+      roadSpeed = 0.0;
+    } else if (!equilibrium && boost) {
+      dYdT = (t, y) => {
+       vel = thetaVelocity(y, v0, gamma);
+       return vel.map(el => el - equilibrium_velocity);
+      };
+      roadSpeed = equilibrium_velocity;
     }
 
     let model = {
@@ -98,10 +110,18 @@
     }
 
     function increase() {
-      if (n < 10) { model.angles = initialConditions(++n); }
+      if (n < 10) {
+        model.angles = initialConditions(++n);
+        equilibrium_velocity =  v0 * (1. - 2 * Math.PI * gamma / n);
+        model.roadSpeed = boost ? equilibrium_velocity: 0.0;
+      }
     }
     function decrease() {
-      if (n > 1) { model.angles = initialConditions(--n); }
+      if (n > 1) {
+        model.angles = initialConditions(--n);
+        equilibrium_velocity =  v0 * (1. - 2 * Math.PI * gamma / n);
+        model.roadSpeed = boost ? equilibrium_velocity: 0.0;
+      }
     }
     function reset() {
       model.angles = initialConditions(n);

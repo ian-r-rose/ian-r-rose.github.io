@@ -190,7 +190,7 @@ The right-hand-side is exactly $v_e$, so we can subtract it from both sides to g
 which is exactly what we wanted! In the $v_e$ coordinate system,
 equally-spaced buses are all in equilibrium.
 
-<object data=/visualization/bus/bus-bunching.html?interactive=true&equilibrium=true&boost=&gamma=0.15&n=5 width=700 height=700></object>
+<object data=/visualization/bus/bus-bunching.html?interactive=true&equilibrium=true&boost=true&gamma=0.15&n=5 width=700 height=700></object>
 
 In the next installment of this series,
 we are going to answer the second queation asked above:
