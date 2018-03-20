@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <meta charset="utf-8">
+  <head>
+  <script type="text/javascript" src="bus-bunching.js"></script>
+  <style>
+  body {
+    width: 100%;
+    margin: 0;
+  }
+  #container {
+    position: relative;
+    width: 700px;
+    margin: auto;
+  }
+  #overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+  #buttons {
+    margin: auto;
+    width: 150px;
+    text-align: center;
+  }
+  #route {
+    margin: auto;
+    display: block;
+  }
+  #container button {
+    font-size: 24pt;
+    margin: 5px;
+    border: dashed 3px #F1C40F;
+    background-color: #AAB7B8;
+  }
+  #container button:hover {
+    background-color: lightgray;
+  }
+  .hidden {
+    display: none;
+  }
+  </style>
+  </head>
+  
+  <body style="margin: 0">
+    <div id="container">
+      <canvas id="route" width=700 height=700></canvas>
+      <div id="overlay">
+        <div id="buttons">
+          <button id="button-increase" onclick="increase()">+</button>
+          <button id="button-decrease" onclick="decrease()">-</button>
+          <button id="button-reset" onclick="reset()">reset</button>
+        </div>
+      </div>
+    </div>
+
+  <script>
+    function getQueryVariable(variable) {
+      const query = window.location.search.substring(1);
+      const vars = query.split('&');
+      for (let i = 0; i < vars.length; i++) {
+        const pair = vars[i].split('=');
+          if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+          }
+      }
+      return undefined;
+    }
+    let n = parseInt(getQueryVariable('n')) || 1;
+    const boost = getQueryVariable('boost') === 'true';
+    const equilibrium = getQueryVariable('equilibrium') === 'true';
+    const gamma = parseFloat(getQueryVariable('gamma')) || 0.0;
+    const interactive = getQueryVariable('interactive') === 'true';
+    if (!interactive) {
+      document.getElementById('buttons').className = 'hidden';
+    }
+    if (equilibrium) {
+      document.getElementById('button-reset').className = 'hidden';
+    }
+
+    const v0 = 2.0*Math.PI/3.;
+    let equilibrium_velocity =  v0 * (1. - 2 * Math.PI * gamma / n);
+    let dYdT = undefined;
+    let roadSpeed = undefined;
+
+    if (equilibrium && !boost) {
+      dYdT = (t, y) => equilibriumThetaVelocity(y, v0, gamma);
+      roadSpeed = 0.0;
+    } else if (equilibrium && boost) {
+      dYdT = (t, y) => y.map(el => 0.0);
+      roadSpeed = -equilibrium_velocity;
+    } else if (!equilibrium && !boost) {
+      dYdT = (t, y) => thetaVelocity(y, v0, gamma);
+      roadSpeed = 0.0;
+    } else if (!equilibrium && boost) {
+      dYdT = (t, y) => {
+       vel = thetaVelocity(y, v0, gamma);
+       return vel.map(el => el - equilibrium_velocity);
+      };
+      roadSpeed = -equilibrium_velocity;
+    }
+
+    let model = {
+      angles: initialConditions(n),
+      dYdT,
+      roadSpeed
+    }
+
+    function increase() {
+      if (n < 10) {
+        model.angles = initialConditions(++n);
+        equilibrium_velocity =  v0 * (1. - 2 * Math.PI * gamma / n);
+        model.roadSpeed = boost ? -equilibrium_velocity: 0.0;
+      }
+    }
+    function decrease() {
+      if (n > 1) {
+        model.angles = initialConditions(--n);
+        equilibrium_velocity =  v0 * (1. - 2 * Math.PI * gamma / n);
+        model.roadSpeed = boost ? -equilibrium_velocity: 0.0;
+      }
+    }
+    function reset() {
+      model.angles = initialConditions(n);
+    }
+
+    const ctx = document.getElementById('route').getContext('2d');
+    animate(ctx, model);
+  </script>
+
+  </body>
+</html>

@@ -1,7 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Blueschisting</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2018-02-08T00:00:00-08:00</updated><entry><title>Mapping California Cities</title><link href="/mapping-california-cities.html" rel="alternate"></link><published>2018-02-08T00:00:00-08:00</published><updated>2018-02-08T00:00:00-08:00</updated><author><name>Ian Rose</name></author><id>tag:None,2018-02-08:/mapping-california-cities.html</id><summary type="html">&lt;p&gt;&lt;img alt="la_cities" src="/coding/images/la_cities_small.png"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;TL;DR: We are making these maps:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="/coding/images/la_cities_small.png"&gt;
-&lt;img alt="" src="/coding/images/bay_area_cities_small.png"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Blueschisting</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2018-03-19T00:00:00-07:00</updated><entry><title>Buses are bosons, or How I learned to stop worrying and love AC Transit (Part one)</title><link href="/bus-bunching-1.html" rel="alternate"></link><published>2018-03-19T00:00:00-07:00</published><updated>2018-03-19T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2018-03-19:/bus-bunching-1.html</id><summary type="html">&lt;p&gt;&lt;img alt="bunch" src="/articles/transit/images/18-bunch.jpg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;If you have spent any amount of time using mass transit,
+you know the frustration of waiting for the better part of an hour for a bus to arrive,
+only to see two or three of them roll up in quick succession.
+This phenomenon is a common enough problem that it has a name: "bus bunching":&lt;/p&gt;
+&lt;p&gt;&lt;img alt="18-bunch2" src="articles/transit/images/18-bunch2.jpg" title="Bunching on the 18 bus line in Berkeley"&gt;&lt;/p&gt;
+&lt;p&gt;In this two-part series, we'll investigate bus bunching by making a mathematical model of a bus route.
+In this first part, we'll construct the model and find it's equilibrium solution.
+In the second part, we'll demonstrate the inevitability for that model to bunch.&lt;/p&gt;
+&lt;p&gt;Let's start by constructing a model for the speed of a single bus.
+We will assume that the bus has a fixed route, on which it travels all day.
+That route may be on any number of different streets, go wending through different
+neighborhoods, and generally make very little sense 
+(like my beloved &lt;a href="http://www.actransit.org/pdf/maps/version_38/12.pdf"&gt;12 line&lt;/a&gt;).
+However, if it travels back and forth on this same route, we can model it as a loop,
+and its position on that loop can be mapped to an angle on a circle &lt;span class="math"&gt;\(\theta\)&lt;/span&gt;.
+We can then identify the speed of the bus with the time derivative of &lt;span class="math"&gt;\(\theta\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The simplest model for &lt;span class="math"&gt;\(d\theta/ dt\)&lt;/span&gt; is for the bus to travel at a constant speed &lt;span class="math"&gt;\(v_0\)&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{d \theta}{d t} = v_0
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+Or, expressed in a simulation:
+&lt;iframe src=/visualization/bus/bus-bunching.html?interactive=false&amp;boost=false&amp;equilibrium=true&amp;gamma=0&amp;n=1 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;p&gt;Now, this model isn't very interesting.
+There is only a single bus, and it is traveling at a fixed speed,
+so it has no hope of exhibiting the kind of bunching behavior that we want to explain.&lt;/p&gt;
+&lt;p&gt;A typical mass transit route operates multiple buses with a given
+&lt;a href="https://en.wikipedia.org/wiki/Headway"&gt;headway&lt;/a&gt;,
+the distance (or time) between successive vehicles on the route.
+If everything is operating according to the plan,
+the headway from one bus to the next should be approximately constant,
+with possible scheduled variations depending on the time of day
+(such as increased frequency during rush hour, or decreased frequency at night).&lt;/p&gt;
+&lt;p&gt;We can increase the complexity of our model adding some more buses so that there are &lt;span class="math"&gt;\(N\)&lt;/span&gt; on the route:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{d \theta_n}{d t} = v_0
+\label{constant}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;In this equation the subscript indicates the &lt;span class="math"&gt;\(n\)&lt;/span&gt;th bus out of &lt;span class="math"&gt;\(N\)&lt;/span&gt;,
+so a simulation with five buses looks like this:
+&lt;iframe src=/visualization/bus/bus-bunching.html?interactive=false&amp;equilibrium=true&amp;boost=false&amp;gamma=0&amp;n=5 width=700 height=700&gt;&lt;/iframe&gt;
+Okay, so this is starting to more closely resemble a bus route.
+However, the buses are still moving at a constant speed, and have no effect on each other.
+In order for our model to exhibit the richer characteristics of a system that can bunch,
+there must be some way for their speed to be a function of conditions on the road.&lt;/p&gt;
+&lt;p&gt;There are many factors that can control the speed of a bus traveling through town,
+including traffic, construction, scheduled layovers, and the number of passengers.
+In order to keep the model simple, we will focus on the last factor:
+the number of passengers who board and exit the bus.
+A traveling bus constantly picks up and drops off passengers as it makes its way around its route.
+This process takes time (as anyone who has watched a passenger fumble with change upon boarding knows).
+A bus that boards and deposits more passengers will, in general, make slower progress along its route.&lt;/p&gt;
+&lt;p&gt;Many things affect the number of passengers boarding a given bus, 
+including time-of-day, scheduling, and population density.
+In order to keep the model as simple as possible, we will ignore those and
+concentrate on a single factor: the amount of time since the previous bus.
+We will assume that as more time passes, more passengers arrive at a bus stop for pickup.
+If a bus falls behind schedule, more people will have arrived at each stop,
+meaning that it will be further slowed down by the excess passengers.
+In the following analysis, we will use the distance between buses as a proxy
+for the number of passengers that need to be picked up.&lt;/p&gt;
+&lt;p&gt;We need to augment our model to account for this slowing-down behavior.
+The expression for speed in equation \eqref{constant} is a constant,
+so the next-simplest expression is to make it linear in the distance between buses
+(our proxy for the number of passengers):
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{d\theta_n}{d t} = 
+ v_0 \left[ 1 - \gamma (\theta_{n+1} - \theta_n) \right]
+\label{evolution}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;In this equation, a bus picking up &lt;em&gt;no&lt;/em&gt; passengers travels at &lt;span class="math"&gt;\(v_0\)&lt;/span&gt;
+(which happens if there has been no time for them to accumulate since the previous bus).
+As the distance between a bus and the one ahead of it increases,
+the speed of the bus slows down, reflecting the additional time spent boarding and disembarking.
+The dimensionless parameter &lt;span class="math"&gt;\(\gamma\)&lt;/span&gt; determines how sensitive the bus speeds are to differences in headway.&lt;/p&gt;
+&lt;p&gt;Equation \eqref{evolution} is a set of ordinary differential equations
+(one equation for each of the &lt;span class="math"&gt;\(N\)&lt;/span&gt; buses).
+It will be the primary  evolution equation for our system of buses,
+which we will analyze by answering the following two questions.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Is there an equilibrium solution to these equations?
+That is to say, is there a solution that does not evolve in time?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If there is an equilibrium solution, is it stable?
+A stable solution, when perturbed, will return to the equilibrium.
+An unstable one will get further and further from equilibrium until the buses are bunched.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Strictly speaking, an equilibrium solution does not exist for the system of equations as described:
+as long as the buses have a nonzero velocity, their positions will evolve in time.
+However, with a slight reframing of the question it makes sense to talk about an equilibrium:
+is there a configuration for which the bus velocities are constant,
+and that the distance between them (headways) are not changing?&lt;/p&gt;
+&lt;p&gt;In a coordinate system traveling with the buses at equilibrium speed
+the solution to the system would then look like this:&lt;/p&gt;
+&lt;iframe src=/visualization/bus/bus-bunching.html?interactive=false&amp;equilibrium=true&amp;boost=true&amp;gamma=0&amp;n=5 width=700 height=700&gt;&lt;/iframe&gt;
+
+&lt;p&gt;It seems intuitive that an equilibrium solution, if it exists,
+should have the buses equally spaced, so let's start looking for a solution of that form.
+Let's further guess that the equilibrium velocity is the base bus speed &lt;span class="math"&gt;\(v_0\)&lt;/span&gt;.
+A change of coordinates makes this system a bit easier to reason about.
+Let's boost ourselves into moving a coordinate system &lt;span class="math"&gt;\(\psi\)&lt;/span&gt;, defined by:
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\psi_n \equiv \theta_n - v_0 t
+\end{equation}&lt;/div&gt;
+&lt;p&gt;From this we can also get the relations
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{d\theta_n}{d t} =
+\frac{d \psi_n}{d t} + v_0
+\end{equation}&lt;/div&gt;
+&lt;div class="math"&gt;\begin{equation}
+\theta_n =
+\psi_n + v_0 t
+\end{equation}&lt;/div&gt;
+&lt;p&gt;Substituting these into equation \eqref{evolution},
+we get the governing equations in terms of &lt;span class="math"&gt;\(\psi_n\)&lt;/span&gt;:
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{d \psi_n}{d t} + v_0 = 
+v_0 \left[ 1 - \gamma (\psi_{n+1} - \psi_n) \right]
+\end{equation}&lt;/div&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{d \psi_n}{d t} = 
+v_0 \gamma (\psi_{n} - \psi_{n+1})
+\end{equation}&lt;/div&gt;
+&lt;p&gt;When the buses are equally spaced around the loop, then the distance
+between them is the whole loop length divided between the number of buses, or
+&lt;span class="math"&gt;\(\psi_{n+1} - \psi_n = 2 \pi/N\)&lt;/span&gt;,
+which makes the governing equations in the &lt;span class="math"&gt;\(\psi\)&lt;/span&gt; coordinates&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{d \psi_n}{d t} = 
+\frac{ 2 \pi v_0 \gamma }{N}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;Unless the interaction term &lt;span class="math"&gt;\(\gamma\)&lt;/span&gt; is zero, the time evolution of &lt;span class="math"&gt;\(\psi_n\)&lt;/span&gt; is nonzero,
+making this configuration a non-equilibrium solution to the system.
+Therefore, &lt;span class="math"&gt;\(v_0\)&lt;/span&gt; is &lt;em&gt;not&lt;/em&gt; the equilibrium velocity.&lt;/p&gt;
+&lt;p&gt;This should make sense, as we defined &lt;span class="math"&gt;\(v_0\)&lt;/span&gt; to be the speed of the bus
+in the absence of any delays due to loading and unloading of passengers.
+When we include that delay, the buses will be slower.
+Instead, let's construct a speed for buses that takes into account the
+delay due to passengers.&lt;/p&gt;
+&lt;p&gt;Again we presume that the buses are equally spaced,
+such that the distance between them is &lt;span class="math"&gt;\(2 \pi/N\)&lt;/span&gt;.
+Then, given the evolution equation \eqref{evolution}, we can calculate the speed &lt;span class="math"&gt;\(v_e\)&lt;/span&gt;:
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+v_e = \frac{d \theta_n}{d_t} = v_0 \left[ 1 - \frac{2 \pi \gamma}{N} \right]
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+Let's boost into a &lt;em&gt;new&lt;/em&gt; coordinate system &lt;span class="math"&gt;\(\phi\)&lt;/span&gt;, defined by
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\phi_n \equiv \theta_n - v_e t
+\end{equation}&lt;/div&gt;
+&lt;p&gt;Substituting this into equation \eqref{evolution}, we find&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{d \phi_n}{d t} + v_e =
+v_0 \left[ 1 - \gamma \left(\phi_{n+1} - \phi_n \right) \right]
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+As before, when the buses are equally spaced, &lt;span class="math"&gt;\(\phi_{n+1} - \phi_n = 2 \pi/N\)&lt;/span&gt;:
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{d \phi_n}{d t} + v_e =
+v_0 \left[ 1 - \frac{2 \pi \gamma}{N}  \right]
+\end{equation}&lt;/div&gt;
+&lt;p&gt;The right-hand-side is exactly &lt;span class="math"&gt;\(v_e\)&lt;/span&gt;, so we can subtract it from both sides to get&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{d \phi_n}{d t} = 0
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+This is exactly what we wanted: in the &lt;span class="math"&gt;\(\phi\)&lt;/span&gt; coordinate system,
+the positions of the buses are constant in time, so
+equally-spaced buses are all in equilibrium.&lt;/p&gt;
+&lt;p&gt;In order to get a feel for the equilibrium solution,
+you can experiment with this interactive simulation, which shows the buses
+traveling at their equilibrium speed and spacing
+(in the &lt;span class="math"&gt;\(\phi\)&lt;/span&gt; coordinate system that moves with them).&lt;/p&gt;
+&lt;iframe src=/visualization/bus/bus-bunching.html?interactive=true&amp;equilibrium=true&amp;boost=true&amp;gamma=0.15&amp;n=5 width=700 height=700&gt;&lt;/iframe&gt;
+
+&lt;p&gt;You can see that as the number of buses increases and the headway between the buses gets smaller,
+the equilibrium speed increases, reflecting the decreased number of passengers each has to pick up.&lt;/p&gt;
+&lt;p&gt;At this point we have answered the first of the two above questions: there is an equilibrium solution.
+In the next installment of this series, we are going to answer the second question:
+is this equilibrium solution stable? (Spoiler: it's not.)&lt;/p&gt;
+&lt;p&gt;&lt;img alt="streetcar" src="/articles/transit/images/streetcar-bunch.jpg" title="New Orleans streetcars can be bunched too"&gt;&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content></entry><entry><title>Mapping California Cities</title><link href="/mapping-california-cities.html" rel="alternate"></link><published>2018-02-08T00:00:00-08:00</published><updated>2018-02-08T00:00:00-08:00</updated><author><name>Ian Rose</name></author><id>tag:None,2018-02-08:/mapping-california-cities.html</id><summary type="html">&lt;p&gt;&lt;img alt="la_cities" src="/articles/coding/images/la_cities_small.png"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;TL;DR: We are making these maps:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="los-angeles" src="/articles/coding/images/la_cities_small.png"&gt;
+&lt;img alt="bay-area" src="/articles/coding/images/bay_area_cities_small.png"&gt;&lt;/p&gt;
 &lt;p&gt;A couple of weeks ago a colleague told me that she was moving out of Oakland, California,
 to a city on the San Francisco peninsula called San Carlos.
 I had been a resident of the Bay Area for most of my life,
@@ -107,7 +352,7 @@ and then plot it using the mapping library &lt;a href="http://scitools.org.uk/ca
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="socal_elev" src="/coding/images/socal_elev.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="socal_elev" src="/articles/coding/images/socal_elev.png"&gt;&lt;/p&gt;
 &lt;p&gt;Okay, so this does indeed show the topography of the LA metro area.
 The San Gabriel Mountains are in the bright spot in the center,
 the Santa Monica Mountains/Hollywood Hills are to the southwest of them.
@@ -135,7 +380,7 @@ Thankfully, matplotlib contains an illumination tool that does the job for us:&l
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="socal_hillshade" src="/coding/images/socal_hillshade.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="socal_hillshade" src="/articles/coding/images/socal_hillshade.png"&gt;&lt;/p&gt;
 &lt;p&gt;Much better! We can much more easily see the topographic features of the region,
 including the coastal plain, the San Fernando and San Gabriel Valleys, and the San
 Andreas fault.&lt;/p&gt;
@@ -166,7 +411,7 @@ and color that blue:&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="socal_hillshade" src="/coding/images/socal_hillshade_water.png"&gt;
+&lt;p&gt;&lt;img alt="socal_hillshade" src="/articles/coding/images/socal_hillshade_water.png"&gt;
 Okay, &lt;em&gt;this&lt;/em&gt; is something we can work with.&lt;/p&gt;
 &lt;h1&gt;Plotting the cities&lt;/h1&gt;
 &lt;h2&gt;Drawing shapes&lt;/h2&gt;
@@ -191,7 +436,7 @@ We have already preprocessed the data into shapefiles above, for which cartopy h
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="" src="/coding/images/socal_cities.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="los-angeles-monochrome" src="/articles/coding/images/socal_cities.png"&gt;&lt;/p&gt;
 &lt;p&gt;This map isn't terrible, but it is awfully monochromatic.
 We would like to have a map where the cities colored so that
 it is easier to distinguish them.&lt;/p&gt;
@@ -218,7 +463,7 @@ and cycling throught them to assign colors to the map.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="" src="/coding/images/socal_cities_color.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="los-angeles-color" src="/articles/coding/images/socal_cities_color.png"&gt;&lt;/p&gt;
 &lt;p&gt;This is looking much better! However, if you look closely,
 you can see that there are many places where neighboring cities
 have been assigned the same color, which looks kind of funky,
@@ -325,7 +570,7 @@ we can apply the greedy color assignment (step 3):&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="" src="/coding/images/socal_cities_color_2.png"&gt;
+&lt;p&gt;&lt;img alt="los-angeles-color-2" src="/articles/coding/images/socal_cities_color_2.png"&gt;
 Much better!&lt;/p&gt;
 &lt;h2&gt;Adding labels&lt;/h2&gt;
 &lt;p&gt;This map is still not that useful if we want to know the names of any of the cities shown.
@@ -358,7 +603,7 @@ We can naively try to plot them at the center of each city:&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="" src="/coding/images/socal_cities_color_labels.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="los-angeles-color-labels" src="/articles/coding/images/socal_cities_color_labels.png"&gt;&lt;/p&gt;
 &lt;p&gt;This is okay, but in some of the densest areas, the labels are overlapping each other.
 Furthermore, it would be nice for the labels for large, populous cities (like LA proper)
 to have larger labels than tiny towns. We could scale the label sizes with the population
@@ -414,7 +659,7 @@ Instead, we will scale the label size with the log of the population.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="" src="/coding/images/socal_cities_color_labels_2.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="los-angeles-color-labels2" src="/articles/coding/images/socal_cities_color_labels_2.png"&gt;&lt;/p&gt;
 &lt;h1&gt;Putting it all together&lt;/h1&gt;
 &lt;p&gt;We are now ready to make the final map. We will plot the following, in order:
 1. SRTM hillshade data
@@ -464,7 +709,7 @@ Instead, we will scale the label size with the log of the population.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="" src="/coding/images/socal_total.png"&gt;
+&lt;p&gt;&lt;img alt="los-angeles-total" src="/articles/coding/images/socal_total.png"&gt;
 And we are basically done!&lt;/p&gt;
 &lt;h1&gt;Conclusions&lt;/h1&gt;
 &lt;p&gt;There are a bunch of more detailed tweaks that can make this map better than
@@ -481,7 +726,7 @@ and poorly documented.&lt;/p&gt;
 &lt;p&gt;Finally, GDAL is indispensable for any kind of GIS processing. It understands just about
 any format you can throw at it, and is &lt;em&gt;really&lt;/em&gt; fast. Unfortunately, it also has
 confusing and incomplete documentation (are you sensing a theme here?).&lt;/p&gt;
-&lt;p&gt;Feel free to let me know if you find this useful!&lt;/p&gt;</content></entry><entry><title>Ultriviolet catastrophe and the beginning of quantum mechanics</title><link href="/ultriviolet-catastrophe-and-the-beginning-of-quantum-mechanics.html" rel="alternate"></link><published>2016-06-06T00:00:00-07:00</published><updated>2016-06-06T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2016-06-06:/ultriviolet-catastrophe-and-the-beginning-of-quantum-mechanics.html</id><summary type="html">&lt;p&gt;&lt;img alt="sun" src="/images/sun.jpg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;We just finished a very long explication of the fundamentals of dimensional
+&lt;p&gt;Feel free to let me know if you find this useful!&lt;/p&gt;</content></entry><entry><title>Ultriviolet catastrophe and the beginning of quantum mechanics</title><link href="/ultriviolet-catastrophe-and-the-beginning-of-quantum-mechanics.html" rel="alternate"></link><published>2016-06-06T00:00:00-07:00</published><updated>2016-06-06T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2016-06-06:/ultriviolet-catastrophe-and-the-beginning-of-quantum-mechanics.html</id><summary type="html">&lt;p&gt;&lt;img alt="sun" src="/articles/dimensional_analysis/images/sun.jpg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;We just finished a very long explication of the fundamentals of dimensional
 analysis and the Buckingham Pi theorem 
 (well, not "just", since it took me significantly longer 
 than I anticipated to finish up this post).
@@ -508,7 +753,7 @@ radiated to space as electromagnetic waves, which we percieve as as the
 warmth and brightness of a sunny day.&lt;/p&gt;
 &lt;p&gt;Scientists further observed that hot bodies such as the sun did 
 not radiate light at a single frequency but rather as a spectrum:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="solar spectrum" src="images/solar_spectrum.svg" title="Wavelength (rather than frequency) vs radiance of the sun. (image from Global Warming Art)"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="solar spectrum" src="/articles/dimensional_analysis/images/solar_spectrum.svg" title="Wavelength (rather than frequency) vs radiance of the sun. (image from Global Warming Art)"&gt;&lt;/p&gt;
 &lt;p&gt;Furthermore, the shape of that spectrum and its peak
 frequency seemed to be a function of the body's temperature. 
 At lower temperatures, the object would give off predominantly 
@@ -534,7 +779,7 @@ of the light given off by the sun and answer two fundamental questions:&lt;/p&gt
 &lt;li&gt;How hot is the sun?&lt;/li&gt;
 &lt;li&gt;How much energy does the sun radiate to space?&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img alt="sun" src="images/sun.jpg" title="WHAT IS MY TEMPERATURE (NASA/JPL)"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="sun" src="/articles/dimensional_analysis/images/sun.jpg" title="WHAT IS MY TEMPERATURE (NASA/JPL)"&gt;&lt;/p&gt;
 &lt;p&gt;Okay, so with that prelude, let's take a crack at the dimensional analysis of this problem.
 The observation that we are trying to explain is the radiation of 
 energy from the surface of an object. That is to say, for a given frequency the object
@@ -623,7 +868,7 @@ E \sim \int_0^\infty \frac{k_B T \nu^2}{c^2} d\nu
 \label{integrated_rayleigh_jeans}
 \end{equation}&lt;/div&gt;
 &lt;p&gt;Here is a plot of that integral:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="ultraviolet" src="images/ultraviolet_catastrophe.png" title="A catastrophe indeed"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ultraviolet" src="/articles/dimensional_analysis/images/ultraviolet_catastrophe.png" title="A catastrophe indeed"&gt;&lt;/p&gt;
 &lt;p&gt;Uh oh. There is a problem. There is no way that this integral can possibly converge
 on a finite answer, since the &lt;span class="math"&gt;\(\nu^2\)&lt;/span&gt; factor must blow up as we integrate to infinity.
 We are therefore led to the conclusion that a body which is radiating to space
@@ -639,7 +884,7 @@ blowing up at high frequencies since this is the only form of the equation
 for spectral radiance allowable. The only way out is to introduce some
 extra physics, which will, in turn, enrich the parameter space and provide us an out.&lt;/p&gt;
 &lt;p&gt;Enter &lt;a href="https://en.wikipedia.org/wiki/Max_Planck"&gt;Max Planck&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="planck" src="images/planck.gif" title="Hey there, good looking"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="planck" src="/articles/dimensional_analysis/images/planck.gif" title="Hey there, good looking"&gt;&lt;/p&gt;
 &lt;p&gt;Planck was a German physicist working on on this problem around the turn of the twentieth century. 
 In an effort to better match the observations, 
 he made the assumption that the radiated energy could only be emitted in discrete
@@ -695,7 +940,7 @@ f(\xi) = \frac{1}{e^{\xi} - 1}
 &lt;p&gt;Here is the plot of what is now known as Planck's law, relating frequency to spectral radiance.
 As you can see, the shape of the curve looks much more like that of the observed solar spectrum
 and the area underneath the curve does not blow up:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="planck_law" src="images/planck_law.png" title="Catastrophe averted"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="planck_law" src="/articles/dimensional_analysis/images/planck_law.png" title="Catastrophe averted"&gt;&lt;/p&gt;
 &lt;p&gt;We can now safely fit the solar spectrum to Planck's law to determine the temperature
 of the sun, all without actually going there. And though we used the sun as our primary
 example, this works for basically anything: using Planck's law we know to pretty high
@@ -817,7 +1062,7 @@ Any errors or omissions are my own.&lt;/p&gt;
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content></entry><entry><title>Automated dimensional analysis</title><link href="/automated-dimensional-analysis.html" rel="alternate"></link><published>2015-10-28T00:00:00-07:00</published><updated>2015-10-28T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2015-10-28:/automated-dimensional-analysis.html</id><summary type="html">&lt;p&gt;&lt;img alt="couette" src="/images/couette.svg"&gt;&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
+&lt;/script&gt;</content></entry><entry><title>Automated dimensional analysis</title><link href="/automated-dimensional-analysis.html" rel="alternate"></link><published>2015-10-28T00:00:00-07:00</published><updated>2015-10-28T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2015-10-28:/automated-dimensional-analysis.html</id><summary type="html">&lt;p&gt;&lt;img alt="couette" src="/articles/dimensional_analysis/images/couette.svg"&gt;&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
@@ -1970,7 +2215,7 @@ Now we need to be able to construct the dimension matrix described in the previo
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The function returns the list of fundamental units and the dimension matrix for the set of parameters.&lt;/p&gt;
 &lt;p&gt;As an example, we can try the case of Couette flow from the previous articles. In case you have forgotten, Couette flow involves the motion of a fluid between two plates. The fluid has a density $\rho$ and a viscosity $\eta$. The two plates are separated by a distance $D$ and the top plate is shearing the fluid with a velocity $u_0$.&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/couette.svg" alt="couette" title="I have reused this image enough that I no longer regret the time it took to make it"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/articles/dimensional_analysis/images/couette.svg" alt="couette" title="I have reused this image enough that I no longer regret the time it took to make it"&gt;&lt;/p&gt;
 &lt;p&gt;We can define these parameters and their units using the &lt;code&gt;Parameter&lt;/code&gt; type:&lt;/p&gt;
 
 &lt;/div&gt;
@@ -2314,7 +2559,7 @@ $$\frac{ \eta}{ \rho D u_0}$$
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="More-involved-examples"&gt;More involved examples&lt;a class="anchor-link" href="#More-involved-examples"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The problem we have been working with is a relatively simple problem, with a single nondimensional number. More complicated problems can have many nondimensional numbers, each describing some aspect of the physics of the problem. That is to say, as we add more physics, we expect to have more nondimensional numbers at play. I'd like to close out this article with a coupld of examples of this.&lt;/p&gt;
 &lt;p&gt;First, we can consider an elaboration on shearing flow: what if the fluid was a river? Like Couette flow, rivers exist in a channel, but they also move under the influence of gravity. The force of gravity determines the dynamics of ripples and waves along its surface and the speed at which the river moves downhill. It also is extremely important for characterizing the rate of &lt;a href="https://en.wikipedia.org/wiki/Saltation_%28geology%29"&gt;sediment transport&lt;/a&gt; downstream, which has important geomorphological, agricultural, and environmental consequences.&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/oranje.jpg" alt="oranje" title="All right! An excuse for a picture!"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/articles/dimensional_analysis/images/oranje.jpg" alt="oranje" title="All right! An excuse for a picture!"&gt;&lt;/p&gt;
 &lt;p&gt;Since gravity is a primary control on the river dynamics, we had better include that in our list of parameters. Regenerating the parameter list, and finding the nondimensional numbers, we get&lt;/p&gt;
 
 &lt;/div&gt;
@@ -2363,7 +2608,7 @@ This number is a direct consequence of our adding the effects of gravity to the 
 \mathrm{Fr} = \frac{u_0^2}{\sqrt{g D} }
 \end{equation}
 so what we actually found was $1/\mathrm{Fr}^2$. But remember, this is just a convention, and any power of a nondimensional number is just as valid. As you might imagine, the ratio of inertia to gravity is the primary control on the shape of waves in moving water, and as such is extremely important in the hydrodynamic design of ships.&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/shipwreck.jpg" alt="shipwreck" title="Too much Froude, too much Reynolds"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/articles/dimensional_analysis/images/shipwreck.jpg" alt="shipwreck" title="Too much Froude, too much Reynolds"&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2374,7 +2619,7 @@ so what we actually found was $1/\mathrm{Fr}^2$. But remember, this is just a co
 When a magma chamber underneath a volcano gets a fresh infusion of magma, the chamber gets overpressured.
 This overpressure deflects the overlying surface upwards, which can be detedcted via satellites using &lt;a href="https://en.wikipedia.org/wiki/Interferometric_synthetic_aperture_radar"&gt;INSAR&lt;/a&gt;.
 The image below depicts the deflection of Earth's surface at a volcano in the Galapagos from a study by &lt;a href="http://dx.doi.org/10.1038/35039604"&gt;Amelung et. al.(2000)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/mogi.jpg" alt="mogi" title="It's gonna blow..."&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/articles/dimensional_analysis/images/mogi.jpg" alt="mogi" title="It's gonna blow..."&gt;&lt;/p&gt;
 &lt;p&gt;We would like to understand how the Earth deforms due to the overpressure in the magma chamber.
 Using a dollop of intuition, we suppose that the deflection of the surface depends on the radius of the magma chamber $R$, the depth of the magma chamber $D$, and the overpressure $\Delta P$. 
 Furthermore, it must depend on the elastic properties of the rock (which control how the rock deforms due to some stress).
@@ -2472,7 +2717,7 @@ How far can you get with this perspective? It turns out, surprisingly far!&lt;/p
 }
 &lt;/script&gt;
 </content></entry><entry><title>Linear algebra and the Buckingham Pi theorem</title><link href="/linear-algebra-and-the-buckingham-pi-theorem.html" rel="alternate"></link><published>2015-09-29T00:00:00-07:00</published><updated>2015-09-29T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2015-09-29:/linear-algebra-and-the-buckingham-pi-theorem.html</id><summary type="html">&lt;div class="math"&gt;\begin{equation*} p = n-k \end{equation*}&lt;/div&gt;
-&lt;p&gt; &lt;img alt="lightbulb" src="/images/lightbulb.png"&gt;&lt;/p&gt;
+&lt;p&gt; &lt;img alt="lightbulb" src="/articles/dimensional_analysis/images/lightbulb.png"&gt;&lt;/p&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -2548,7 +2793,7 @@ The choice of fundamental units is not necessarily unique, but by
 convention we most commonly use the SI measures for length (m),
 time (s), temperature (K), mass (kg), quantity (mol), current (A),
 and luminosity (cd).&lt;/p&gt;
-&lt;p&gt;&lt;img alt="lightbulb" src="images/lightbulb.png" title="not entirely sure how luminosity got in there"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="lightbulb" src="/articles/dimensional_analysis/images/lightbulb.png" title="not entirely sure how luminosity got in there"&gt;&lt;/p&gt;
 &lt;p&gt;So, let's say that the quantity of interest is called &lt;span class="math"&gt;\(\Omega\)&lt;/span&gt;, and that
 there are &lt;span class="math"&gt;\(n\)&lt;/span&gt; parameters &lt;span class="math"&gt;\(\omega_i\)&lt;/span&gt;, where &lt;span class="math"&gt;\(i\)&lt;/span&gt; goes from one to &lt;span class="math"&gt;\(n\)&lt;/span&gt;.
 We denote the units of something by enclosing it in square brackets,
@@ -2781,7 +3026,7 @@ the density &lt;span class="math"&gt;\(\rho \; (\mathrm{kg}/\mathrm{m}^3)\)&lt;/
 the separation distance &lt;span class="math"&gt;\(D \; (\mathrm{m})\)&lt;/span&gt;, 
 and the upper plate velocity &lt;span class="math"&gt;\(u_0 \; (\mathrm{m/s})\)&lt;/span&gt;.
 The fundamental units are mass (&lt;span class="math"&gt;\(kg\)&lt;/span&gt;), length (&lt;span class="math"&gt;\(m\)&lt;/span&gt;), and time (&lt;span class="math"&gt;\(s\)&lt;/span&gt;).&lt;/p&gt;
-&lt;p&gt;&lt;img alt="couette" src="images/couette.svg" title="Couette flow"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="couette" src="/articles/dimensional_analysis/images/couette.svg" title="Couette flow"&gt;&lt;/p&gt;
 &lt;p&gt;We therefore have three fundamental units and four parameters, meaning that
 our dimensional matrix (defined in Equation \eqref{dimension_matrix})
 must have three rows (one for each fundamental unit), and four columns (one for each parameter).
@@ -2876,7 +3121,7 @@ effort on our part. That is what I will be attempting in my &lt;a href="automate
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content></entry><entry><title>Nondimensional numbers and the Buckingham Pi theorem</title><link href="/nondimensional-numbers-and-the-buckingham-pi-theorem.html" rel="alternate"></link><published>2015-09-21T00:00:00-07:00</published><updated>2015-09-21T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2015-09-21:/nondimensional-numbers-and-the-buckingham-pi-theorem.html</id><summary type="html">&lt;p&gt;&lt;img alt="kanagawa" src="/images/kanagawa.jpg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;In my &lt;a href="introduction-to-dimensional-analysis.html"&gt;previous post&lt;/a&gt; I 
+&lt;/script&gt;</content></entry><entry><title>Nondimensional numbers and the Buckingham Pi theorem</title><link href="/nondimensional-numbers-and-the-buckingham-pi-theorem.html" rel="alternate"></link><published>2015-09-21T00:00:00-07:00</published><updated>2015-09-21T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2015-09-21:/nondimensional-numbers-and-the-buckingham-pi-theorem.html</id><summary type="html">&lt;p&gt;&lt;img alt="kanagawa" src="/articles/dimensional_analysis/images/kanagawa.jpg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;In my &lt;a href="introduction-to-dimensional-analysis.html"&gt;previous post&lt;/a&gt; I 
 tried to establish the context for nondimensional analysis, which 
 allowed us to ask the central questions that the Buckingham Pi theorem
 will allow us to answer. At the heart of the matter was the relationship
@@ -2907,7 +3152,7 @@ The fluid has a viscosity &lt;span class="math"&gt;\(\eta \; (\mathrm{kg}/\mathr
 and the plates are separated by a distance &lt;span class="math"&gt;\(D \; (\mathrm{m})\)&lt;/span&gt;. The top plate is 
 being moved in the &lt;span class="math"&gt;\(x\)&lt;/span&gt;-direction at velocity &lt;span class="math"&gt;\(u_0 \; (\mathrm{m/s})\)&lt;/span&gt;. We presume
 that the plates are large enough laterally that we can neglect their edges.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="couette" src="images/couette.svg" title="Couette flow"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="couette" src="/articles/dimensional_analysis/images/couette.svg" title="Couette flow"&gt;&lt;/p&gt;
 &lt;p&gt;We are interested in determining the velocity and pressure in the 
 fluid, which means that, in general, you have to solve 
 the Navier-Stokes equations for an incompressible fluid:
@@ -2958,10 +3203,10 @@ the wall motion, and tends to keep the fluid moving) and the viscous
 forces in the fluid (which tend to damp out fluid motions).
 If the Reynolds is large, inertia is more important, and the 
 fluid will have whorls, vortices, and be very chaotic.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="kanagawa" src="images/kanagawa.jpg" title="A high Reynolds number fluid (the waves, not the boats)"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="kanagawa" src="/articles/dimensional_analysis/images/kanagawa.jpg" title="A high Reynolds number fluid (the waves, not the boats)"&gt;&lt;/p&gt;
 &lt;p&gt;If the Reynolds number is small, the fluid will move slowly
 and regularly, in a fashion that is known as "laminar."&lt;/p&gt;
-&lt;p&gt;&lt;img alt="honey" src="images/honey.jpg" title="A low Reynolds number fluid (the honey, not the stick)"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="honey" src="/articles/dimensional_analysis/images/honey.jpg" title="A low Reynolds number fluid (the honey, not the stick)"&gt;&lt;/p&gt;
 &lt;h2&gt;Nondimensional numbers&lt;/h2&gt;
 &lt;p&gt;Something very important happened when we compared the two velocity scales
 by computing the Reynolds number: we divided something with units of velocity
@@ -3025,7 +3270,7 @@ At low &lt;span class="math"&gt;\(\mathrm{Re}\)&lt;/span&gt; it is laminar, whic
 As &lt;span class="math"&gt;\(\mathrm{Re}\)&lt;/span&gt; becomes larger, however, instabilities in the flow start to 
 appear, causing complex and turbulent flow features.&lt;/p&gt;
 &lt;h2&gt;The Buckingham Pi theorem&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="pie" src="images/pie.jpg" title="A low-rent pun. It probably won't be the last"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="pie" src="/articles/dimensional_analysis/images/pie.jpg" title="A low-rent pun. It probably won't be the last"&gt;&lt;/p&gt;
 &lt;p&gt;Let's try to put the observations we've made so far into a coherent picture.
 When working out the period of a pendulum, there was only one way to make something 
 with the right units. However, when we tried a more complicated problem in Couette flow,
@@ -3139,7 +3384,7 @@ In my &lt;a href="linear-algebra-and-the-buckingham-pi-theorem.html"&gt;next pos
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content></entry><entry><title>Introduction to dimensional analysis</title><link href="/introduction-to-dimensional-analysis.html" rel="alternate"></link><published>2015-09-08T00:00:00-07:00</published><updated>2015-09-08T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2015-09-08:/introduction-to-dimensional-analysis.html</id><summary type="html">&lt;p&gt;&lt;img alt="apple_plus_orange" src="/images/apple_plus_orange.jpeg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is the beginning of what I intend to be a multi-part series on dimensional analysis.
+&lt;/script&gt;</content></entry><entry><title>Introduction to dimensional analysis</title><link href="/introduction-to-dimensional-analysis.html" rel="alternate"></link><published>2015-09-08T00:00:00-07:00</published><updated>2015-09-08T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2015-09-08:/introduction-to-dimensional-analysis.html</id><summary type="html">&lt;p&gt;&lt;img alt="apple_plus_orange" src="/articles/dimensional_analysis/images/apple_plus_orange.jpeg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is the beginning of what I intend to be a multi-part series on dimensional analysis.
 The goal for this post is to set the stage for why dimensional analysis is a powerful tool,
 and to ask the questions which will lead us to the Buckingham Pi theorem.&lt;/p&gt;
 &lt;p&gt;The Buckingham Pi theorem is probably the most important result in the field of dimensional analysis.
@@ -3180,7 +3425,7 @@ determine any quantity of that type in multiples of the standard. This is quite 
 but it means that we can, for instance, define a &lt;a href="https://en.wikipedia.org/wiki/Kilogram"&gt;standard kilogram&lt;/a&gt;,
 and then measure the mass of any item by determining how many of that standard have 
 an equal mass to the item.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="kilogram" src="images/standard_kilogram.jpg" title="The standard kilogram"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="kilogram" src="articles/dimensional_analysis/images/standard_kilogram.jpg" title="The standard kilogram"&gt;&lt;/p&gt;
 &lt;p&gt;As another example, the initial definition of the meter had it as one ten-millionth 
 of the distance from the equator to the north pole. With that definition, anybody could
 (at least in principle), construct a meter-stick and measure the lengths of things to 
@@ -3201,7 +3446,7 @@ To others it may not even make sense. Unfortunately, some fairly
 most of which I am not really qualified to address, so I will proceed with an example.&lt;/p&gt;
 &lt;p&gt;A common example given for why the units in a physical equation must match is something 
 along the lines of "you can't add apples and oranges!" &lt;/p&gt;
-&lt;p&gt;&lt;img alt="apple_plus_orange" src="images/apple_plus_orange.jpeg" title="Was this worth my time? Probably not..."&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="apple_plus_orange" src="articles/dimensional_analysis/images/apple_plus_orange.jpeg" title="Was this worth my time? Probably not..."&gt;&lt;/p&gt;
 &lt;p&gt;This is kind of an unfortunate argument, since there are conceivably situations 
 where it makes perfect sense to add apples and oranges. What if I am trying to 
 organize a school lunch program, and there are bushels (how's that for a unit?) 
@@ -3308,7 +3553,7 @@ the most natural system of units to represent the physics of the system.
 And hopefully at the end we will be able to go back to the above Wikipedia quote and understand what it means.&lt;/p&gt;
 &lt;p&gt;In my &lt;a href="nondimensional-numbers-and-the-buckingham-pi-theorem.html"&gt;next post&lt;/a&gt;,
 I will be taking a qualitative look at the content of the Buckingham Pi theorem.
-&lt;img alt="new-cuayma" src="images/new-cuyama.jpg" title="My kind of place"&gt;&lt;/p&gt;
+&lt;img alt="new-cuayma" src="articles/dimensional_analysis/images/new-cuyama.jpg" title="My kind of place"&gt;&lt;/p&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",

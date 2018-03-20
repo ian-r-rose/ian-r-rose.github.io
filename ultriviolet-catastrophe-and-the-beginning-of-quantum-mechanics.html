@@ -88,7 +88,7 @@ radiated to space as electromagnetic waves, which we percieve as as the
 warmth and brightness of a sunny day.</p>
 <p>Scientists further observed that hot bodies such as the sun did 
 not radiate light at a single frequency but rather as a spectrum:</p>
-<p><img alt="solar spectrum" src="images/solar_spectrum.svg" title="Wavelength (rather than frequency) vs radiance of the sun. (image from Global Warming Art)"></p>
+<p><img alt="solar spectrum" src="/articles/dimensional_analysis/images/solar_spectrum.svg" title="Wavelength (rather than frequency) vs radiance of the sun. (image from Global Warming Art)"></p>
 <p>Furthermore, the shape of that spectrum and its peak
 frequency seemed to be a function of the body's temperature. 
 At lower temperatures, the object would give off predominantly 
@@ -114,7 +114,7 @@ of the light given off by the sun and answer two fundamental questions:</p>
 <li>How hot is the sun?</li>
 <li>How much energy does the sun radiate to space?</li>
 </ol>
-<p><img alt="sun" src="images/sun.jpg" title="WHAT IS MY TEMPERATURE (NASA/JPL)"></p>
+<p><img alt="sun" src="/articles/dimensional_analysis/images/sun.jpg" title="WHAT IS MY TEMPERATURE (NASA/JPL)"></p>
 <p>Okay, so with that prelude, let's take a crack at the dimensional analysis of this problem.
 The observation that we are trying to explain is the radiation of 
 energy from the surface of an object. That is to say, for a given frequency the object
@@ -203,7 +203,7 @@ E \sim \int_0^\infty \frac{k_B T \nu^2}{c^2} d\nu
 \label{integrated_rayleigh_jeans}
 \end{equation}</div>
 <p>Here is a plot of that integral:</p>
-<p><img alt="ultraviolet" src="images/ultraviolet_catastrophe.png" title="A catastrophe indeed"></p>
+<p><img alt="ultraviolet" src="/articles/dimensional_analysis/images/ultraviolet_catastrophe.png" title="A catastrophe indeed"></p>
 <p>Uh oh. There is a problem. There is no way that this integral can possibly converge
 on a finite answer, since the <span class="math">\(\nu^2\)</span> factor must blow up as we integrate to infinity.
 We are therefore led to the conclusion that a body which is radiating to space
@@ -219,7 +219,7 @@ blowing up at high frequencies since this is the only form of the equation
 for spectral radiance allowable. The only way out is to introduce some
 extra physics, which will, in turn, enrich the parameter space and provide us an out.</p>
 <p>Enter <a href="https://en.wikipedia.org/wiki/Max_Planck">Max Planck</a>.</p>
-<p><img alt="planck" src="images/planck.gif" title="Hey there, good looking"></p>
+<p><img alt="planck" src="/articles/dimensional_analysis/images/planck.gif" title="Hey there, good looking"></p>
 <p>Planck was a German physicist working on on this problem around the turn of the twentieth century. 
 In an effort to better match the observations, 
 he made the assumption that the radiated energy could only be emitted in discrete
@@ -275,7 +275,7 @@ f(\xi) = \frac{1}{e^{\xi} - 1}
 <p>Here is the plot of what is now known as Planck's law, relating frequency to spectral radiance.
 As you can see, the shape of the curve looks much more like that of the observed solar spectrum
 and the area underneath the curve does not blow up:</p>
-<p><img alt="planck_law" src="images/planck_law.png" title="Catastrophe averted"></p>
+<p><img alt="planck_law" src="/articles/dimensional_analysis/images/planck_law.png" title="Catastrophe averted"></p>
 <p>We can now safely fit the solar spectrum to Planck's law to determine the temperature
 of the sun, all without actually going there. And though we used the sun as our primary
 example, this works for basically anything: using Planck's law we know to pretty high

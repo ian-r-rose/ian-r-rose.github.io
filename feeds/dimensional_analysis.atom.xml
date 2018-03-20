@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Blueschisting - dimensional_analysis</title><link href="/" rel="alternate"></link><link href="/feeds/dimensional_analysis.atom.xml" rel="self"></link><id>/</id><updated>2016-06-06T00:00:00-07:00</updated><entry><title>Ultriviolet catastrophe and the beginning of quantum mechanics</title><link href="/ultriviolet-catastrophe-and-the-beginning-of-quantum-mechanics.html" rel="alternate"></link><published>2016-06-06T00:00:00-07:00</published><updated>2016-06-06T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2016-06-06:/ultriviolet-catastrophe-and-the-beginning-of-quantum-mechanics.html</id><summary type="html">&lt;p&gt;&lt;img alt="sun" src="/images/sun.jpg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;We just finished a very long explication of the fundamentals of dimensional
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Blueschisting - dimensional_analysis</title><link href="/" rel="alternate"></link><link href="/feeds/dimensional_analysis.atom.xml" rel="self"></link><id>/</id><updated>2016-06-06T00:00:00-07:00</updated><entry><title>Ultriviolet catastrophe and the beginning of quantum mechanics</title><link href="/ultriviolet-catastrophe-and-the-beginning-of-quantum-mechanics.html" rel="alternate"></link><published>2016-06-06T00:00:00-07:00</published><updated>2016-06-06T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2016-06-06:/ultriviolet-catastrophe-and-the-beginning-of-quantum-mechanics.html</id><summary type="html">&lt;p&gt;&lt;img alt="sun" src="/articles/dimensional_analysis/images/sun.jpg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;We just finished a very long explication of the fundamentals of dimensional
 analysis and the Buckingham Pi theorem 
 (well, not "just", since it took me significantly longer 
 than I anticipated to finish up this post).
@@ -26,7 +26,7 @@ radiated to space as electromagnetic waves, which we percieve as as the
 warmth and brightness of a sunny day.&lt;/p&gt;
 &lt;p&gt;Scientists further observed that hot bodies such as the sun did 
 not radiate light at a single frequency but rather as a spectrum:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="solar spectrum" src="images/solar_spectrum.svg" title="Wavelength (rather than frequency) vs radiance of the sun. (image from Global Warming Art)"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="solar spectrum" src="/articles/dimensional_analysis/images/solar_spectrum.svg" title="Wavelength (rather than frequency) vs radiance of the sun. (image from Global Warming Art)"&gt;&lt;/p&gt;
 &lt;p&gt;Furthermore, the shape of that spectrum and its peak
 frequency seemed to be a function of the body's temperature. 
 At lower temperatures, the object would give off predominantly 
@@ -52,7 +52,7 @@ of the light given off by the sun and answer two fundamental questions:&lt;/p&gt
 &lt;li&gt;How hot is the sun?&lt;/li&gt;
 &lt;li&gt;How much energy does the sun radiate to space?&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img alt="sun" src="images/sun.jpg" title="WHAT IS MY TEMPERATURE (NASA/JPL)"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="sun" src="/articles/dimensional_analysis/images/sun.jpg" title="WHAT IS MY TEMPERATURE (NASA/JPL)"&gt;&lt;/p&gt;
 &lt;p&gt;Okay, so with that prelude, let's take a crack at the dimensional analysis of this problem.
 The observation that we are trying to explain is the radiation of 
 energy from the surface of an object. That is to say, for a given frequency the object
@@ -141,7 +141,7 @@ E \sim \int_0^\infty \frac{k_B T \nu^2}{c^2} d\nu
 \label{integrated_rayleigh_jeans}
 \end{equation}&lt;/div&gt;
 &lt;p&gt;Here is a plot of that integral:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="ultraviolet" src="images/ultraviolet_catastrophe.png" title="A catastrophe indeed"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ultraviolet" src="/articles/dimensional_analysis/images/ultraviolet_catastrophe.png" title="A catastrophe indeed"&gt;&lt;/p&gt;
 &lt;p&gt;Uh oh. There is a problem. There is no way that this integral can possibly converge
 on a finite answer, since the &lt;span class="math"&gt;\(\nu^2\)&lt;/span&gt; factor must blow up as we integrate to infinity.
 We are therefore led to the conclusion that a body which is radiating to space
@@ -157,7 +157,7 @@ blowing up at high frequencies since this is the only form of the equation
 for spectral radiance allowable. The only way out is to introduce some
 extra physics, which will, in turn, enrich the parameter space and provide us an out.&lt;/p&gt;
 &lt;p&gt;Enter &lt;a href="https://en.wikipedia.org/wiki/Max_Planck"&gt;Max Planck&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="planck" src="images/planck.gif" title="Hey there, good looking"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="planck" src="/articles/dimensional_analysis/images/planck.gif" title="Hey there, good looking"&gt;&lt;/p&gt;
 &lt;p&gt;Planck was a German physicist working on on this problem around the turn of the twentieth century. 
 In an effort to better match the observations, 
 he made the assumption that the radiated energy could only be emitted in discrete
@@ -213,7 +213,7 @@ f(\xi) = \frac{1}{e^{\xi} - 1}
 &lt;p&gt;Here is the plot of what is now known as Planck's law, relating frequency to spectral radiance.
 As you can see, the shape of the curve looks much more like that of the observed solar spectrum
 and the area underneath the curve does not blow up:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="planck_law" src="images/planck_law.png" title="Catastrophe averted"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="planck_law" src="/articles/dimensional_analysis/images/planck_law.png" title="Catastrophe averted"&gt;&lt;/p&gt;
 &lt;p&gt;We can now safely fit the solar spectrum to Planck's law to determine the temperature
 of the sun, all without actually going there. And though we used the sun as our primary
 example, this works for basically anything: using Planck's law we know to pretty high
@@ -335,7 +335,7 @@ Any errors or omissions are my own.&lt;/p&gt;
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content></entry><entry><title>Automated dimensional analysis</title><link href="/automated-dimensional-analysis.html" rel="alternate"></link><published>2015-10-28T00:00:00-07:00</published><updated>2015-10-28T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2015-10-28:/automated-dimensional-analysis.html</id><summary type="html">&lt;p&gt;&lt;img alt="couette" src="/images/couette.svg"&gt;&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
+&lt;/script&gt;</content></entry><entry><title>Automated dimensional analysis</title><link href="/automated-dimensional-analysis.html" rel="alternate"></link><published>2015-10-28T00:00:00-07:00</published><updated>2015-10-28T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2015-10-28:/automated-dimensional-analysis.html</id><summary type="html">&lt;p&gt;&lt;img alt="couette" src="/articles/dimensional_analysis/images/couette.svg"&gt;&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
@@ -1488,7 +1488,7 @@ Now we need to be able to construct the dimension matrix described in the previo
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The function returns the list of fundamental units and the dimension matrix for the set of parameters.&lt;/p&gt;
 &lt;p&gt;As an example, we can try the case of Couette flow from the previous articles. In case you have forgotten, Couette flow involves the motion of a fluid between two plates. The fluid has a density $\rho$ and a viscosity $\eta$. The two plates are separated by a distance $D$ and the top plate is shearing the fluid with a velocity $u_0$.&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/couette.svg" alt="couette" title="I have reused this image enough that I no longer regret the time it took to make it"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/articles/dimensional_analysis/images/couette.svg" alt="couette" title="I have reused this image enough that I no longer regret the time it took to make it"&gt;&lt;/p&gt;
 &lt;p&gt;We can define these parameters and their units using the &lt;code&gt;Parameter&lt;/code&gt; type:&lt;/p&gt;
 
 &lt;/div&gt;
@@ -1832,7 +1832,7 @@ $$\frac{ \eta}{ \rho D u_0}$$
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="More-involved-examples"&gt;More involved examples&lt;a class="anchor-link" href="#More-involved-examples"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The problem we have been working with is a relatively simple problem, with a single nondimensional number. More complicated problems can have many nondimensional numbers, each describing some aspect of the physics of the problem. That is to say, as we add more physics, we expect to have more nondimensional numbers at play. I'd like to close out this article with a coupld of examples of this.&lt;/p&gt;
 &lt;p&gt;First, we can consider an elaboration on shearing flow: what if the fluid was a river? Like Couette flow, rivers exist in a channel, but they also move under the influence of gravity. The force of gravity determines the dynamics of ripples and waves along its surface and the speed at which the river moves downhill. It also is extremely important for characterizing the rate of &lt;a href="https://en.wikipedia.org/wiki/Saltation_%28geology%29"&gt;sediment transport&lt;/a&gt; downstream, which has important geomorphological, agricultural, and environmental consequences.&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/oranje.jpg" alt="oranje" title="All right! An excuse for a picture!"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/articles/dimensional_analysis/images/oranje.jpg" alt="oranje" title="All right! An excuse for a picture!"&gt;&lt;/p&gt;
 &lt;p&gt;Since gravity is a primary control on the river dynamics, we had better include that in our list of parameters. Regenerating the parameter list, and finding the nondimensional numbers, we get&lt;/p&gt;
 
 &lt;/div&gt;
@@ -1881,7 +1881,7 @@ This number is a direct consequence of our adding the effects of gravity to the 
 \mathrm{Fr} = \frac{u_0^2}{\sqrt{g D} }
 \end{equation}
 so what we actually found was $1/\mathrm{Fr}^2$. But remember, this is just a convention, and any power of a nondimensional number is just as valid. As you might imagine, the ratio of inertia to gravity is the primary control on the shape of waves in moving water, and as such is extremely important in the hydrodynamic design of ships.&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/shipwreck.jpg" alt="shipwreck" title="Too much Froude, too much Reynolds"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/articles/dimensional_analysis/images/shipwreck.jpg" alt="shipwreck" title="Too much Froude, too much Reynolds"&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1892,7 +1892,7 @@ so what we actually found was $1/\mathrm{Fr}^2$. But remember, this is just a co
 When a magma chamber underneath a volcano gets a fresh infusion of magma, the chamber gets overpressured.
 This overpressure deflects the overlying surface upwards, which can be detedcted via satellites using &lt;a href="https://en.wikipedia.org/wiki/Interferometric_synthetic_aperture_radar"&gt;INSAR&lt;/a&gt;.
 The image below depicts the deflection of Earth's surface at a volcano in the Galapagos from a study by &lt;a href="http://dx.doi.org/10.1038/35039604"&gt;Amelung et. al.(2000)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/mogi.jpg" alt="mogi" title="It's gonna blow..."&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/articles/dimensional_analysis/images/mogi.jpg" alt="mogi" title="It's gonna blow..."&gt;&lt;/p&gt;
 &lt;p&gt;We would like to understand how the Earth deforms due to the overpressure in the magma chamber.
 Using a dollop of intuition, we suppose that the deflection of the surface depends on the radius of the magma chamber $R$, the depth of the magma chamber $D$, and the overpressure $\Delta P$. 
 Furthermore, it must depend on the elastic properties of the rock (which control how the rock deforms due to some stress).
@@ -1990,7 +1990,7 @@ How far can you get with this perspective? It turns out, surprisingly far!&lt;/p
 }
 &lt;/script&gt;
 </content></entry><entry><title>Linear algebra and the Buckingham Pi theorem</title><link href="/linear-algebra-and-the-buckingham-pi-theorem.html" rel="alternate"></link><published>2015-09-29T00:00:00-07:00</published><updated>2015-09-29T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2015-09-29:/linear-algebra-and-the-buckingham-pi-theorem.html</id><summary type="html">&lt;div class="math"&gt;\begin{equation*} p = n-k \end{equation*}&lt;/div&gt;
-&lt;p&gt; &lt;img alt="lightbulb" src="/images/lightbulb.png"&gt;&lt;/p&gt;
+&lt;p&gt; &lt;img alt="lightbulb" src="/articles/dimensional_analysis/images/lightbulb.png"&gt;&lt;/p&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -2066,7 +2066,7 @@ The choice of fundamental units is not necessarily unique, but by
 convention we most commonly use the SI measures for length (m),
 time (s), temperature (K), mass (kg), quantity (mol), current (A),
 and luminosity (cd).&lt;/p&gt;
-&lt;p&gt;&lt;img alt="lightbulb" src="images/lightbulb.png" title="not entirely sure how luminosity got in there"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="lightbulb" src="/articles/dimensional_analysis/images/lightbulb.png" title="not entirely sure how luminosity got in there"&gt;&lt;/p&gt;
 &lt;p&gt;So, let's say that the quantity of interest is called &lt;span class="math"&gt;\(\Omega\)&lt;/span&gt;, and that
 there are &lt;span class="math"&gt;\(n\)&lt;/span&gt; parameters &lt;span class="math"&gt;\(\omega_i\)&lt;/span&gt;, where &lt;span class="math"&gt;\(i\)&lt;/span&gt; goes from one to &lt;span class="math"&gt;\(n\)&lt;/span&gt;.
 We denote the units of something by enclosing it in square brackets,
@@ -2299,7 +2299,7 @@ the density &lt;span class="math"&gt;\(\rho \; (\mathrm{kg}/\mathrm{m}^3)\)&lt;/
 the separation distance &lt;span class="math"&gt;\(D \; (\mathrm{m})\)&lt;/span&gt;, 
 and the upper plate velocity &lt;span class="math"&gt;\(u_0 \; (\mathrm{m/s})\)&lt;/span&gt;.
 The fundamental units are mass (&lt;span class="math"&gt;\(kg\)&lt;/span&gt;), length (&lt;span class="math"&gt;\(m\)&lt;/span&gt;), and time (&lt;span class="math"&gt;\(s\)&lt;/span&gt;).&lt;/p&gt;
-&lt;p&gt;&lt;img alt="couette" src="images/couette.svg" title="Couette flow"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="couette" src="/articles/dimensional_analysis/images/couette.svg" title="Couette flow"&gt;&lt;/p&gt;
 &lt;p&gt;We therefore have three fundamental units and four parameters, meaning that
 our dimensional matrix (defined in Equation \eqref{dimension_matrix})
 must have three rows (one for each fundamental unit), and four columns (one for each parameter).
@@ -2394,7 +2394,7 @@ effort on our part. That is what I will be attempting in my &lt;a href="automate
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content></entry><entry><title>Nondimensional numbers and the Buckingham Pi theorem</title><link href="/nondimensional-numbers-and-the-buckingham-pi-theorem.html" rel="alternate"></link><published>2015-09-21T00:00:00-07:00</published><updated>2015-09-21T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2015-09-21:/nondimensional-numbers-and-the-buckingham-pi-theorem.html</id><summary type="html">&lt;p&gt;&lt;img alt="kanagawa" src="/images/kanagawa.jpg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;In my &lt;a href="introduction-to-dimensional-analysis.html"&gt;previous post&lt;/a&gt; I 
+&lt;/script&gt;</content></entry><entry><title>Nondimensional numbers and the Buckingham Pi theorem</title><link href="/nondimensional-numbers-and-the-buckingham-pi-theorem.html" rel="alternate"></link><published>2015-09-21T00:00:00-07:00</published><updated>2015-09-21T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2015-09-21:/nondimensional-numbers-and-the-buckingham-pi-theorem.html</id><summary type="html">&lt;p&gt;&lt;img alt="kanagawa" src="/articles/dimensional_analysis/images/kanagawa.jpg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;In my &lt;a href="introduction-to-dimensional-analysis.html"&gt;previous post&lt;/a&gt; I 
 tried to establish the context for nondimensional analysis, which 
 allowed us to ask the central questions that the Buckingham Pi theorem
 will allow us to answer. At the heart of the matter was the relationship
@@ -2425,7 +2425,7 @@ The fluid has a viscosity &lt;span class="math"&gt;\(\eta \; (\mathrm{kg}/\mathr
 and the plates are separated by a distance &lt;span class="math"&gt;\(D \; (\mathrm{m})\)&lt;/span&gt;. The top plate is 
 being moved in the &lt;span class="math"&gt;\(x\)&lt;/span&gt;-direction at velocity &lt;span class="math"&gt;\(u_0 \; (\mathrm{m/s})\)&lt;/span&gt;. We presume
 that the plates are large enough laterally that we can neglect their edges.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="couette" src="images/couette.svg" title="Couette flow"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="couette" src="/articles/dimensional_analysis/images/couette.svg" title="Couette flow"&gt;&lt;/p&gt;
 &lt;p&gt;We are interested in determining the velocity and pressure in the 
 fluid, which means that, in general, you have to solve 
 the Navier-Stokes equations for an incompressible fluid:
@@ -2476,10 +2476,10 @@ the wall motion, and tends to keep the fluid moving) and the viscous
 forces in the fluid (which tend to damp out fluid motions).
 If the Reynolds is large, inertia is more important, and the 
 fluid will have whorls, vortices, and be very chaotic.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="kanagawa" src="images/kanagawa.jpg" title="A high Reynolds number fluid (the waves, not the boats)"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="kanagawa" src="/articles/dimensional_analysis/images/kanagawa.jpg" title="A high Reynolds number fluid (the waves, not the boats)"&gt;&lt;/p&gt;
 &lt;p&gt;If the Reynolds number is small, the fluid will move slowly
 and regularly, in a fashion that is known as "laminar."&lt;/p&gt;
-&lt;p&gt;&lt;img alt="honey" src="images/honey.jpg" title="A low Reynolds number fluid (the honey, not the stick)"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="honey" src="/articles/dimensional_analysis/images/honey.jpg" title="A low Reynolds number fluid (the honey, not the stick)"&gt;&lt;/p&gt;
 &lt;h2&gt;Nondimensional numbers&lt;/h2&gt;
 &lt;p&gt;Something very important happened when we compared the two velocity scales
 by computing the Reynolds number: we divided something with units of velocity
@@ -2543,7 +2543,7 @@ At low &lt;span class="math"&gt;\(\mathrm{Re}\)&lt;/span&gt; it is laminar, whic
 As &lt;span class="math"&gt;\(\mathrm{Re}\)&lt;/span&gt; becomes larger, however, instabilities in the flow start to 
 appear, causing complex and turbulent flow features.&lt;/p&gt;
 &lt;h2&gt;The Buckingham Pi theorem&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="pie" src="images/pie.jpg" title="A low-rent pun. It probably won't be the last"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="pie" src="/articles/dimensional_analysis/images/pie.jpg" title="A low-rent pun. It probably won't be the last"&gt;&lt;/p&gt;
 &lt;p&gt;Let's try to put the observations we've made so far into a coherent picture.
 When working out the period of a pendulum, there was only one way to make something 
 with the right units. However, when we tried a more complicated problem in Couette flow,
@@ -2657,7 +2657,7 @@ In my &lt;a href="linear-algebra-and-the-buckingham-pi-theorem.html"&gt;next pos
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content></entry><entry><title>Introduction to dimensional analysis</title><link href="/introduction-to-dimensional-analysis.html" rel="alternate"></link><published>2015-09-08T00:00:00-07:00</published><updated>2015-09-08T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2015-09-08:/introduction-to-dimensional-analysis.html</id><summary type="html">&lt;p&gt;&lt;img alt="apple_plus_orange" src="/images/apple_plus_orange.jpeg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is the beginning of what I intend to be a multi-part series on dimensional analysis.
+&lt;/script&gt;</content></entry><entry><title>Introduction to dimensional analysis</title><link href="/introduction-to-dimensional-analysis.html" rel="alternate"></link><published>2015-09-08T00:00:00-07:00</published><updated>2015-09-08T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2015-09-08:/introduction-to-dimensional-analysis.html</id><summary type="html">&lt;p&gt;&lt;img alt="apple_plus_orange" src="/articles/dimensional_analysis/images/apple_plus_orange.jpeg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is the beginning of what I intend to be a multi-part series on dimensional analysis.
 The goal for this post is to set the stage for why dimensional analysis is a powerful tool,
 and to ask the questions which will lead us to the Buckingham Pi theorem.&lt;/p&gt;
 &lt;p&gt;The Buckingham Pi theorem is probably the most important result in the field of dimensional analysis.
@@ -2698,7 +2698,7 @@ determine any quantity of that type in multiples of the standard. This is quite 
 but it means that we can, for instance, define a &lt;a href="https://en.wikipedia.org/wiki/Kilogram"&gt;standard kilogram&lt;/a&gt;,
 and then measure the mass of any item by determining how many of that standard have 
 an equal mass to the item.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="kilogram" src="images/standard_kilogram.jpg" title="The standard kilogram"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="kilogram" src="articles/dimensional_analysis/images/standard_kilogram.jpg" title="The standard kilogram"&gt;&lt;/p&gt;
 &lt;p&gt;As another example, the initial definition of the meter had it as one ten-millionth 
 of the distance from the equator to the north pole. With that definition, anybody could
 (at least in principle), construct a meter-stick and measure the lengths of things to 
@@ -2719,7 +2719,7 @@ To others it may not even make sense. Unfortunately, some fairly
 most of which I am not really qualified to address, so I will proceed with an example.&lt;/p&gt;
 &lt;p&gt;A common example given for why the units in a physical equation must match is something 
 along the lines of "you can't add apples and oranges!" &lt;/p&gt;
-&lt;p&gt;&lt;img alt="apple_plus_orange" src="images/apple_plus_orange.jpeg" title="Was this worth my time? Probably not..."&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="apple_plus_orange" src="articles/dimensional_analysis/images/apple_plus_orange.jpeg" title="Was this worth my time? Probably not..."&gt;&lt;/p&gt;
 &lt;p&gt;This is kind of an unfortunate argument, since there are conceivably situations 
 where it makes perfect sense to add apples and oranges. What if I am trying to 
 organize a school lunch program, and there are bushels (how's that for a unit?) 
@@ -2826,7 +2826,7 @@ the most natural system of units to represent the physics of the system.
 And hopefully at the end we will be able to go back to the above Wikipedia quote and understand what it means.&lt;/p&gt;
 &lt;p&gt;In my &lt;a href="nondimensional-numbers-and-the-buckingham-pi-theorem.html"&gt;next post&lt;/a&gt;,
 I will be taking a qualitative look at the content of the Buckingham Pi theorem.
-&lt;img alt="new-cuayma" src="images/new-cuyama.jpg" title="My kind of place"&gt;&lt;/p&gt;
+&lt;img alt="new-cuayma" src="articles/dimensional_analysis/images/new-cuyama.jpg" title="My kind of place"&gt;&lt;/p&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",

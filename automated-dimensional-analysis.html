@@ -1214,7 +1214,7 @@ Now we need to be able to construct the dimension matrix described in the previo
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The function returns the list of fundamental units and the dimension matrix for the set of parameters.</p>
 <p>As an example, we can try the case of Couette flow from the previous articles. In case you have forgotten, Couette flow involves the motion of a fluid between two plates. The fluid has a density $\rho$ and a viscosity $\eta$. The two plates are separated by a distance $D$ and the top plate is shearing the fluid with a velocity $u_0$.</p>
-<p><img src="images/couette.svg" alt="couette" title="I have reused this image enough that I no longer regret the time it took to make it"></p>
+<p><img src="/articles/dimensional_analysis/images/couette.svg" alt="couette" title="I have reused this image enough that I no longer regret the time it took to make it"></p>
 <p>We can define these parameters and their units using the <code>Parameter</code> type:</p>
 
 </div>
@@ -1558,7 +1558,7 @@ $$\frac{ \eta}{ \rho D u_0}$$
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="More-involved-examples">More involved examples<a class="anchor-link" href="#More-involved-examples">&#182;</a></h2><p>The problem we have been working with is a relatively simple problem, with a single nondimensional number. More complicated problems can have many nondimensional numbers, each describing some aspect of the physics of the problem. That is to say, as we add more physics, we expect to have more nondimensional numbers at play. I'd like to close out this article with a coupld of examples of this.</p>
 <p>First, we can consider an elaboration on shearing flow: what if the fluid was a river? Like Couette flow, rivers exist in a channel, but they also move under the influence of gravity. The force of gravity determines the dynamics of ripples and waves along its surface and the speed at which the river moves downhill. It also is extremely important for characterizing the rate of <a href="https://en.wikipedia.org/wiki/Saltation_%28geology%29">sediment transport</a> downstream, which has important geomorphological, agricultural, and environmental consequences.</p>
-<p><img src="images/oranje.jpg" alt="oranje" title="All right! An excuse for a picture!"></p>
+<p><img src="/articles/dimensional_analysis/images/oranje.jpg" alt="oranje" title="All right! An excuse for a picture!"></p>
 <p>Since gravity is a primary control on the river dynamics, we had better include that in our list of parameters. Regenerating the parameter list, and finding the nondimensional numbers, we get</p>
 
 </div>
@@ -1607,7 +1607,7 @@ This number is a direct consequence of our adding the effects of gravity to the 
 \mathrm{Fr} = \frac{u_0^2}{\sqrt{g D} }
 \end{equation}
 so what we actually found was $1/\mathrm{Fr}^2$. But remember, this is just a convention, and any power of a nondimensional number is just as valid. As you might imagine, the ratio of inertia to gravity is the primary control on the shape of waves in moving water, and as such is extremely important in the hydrodynamic design of ships.</p>
-<p><img src="images/shipwreck.jpg" alt="shipwreck" title="Too much Froude, too much Reynolds"></p>
+<p><img src="/articles/dimensional_analysis/images/shipwreck.jpg" alt="shipwreck" title="Too much Froude, too much Reynolds"></p>
 
 </div>
 </div>
@@ -1618,7 +1618,7 @@ so what we actually found was $1/\mathrm{Fr}^2$. But remember, this is just a co
 When a magma chamber underneath a volcano gets a fresh infusion of magma, the chamber gets overpressured.
 This overpressure deflects the overlying surface upwards, which can be detedcted via satellites using <a href="https://en.wikipedia.org/wiki/Interferometric_synthetic_aperture_radar">INSAR</a>.
 The image below depicts the deflection of Earth's surface at a volcano in the Galapagos from a study by <a href="http://dx.doi.org/10.1038/35039604">Amelung et. al.(2000)</a></p>
-<p><img src="images/mogi.jpg" alt="mogi" title="It's gonna blow..."></p>
+<p><img src="/articles/dimensional_analysis/images/mogi.jpg" alt="mogi" title="It's gonna blow..."></p>
 <p>We would like to understand how the Earth deforms due to the overpressure in the magma chamber.
 Using a dollop of intuition, we suppose that the deflection of the surface depends on the radius of the magma chamber $R$, the depth of the magma chamber $D$, and the overpressure $\Delta P$. 
 Furthermore, it must depend on the elastic properties of the rock (which control how the rock deforms due to some stress).

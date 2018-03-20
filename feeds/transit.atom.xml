@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Blueschisting - transit</title><link href="/" rel="alternate"></link><link href="/feeds/transit.atom.xml" rel="self"></link><id>/</id><updated>2018-03-19T00:00:00-07:00</updated><entry><title>Buses are bosons, or How I learned to stop worrying and love AC Transit (Part one)</title><link href="/bus-bunching-1.html" rel="alternate"></link><published>2018-03-19T00:00:00-07:00</published><updated>2018-03-19T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2018-03-19:/bus-bunching-1.html</id><summary type="html">&lt;p&gt;&lt;img alt="bunch" src="/articles/transit/images/18-bunch.jpg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;If you have spent any amount of time using mass transit,
+you know the frustration of waiting for the better part of an hour for a bus to arrive,
+only to see two or three of them roll up in quick succession.
+This phenomenon is a common enough problem that it has a name: "bus bunching":&lt;/p&gt;
+&lt;p&gt;&lt;img alt="18-bunch2" src="articles/transit/images/18-bunch2.jpg" title="Bunching on the 18 bus line in Berkeley"&gt;&lt;/p&gt;
+&lt;p&gt;In this two-part series, we'll investigate bus bunching by making a mathematical model of a bus route.
+In this first part, we'll construct the model and find it's equilibrium solution.
+In the second part, we'll demonstrate the inevitability for that model to bunch.&lt;/p&gt;
+&lt;p&gt;Let's start by constructing a model for the speed of a single bus.
+We will assume that the bus has a fixed route, on which it travels all day.
+That route may be on any number of different streets, go wending through different
+neighborhoods, and generally make very little sense 
+(like my beloved &lt;a href="http://www.actransit.org/pdf/maps/version_38/12.pdf"&gt;12 line&lt;/a&gt;).
+However, if it travels back and forth on this same route, we can model it as a loop,
+and its position on that loop can be mapped to an angle on a circle &lt;span class="math"&gt;\(\theta\)&lt;/span&gt;.
+We can then identify the speed of the bus with the time derivative of &lt;span class="math"&gt;\(\theta\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The simplest model for &lt;span class="math"&gt;\(d\theta/ dt\)&lt;/span&gt; is for the bus to travel at a constant speed &lt;span class="math"&gt;\(v_0\)&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{d \theta}{d t} = v_0
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+Or, expressed in a simulation:
+&lt;iframe src=/visualization/bus/bus-bunching.html?interactive=false&amp;boost=false&amp;equilibrium=true&amp;gamma=0&amp;n=1 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;p&gt;Now, this model isn't very interesting.
+There is only a single bus, and it is traveling at a fixed speed,
+so it has no hope of exhibiting the kind of bunching behavior that we want to explain.&lt;/p&gt;
+&lt;p&gt;A typical mass transit route operates multiple buses with a given
+&lt;a href="https://en.wikipedia.org/wiki/Headway"&gt;headway&lt;/a&gt;,
+the distance (or time) between successive vehicles on the route.
+If everything is operating according to the plan,
+the headway from one bus to the next should be approximately constant,
+with possible scheduled variations depending on the time of day
+(such as increased frequency during rush hour, or decreased frequency at night).&lt;/p&gt;
+&lt;p&gt;We can increase the complexity of our model adding some more buses so that there are &lt;span class="math"&gt;\(N\)&lt;/span&gt; on the route:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{d \theta_n}{d t} = v_0
+\label{constant}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;In this equation the subscript indicates the &lt;span class="math"&gt;\(n\)&lt;/span&gt;th bus out of &lt;span class="math"&gt;\(N\)&lt;/span&gt;,
+so a simulation with five buses looks like this:
+&lt;iframe src=/visualization/bus/bus-bunching.html?interactive=false&amp;equilibrium=true&amp;boost=false&amp;gamma=0&amp;n=5 width=700 height=700&gt;&lt;/iframe&gt;
+Okay, so this is starting to more closely resemble a bus route.
+However, the buses are still moving at a constant speed, and have no effect on each other.
+In order for our model to exhibit the richer characteristics of a system that can bunch,
+there must be some way for their speed to be a function of conditions on the road.&lt;/p&gt;
+&lt;p&gt;There are many factors that can control the speed of a bus traveling through town,
+including traffic, construction, scheduled layovers, and the number of passengers.
+In order to keep the model simple, we will focus on the last factor:
+the number of passengers who board and exit the bus.
+A traveling bus constantly picks up and drops off passengers as it makes its way around its route.
+This process takes time (as anyone who has watched a passenger fumble with change upon boarding knows).
+A bus that boards and deposits more passengers will, in general, make slower progress along its route.&lt;/p&gt;
+&lt;p&gt;Many things affect the number of passengers boarding a given bus, 
+including time-of-day, scheduling, and population density.
+In order to keep the model as simple as possible, we will ignore those and
+concentrate on a single factor: the amount of time since the previous bus.
+We will assume that as more time passes, more passengers arrive at a bus stop for pickup.
+If a bus falls behind schedule, more people will have arrived at each stop,
+meaning that it will be further slowed down by the excess passengers.
+In the following analysis, we will use the distance between buses as a proxy
+for the number of passengers that need to be picked up.&lt;/p&gt;
+&lt;p&gt;We need to augment our model to account for this slowing-down behavior.
+The expression for speed in equation \eqref{constant} is a constant,
+so the next-simplest expression is to make it linear in the distance between buses
+(our proxy for the number of passengers):
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{d\theta_n}{d t} = 
+ v_0 \left[ 1 - \gamma (\theta_{n+1} - \theta_n) \right]
+\label{evolution}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;In this equation, a bus picking up &lt;em&gt;no&lt;/em&gt; passengers travels at &lt;span class="math"&gt;\(v_0\)&lt;/span&gt;
+(which happens if there has been no time for them to accumulate since the previous bus).
+As the distance between a bus and the one ahead of it increases,
+the speed of the bus slows down, reflecting the additional time spent boarding and disembarking.
+The dimensionless parameter &lt;span class="math"&gt;\(\gamma\)&lt;/span&gt; determines how sensitive the bus speeds are to differences in headway.&lt;/p&gt;
+&lt;p&gt;Equation \eqref{evolution} is a set of ordinary differential equations
+(one equation for each of the &lt;span class="math"&gt;\(N\)&lt;/span&gt; buses).
+It will be the primary  evolution equation for our system of buses,
+which we will analyze by answering the following two questions.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Is there an equilibrium solution to these equations?
+That is to say, is there a solution that does not evolve in time?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If there is an equilibrium solution, is it stable?
+A stable solution, when perturbed, will return to the equilibrium.
+An unstable one will get further and further from equilibrium until the buses are bunched.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Strictly speaking, an equilibrium solution does not exist for the system of equations as described:
+as long as the buses have a nonzero velocity, their positions will evolve in time.
+However, with a slight reframing of the question it makes sense to talk about an equilibrium:
+is there a configuration for which the bus velocities are constant,
+and that the distance between them (headways) are not changing?&lt;/p&gt;
+&lt;p&gt;In a coordinate system traveling with the buses at equilibrium speed
+the solution to the system would then look like this:&lt;/p&gt;
+&lt;iframe src=/visualization/bus/bus-bunching.html?interactive=false&amp;equilibrium=true&amp;boost=true&amp;gamma=0&amp;n=5 width=700 height=700&gt;&lt;/iframe&gt;
+
+&lt;p&gt;It seems intuitive that an equilibrium solution, if it exists,
+should have the buses equally spaced, so let's start looking for a solution of that form.
+Let's further guess that the equilibrium velocity is the base bus speed &lt;span class="math"&gt;\(v_0\)&lt;/span&gt;.
+A change of coordinates makes this system a bit easier to reason about.
+Let's boost ourselves into moving a coordinate system &lt;span class="math"&gt;\(\psi\)&lt;/span&gt;, defined by:
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\psi_n \equiv \theta_n - v_0 t
+\end{equation}&lt;/div&gt;
+&lt;p&gt;From this we can also get the relations
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{d\theta_n}{d t} =
+\frac{d \psi_n}{d t} + v_0
+\end{equation}&lt;/div&gt;
+&lt;div class="math"&gt;\begin{equation}
+\theta_n =
+\psi_n + v_0 t
+\end{equation}&lt;/div&gt;
+&lt;p&gt;Substituting these into equation \eqref{evolution},
+we get the governing equations in terms of &lt;span class="math"&gt;\(\psi_n\)&lt;/span&gt;:
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{d \psi_n}{d t} + v_0 = 
+v_0 \left[ 1 - \gamma (\psi_{n+1} - \psi_n) \right]
+\end{equation}&lt;/div&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{d \psi_n}{d t} = 
+v_0 \gamma (\psi_{n} - \psi_{n+1})
+\end{equation}&lt;/div&gt;
+&lt;p&gt;When the buses are equally spaced around the loop, then the distance
+between them is the whole loop length divided between the number of buses, or
+&lt;span class="math"&gt;\(\psi_{n+1} - \psi_n = 2 \pi/N\)&lt;/span&gt;,
+which makes the governing equations in the &lt;span class="math"&gt;\(\psi\)&lt;/span&gt; coordinates&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{d \psi_n}{d t} = 
+\frac{ 2 \pi v_0 \gamma }{N}
+\end{equation}&lt;/div&gt;
+&lt;p&gt;Unless the interaction term &lt;span class="math"&gt;\(\gamma\)&lt;/span&gt; is zero, the time evolution of &lt;span class="math"&gt;\(\psi_n\)&lt;/span&gt; is nonzero,
+making this configuration a non-equilibrium solution to the system.
+Therefore, &lt;span class="math"&gt;\(v_0\)&lt;/span&gt; is &lt;em&gt;not&lt;/em&gt; the equilibrium velocity.&lt;/p&gt;
+&lt;p&gt;This should make sense, as we defined &lt;span class="math"&gt;\(v_0\)&lt;/span&gt; to be the speed of the bus
+in the absence of any delays due to loading and unloading of passengers.
+When we include that delay, the buses will be slower.
+Instead, let's construct a speed for buses that takes into account the
+delay due to passengers.&lt;/p&gt;
+&lt;p&gt;Again we presume that the buses are equally spaced,
+such that the distance between them is &lt;span class="math"&gt;\(2 \pi/N\)&lt;/span&gt;.
+Then, given the evolution equation \eqref{evolution}, we can calculate the speed &lt;span class="math"&gt;\(v_e\)&lt;/span&gt;:
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+v_e = \frac{d \theta_n}{d_t} = v_0 \left[ 1 - \frac{2 \pi \gamma}{N} \right]
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+Let's boost into a &lt;em&gt;new&lt;/em&gt; coordinate system &lt;span class="math"&gt;\(\phi\)&lt;/span&gt;, defined by
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\phi_n \equiv \theta_n - v_e t
+\end{equation}&lt;/div&gt;
+&lt;p&gt;Substituting this into equation \eqref{evolution}, we find&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{d \phi_n}{d t} + v_e =
+v_0 \left[ 1 - \gamma \left(\phi_{n+1} - \phi_n \right) \right]
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+As before, when the buses are equally spaced, &lt;span class="math"&gt;\(\phi_{n+1} - \phi_n = 2 \pi/N\)&lt;/span&gt;:
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{d \phi_n}{d t} + v_e =
+v_0 \left[ 1 - \frac{2 \pi \gamma}{N}  \right]
+\end{equation}&lt;/div&gt;
+&lt;p&gt;The right-hand-side is exactly &lt;span class="math"&gt;\(v_e\)&lt;/span&gt;, so we can subtract it from both sides to get&lt;/p&gt;
+&lt;div class="math"&gt;\begin{equation}
+\frac{d \phi_n}{d t} = 0
+\end{equation}&lt;/div&gt;
+&lt;p&gt;
+This is exactly what we wanted: in the &lt;span class="math"&gt;\(\phi\)&lt;/span&gt; coordinate system,
+the positions of the buses are constant in time, so
+equally-spaced buses are all in equilibrium.&lt;/p&gt;
+&lt;p&gt;In order to get a feel for the equilibrium solution,
+you can experiment with this interactive simulation, which shows the buses
+traveling at their equilibrium speed and spacing
+(in the &lt;span class="math"&gt;\(\phi\)&lt;/span&gt; coordinate system that moves with them).&lt;/p&gt;
+&lt;iframe src=/visualization/bus/bus-bunching.html?interactive=true&amp;equilibrium=true&amp;boost=true&amp;gamma=0.15&amp;n=5 width=700 height=700&gt;&lt;/iframe&gt;
+
+&lt;p&gt;You can see that as the number of buses increases and the headway between the buses gets smaller,
+the equilibrium speed increases, reflecting the decreased number of passengers each has to pick up.&lt;/p&gt;
+&lt;p&gt;At this point we have answered the first of the two above questions: there is an equilibrium solution.
+In the next installment of this series, we are going to answer the second question:
+is this equilibrium solution stable? (Spoiler: it's not.)&lt;/p&gt;
+&lt;p&gt;&lt;img alt="streetcar" src="/articles/transit/images/streetcar-bunch.jpg" title="New Orleans streetcars can be bunched too"&gt;&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content></entry></feed>
