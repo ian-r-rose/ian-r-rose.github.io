@@ -104,6 +104,11 @@ and that the distance between them (headways) are not changing?
 That is to say, can we find a solution where the buses are traveling steadily,
 getting no closer to or further from the others?
 
+In a coordinate system traveling with the buses at equilibrium speed
+the solution to the system would then look like:
+
+<object data=/visualization/bus/bus-bunching.html?interactive=false&equilibrium=true&boost=true&gamma=0&n=5 width=700 height=700></object>
+
 It seems intuitive that an equilibrium solution, if it exists,
 should have the buses equally spaced, so let's start looking for a solution of that form.
 Let's further guess that the equilibrium velocity is the base bus speed $v_0$.

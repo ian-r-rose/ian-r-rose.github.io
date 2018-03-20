@@ -50,9 +50,9 @@
       <canvas id="route" width=700 height=700></canvas>
       <div id="overlay">
         <div id="buttons">
-          <button onclick="increase()">+</button>
-          <button onclick="decrease()">-</button>
-          <button onclick="reset()">reset</button>
+          <button id="button-increase" onclick="increase()">+</button>
+          <button id="button-decrease" onclick="decrease()">-</button>
+          <button id="button-reset" onclick="reset()">reset</button>
         </div>
       </div>
     </div>
@@ -76,6 +76,9 @@
     const interactive = getQueryVariable('interactive') === 'true';
     if (!interactive) {
       document.getElementById('buttons').className = 'hidden';
+    }
+    if (equilibrium) {
+      document.getElementById('button-reset').className = 'hidden';
     }
 
     const speed = 2.0*Math.PI/3.;
