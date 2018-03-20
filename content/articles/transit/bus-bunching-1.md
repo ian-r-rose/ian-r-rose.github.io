@@ -14,13 +14,6 @@ In this two-part series, we'll investigate bus bunching by making a mathematical
 In the first part, we'll construct the model and find it's equilibrium solution.
 In the second part, we'll demonstrate the inevitability for that model to bunch.
 
-A typical mass transit route operates with a given [headway](https://en.wikipedia.org/wiki/Headway),
-the distance (or time) between successive vehicles on the route.
-If everything is operating according to the plan,
-the headway from one bus to the next should be approximately constant,
-with possible scheduled variations depending on the time of day
-(such as increased frequency during rush hour, or decreased frequency at night).
-
 Let's start by constructing a model for the speed of a single bus.
 We will assume that the bus has a fixed route, on which it travels all day.
 That route may be on any number of different streets, go wending through different
@@ -41,7 +34,16 @@ Or, expressed in a simulation:
 Now, this model isn't very interesting.
 There is only a single bus, and it is traveling at a fixed speed,
 so it has no hope of exhibiting the kind of bunching behavior that we want to explain.
-We can increase the complexity by adding some more buses so that there are $N$ on the route:
+
+A typical mass transit route operates multiple buses with a given
+[headway](https://en.wikipedia.org/wiki/Headway),
+the distance (or time) between successive vehicles on the route.
+If everything is operating according to the plan,
+the headway from one bus to the next should be approximately constant,
+with possible scheduled variations depending on the time of day
+(such as increased frequency during rush hour, or decreased frequency at night).
+
+We can increase the complexity of our model adding some more buses so that there are $N$ on the route:
 
 \begin{equation}
 \frac{d \theta_n}{d t} = v_0
