@@ -9,16 +9,16 @@ This phenomenon is a common enough problem that it has a name: "bus bunching":
 
 ![18-bunch2](articles/transit/images/18-bunch2.jpg "Bunching on the 18 bus line in Berkeley")
 
+In this two-part series, we'll make a mathematical model of a bus route to investigate bunching.
+In the first part, we'll construct the model and find it's equilibrium headway.
+In the second part, we'll demonstrate the inevitability for that model to bunch.
+
 A typical mass transit route operates with a given [headway](https://en.wikipedia.org/wiki/Headway),
 the distance (or time) between successive vehicles on the route.
 If everything is operating according to the plan,
 the headway from one bus to the next should be approximately constant,
 with possible scheduled variations depending on the time of day
 (such as increased frequency during rush hour, or decreased frequency at night).
-
-In this two-part series, we'll make a mathematical model of a bus route to investigate bunching.
-In the first part, we'll construct the model and find it's equilibrium headway.
-In the second part, we'll demonstrate the inevitability for that model to bunch.
 
 Let's start by construct a model for the speed of a single bus.
 We will assume that the bus is has a fixed route, on which it travels all day.
@@ -31,7 +31,7 @@ We can then identify the speed of the bus with the time derivative of $\theta$.
 
 The simplest model for $d\theta/ dt$ is for the bus to travel at a constant speed $v_0$:
 \begin{equation}
-\frac{\partial \theta}{\partial t} = v_0
+\frac{d \theta}{d t} = v_0
 \end{equation}
 Or, expressed in a simulation:
 <object data=/visualization/bus/bus-bunching.html?interactive=false&boost=false&equilibrium=true&gamma=0&n=1 width=700 height=700></object>
@@ -41,7 +41,7 @@ There is only a single bus, and it is traveling at a fixed speed,
 so it has no hope of exhibiting the kind of bunching behavior that we want to explain.
 We can increase the complexity by adding some more buses:
 \begin{equation}
-\frac{\partial \theta_n}{\partial t} = v_0
+\frac{d \theta_n}{d t} = v_0
 \label{constant}
 \end{equation}
 In this equation the subscript indicates the $n$th bus out of $N$ on the route,
@@ -51,9 +51,9 @@ Okay, so this is starting to more closely resemble a bus route.
 However, the buses are still moving at a constant speed, and have no effect on each other.
 In order for our model to exhibit the richer characteristics of a "bunched" system,
 there must be some way for their speed to be a function of conditions on the road.
+
 There are many factors that can control the speed of a bus traveling through town,
 including traffic, construction, scheduled layovers, and number of passengers.
-
 In order to keep the model simple, we will focus on the last reason:
 the number of passengers to board and exit the bus.
 A traveling bus constantly picks up and drops off passengers as it makes its way around its route.
@@ -61,7 +61,7 @@ This process takes time (as anyone who has watched a passenger fumble with chang
 A bus that boards and deposits more passengers will,
 in general, make slower progress along its route.
 
-There are many factors that contribute to the number of passengers boarding a given bus, 
+Lots of things affect the number of passengers boarding a given bus, 
 including time-of-day, scheduling, and population density.
 We will assume that the amount of time since the previous bus is also a big factor:
 the more time that has passed, the more passengers will have arrived at the bus stops for pickup.
@@ -71,17 +71,18 @@ In the following analysis, we will use the distance between buses as a proxy
 for the number of passengers that need to be picked up.
 
 We need to augment our model to account for this slowing-down behavior.
-Now, the expression for speed in equation \eqref{constant} is a constant,
+The expression for speed in equation \eqref{constant} is a constant,
 so the next-simplest expression is to make it linear in the distance between buses
 (our proxy for the number of passengers):
 \begin{equation}
-\frac{\partial \theta_n}{\partial t} = 
+\frac{d\theta_n}{d t} = 
  v_0 \left[ 1 - \gamma (\theta_{n+1} - \theta_n) \right]
 \label{evolution}
 \end{equation}
+
 In this equation, a bus picking up *no* passengers
 (which happens if there has been no time for them to accumulate since the previous bus) travels at $v_0$.
-As the distance between a bus and the one ahead of it *increases*,
+As the distance between a bus and the one ahead of it increases,
 the speed of the bus slows down, reflecting the additional time spent boarding and disembarking.
 
 Equation \eqref{evolution} is a set of ordinary differential equations
@@ -120,8 +121,8 @@ Let's boost ourselves into moving a coordinate system $\psi$, defined by:
 
 From this we can also get the relations
 \begin{equation}
-\frac{\partial\theta_n}{\partial t} =
-\frac{\partial \psi_n}{\partial t} + v_0
+\frac{d\theta_n}{d t} =
+\frac{d \psi_n}{d t} + v_0
 \end{equation}
 \begin{equation}
 \theta_n =
@@ -131,11 +132,11 @@ From this we can also get the relations
 Substituting these into equation \eqref{evolution},
 we get the governing equations in terms of $\psi_n$:
 \begin{equation}
-\frac{\partial \psi_n}{\partial t} + v_0 = 
+\frac{d \psi_n}{d t} + v_0 = 
 v_0 \left[ 1 - \gamma (\psi_{n+1} - \psi_n) \right]
 \end{equation}
 \begin{equation}
-\frac{\partial \psi_n}{\partial t} = 
+\frac{d \psi_n}{d t} = 
 v_0 \gamma (\psi_{n} - \psi_{n+1})
 \end{equation}
 
@@ -145,7 +146,7 @@ $\psi_{n+1} - \psi_n = \frac{2 \pi}{N}$,
 which makes the governing equations in the $\psi$ coordinates
 
 \begin{equation}
-\frac{\partial \psi_n}{\partial t} = 
+\frac{d \psi_n}{d t} = 
 \frac{ 2 \pi v_0 \gamma }{N}
 \end{equation}
 
@@ -162,7 +163,7 @@ Again, presume that the buses are equally spaced,
 such that the distance between them is $2 \pi/N$.
 Then, given the evolution equation \eqref{evolution}, we can calculate the speed $v_e$:
 \begin{equation}
-v_e = \frac{\partial \theta_n}{\partial_t} = v_0 \left[ 1 - \frac{2 \pi \gamma}{N} \right]
+v_e = \frac{d \theta_n}{d_t} = v_0 \left[ 1 - \frac{2 \pi \gamma}{N} \right]
 \end{equation}
 Let's boost into a *new* coordinate system $\phi_n$, defined by
 \begin{equation}
@@ -170,23 +171,26 @@ Let's boost into a *new* coordinate system $\phi_n$, defined by
 \end{equation}
 
 Substituting this into equation \eqref{evolution}, we find
+
 \begin{equation}
-\frac{\partial \phi_n}{\partial t} + v_e =
+\frac{d \phi_n}{d t} + v_e =
 v_0 \left[ 1 - \gamma \left(\phi_{n+1} - \phi_n \right) \right]
 \end{equation}
 Again, when the buses are equally spaced, $\phi_{n+1} - \phi_n = 2 \pi/N$:
 \begin{equation}
-\frac{\partial \phi_n}{\partial t} + v_e =
-v_0 \left[ 1 - \frac{2 \pi \gamma}{N}  \right] = v_e
+\frac{d \phi_n}{d t} + v_e =
+v_0 \left[ 1 - \frac{2 \pi \gamma}{N}  \right]
 \end{equation}
-Subtracting $v_e$ from both sides, we get
+
+The right-hand-side is exactly $v_e$, so we can subtract it from both sides to get
+
 \begin{equation}
-\frac{\partial \phi_n}{\partial t} = 0
+\frac{d \phi_n}{d t} = 0
 \end{equation}
 which is exactly what we wanted! In the $v_e$ coordinate system,
 equally-spaced buses are all in equilibrium.
 
-<object data=/visualization/bus/bus-bunching.html?interactive=true&equilibrium=true&boost=false&gamma=0.15&n=5 width=700 height=700></object>
+<object data=/visualization/bus/bus-bunching.html?interactive=true&equilibrium=true&boost=&gamma=0.15&n=5 width=700 height=700></object>
 
 In the next installment of this series,
 we are going to answer the second queation asked above:
