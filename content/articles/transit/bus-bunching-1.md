@@ -10,8 +10,8 @@ This phenomenon is a common enough problem that it has a name: "bus bunching":
 
 ![18-bunch2](articles/transit/images/18-bunch2.jpg "Bunching on the 18 bus line in Berkeley")
 
-In this two-part series, we'll investigate bunching by making a mathematical model of a bus route.
-In the first part, we'll construct the model and find it's equilibrium headway.
+In this two-part series, we'll investigate bus bunching by making a mathematical model of a bus route.
+In the first part, we'll construct the model and find it's equilibrium solution.
 In the second part, we'll demonstrate the inevitability for that model to bunch.
 
 A typical mass transit route operates with a given [headway](https://en.wikipedia.org/wiki/Headway),
@@ -41,13 +41,14 @@ Or, expressed in a simulation:
 Now, this model isn't very interesting.
 There is only a single bus, and it is traveling at a fixed speed,
 so it has no hope of exhibiting the kind of bunching behavior that we want to explain.
-We can increase the complexity by adding some more buses:
+We can increase the complexity by adding some more buses so that there are $N$ on the route:
 
 \begin{equation}
 \frac{d \theta_n}{d t} = v_0
 \label{constant}
 \end{equation}
-In this equation the subscript indicates the $n$th bus out of $N$ on the route,
+
+In this equation the subscript indicates the $n$th bus out of $N$,
 so a simulation with five buses looks like this:
 <iframe src=/visualization/bus/bus-bunching.html?interactive=false&equilibrium=true&boost=false&gamma=0&n=5 width=700 height=700></iframe>
 Okay, so this is starting to more closely resemble a bus route.
@@ -63,12 +64,13 @@ A traveling bus constantly picks up and drops off passengers as it makes its way
 This process takes time (as anyone who has watched a passenger fumble with change upon boarding knows).
 A bus that boards and deposits more passengers will, in general, make slower progress along its route.
 
-Manu things affect the number of passengers boarding a given bus, 
+Many things affect the number of passengers boarding a given bus, 
 including time-of-day, scheduling, and population density.
-We will assume that the amount of time since the previous bus is also a big factor:
-the more time that has passed, the more passengers will have arrived at the bus stops for pickup.
-If a bus falls behind schedule, more time will have passed since the last bus,
-meaning that it will be further slowed down by excess passengers.
+In order to keep the model as simple as possible, we will ignore those and
+concentrate on a single factor: the amount of time since the previous bus.
+We will assume that as more time passes, more passengers arrive at a bus stop for pickup.
+If a bus falls behind schedule, more people will have arrived at each stop,
+meaning that it will be further slowed down by the excess passengers.
 In the following analysis, we will use the distance between buses as a proxy
 for the number of passengers that need to be picked up.
 
@@ -86,7 +88,7 @@ In this equation, a bus picking up *no* passengers travels at $v_0$
 (which happens if there has been no time for them to accumulate since the previous bus).
 As the distance between a bus and the one ahead of it increases,
 the speed of the bus slows down, reflecting the additional time spent boarding and disembarking.
-The dimensionless parameter $\gamma$ sets how sensitive the bus speeds are to differences in headway.
+The dimensionless parameter $\gamma$ determines how sensitive the bus speeds are to differences in headway.
 
 Equation \eqref{evolution} is a set of ordinary differential equations
 (one equation for each of the $N$ buses).
@@ -96,17 +98,15 @@ which we will analyze by answering the following two questions.
 1. Is there an equilibrium solution to these equations?
 That is to say, is there a solution that does not evolve in time?
 
-2. If there is an equilibrium solution, is it stable? A stable solution,
-when perturbed, will return to the equilibrium.
-An unstable one will get further and further from equilibrium until the buses are completely bunched.
+2. If there is an equilibrium solution, is it stable?
+A stable solution, when perturbed, will return to the equilibrium.
+An unstable one will get further and further from equilibrium until the buses are bunched.
 
 Strictly speaking, an equilibrium solution does not exist for the system of equations as described:
 as long as the buses have a nonzero velocity, their positions will evolve in time.
 However, with a slight reframing of the question it makes sense to talk about an equilibrium:
 is there a configuration for which the bus velocities are constant,
 and that the distance between them (headways) are not changing?
-That is to say, can we find a solution where the buses are traveling steadily,
-getting no closer to or further from the others?
 
 In a coordinate system traveling with the buses at equilibrium speed
 the solution to the system would then look like:
@@ -155,6 +155,7 @@ which makes the governing equations in the $\psi$ coordinates
 
 Unless the interaction term $\gamma$ is zero, the time evolution of $\psi_n$ is nonzero,
 making this configuration a non-equilibrium solution to the system.
+Therefore, $v_0$ is *not* the equilibrium velocity.
 
 This should make sense, as we defined $v_0$ to be the speed of the bus
 in the absence of any delays due to loading and unloading of passengers.
@@ -162,13 +163,13 @@ As soon as we include that delay, the buses will be slower than that.
 Instead, let's construct a speed for buses that takes into account the
 delay due to passengers.
 
-Again, presume that the buses are equally spaced,
+Again we presume that the buses are equally spaced,
 such that the distance between them is $2 \pi/N$.
 Then, given the evolution equation \eqref{evolution}, we can calculate the speed $v_e$:
 \begin{equation}
 v_e = \frac{d \theta_n}{d_t} = v_0 \left[ 1 - \frac{2 \pi \gamma}{N} \right]
 \end{equation}
-Let's boost into a *new* coordinate system $\phi_n$, defined by
+Let's boost into a *new* coordinate system $\phi$, defined by
 \begin{equation}
 \phi_n \equiv \theta_n - v_e t
 \end{equation}
@@ -190,11 +191,12 @@ The right-hand-side is exactly $v_e$, so we can subtract it from both sides to g
 \begin{equation}
 \frac{d \phi_n}{d t} = 0
 \end{equation}
-which is exactly what we wanted! In the $v_e$ coordinate system,
+This is exactly what we wanted: in the $\phi$ coordinate system,
+the positions of the buses are constant in time, so
 equally-spaced buses are all in equilibrium.
 
 In order to get a feel for the equilibrium solution,
-experiment with this interactive simulation, which shows the buses
+you can experiment with this interactive simulation, which shows the buses
 traveling at their equilibrium speed and spacing
 (in the $\phi$ coordinate system that moves with them).
 
