@@ -11,7 +11,7 @@ This phenomenon is a common enough problem that it has a name: "bus bunching":
 ![18-bunch2](articles/transit/images/18-bunch2.jpg "Bunching on the 18 bus line in Berkeley")
 
 In this two-part series, we'll investigate bus bunching by making a mathematical model of a bus route.
-In the first part, we'll construct the model and find it's equilibrium solution.
+In this first part, we'll construct the model and find it's equilibrium solution.
 In the second part, we'll demonstrate the inevitability for that model to bunch.
 
 Let's start by constructing a model for the speed of a single bus.
@@ -59,8 +59,8 @@ In order for our model to exhibit the richer characteristics of a system that ca
 there must be some way for their speed to be a function of conditions on the road.
 
 There are many factors that can control the speed of a bus traveling through town,
-including traffic, construction, scheduled layovers, and number of passengers.
-In order to keep the model simple, we will focus on the last reason:
+including traffic, construction, scheduled layovers, and the number of passengers.
+In order to keep the model simple, we will focus on the last factor:
 the number of passengers who board and exit the bus.
 A traveling bus constantly picks up and drops off passengers as it makes its way around its route.
 This process takes time (as anyone who has watched a passenger fumble with change upon boarding knows).
@@ -111,7 +111,7 @@ is there a configuration for which the bus velocities are constant,
 and that the distance between them (headways) are not changing?
 
 In a coordinate system traveling with the buses at equilibrium speed
-the solution to the system would then look like:
+the solution to the system would then look like this:
 
 <iframe src=/visualization/bus/bus-bunching.html?interactive=false&equilibrium=true&boost=true&gamma=0&n=5 width=700 height=700></iframe>
 
@@ -161,7 +161,7 @@ Therefore, $v_0$ is *not* the equilibrium velocity.
 
 This should make sense, as we defined $v_0$ to be the speed of the bus
 in the absence of any delays due to loading and unloading of passengers.
-As soon as we include that delay, the buses will be slower than that.
+When we include that delay, the buses will be slower.
 Instead, let's construct a speed for buses that takes into account the
 delay due to passengers.
 
@@ -182,7 +182,7 @@ Substituting this into equation \eqref{evolution}, we find
 \frac{d \phi_n}{d t} + v_e =
 v_0 \left[ 1 - \gamma \left(\phi_{n+1} - \phi_n \right) \right]
 \end{equation}
-Again, when the buses are equally spaced, $\phi_{n+1} - \phi_n = 2 \pi/N$:
+As before, when the buses are equally spaced, $\phi_{n+1} - \phi_n = 2 \pi/N$:
 \begin{equation}
 \frac{d \phi_n}{d t} + v_e =
 v_0 \left[ 1 - \frac{2 \pi \gamma}{N}  \right]
