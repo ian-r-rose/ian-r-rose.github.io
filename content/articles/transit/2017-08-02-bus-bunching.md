@@ -9,7 +9,7 @@ This phenomenon is a common enough problem that it has a name: "bus bunching":
 
 ![18-bunch2](articles/transit/images/18-bunch2.jpg "Bunching on the 18 bus line in Berkeley")
 
-In this two-part series, we'll make a mathematical model of a bus route to investigate bunching.
+In this two-part series, we'll investigate bunching by making a mathematical model of a bus route.
 In the first part, we'll construct the model and find it's equilibrium headway.
 In the second part, we'll demonstrate the inevitability for that model to bunch.
 
@@ -20,9 +20,9 @@ the headway from one bus to the next should be approximately constant,
 with possible scheduled variations depending on the time of day
 (such as increased frequency during rush hour, or decreased frequency at night).
 
-Let's start by construct a model for the speed of a single bus.
-We will assume that the bus is has a fixed route, on which it travels all day.
-That route may be on any number of different streets, wend through different
+Let's start by constructing a model for the speed of a single bus.
+We will assume that the bus has a fixed route, on which it travels all day.
+That route may be on any number of different streets, go wending through different
 neighborhoods, and generally make very little sense 
 (like my beloved [12 line](http://www.actransit.org/pdf/maps/version_38/12.pdf)).
 However, if it travels back and forth on this same route, we can model it as a loop,
@@ -30,6 +30,7 @@ and its position on that loop can be mapped to an angle on a circle $\theta$.
 We can then identify the speed of the bus with the time derivative of $\theta$.
 
 The simplest model for $d\theta/ dt$ is for the bus to travel at a constant speed $v_0$:
+
 \begin{equation}
 \frac{d \theta}{d t} = v_0
 \end{equation}
@@ -40,6 +41,7 @@ Now, this model isn't very interesting.
 There is only a single bus, and it is traveling at a fixed speed,
 so it has no hope of exhibiting the kind of bunching behavior that we want to explain.
 We can increase the complexity by adding some more buses:
+
 \begin{equation}
 \frac{d \theta_n}{d t} = v_0
 \label{constant}
@@ -49,24 +51,23 @@ so a simulation with five buses looks like this:
 <object data=/visualization/bus/bus-bunching.html?interactive=false&equilibrium=true&boost=false&gamma=0&n=5 width=700 height=700></object>
 Okay, so this is starting to more closely resemble a bus route.
 However, the buses are still moving at a constant speed, and have no effect on each other.
-In order for our model to exhibit the richer characteristics of a "bunched" system,
+In order for our model to exhibit the richer characteristics of a system that can bunch,
 there must be some way for their speed to be a function of conditions on the road.
 
 There are many factors that can control the speed of a bus traveling through town,
 including traffic, construction, scheduled layovers, and number of passengers.
 In order to keep the model simple, we will focus on the last reason:
-the number of passengers to board and exit the bus.
+the number of passengers who board and exit the bus.
 A traveling bus constantly picks up and drops off passengers as it makes its way around its route.
 This process takes time (as anyone who has watched a passenger fumble with change upon boarding knows).
-A bus that boards and deposits more passengers will,
-in general, make slower progress along its route.
+A bus that boards and deposits more passengers will, in general, make slower progress along its route.
 
-Lots of things affect the number of passengers boarding a given bus, 
+Manu things affect the number of passengers boarding a given bus, 
 including time-of-day, scheduling, and population density.
 We will assume that the amount of time since the previous bus is also a big factor:
 the more time that has passed, the more passengers will have arrived at the bus stops for pickup.
-Therefore, if a bus falls behind schedule, more time will have passed since
-the last bus at each stop, meaning that it will be further slowed down by excess passengers.
+If a bus falls behind schedule, more time will have passed since the last bus,
+meaning that it will be further slowed down by excess passengers.
 In the following analysis, we will use the distance between buses as a proxy
 for the number of passengers that need to be picked up.
 
@@ -80,11 +81,11 @@ so the next-simplest expression is to make it linear in the distance between bus
 \label{evolution}
 \end{equation}
 
-In this equation, a bus picking up *no* passengers
-(which happens if there has been no time for them to accumulate since the previous bus) travels at $v_0$.
+In this equation, a bus picking up *no* passengers travels at $v_0$
+(which happens if there has been no time for them to accumulate since the previous bus).
 As the distance between a bus and the one ahead of it increases,
 the speed of the bus slows down, reflecting the additional time spent boarding and disembarking.
-The dimensionless parameter $\gamma$ sets how sensitive the buses are to differences in headway.
+The dimensionless parameter $\gamma$ sets how sensitive the bus speeds are to differences in headway.
 
 Equation \eqref{evolution} is a set of ordinary differential equations
 (one equation for each of the $N$ buses).
@@ -96,7 +97,7 @@ That is to say, is there a solution that does not evolve in time?
 
 2. If there is an equilibrium solution, is it stable? A stable solution,
 when perturbed, will return to the equilibrium.
-An unstable one will get further and further from equilibrium until the buses bunch.
+An unstable one will get further and further from equilibrium until the buses are completely bunched.
 
 Strictly speaking, an equilibrium solution does not exist for the system of equations as described:
 as long as the buses have a nonzero velocity, their positions will evolve in time.
