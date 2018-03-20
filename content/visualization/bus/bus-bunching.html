@@ -91,7 +91,7 @@
       roadSpeed = 0.0;
     } else if (equilibrium && boost) {
       dYdT = (t, y) => y.map(el => 0.0);
-      roadSpeed = equilibrium_velocity;
+      roadSpeed = -equilibrium_velocity;
     } else if (!equilibrium && !boost) {
       dYdT = (t, y) => thetaVelocity(y, v0, gamma);
       roadSpeed = 0.0;
@@ -100,7 +100,7 @@
        vel = thetaVelocity(y, v0, gamma);
        return vel.map(el => el - equilibrium_velocity);
       };
-      roadSpeed = equilibrium_velocity;
+      roadSpeed = -equilibrium_velocity;
     }
 
     let model = {
@@ -113,14 +113,14 @@
       if (n < 10) {
         model.angles = initialConditions(++n);
         equilibrium_velocity =  v0 * (1. - 2 * Math.PI * gamma / n);
-        model.roadSpeed = boost ? equilibrium_velocity: 0.0;
+        model.roadSpeed = boost ? -equilibrium_velocity: 0.0;
       }
     }
     function decrease() {
       if (n > 1) {
         model.angles = initialConditions(--n);
         equilibrium_velocity =  v0 * (1. - 2 * Math.PI * gamma / n);
-        model.roadSpeed = boost ? equilibrium_velocity: 0.0;
+        model.roadSpeed = boost ? -equilibrium_velocity: 0.0;
       }
     }
     function reset() {
