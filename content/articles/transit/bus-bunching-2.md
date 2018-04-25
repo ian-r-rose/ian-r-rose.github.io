@@ -4,6 +4,7 @@ Summary: ![bunch](/articles/transit/images/6-bunch.jpg)
 Date: 24 April 2018
 
 ![6-bunch](articles/transit/images/6-bunch.jpg "Bunching on the 6 bus line in Oakland")
+![stability](articles/transit/images/stability.png "Illustration of stability")
 
 <iframe src=/visualization/bus/bus-bunching.html?interactive=false&equilibrium=true&boost=false&gamma=0.15&n=5 width=700 height=700></iframe>
 <iframe src=/visualization/bus/bus-bunching.html?interactive=false&equilibrium=true&boost=true&gamma=0.15&n=5 width=700 height=700></iframe>
