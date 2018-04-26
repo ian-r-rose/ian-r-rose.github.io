@@ -169,6 +169,11 @@ function thetaVelocity( thetas, v0, gamma ) {
       }
     }
   }
+  const max = v0;
+  const min = v0 - gamma * 2 * Math.PI;
+  for (let i = 0; i < thetas.length; i++) {
+    velocities[i] = Math.min(Math.max(velocities[i], min), max);
+  }
   return velocities;
 }
 
