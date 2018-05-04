@@ -5,17 +5,37 @@ Date: 24 April 2018
 
 ![6-bunch](articles/transit/images/6-bunch.jpg "Bunching on the 6 bus line in Oakland")
 
+This is the second and final part of a short series of articles
+on constructing a mathematical model for why buses always seem to travel in packs
+(known as bus bunching).
+
+In the [previous article](bus-bunching-1.html)
+we set up the model, consisting of $N$ buses traveling on a loop,
+where we parameterized the position of the $n$th bus by $\theta_n$.
+We presumed that a bus is slowed down by the boarding of passengers,
+and that more passengers will need to board if it has been longer
+since the last bus came along, an effect given by a parameter $\gamma$.
+
+The equations for this model are given by
 \begin{equation}
 \frac{d\theta_n}{d t} = 
  v_0 \left[ 1 - \gamma (\theta_{n+1} - \theta_n) \right]
 \label{evolution}
 \end{equation}
 
-<iframe src=/visualization/bus/bus-bunching.html?interactive=false&equilibrium=true&boost=true&gamma=0.15&n=5 width=700 height=700></iframe>
+We furthermore showed that the equilibrium configuration for a set of $N$ buses
+is for them to be equally spaced along the route, traveling at a velocity of $v_e$:
 \begin{equation}
 v_e = v_0 \left[ 1 - \frac{2 \pi \gamma}{N} \right]
 \label{equilibrium}
 \end{equation}
+
+In system with five buses, and in reference frame traveling at a velocity of $v_e$,
+this equilibrium solution looks like:
+<iframe src=/visualization/bus/bus-bunching.html?interactive=false&equilibrium=true&boost=true&gamma=0.15&n=5 width=700 height=700></iframe>
+
+In this article we will demonstrating that this equilibrium solution is not stable,
+and that it will inevitably result in the buses bunching.
 
 ## Stability analysis
 
@@ -78,7 +98,7 @@ v_0 \left[ 1 - \frac{2 \pi \gamma}{N}  - \gamma(\theta^\prime_{n+1} - \theta^\pr
 This allows $v_e$ to be subtracted from both sides, leaving us with:
 \begin{equation}
 \frac{d \theta^\prime_n}{dt} = 
-v_0 \gamma(\theta^\prime_{n+1} - \theta^\prime_n)
+v_0 \gamma(\theta^\prime_{n} - \theta^\prime_{n+1})
 \label{perturb}
 \end{equation}
 
