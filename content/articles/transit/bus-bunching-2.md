@@ -117,30 +117,95 @@ v_0 \gamma
 Note that the last row couples the speed of the $N$th bus to the first bus,
 reflecting the circular nature of the model.
 
+## The eigendecomposition
+
+When analyzing a system of linear equations,
+it is often helpful consider it in terms of its eigenvalues and eigenvectors
+(exactly how it is helpful should be clearer in a moment).
+A general perturbation vector $\Theta^\prime$ can be decomposed
+into a linear combination of the $N$ eigenvectors[^1] of $\mathbf{A}$
+(known as an eigendecomposition):
 \begin{equation}
 \Theta^\prime = \sum_k a_k \Theta^\prime_k
+\label{eigs}
 \end{equation}
+where $a_k$ is the amount of each eigenvector contributing to $\Theta^\prime$
+and $\Theta^\prime_k$ is the the $k$th eigenvector. 
 
+Substituting equation \eqref{eigs} into \eqref{matrix}, we get
 \begin{equation}
-\sum_k a_k \frac{d \Theta^\prime_k}{d t} = 
+\sum_k \frac{d a_k}{dt} \Theta^\prime_k = 
 \sum_k a_k \mathbf{A}\Theta^\prime_k = 
 \sum_k a_k \lambda_k \Theta^\prime_k
 \end{equation}
+where we have used the definition of the eigenvalues $\lambda_k$:
+$\mathbf{A}\Theta^\prime_k = \lambda_k \Theta^\prime_k$.
 
+The eigenvectors of $\mathbf{A}$ are linearly independent,
+so the components of the summation decouple,
+giving us a set of independent ordinary differential equations:
 \begin{equation}
-\frac{d \Theta^\prime_k}{d t} = 
-\lambda_k \Theta^\prime_k
+\frac{d a_k}{d t} = 
+\lambda_k a_k
+\label{diff_eigen}
 \end{equation}
+
+Equation \eqref{diff_eigen} looks very much like equation \eqref{matrix},
+but with one important difference:
+the matrix $\mathbf{A}$ has been replaced with the scalar eigenvalues.
+This change turns the system of coupled differential equations into
+a set of uncoupled differential equations.
+
 
 ## A hunt for eigenvalues
 
-\begin{equation}
-\Theta^\prime_k(t) = \Theta^\prime_k(0) e^{\lambda_k t}
-\end{equation}
 
 \begin{equation}
-det(\mathbf{A}) = 
-(v_0 \gamma)^n 
+a_k(t) = a_k(0) e^{\lambda_k t}
+\label{integrated}
+\end{equation}
+
+Equation \eqref{integrated} gives us the solution for the
+time evolution of the perturbations of $\mathbf{A}$.
+Remember, our pertubation to the equilibrium solution can be written
+in terms of the eigenvectors, and we are interested in whether
+the perturbation grows in time or shrinks in time.
+The answer to that question all comes down to the values for the eigenvalues $\lambda_k$.
+Broadly speaking, there are three possibilities:
+
+1. $\lambda_k$ is negative. In this case, a perturbation of the shape of $\Theta^\prime_k$
+will shrink in time, since \eqref{integrated} is a negative exponential.
+1. $\lambda_k$ is positive. In this case, a perturbation of the shape of $\Theta^\prime_k$
+will grow in time, since \eqref{integrated} is a positive exponential.
+1. $\lambda_k$ is complex. In this case, a perturbation of the shape of $\Theta^\prime_k$
+will have combined behaviors: it will oscillate according to the imaginary part
+of $\lambda_k$ (due to [Euler's formula](https://en.wikipedia.org/wiki/Euler%27s_formula)),
+and either shrink or grow according to the sign of the real part.
+For our purposes, we want to know it shrinks or grows,
+so we are most interested in the real part of any complex eigenvalues.
+
+In physical systems, there is always a certain amount of noise,
+and in general that noise will put some amount of power
+into each of the eigenvectors of the system.
+Some eigenvectors get a bit more power, some might get a bit less,
+but for random, uncorrelated noise, we expect all the eigenvectors to get some.
+This means that if *just one* eigenvalue has a positive real part,
+then the power in that eigenvalue will grow in time.
+So our stability metric is this: *all* of the eigenvalues must have
+negative real parts for the system to be considered stable to perturbations.
+
+So let's find the eigenvalues of $\mathbf{A}$.
+Usually calculating the eigenvalues of a matrix of a larger order than 2 or 3
+is a pretty involved process, but in this case the matrix is
+ordered enough and has enough zeroes in it that we can come up
+with a closed-form solution.
+
+The eigenvalues of $\mathbf{A}$ can be found by solving its
+[characteristic polynomial](https://en.wikipedia.org/wiki/Characteristic_polynomial),
+found by taking the the determinant of $\mathbf{A} - \lambda \mathbf{I}$:
+\begin{equation}
+det(\mathbf{A - \lambda \mathbf{I}}) = 
+(v_0 \gamma)^N 
 \begin{vmatrix}
 1-\lambda & -1 & 0 & 0 & \ldots & 0 \\
 0 & 1-\lambda & -1 & 0 & \ldots & 0 \\
@@ -150,23 +215,51 @@ det(\mathbf{A}) =
 \end{vmatrix}
 \end{equation}
 
+We apply the [Laplace expansion](https://en.wikipedia.org/wiki/Laplace_expansion)
+(where I have ellided some operations):
 \begin{equation}
-det(\mathbf{A}) = 
+det(\mathbf{A} - \lambda \mathbf{I}) = 
 (v_0 \gamma)^N \left[ (1-\lambda)^N + (-1)(-1)^{N+1}(-1)^{N-1} \right] = 0
 \end{equation}
 
+which may be simplified to
 
 \begin{equation}
 (1-\lambda)^N = 1
 \end{equation}
 
+Now, this polynomial equation of order $N$ has a fairly straightforward set
+of solutions for $\lambda$: they are the
+[roots of unity](https://en.wikipedia.org/wiki/Root_of_unity),
+shifted along the positive $x$-axis by one.
+
+We can write the solution for $\lambda_k$ explicitly
 \begin{equation}
-\lambda_k = e^{\frac{2 k \pi i}{n}} + 1 = \cos \frac{2 k \pi}{n} + i \sin \frac{2 k \pi}{n} + 1
+\lambda_k = e^{\frac{2 k \pi i}{N}} + 1 = \cos \frac{2 k \pi}{N} + i \sin \frac{2 k \pi}{N} + 1
 \end{equation}
+which, when plotted (for $N=10$), gives the following:
 
 ![roots_of_unity](articles/transit/images/roots_of_unity.png "Eigenvalues of the stability problem")
 
+Hey, look at that! The real part of each eigenvalues is greater than or equal to zero![^2]
+That is to say, not only is the system unstable, it is *wildly* unstable.
+Remember, if *just one* of the eigenvalues had a positive real part
+the system would be unstable, and yet they almost all do.
+
 ## Simulating bus bunching
+
+So that was a long way to go,
+but by determining that the eigenvalues of the system of equations \eqref{perturb}
+all have nonnegative real parts, we determined that any perturbation
+to our equilibrium solution is unstable.
+Therefore, if any of the buses on our bus route get slightly off schedule,
+they will get further and further off schedule.
+
+
+
 
 <iframe src=/visualization/bus/bus-bunching.html?interactive=true&equilibrium=false&boost=true&gamma=0.15&n=5 width=700 height=700></iframe>
 <iframe src=/visualization/bus/bus-bunching.html?interactive=true&equilibrium=false&boost=false&gamma=0.15&n=5 width=700 height=700></iframe>
+
+[^1]: This is a footnote
+[^2]: This is a footnote
