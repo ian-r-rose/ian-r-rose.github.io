@@ -20,9 +20,9 @@ v_e = v_0 \left[ 1 - \frac{2 \pi \gamma}{N} \right]
 ## Stability analysis
 
 Most stability analyses are centered on answering a central question:
-"Is my equlibrium solution stable with respect to small perturbations?"
-That is to say, if I have an eqilibrium solution and poke it slightly,
-does it return to equlibrium, or does that poke keep growing until the solution
+is my equilibrium solution stable with respect to small perturbations?
+That is to say, if I have an equilibrium solution and poke it slightly,
+does it return to equilibrium, or does that poke keep growing until the solution
 is no longer anything like the equilibrium one?
 ![stability](articles/transit/images/stability.png "Illustration of stability")
 This behavior can be visualized by thinking of a ball balanced on a hill,
@@ -90,7 +90,7 @@ the time evolution of which we are interested in for the stability problem.
 The equilibrium solution has completely disappeared.
 1. More importantly, *it is now a system of linear equations!*
 There are no nonlinearities or constant offsets getting in our way.
-And if there is one thing we are good at analyzing, it is linear equations.
+And if there is one thing mathematics is good at analyzing, it is linear equations.
 
 In fact, since it is a set of linear equations,
 we can write it using matrix notation:
@@ -123,8 +123,8 @@ When analyzing a system of linear equations,
 it is often helpful consider it in terms of its eigenvalues and eigenvectors
 (exactly how it is helpful should be clearer in a moment).
 A general perturbation vector $\Theta^\prime$ can be decomposed
-into a linear combination of the $N$ eigenvectors[^1] of $\mathbf{A}$
-(known as an eigendecomposition):
+into a linear combination of the $N$ eigenvectors of $\mathbf{A}$
+(known as an [eigendecomposition](https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors#Eigenspaces,_geometric_multiplicity,_and_the_eigenbasis_for_matrices)):
 \begin{equation}
 \Theta^\prime = \sum_k a_k \Theta^\prime_k
 \label{eigs}
@@ -152,22 +152,20 @@ giving us a set of independent ordinary differential equations:
 
 Equation \eqref{diff_eigen} looks very much like equation \eqref{matrix},
 but with one important difference:
-the matrix $\mathbf{A}$ has been replaced with the scalar eigenvalues.
-This change turns the system of coupled differential equations into
-a set of uncoupled differential equations.
-
-
-## A hunt for eigenvalues
-
+It is now a scalar equation for the time evolution of $a_k$.
+In fact, it is an ordinary differential equation which is among the
+first that students learn to solve: that solution is an exponential:
 
 \begin{equation}
 a_k(t) = a_k(0) e^{\lambda_k t}
 \label{integrated}
 \end{equation}
 
+## A hunt for eigenvalues
+
 Equation \eqref{integrated} gives us the solution for the
 time evolution of the perturbations of $\mathbf{A}$.
-Remember, our pertubation to the equilibrium solution can be written
+Remember, our perturbation to the equilibrium solution can be written
 in terms of the eigenvectors, and we are interested in whether
 the perturbation grows in time or shrinks in time.
 The answer to that question all comes down to the values for the eigenvalues $\lambda_k$.
@@ -202,7 +200,7 @@ with a closed-form solution.
 
 The eigenvalues of $\mathbf{A}$ can be found by solving its
 [characteristic polynomial](https://en.wikipedia.org/wiki/Characteristic_polynomial),
-found by taking the the determinant of $\mathbf{A} - \lambda \mathbf{I}$:
+found by taking the determinant of $\mathbf{A} - \lambda \mathbf{I}$:
 \begin{equation}
 det(\mathbf{A - \lambda \mathbf{I}}) = 
 (v_0 \gamma)^N 
@@ -216,7 +214,7 @@ det(\mathbf{A - \lambda \mathbf{I}}) =
 \end{equation}
 
 We apply the [Laplace expansion](https://en.wikipedia.org/wiki/Laplace_expansion)
-(where I have ellided some operations):
+(where I have elided some operations):
 \begin{equation}
 det(\mathbf{A} - \lambda \mathbf{I}) = 
 (v_0 \gamma)^N \left[ (1-\lambda)^N + (-1)(-1)^{N+1}(-1)^{N-1} \right] = 0
@@ -241,25 +239,40 @@ which, when plotted (for $N=10$), gives the following:
 
 ![roots_of_unity](articles/transit/images/roots_of_unity.png "Eigenvalues of the stability problem")
 
-Hey, look at that! The real part of each eigenvalues is greater than or equal to zero![^2]
+Hey, look at that! The real part of each eigenvalue is greater than zero![^1]
 That is to say, not only is the system unstable, it is *wildly* unstable.
-Remember, if *just one* of the eigenvalues had a positive real part
-the system would be unstable, and yet they almost all do.
+Remember, the system is unstable if if *just one* of the eigenvalues has a positive real part.
 
 ## Simulating bus bunching
 
-So that was a long way to go,
+That was a long way to go,
 but by determining that the eigenvalues of the system of equations \eqref{perturb}
 all have nonnegative real parts, we determined that any perturbation
 to our equilibrium solution is unstable.
 Therefore, if any of the buses on our bus route get slightly off schedule,
-they will get further and further off schedule.
+they will continue to get further and further off schedule.
 
+Let's close out the article with some interactive simulations of bus bunching.
+The simulations start with a number of buses in the equilibrium configuration,
+but as you will see, they soon drift away from that equilibrium, and once they
+start to drift, bunching is inevitable.
 
+There are two versions of the simulation: one in the $v_e$ reference frame,
+where we see the velocities of the buses relative to their equilibrium velocity,
+and one in the street frame, where we see the velocities of the buses relative to the road.
 
-
+In the $v_e$ reference frame:
 <iframe src=/visualization/bus/bus-bunching.html?interactive=true&equilibrium=false&boost=true&gamma=0.15&n=5 width=700 height=700></iframe>
+
+In the street reference frame:
 <iframe src=/visualization/bus/bus-bunching.html?interactive=true&equilibrium=false&boost=false&gamma=0.15&n=5 width=700 height=700></iframe>
 
-[^1]: This is a footnote
-[^2]: This is a footnote
+## Conclusion
+
+[^1]: Strictly speaking, there is a single eigenvalue that is equal to zero, 
+when $k=N$. You can verify manually that this corresponds to an eigenvector
+where each bus is perturbed by the same amount (a $\mathbf{1}$ vector).
+A perturbation of this form is marginally stable (neither stable nor unstable),
+since none of the buses get any closer to or further from each other.
+
+![18-bunch](articles/transit/images/18-bunch.jpg "Bunching on the 18 bus line in Albany")
