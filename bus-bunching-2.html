@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+      <title>Blueschisting</title>
+      <link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32" />
+      <link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16" />
+      <link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css' />
+      <link href='//fonts.googleapis.com/css?family=Merriweather:300' rel='stylesheet' type='text/css'/>
+      <link href='//fonts.googleapis.com/css?family=Source+Code+Pro:200,400,700' rel='stylesheet' type='text/css'/>
+      <link rel="stylesheet" type="text/css" href="/theme/css/icons.css"/>
+      <link rel="stylesheet" type="text/css" href="/theme/css/styles.css"/>
+      <meta charset="utf-8" />
+  </head>
+
+  <body id="index">
+    <!-- header -->
+    <header class="siteheader">
+      <!-- site image -->
+        <div class= "siteimage">
+          <a class="nodec" href=/images/escape_of_the_core.png>
+            <img width="200" height="200" src=/images/escape_of_the_core.png>
+          </a>
+        </div>
+
+      <div class = "sitebanner">
+        <h1><a class="sitetitle nodec" href="/index.html">Blueschisting</a></h1>
+        <h3 class ="sitesubtitle">Thoughts on planetary science, fluid dynamics, transit, and scientific computing</h3>
+        <!-- nav -->
+        <nav class="menu">
+          <ul>
+            <!-- menu items-->
+              <li><a class="nodec" href="/pages/about.html">Ian Rose</a></li>
+              <li><a class="nodec" href="/blog_index.html">blog</a></li>
+            <!--pages-->
+            <!-- services icons -->
+              <li><a class="nodec icon-github" href="http://github.com/ian-r-rose"></a></li>
+              <li><a class="nodec icon-twitter" href="http://twitter.com/IanRRose"></a></li>
+          </ul>
+        </nav>
+      </div> <!-- sitebanner -->
+    </header>
+
+    <!-- content -->
+    <div id="main">
+      <div id="content">
+
+<section class="content">
+
+  <h3 class="posttitle">
+    <a class="nodec" href="/bus-bunching-2.html" rel="bookmark" title="Permalink to Buses are bosons, or How I learned to stop worrying and love AC Transit (Part two)">
+      Buses are bosons, or How I learned to stop worrying and love AC Transit (Part two)
+    </a>
+  </h3>
+
+  <div class="postinfo">
+    <p class="published" title="2018-04-24T00:00:00-07:00">
+      Tue 24 April 2018
+    </p>
+
+  </div><!-- .postinfo -->
+
+  <div class="article">
+    <p><img alt="6-bunch" src="articles/transit/images/6-bunch.jpg" title="Bunching on the 6 bus line in Oakland"></p>
+<p>This is the second and final part of a short series of articles
+on constructing a mathematical model for why buses always seem to travel in packs
+(known as bus bunching).</p>
+<p>In the <a href="bus-bunching-1.html">previous article</a>
+we set up the model, consisting of <span class="math">\(N\)</span> buses traveling on a loop,
+where we parameterized the position of the <span class="math">\(n\)</span>th bus by <span class="math">\(\theta_n\)</span>.
+We presumed that a bus is slowed down by the boarding of passengers,
+and that more passengers will need to board if it has been longer
+since the last bus came along, an effect given by a parameter <span class="math">\(\gamma\)</span>.</p>
+<p>The equations for this model are given by
+</p>
+<div class="math">\begin{equation}
+\frac{d\theta_n}{d t} = 
+ v_0 \left[ 1 - \gamma (\theta_{n+1} - \theta_n) \right]
+\label{evolution}
+\end{equation}</div>
+<p>We furthermore showed that the equilibrium configuration for a set of <span class="math">\(N\)</span> buses
+is for them to be equally spaced along the route, traveling at a velocity of <span class="math">\(v_e\)</span>:
+</p>
+<div class="math">\begin{equation}
+v_e = v_0 \left[ 1 - \frac{2 \pi \gamma}{N} \right]
+\label{equilibrium}
+\end{equation}</div>
+<p>In system with five buses, and in reference frame traveling at a velocity of <span class="math">\(v_e\)</span>,
+this equilibrium solution looks like this:
+<iframe src=/visualization/bus/bus-bunching.html?interactive=false&equilibrium=true&boost=true&gamma=0.15&n=5 width=700 height=700></iframe></p>
+<p>In this article we will demonstrating that this equilibrium solution is not stable,
+and that it will inevitably result in the buses bunching.</p>
+<h2>Stability analysis</h2>
+<p>Most stability analyses are centered on answering a central question:
+is my equilibrium solution stable with respect to small perturbations?
+That is to say, if I have an equilibrium solution and poke it slightly,
+does it return to equilibrium, or does that poke keep growing until the solution
+is no longer anything like the equilibrium one?
+<img alt="stability" src="articles/transit/images/stability.png" title="Illustration of stability">
+This behavior can be visualized by thinking of a ball balanced on a hill,
+and another resting in a trough.
+Both of the balls are not moving around, and are thus in equilibrium solutions.
+However, if I nudge the ball on the hill, it will continue rolling until it is far from the peak.
+If I nudge the ball in the trough, it will roll back to the middle and
+eventually come to a rest.
+The first situation is an unstable equilibrium, and the second is a stable one.</p>
+<p>Our approach for analyzing the system of equations in equation \eqref{evolution} will be similar:
+we will investigate its behavior when we nudge it slightly away from the equilibrium solution
+represented by equation \eqref{equilibrium}.
+If those nudges grow in time, it is unstable.
+If they die off in time, it is stable.</p>
+<h2>Perturbation equations</h2>
+<p>The first step in deriving the perturbation equations is to split the
+bus positions <span class="math">\(\theta_n(t)\)</span> into two parts, an equilibrium part and a perturbation:
+</p>
+<div class="math">\begin{equation}
+\theta_n = \theta^e_n + \theta^\prime_n
+\label{decompose}
+\end{equation}</div>
+<p>In equation \eqref{decompose}, <span class="math">\(\theta^e_n\)</span> is the equilibrium solution for the buses
+(i.e. <span class="math">\(v_e\)</span> integrated with respect to time),
+and <span class="math">\(\theta^\prime_n\)</span> is a small perturbation away from that equilibrium.
+You may wonder what the perturbation actually <em>is</em>, since it can be a function of time,
+and each of the buses can have a different perturbation.
+Fortunately, we will be able to show that this analysis does not depend on the form
+of the perturbation (other than that it is nonzero), so it can be completely arbitrary.</p>
+<p>The governing equations are in terms of velocities rather than positions,
+so we take the time derivative of equation \eqref{decompose},
+noting that <span class="math">\(d \theta^e_n / dt = v^e\)</span>:
+</p>
+<div class="math">\begin{equation}
+\frac{d \theta_n}{dt} = \frac{d \theta^e_n}{dt} + \frac{d \theta^\prime_n}{dt} = v_e + \frac{d \theta^\prime_n}{dt}
+\label{decompose2}
+\end{equation}</div>
+<p>We can substitute equations \eqref{decompose} and \eqref{decompose2}
+into equation \eqref{evolution} to get
+</p>
+<div class="math">\begin{equation}
+\frac{d \theta^\prime_n}{dt} + v_e = 
+v_0 \left[ 1 - \gamma (\theta^e_{n+1} - \theta^e_n) - \gamma(\theta^\prime_{n+1} - \theta^\prime_n) \right]
+\end{equation}</div>
+<p>
+Note that in the equilibrium configuration the buses are equally spaced,
+so <span class="math">\(\theta^e_{n+1} - \theta^e_{n} = 2 \pi / N\)</span>:
+</p>
+<div class="math">\begin{equation}
+\frac{d \theta^\prime_n}{dt} + v_e = 
+v_0 \left[ 1 - \frac{2 \pi \gamma}{N}  - \gamma(\theta^\prime_{n+1} - \theta^\prime_n) \right]
+\end{equation}</div>
+<p>This allows <span class="math">\(v_e\)</span> to be subtracted from both sides, leaving us with:
+</p>
+<div class="math">\begin{equation}
+\frac{d \theta^\prime_n}{dt} = 
+v_0 \gamma(\theta^\prime_{n} - \theta^\prime_{n+1})
+\label{perturb}
+\end{equation}</div>
+<p>Okay, so what did those manipulations buy us?
+There are two attractive features that equation \eqref{perturb} has:</p>
+<ol>
+<li>It is now a system of differential equations involving only the perturbations,
+the time evolution of which we are interested in for the stability problem.
+The equilibrium solution has completely disappeared.</li>
+<li>More importantly, <em>it is now a system of linear equations!</em>
+There are no nonlinearities or constant offsets getting in our way.
+And if there is one thing mathematics is good at analyzing, it is linear equations.</li>
+</ol>
+<p>In fact, since it is a set of linear equations,
+we can write it using matrix notation:
+</p>
+<div class="math">\begin{equation}
+\frac{d \Theta^\prime}{d t} = 
+\mathbf{A}\Theta^\prime
+\label{matrix}
+\end{equation}</div>
+<p>
+where <span class="math">\(\Theta^\prime\)</span> is a vector containing all the perturbations to the <span class="math">\(N\)</span> buses,
+and <span class="math">\(\mathbf{A}\)</span> is a matrix describing the linear coupling between the buses, given by:</p>
+<div class="math">\begin{equation}
+\mathbf{A} = 
+v_0 \gamma 
+\begin{bmatrix}
+1 &amp; -1 &amp; 0 &amp; 0 &amp; \ldots &amp; 0 \\
+0 &amp; 1 &amp; -1 &amp; 0 &amp; \ldots &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; -1 &amp; \ldots &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+-1 &amp; 0 &amp; 0 &amp; 0 &amp; \ldots &amp; 1\\
+\end{bmatrix}
+\label{A}
+\end{equation}</div>
+<p>
+Note that the last row couples the speed of the <span class="math">\(N\)</span>th bus to the first bus,
+reflecting the circular nature of the model.</p>
+<h2>The eigendecomposition</h2>
+<p>When analyzing a system of linear equations,
+it is often helpful consider it in terms of its eigenvalues and eigenvectors
+(exactly how it is helpful should be clearer in a moment).
+A general perturbation vector <span class="math">\(\Theta^\prime\)</span> can be decomposed
+into a linear combination of the <span class="math">\(N\)</span> eigenvectors of <span class="math">\(\mathbf{A}\)</span>
+(known as an <a href="https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors#Eigenspaces,_geometric_multiplicity,_and_the_eigenbasis_for_matrices">eigendecomposition</a>):
+</p>
+<div class="math">\begin{equation}
+\Theta^\prime(t) = \sum_k a_k(t) \Theta^\prime_k
+\label{eigs}
+\end{equation}</div>
+<p>
+where <span class="math">\(a_k(t)\)</span> is the amount of that each eigenvector <span class="math">\(\Theta^\prime_k\)</span>
+contributes to the total perturbation <span class="math">\(\Theta^\prime_k(t)\)</span>.</p>
+<p>Substituting equation \eqref{eigs} into \eqref{matrix}, we get
+</p>
+<div class="math">\begin{equation}
+\sum_k \frac{d a_k}{dt} \Theta^\prime_k = 
+\sum_k a_k \mathbf{A}\Theta^\prime_k = 
+\sum_k a_k \lambda_k \Theta^\prime_k
+\end{equation}</div>
+<p>
+where we have used the definition of the eigenvalues <span class="math">\(\lambda_k\)</span>:
+<span class="math">\(\mathbf{A}\Theta^\prime_k = \lambda_k \Theta^\prime_k\)</span>.</p>
+<p>The eigenvectors of <span class="math">\(\mathbf{A}\)</span> are linearly independent,
+so the components of the summation decouple,
+giving us a set of independent ordinary differential equations:
+</p>
+<div class="math">\begin{equation}
+\frac{d a_k}{d t} = 
+\lambda_k a_k
+\label{diff_eigen}
+\end{equation}</div>
+<p>Equation \eqref{diff_eigen} looks very much like equation \eqref{matrix},
+but with one important difference:
+It is now a scalar equation for the time evolution of <span class="math">\(a_k\)</span>.
+In fact, it the solution of this ordinary differential equation is among the
+first that students of calculus learn to find: an exponential:</p>
+<div class="math">\begin{equation}
+a_k(t) = a_k(0) e^{\lambda_k t}
+\label{integrated}
+\end{equation}</div>
+<h2>A hunt for eigenvalues</h2>
+<p>Equation \eqref{integrated} gives us the solution for the
+time evolution of the perturbations of <span class="math">\(\mathbf{A}\)</span>.
+Remember, our perturbation to the equilibrium solution can be written
+as a combination of the eigenvectors, and we are interested in whether
+the perturbation grows in time or shrinks in time.
+The answer to that question all comes down to the values for the eigenvalues <span class="math">\(\lambda_k\)</span>.
+Broadly speaking, there are three possibilities:</p>
+<ol>
+<li><span class="math">\(\lambda_k\)</span> is negative. In this case, a perturbation of the shape of <span class="math">\(\Theta^\prime_k\)</span>
+will shrink in time, since \eqref{integrated} is a negative exponential.</li>
+<li><span class="math">\(\lambda_k\)</span> is positive. In this case, a perturbation of the shape of <span class="math">\(\Theta^\prime_k\)</span>
+will grow in time, since \eqref{integrated} is a positive exponential.</li>
+<li><span class="math">\(\lambda_k\)</span> is complex. In this case, a perturbation of the shape of <span class="math">\(\Theta^\prime_k\)</span>
+will have combined behaviors: it will oscillate according to the imaginary part
+of <span class="math">\(\lambda_k\)</span> (due to <a href="https://en.wikipedia.org/wiki/Euler%27s_formula">Euler's formula</a>),
+and either shrink or grow according to the sign of the real part.
+For our purposes, we want to know it shrinks or grows,
+so we are most interested in the real part of any complex eigenvalues.</li>
+</ol>
+<p>In physical systems, there is always a certain amount of noise,
+and in general that noise will put some amount of power
+into each of the eigenvectors of the system.
+Some eigenvectors might get a bit more power, some might get a bit less,
+but for random, uncorrelated noise, we expect all the eigenvectors to get some.
+This means that if <em>just one</em> eigenvalue has a positive real part,
+then the power in that eigenvalue will blow up.
+Therefore our stability metric is this: <em>all</em> of the eigenvalues must have
+negative real parts for the system to be considered stable to perturbations.</p>
+<p>So let's find the eigenvalues of <span class="math">\(\mathbf{A}\)</span>.
+Usually calculating the eigenvalues of a matrix of a larger order than 2 or 3
+is a pretty involved process, but in this case the matrix is
+ordered enough, and has enough zeroes in it, that we can come up
+with a closed-form solution.</p>
+<p>The eigenvalues of <span class="math">\(\mathbf{A}\)</span> can be found by solving its
+<a href="https://en.wikipedia.org/wiki/Characteristic_polynomial">characteristic polynomial</a>,
+found by taking the determinant of <span class="math">\(\mathbf{A} - \lambda \mathbf{I}\)</span>:
+</p>
+<div class="math">\begin{equation}
+det(\mathbf{A - \lambda \mathbf{I}}) = 
+(v_0 \gamma)^N 
+\begin{vmatrix}
+1-\lambda &amp; -1 &amp; 0 &amp; 0 &amp; \ldots &amp; 0 \\
+0 &amp; 1-\lambda &amp; -1 &amp; 0 &amp; \ldots &amp; 0 \\
+0 &amp; 0 &amp; 1-\lambda &amp; -1 &amp; \ldots &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+-1 &amp; 0 &amp; 0 &amp; 0 &amp; \ldots &amp; 1-\lambda\\
+\end{vmatrix}
+\end{equation}</div>
+<p>We apply the <a href="https://en.wikipedia.org/wiki/Laplace_expansion">Laplace expansion</a>
+(where I have elided some steps):
+</p>
+<div class="math">\begin{equation}
+det(\mathbf{A} - \lambda \mathbf{I}) = 
+(v_0 \gamma)^N \left[ (1-\lambda)^N + (-1)(-1)^{N+1}(-1)^{N-1} \right] = 0
+\end{equation}</div>
+<p>which may be simplified to</p>
+<div class="math">\begin{equation}
+(1-\lambda)^N = 1
+\end{equation}</div>
+<p>Now, this polynomial equation of order <span class="math">\(N\)</span> has a fairly straightforward set
+of solutions for <span class="math">\(\lambda\)</span>: they are the
+<a href="https://en.wikipedia.org/wiki/Root_of_unity">roots of unity</a>,
+shifted along the positive <span class="math">\(x\)</span>-axis by one.</p>
+<p>We can write the solution for <span class="math">\(\lambda_k\)</span> explicitly
+</p>
+<div class="math">\begin{equation}
+\lambda_k = e^{\frac{2 k \pi i}{N}} + 1 = \cos \frac{2 k \pi}{N} + i \sin \frac{2 k \pi}{N} + 1
+\end{equation}</div>
+<p>
+which, when plotted (for <span class="math">\(N=10\)</span>), gives the following:</p>
+<p><img alt="roots_of_unity" src="articles/transit/images/roots_of_unity.png" title="Eigenvalues of the stability problem"></p>
+<p>Hey, look at that! The real part of each eigenvalue is greater than zero!<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup>
+That is to say, not only is the system unstable, it is <em>wildly</em> unstable.
+Remember, the system is unstable if if <em>just one</em> of the eigenvalues has a positive real part.</p>
+<h2>Simulating bus bunching</h2>
+<p>That was a long way to go,
+but by determining that the eigenvalues of the system of equations \eqref{perturb}
+all have nonnegative real parts, we determined that any perturbation
+to our equilibrium solution is unstable.
+Therefore, if any of the buses on our bus route get slightly off schedule,
+they will continue to get further and further off schedule.</p>
+<p>Let's close out the article with some interactive simulations of bus bunching.
+The simulations start with a number of buses in the equilibrium configuration,
+but as you will see, they soon drift away from that equilibrium, and once they
+start to drift, bunching is inevitable.</p>
+<p>There are two versions of the simulation: one in the <span class="math">\(v_e\)</span> reference frame,
+where we see the velocities of the buses relative to their equilibrium velocity,
+and one in the street frame, where we see the velocities of the buses relative to the road.</p>
+<p>In the <span class="math">\(v_e\)</span> reference frame:
+<iframe src=/visualization/bus/bus-bunching.html?interactive=true&equilibrium=false&boost=true&gamma=0.15&n=5 width=700 height=700></iframe></p>
+<p>In the street reference frame:
+<iframe src=/visualization/bus/bus-bunching.html?interactive=true&equilibrium=false&boost=false&gamma=0.15&n=5 width=700 height=700></iframe></p>
+<h2>Conclusion</h2>
+<p>The model we analyzed here was probably about as simple as it could be
+while still exhibiting bunching behavior. We used a simplified geometry,
+and it really only had two parameters (<span class="math">\(v_0\)</span>, the speed in the absence of passengers,
+and <span class="math">\(\gamma\)</span>, the amount by which passenger boarding slows it down).
+Nevertheless, it demonstrates a plausible mechanism for an all-too familiar
+occurrence for transit riders.</p>
+<p>The good news is that actual bus system behavior can be more complex than this
+simple model: it has drivers, schedulers, and real-time information.
+It is possible to design things to mitigate the essential bunchiness of a route.
+Things like <a href="https://thesource.metro.net/2017/10/14/all-door-boarding-proposed-for-720-and-754-rapid-lines/">streamlined passenger boarding</a>,
+<a href="https://en.wikipedia.org/wiki/Bus_priority">signal priority</a>,
+and layovers all likely have a role in mitigating bunching.</p>
+<p>So what's the moral here? I'd like to say that you shouldn't feel frustrated
+the next time a pack of buses roll up to your stop, but that's probably not realistic.
+Instead, maybe just look at them with grim recognition.</p>
+<p><img alt="18-bunch" src="articles/transit/images/18-bunch.jpg" title="Bunching on the 18 bus line in Albany"></p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn-1">
+<p>Strictly speaking, there is a single eigenvalue that is equal to zero, 
+when <span class="math">\(k=N\)</span>. You can verify manually that this corresponds to an eigenvector
+where each bus is perturbed by the same amount (a <span class="math">\(\mathbf{1}\)</span> vector).
+A perturbation of this form is marginally stable (neither stable nor unstable),
+since none of the buses get any closer to or further from each other.
+For the pedantic, you can replace of my statements about all eigenvegors 
+being unstable with "all eigenvectors but one are unstable".&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div><!-- .content -->
+
+</section>
+
+      </div>
+     </div>
+
+    <!-- footer -->
+    <footer>
+      <p>
+        Copyright © Ian Rose.
+        Generated by <a href= "http://docs.getpelican.com/">Pelican</a> with
+        <a href="http://github.com/ian-r-rose/pelican-blueschisting">blueschisting</a> theme.
+      </p>
+    </footer>
+  </body>
+</html>
