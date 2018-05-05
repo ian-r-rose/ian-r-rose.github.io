@@ -31,7 +31,7 @@ v_e = v_0 \left[ 1 - \frac{2 \pi \gamma}{N} \right]
 \end{equation}
 
 In system with five buses, and in reference frame traveling at a velocity of $v_e$,
-this equilibrium solution looks like:
+this equilibrium solution looks like this:
 <iframe src=/visualization/bus/bus-bunching.html?interactive=false&equilibrium=true&boost=true&gamma=0.15&n=5 width=700 height=700></iframe>
 
 In this article we will demonstrating that this equilibrium solution is not stable,
@@ -49,13 +49,15 @@ This behavior can be visualized by thinking of a ball balanced on a hill,
 and another resting in a trough.
 Both of the balls are not moving around, and are thus in equilibrium solutions.
 However, if I nudge the ball on the hill, it will continue rolling until it is far from the peak.
-If I nudge the ball in the trough, it will roll back to the center of the trough and
+If I nudge the ball in the trough, it will roll back to the middle and
 eventually come to a rest.
 The first situation is an unstable equilibrium, and the second is a stable one.
 
 Our approach for analyzing the system of equations in equation \eqref{evolution} will be similar:
 we will investigate its behavior when we nudge it slightly away from the equilibrium solution
 represented by equation \eqref{equilibrium}.
+If those nudges grow in time, it is unstable.
+If they die off in time, it is stable.
 
 ## Perturbation equations
 
@@ -68,7 +70,7 @@ bus positions $\theta_n(t)$ into two parts, an equilibrium part and a perturbati
 
 In equation \eqref{decompose}, $\theta^e_n$ is the equilibrium solution for the buses
 (i.e. $v_e$ integrated with respect to time),
-and $\theta^\prime_n$ is a *small* perturbation away from that equilibrium.
+and $\theta^\prime_n$ is a small perturbation away from that equilibrium.
 You may wonder what the perturbation actually *is*, since it can be a function of time,
 and each of the buses can have a different perturbation.
 Fortunately, we will be able to show that this analysis does not depend on the form
@@ -146,11 +148,11 @@ A general perturbation vector $\Theta^\prime$ can be decomposed
 into a linear combination of the $N$ eigenvectors of $\mathbf{A}$
 (known as an [eigendecomposition](https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors#Eigenspaces,_geometric_multiplicity,_and_the_eigenbasis_for_matrices)):
 \begin{equation}
-\Theta^\prime = \sum_k a_k \Theta^\prime_k
+\Theta^\prime(t) = \sum_k a_k(t) \Theta^\prime_k
 \label{eigs}
 \end{equation}
-where $a_k$ is the amount of each eigenvector contributing to $\Theta^\prime$
-and $\Theta^\prime_k$ is the the $k$th eigenvector. 
+where $a_k(t)$ is the amount of that each eigenvector $\Theta^\prime_k$
+contributes to the total perturbation $\Theta^\prime_k(t)$.
 
 Substituting equation \eqref{eigs} into \eqref{matrix}, we get
 \begin{equation}
@@ -173,8 +175,8 @@ giving us a set of independent ordinary differential equations:
 Equation \eqref{diff_eigen} looks very much like equation \eqref{matrix},
 but with one important difference:
 It is now a scalar equation for the time evolution of $a_k$.
-In fact, it is an ordinary differential equation which is among the
-first that students learn to solve: that solution is an exponential:
+In fact, it the solution of this ordinary differential equation is among the
+first that students of calculus learn to find: an exponential:
 
 \begin{equation}
 a_k(t) = a_k(0) e^{\lambda_k t}
@@ -186,7 +188,7 @@ a_k(t) = a_k(0) e^{\lambda_k t}
 Equation \eqref{integrated} gives us the solution for the
 time evolution of the perturbations of $\mathbf{A}$.
 Remember, our perturbation to the equilibrium solution can be written
-in terms of the eigenvectors, and we are interested in whether
+as a combination of the eigenvectors, and we are interested in whether
 the perturbation grows in time or shrinks in time.
 The answer to that question all comes down to the values for the eigenvalues $\lambda_k$.
 Broadly speaking, there are three possibilities:
@@ -205,17 +207,17 @@ so we are most interested in the real part of any complex eigenvalues.
 In physical systems, there is always a certain amount of noise,
 and in general that noise will put some amount of power
 into each of the eigenvectors of the system.
-Some eigenvectors get a bit more power, some might get a bit less,
+Some eigenvectors might get a bit more power, some might get a bit less,
 but for random, uncorrelated noise, we expect all the eigenvectors to get some.
 This means that if *just one* eigenvalue has a positive real part,
-then the power in that eigenvalue will grow in time.
-So our stability metric is this: *all* of the eigenvalues must have
+then the power in that eigenvalue will blow up.
+Therefore our stability metric is this: *all* of the eigenvalues must have
 negative real parts for the system to be considered stable to perturbations.
 
 So let's find the eigenvalues of $\mathbf{A}$.
 Usually calculating the eigenvalues of a matrix of a larger order than 2 or 3
 is a pretty involved process, but in this case the matrix is
-ordered enough and has enough zeroes in it that we can come up
+ordered enough, and has enough zeroes in it, that we can come up
 with a closed-form solution.
 
 The eigenvalues of $\mathbf{A}$ can be found by solving its
@@ -234,7 +236,7 @@ det(\mathbf{A - \lambda \mathbf{I}}) =
 \end{equation}
 
 We apply the [Laplace expansion](https://en.wikipedia.org/wiki/Laplace_expansion)
-(where I have elided some operations):
+(where I have elided some steps):
 \begin{equation}
 det(\mathbf{A} - \lambda \mathbf{I}) = 
 (v_0 \gamma)^N \left[ (1-\lambda)^N + (-1)(-1)^{N+1}(-1)^{N-1} \right] = 0
@@ -291,12 +293,12 @@ In the street reference frame:
 
 The model we analyzed here was probably about as simple as it could be
 while still exhibiting bunching behavior. We used a simplified geometry,
-and it really only had two parameters ($\v_0$, the speed in the absence of passengers,
+and it really only had two parameters ($v_0$, the speed in the absence of passengers,
 and $\gamma$, the amount by which passenger boarding slows it down).
 Nevertheless, it demonstrates a plausible mechanism for an all-too familiar
 occurrence for transit riders.
 
-The good news is that actual bus can be more complex than this
+The good news is that actual bus system behavior can be more complex than this
 simple model: it has drivers, schedulers, and real-time information.
 It is possible to design things to mitigate the essential bunchiness of a route.
 Things like [streamlined passenger boarding](https://thesource.metro.net/2017/10/14/all-door-boarding-proposed-for-720-and-754-rapid-lines/),
@@ -307,12 +309,12 @@ So what's the moral here? I'd like to say that you shouldn't feel frustrated
 the next time a pack of buses roll up to your stop, but that's probably not realistic.
 Instead, maybe just look at them with grim recognition.
 
+![18-bunch](articles/transit/images/18-bunch.jpg "Bunching on the 18 bus line in Albany")
+
 [^1]: Strictly speaking, there is a single eigenvalue that is equal to zero, 
 when $k=N$. You can verify manually that this corresponds to an eigenvector
 where each bus is perturbed by the same amount (a $\mathbf{1}$ vector).
 A perturbation of this form is marginally stable (neither stable nor unstable),
 since none of the buses get any closer to or further from each other.
-So for the pedantic, you can replace of my statements about all perturbations
-being unstable with "all perturbations but one are unstable".
-
-![18-bunch](articles/transit/images/18-bunch.jpg "Bunching on the 18 bus line in Albany")
+For the pedantic, you can replace of my statements about all eigenvegors 
+being unstable with "all eigenvectors but one are unstable".
