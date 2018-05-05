@@ -289,10 +289,30 @@ In the street reference frame:
 
 ## Conclusion
 
+The model we analyzed here was probably about as simple as it could be
+while still exhibiting bunching behavior. We used a simplified geometry,
+and it really only had two parameters ($\v_0$, the speed in the absence of passengers,
+and $\gamma$, the amount by which passenger boarding slows it down).
+Nevertheless, it demonstrates a plausible mechanism for an all-too familiar
+occurrence for transit riders.
+
+The good news is that actual bus can be more complex than this
+simple model: it has drivers, schedulers, and real-time information.
+It is possible to design things to mitigate the essential bunchiness of a route.
+Things like [streamlined passenger boarding](https://thesource.metro.net/2017/10/14/all-door-boarding-proposed-for-720-and-754-rapid-lines/),
+[signal priority](https://en.wikipedia.org/wiki/Bus_priority),
+and layovers all likely have a role in mitigating bunching.
+
+So what's the moral here? I'd like to say that you shouldn't feel frustrated
+the next time a pack of buses roll up to your stop, but that's probably not realistic.
+Instead, maybe just look at them with grim recognition.
+
 [^1]: Strictly speaking, there is a single eigenvalue that is equal to zero, 
 when $k=N$. You can verify manually that this corresponds to an eigenvector
 where each bus is perturbed by the same amount (a $\mathbf{1}$ vector).
 A perturbation of this form is marginally stable (neither stable nor unstable),
 since none of the buses get any closer to or further from each other.
+So for the pedantic, you can replace of my statements about all perturbations
+being unstable with "all perturbations but one are unstable".
 
 ![18-bunch](articles/transit/images/18-bunch.jpg "Bunching on the 18 bus line in Albany")
