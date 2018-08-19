@@ -1,0 +1,16 @@
+Title: Airport Walking 
+Slug: airport-walking
+Summary: ![]()
+Date: 18 August 2018
+
+<iframe data-city="sf" src=/visualization/airports/leaflet_airport.html?lat=37.7126&lon=-122.4076&zoom=12 width=700 height=700></iframe>
+<iframe data-city="oak" src=/visualization/airports/leaflet_airport.html?lat=37.7637&lon=-122.2634&zoom=12 width=700 height=700></iframe>
+<iframe data-city="sj" src=/visualization/airports/leaflet_airport.html?lat=37.3835&lon=-121.9342&zoom=12 width=700 height=700></iframe>
+<iframe data-city="sea" src=/visualization/airports/leaflet_airport.html?lat=47.5330&lon=-122.2730&zoom=11 width=700 height=700></iframe>
+<iframe data-city="lau" src=/visualization/airports/leaflet_airport.html?lat=34.0236&lon=-118.3530&zoom=12 width=700 height=700></iframe>
+<iframe data-city="cs" src=/visualization/airports/leaflet_airport.html?lat=30.6115&lon=-96.3502&zoom=14 width=700 height=700></iframe>
+<iframe data-city="no" src=/visualization/airports/leaflet_airport.html?lat=29.9690&lon=-90.1624&zoom=12 width=700 height=700></iframe>
+<iframe data-city="ph" src=/visualization/airports/leaflet_airport.html?lat=39.9305&lon=-75.195236&zoom=12 width=700 height=700></iframe>
+<iframe data-city="nyu" src=/visualization/airports/leaflet_airport.html?lat=40.7194&lon=-73.9000&zoom=12 width=700 height=700></iframe>
+<iframe data-city="nh" src=/visualization/airports/leaflet_airport.html?lat=41.2900&lon=-72.9140&zoom=12 width=700 height=700></iframe>
+<iframe data-city="bo" src=/visualization/airports/leaflet_airport.html?lat=42.3714&lon=-71.0584&zoom=13 width=700 height=700></iframe>
