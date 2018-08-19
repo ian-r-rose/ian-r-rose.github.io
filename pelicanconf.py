@@ -15,6 +15,7 @@ TIMEZONE = 'America/Los_Angeles'
 DEFAULT_LANG = u'en'
 ARTICLE_PATHS=['articles']
 STATIC_PATHS=[
+        'data',
         'interactive_earth',
         'articles/coding/images',
         'articles/dimensional_analysis/images',
