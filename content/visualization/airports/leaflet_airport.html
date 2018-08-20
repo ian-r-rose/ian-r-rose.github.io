@@ -27,6 +27,7 @@
 
 <div id="mapid" style="width: 700px; height: 700px;"></div>
 <script>
+  // Parse query variables for the center and zoom.
   function getQueryVariable(variable) {
     const query = window.location.search.substring(1);
     const vars = query.split('&');
@@ -42,6 +43,7 @@
   const lat = Number(getQueryVariable('lat')) || 0.0;
   const zoom = Number(getQueryVariable('zoom')) || 3;
 
+  // Create the map.
   const layer = new L.StamenTileLayer('terrain');
   const map = new L.map('mapid', {
     center: new L.LatLng(lat, lon),
@@ -49,9 +51,25 @@
   });
   map.addLayer(layer);
 
+  // Disable the scroll-to-zoom.
+  map.scrollWheelZoom.disable();
+
+  // Style the markers
+  const pointToLayer = (feature, latlng) => {
+    return L.circleMarker(latlng, {
+      fillColor: '#7b241c',
+      color: '#7b241c',
+      opacity: 0.65,
+      fillOpacity: 0.3,
+      weight: 7,
+      radius: 8,
+    });
+  };
+
   fetch('../../data/airports/all_airports.geojson').then(response => {
     response.json().then(data => {
       L.geoJSON(data, {
+        pointToLayer,
         color: '#7b241c',
         weight: 7,
         opacity: 0.65
