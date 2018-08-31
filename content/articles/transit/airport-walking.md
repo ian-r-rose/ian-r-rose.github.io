@@ -14,7 +14,7 @@ airports that I fly. The general goal is to go between the terminals
 and the downtown of whatever city the airport serves (though I will
 bend those rules if convenient). Sometimes the walk is fun, sometimes
 it is unpleasant, but it always takes me through different parts of the city
-than I (or most visitors) usually see.
+than most visitors usually see.
 
 Here are a few tips for having a successful airport walk:
 
@@ -26,7 +26,7 @@ Here are a few tips for having a successful airport walk:
 * It's worth it to take a less direct route in order to avoid highways and arterials.
 
 This post is intended to keep a record of the airports from/to which I have walked,
-as well as a review (in case anybody reading this wants to give it a shot!).
+as well as some reviews, in case anybody reading this wants to give it a shot!
 I will try to keep this list up to date as I collect more airports.
 There is some low-hanging-fruit out there (looking at you, Burbank,
 Las Vegas, and San Diego).
@@ -67,7 +67,7 @@ Boy, there is not a lot in College Station.
 But there is a [University](https://en.wikipedia.org/wiki/Texas_A%26M_University)
 and an airport, and a straight shot of a road between them.
 There weren't really any sidewalks on the road to the airport,
-but there also weren't many cars, so the walk was brief and pleasant.
+but there also weren't many cars, so the walk was brief and uneventful.
 
 #### Distance: 3 miles
 #### Would I do it again? Yes.
@@ -165,6 +165,7 @@ On the other side of the mountain, it's pretty straightforward to pick up Missio
 and take it the whole way downtown.
 
 Overall, the walk from SFO is challenging but rewarding.
+Take San Bruno.
 Also, there are good burritos to be had in South San Francisco.
 
 #### Distance: 15 miles
@@ -191,7 +192,7 @@ Mississippi. There is a nice pedestrian path, and people walking their dogs,
 and New Orleans ne'er-do-wells. It is really nice!
 ![bywater](articles/transit/images/bywater.jpg "A pleasant levee walk")
 
-Anyways, the moral is, walk along more levees.
+Anyways, the moral is: walk along more levees.
 
 #### Distance: 13 miles
 #### Would I do it again? Only along the Mississippi.
@@ -204,7 +205,8 @@ In the first try, I started at the Jamaica AirTrain station and walked towards m
 Manhattan. The roads I took were arterials, and I ran out of time, so hopped on the subway.
 
 On my next attempt, I started from JFK proper, and spent most of the time
-in Brooklyn. It was mostly...uneventful. I had avocado toast in Crown Heights.
+in Brooklyn. It was mostly...uneventful.
+The Jamaica sewage plant smells bad. I had avocado toast in Crown Heights.
 Tourists on the Brooklyn Bridge made the last 30 minutes exceedingly slow.
 
 #### Distance: 15 miles
