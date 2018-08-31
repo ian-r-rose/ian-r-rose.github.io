@@ -1,6 +1,6 @@
 Title: Airport Walking 
 Slug: airport-walking
-Summary: ![oakland](articles/transit/images/oakland.jpg)
+Summary: ![oakland](/articles/transit/images/oakland.jpg)
 Date: 18 August 2018
 
 I like to walk places (a lot). I also prefer to avoid taking taxis or ridesharing services.
@@ -107,13 +107,13 @@ Bay Farm had previously been a known as Asparagus Island (for its principal crop
 but then it was developed for residential use, and was connected
 to the mainland via the fill that became the Oakland Airport, rendering both of its names incorrect.
 Now it is mostly a sleepy community with some really fun canals criss-crossing it:
-![bay-farm-1](articles/transit/images/bay-farm-1.jpg)
-![bay-farm-2](articles/transit/images/bay-farm-2.jpg)
+![bay-farm-1](/articles/transit/images/bay-farm-1.jpg)
+![bay-farm-2](/articles/transit/images/bay-farm-2.jpg)
 
 Alameda, on the other hand, used to be attached to the mainland,
 but was made into an island with the dredging of the Oakland estuary.
 The walk along it's southern beach is quite pleasant:
-![alameda](articles/transit/images/alameda.jpg)
+![alameda](/articles/transit/images/alameda.jpg)
 
 The only downside of the Oakland airport walk is at the end:
 crossing the [Posey tube](https://en.wikipedia.org/wiki/Posey_and_Webster_Street_tube)
@@ -159,7 +159,7 @@ I hopped on Muni in Visitacion Valley.
 The second time I tried to walk from SFO, I decided to go the more pedestrian-friendly route:
 over San Bruno Mountain. This involved no cars, but did involve climbing over
 a 1000 foot peak (which is more than one typically does in these airport walks):
-![san-bruno](articles/transit/images/san-bruno.jpg "View from the top towards downtown SF")
+![san-bruno](/articles/transit/images/san-bruno.jpg "View from the top towards downtown SF")
 
 On the other side of the mountain, it's pretty straightforward to pick up Mission Street
 and take it the whole way downtown.
@@ -178,19 +178,19 @@ Okay, I screwed this one up.
 I walked from Carrollton to New Orleans International,
 across miles and miles of suburbia. It was mostly hot and boring,
 although Lafreniere Park was enjoyable:
-![lafreniere](articles/transit/images/lafreniere.jpg "Lots of ducks")
+![lafreniere](/articles/transit/images/lafreniere.jpg "Lots of ducks")
 
 And then when I arrived at the airport, I learned that I had walked to the
 wrong *side* of the airport.
 And so it came to pass that I walked around the airport, on a grassy strip
 between a highway and a runway. I do not recommend this.
 
-![msy](articles/transit/images/msy.png "An unpleasant walk")
+![msy](/articles/transit/images/msy.png "An unpleasant walk")
 
 The worst part is this: you could do this entire walk along the levees of the
 Mississippi. There is a nice pedestrian path, and people walking their dogs,
 and New Orleans ne'er-do-wells. It is really nice!
-![bywater](articles/transit/images/bywater.jpg "A pleasant levee walk")
+![bywater](/articles/transit/images/bywater.jpg "A pleasant levee walk")
 
 Anyways, the moral is: walk along more levees.
 
