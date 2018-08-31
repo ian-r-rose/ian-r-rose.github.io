@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Blueschisting - transit</title><link href="/" rel="alternate"></link><link href="/feeds/transit.atom.xml" rel="self"></link><id>/</id><updated>2018-08-18T00:00:00-07:00</updated><entry><title>Airport Walking</title><link href="/airport-walking.html" rel="alternate"></link><published>2018-08-18T00:00:00-07:00</published><updated>2018-08-18T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2018-08-18:/airport-walking.html</id><summary type="html">&lt;p&gt;&lt;img alt="oakland" src="articles/transit/images/oakland.jpg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;I like to walk places (a lot). I also prefer to avoid taking taxis or ridesharing services.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Blueschisting - transit</title><link href="/" rel="alternate"></link><link href="/feeds/transit.atom.xml" rel="self"></link><id>/</id><updated>2018-08-18T00:00:00-07:00</updated><entry><title>Airport Walking</title><link href="/airport-walking.html" rel="alternate"></link><published>2018-08-18T00:00:00-07:00</published><updated>2018-08-18T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2018-08-18:/airport-walking.html</id><summary type="html">&lt;p&gt;&lt;img alt="oakland" src="/articles/transit/images/oakland.jpg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;I like to walk places (a lot). I also prefer to avoid taking taxis or ridesharing services.
 At some point in college, I found myself at the Tweed New Haven airport
 at an odd hour, and decided to try my hand at walking downtown rather than
 taking a cab.  I found that it was surprisingly pleasant, and the distance
@@ -82,12 +82,12 @@ and Alameda island (currently, but not formerly an island).&lt;/p&gt;
 but then it was developed for residential use, and was connected
 to the mainland via the fill that became the Oakland Airport, rendering both of its names incorrect.
 Now it is mostly a sleepy community with some really fun canals criss-crossing it:
-&lt;img alt="bay-farm-1" src="articles/transit/images/bay-farm-1.jpg"&gt;
-&lt;img alt="bay-farm-2" src="articles/transit/images/bay-farm-2.jpg"&gt;&lt;/p&gt;
+&lt;img alt="bay-farm-1" src="/articles/transit/images/bay-farm-1.jpg"&gt;
+&lt;img alt="bay-farm-2" src="/articles/transit/images/bay-farm-2.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Alameda, on the other hand, used to be attached to the mainland,
 but was made into an island with the dredging of the Oakland estuary.
 The walk along it's southern beach is quite pleasant:
-&lt;img alt="alameda" src="articles/transit/images/alameda.jpg"&gt;&lt;/p&gt;
+&lt;img alt="alameda" src="/articles/transit/images/alameda.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;The only downside of the Oakland airport walk is at the end:
 crossing the &lt;a href="https://en.wikipedia.org/wiki/Posey_and_Webster_Street_tube"&gt;Posey tube&lt;/a&gt;
 to the mainland is no fun at all.&lt;/p&gt;
@@ -121,7 +121,7 @@ I hopped on Muni in Visitacion Valley.&lt;/p&gt;
 &lt;p&gt;The second time I tried to walk from SFO, I decided to go the more pedestrian-friendly route:
 over San Bruno Mountain. This involved no cars, but did involve climbing over
 a 1000 foot peak (which is more than one typically does in these airport walks):
-&lt;img alt="san-bruno" src="articles/transit/images/san-bruno.jpg" title="View from the top towards downtown SF"&gt;&lt;/p&gt;
+&lt;img alt="san-bruno" src="/articles/transit/images/san-bruno.jpg" title="View from the top towards downtown SF"&gt;&lt;/p&gt;
 &lt;p&gt;On the other side of the mountain, it's pretty straightforward to pick up Mission Street
 and take it the whole way downtown.&lt;/p&gt;
 &lt;p&gt;Overall, the walk from SFO is challenging but rewarding.
@@ -135,16 +135,16 @@ Also, there are good burritos to be had in South San Francisco.&lt;/p&gt;
 I walked from Carrollton to New Orleans International,
 across miles and miles of suburbia. It was mostly hot and boring,
 although Lafreniere Park was enjoyable:
-&lt;img alt="lafreniere" src="articles/transit/images/lafreniere.jpg" title="Lots of ducks"&gt;&lt;/p&gt;
+&lt;img alt="lafreniere" src="/articles/transit/images/lafreniere.jpg" title="Lots of ducks"&gt;&lt;/p&gt;
 &lt;p&gt;And then when I arrived at the airport, I learned that I had walked to the
 wrong &lt;em&gt;side&lt;/em&gt; of the airport.
 And so it came to pass that I walked around the airport, on a grassy strip
 between a highway and a runway. I do not recommend this.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="msy" src="articles/transit/images/msy.png" title="An unpleasant walk"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="msy" src="/articles/transit/images/msy.png" title="An unpleasant walk"&gt;&lt;/p&gt;
 &lt;p&gt;The worst part is this: you could do this entire walk along the levees of the
 Mississippi. There is a nice pedestrian path, and people walking their dogs,
 and New Orleans ne'er-do-wells. It is really nice!
-&lt;img alt="bywater" src="articles/transit/images/bywater.jpg" title="A pleasant levee walk"&gt;&lt;/p&gt;
+&lt;img alt="bywater" src="/articles/transit/images/bywater.jpg" title="A pleasant levee walk"&gt;&lt;/p&gt;
 &lt;p&gt;Anyways, the moral is: walk along more levees.&lt;/p&gt;
 &lt;h4&gt;Distance: 13 miles&lt;/h4&gt;
 &lt;h4&gt;Would I do it again? Only along the Mississippi.&lt;/h4&gt;
