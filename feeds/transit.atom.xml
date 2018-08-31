@@ -1,5 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Blueschisting - transit</title><link href="/" rel="alternate"></link><link href="/feeds/transit.atom.xml" rel="self"></link><id>/</id><updated>2018-04-24T00:00:00-07:00</updated><entry><title>Buses are bosons, or How I learned to stop worrying and love AC Transit (Part two)</title><link href="/bus-bunching-2.html" rel="alternate"></link><published>2018-04-24T00:00:00-07:00</published><updated>2018-04-24T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2018-04-24:/bus-bunching-2.html</id><summary type="html">&lt;p&gt;&lt;img alt="bunch" src="/articles/transit/images/6-bunch.jpg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="6-bunch" src="articles/transit/images/6-bunch.jpg" title="Bunching on the 6 bus line in Oakland"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Blueschisting - transit</title><link href="/" rel="alternate"></link><link href="/feeds/transit.atom.xml" rel="self"></link><id>/</id><updated>2018-08-18T00:00:00-07:00</updated><entry><title>Airport Walking</title><link href="/airport-walking.html" rel="alternate"></link><published>2018-08-18T00:00:00-07:00</published><updated>2018-08-18T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2018-08-18:/airport-walking.html</id><summary type="html">&lt;p&gt;&lt;img alt="oakland" src="articles/transit/images/oakland.jpg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;I like to walk places (a lot). I also prefer to avoid taking taxis or ridesharing services.
+At some point in college, I found myself at the Tweed New Haven airport
+at an odd hour, and decided to try my hand at walking downtown rather than
+taking a cab.  I found that it was surprisingly pleasant, and the distance
+was not outlandish.&lt;/p&gt;
+&lt;p&gt;From then on I have had a quasi-hobby of walking to/from the various
+airports that I fly. The general goal is to go between the terminals
+and the downtown of whatever city the airport serves (though I will
+bend those rules if convenient). Sometimes the walk is fun, sometimes
+it is unpleasant, but it always takes me through different parts of the city
+than most visitors usually see.&lt;/p&gt;
+&lt;p&gt;Here are a few tips for having a successful airport walk:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Keep the weather and time-of-day in mind.&lt;/li&gt;
+&lt;li&gt;Travel with only a backpack as luggage.&lt;/li&gt;
+&lt;li&gt;Usually the most dangerous part is the road network around the airport itself.&lt;/li&gt;
+&lt;li&gt;If you walk from an airport, nobody has to sit next to you on the plane afterwards.&lt;/li&gt;
+&lt;li&gt;Plot out a rough route beforehand.&lt;/li&gt;
+&lt;li&gt;It's worth it to take a less direct route in order to avoid highways and arterials.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This post is intended to keep a record of the airports from/to which I have walked,
+as well as some reviews, in case anybody reading this wants to give it a shot!
+I will try to keep this list up to date as I collect more airports.
+There is some low-hanging-fruit out there (looking at you, Burbank,
+Las Vegas, and San Diego).&lt;/p&gt;
+&lt;h2&gt;New Haven&lt;/h2&gt;
+&lt;p&gt;As noted, this is the first airport I walked from.
+This was a fairly short and pleasant, with low hills and a couple of bridges.
+It also passed through
+&lt;a href="https://en.wikipedia.org/wiki/Wooster_Square"&gt;Wooster Square&lt;/a&gt;,
+home of the &lt;a href="https://en.wikipedia.org/wiki/Sally%27s_Apizza"&gt;best pizza&lt;/a&gt; to be found anywhere.&lt;/p&gt;
+&lt;h5&gt;Distance: 5 miles&lt;/h5&gt;
+&lt;h5&gt;Would I do it again? Yes.&lt;/h5&gt;
+&lt;p&gt;&lt;iframe data-city="nh" src=/visualization/airports/leaflet_airport.html?lat=41.2912&amp;lon=-72.9179&amp;zoom=13 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;h2&gt;Boston&lt;/h2&gt;
+&lt;p&gt;Logan Airport is a tricky place to walk from. It is only about two miles from downtown Boston,
+but the only road there is a tunnel under the estuary with no pedestrian access.
+So instead I was forced to take the long way around, through Eagle Hill,
+the industrial town of Everett, and Charleston.
+That route was considerably longer, but did go past
+&lt;a href="https://en.wikipedia.org/wiki/Battle_of_Bunker_Hill"&gt;Bunker Hill&lt;/a&gt;
+and the &lt;a href="https://en.wikipedia.org/wiki/USS_Constitution"&gt;USS Constitution&lt;/a&gt;,
+and involved three bridges.&lt;/p&gt;
+&lt;p&gt;Logan Airport is also at the bottom of the list of pedestrian-friendly airports.
+It was &lt;em&gt;extremely&lt;/em&gt; difficult to leave without getting hit by a car.&lt;/p&gt;
+&lt;h4&gt;Distance: 8 miles&lt;/h4&gt;
+&lt;h4&gt;Would I do it again? Sure.&lt;/h4&gt;
+&lt;p&gt;&lt;iframe data-city="bo" src=/visualization/airports/leaflet_airport.html?lat=42.3714&amp;lon=-71.0584&amp;zoom=13 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;h2&gt;College Station&lt;/h2&gt;
+&lt;p&gt;Boy, there is not a lot in College Station.
+But there is a &lt;a href="https://en.wikipedia.org/wiki/Texas_A%26M_University"&gt;University&lt;/a&gt;
+and an airport, and a straight shot of a road between them.
+There weren't really any sidewalks on the road to the airport,
+but there also weren't many cars, so the walk was brief and uneventful.&lt;/p&gt;
+&lt;h4&gt;Distance: 3 miles&lt;/h4&gt;
+&lt;h4&gt;Would I do it again? Yes.&lt;/h4&gt;
+&lt;p&gt;&lt;iframe data-city="cs" src=/visualization/airports/leaflet_airport.html?lat=30.6115&amp;lon=-96.3502&amp;zoom=14 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;h2&gt;San Jose&lt;/h2&gt;
+&lt;p&gt;Mineta Airport is very close to downtown San Jose,
+so the walk from the airport was quick and easy.
+It was also boring, and has mostly left my brain.
+Next time I'll take the &lt;a href="https://www.grpg.org/"&gt;river path&lt;/a&gt;.&lt;/p&gt;
+&lt;h4&gt;Distance: 4 miles&lt;/h4&gt;
+&lt;h4&gt;Would I do it again? Yes.&lt;/h4&gt;
+&lt;p&gt;&lt;iframe data-city="sj" src=/visualization/airports/leaflet_airport.html?lat=37.3835&amp;lon=-121.9342&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;h2&gt;Philadelphia&lt;/h2&gt;
+&lt;p&gt;Philadelphia International was a fun airport to walk from.
+The George C. Platt bridge was cool to walk over, if not particularly pedestrian-friendly:
+&lt;img alt="platt" src="articles/transit/images/platt.png" title="By Davidt8 - Own work, Public Domain, https://commons.wikimedia.org/w/index.php?curid=10874388"&gt;
+There are also cheese-steaks to be had on the road,
+and one can end up at the Liberty Bell.&lt;/p&gt;
+&lt;h4&gt;Distance: 8 miles&lt;/h4&gt;
+&lt;h4&gt;Would I do it again? Sure.&lt;/h4&gt;
+&lt;p&gt;&lt;iframe data-city="ph" src=/visualization/airports/leaflet_airport.html?lat=39.9305&amp;lon=-75.195236&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;h2&gt;Oakland&lt;/h2&gt;
+&lt;p&gt;Hey, this one is a straight-up nice walk: nice enough that I have done it twice.
+The bulk of it goes across the odd estuary community of Bay Farm Island
+(formerly, but not currently an island),
+and Alameda island (currently, but not formerly an island).&lt;/p&gt;
+&lt;p&gt;Bay Farm had previously been a known as Asparagus Island (for its principal crop),
+but then it was developed for residential use, and was connected
+to the mainland via the fill that became the Oakland Airport, rendering both of its names incorrect.
+Now it is mostly a sleepy community with some really fun canals criss-crossing it:
+&lt;img alt="bay-farm-1" src="articles/transit/images/bay-farm-1.jpg"&gt;
+&lt;img alt="bay-farm-2" src="articles/transit/images/bay-farm-2.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Alameda, on the other hand, used to be attached to the mainland,
+but was made into an island with the dredging of the Oakland estuary.
+The walk along it's southern beach is quite pleasant:
+&lt;img alt="alameda" src="articles/transit/images/alameda.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;The only downside of the Oakland airport walk is at the end:
+crossing the &lt;a href="https://en.wikipedia.org/wiki/Posey_and_Webster_Street_tube"&gt;Posey tube&lt;/a&gt;
+to the mainland is no fun at all.&lt;/p&gt;
+&lt;h4&gt;Distance: 10 miles&lt;/h4&gt;
+&lt;h4&gt;Would I do it again? Definitely.&lt;/h4&gt;
+&lt;p&gt;&lt;iframe data-city="oak" src=/visualization/airports/leaflet_airport.html?lat=37.7637&amp;lon=-122.2634&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;h2&gt;Los Angeles (incomplete)&lt;/h2&gt;
+&lt;p&gt;I have not completed the walk from LAX: I got as far as Culver City.
+The main takeaways from this unfinished effort are the Westchester is a lovely neighborhood,
+and that LAX is (surprisingly enough) among the more pedestrian accessible airports.&lt;/p&gt;
+&lt;h4&gt;Distance: 8 miles&lt;/h4&gt;
+&lt;h4&gt;Would I do it again? Absolutely, I want to finish it.&lt;/h4&gt;
+&lt;p&gt;&lt;iframe data-city="lau" src=/visualization/airports/leaflet_airport.html?lat=34.0236&amp;lon=-118.3530&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;h2&gt;Seattle&lt;/h2&gt;
+&lt;p&gt;The walk from SeaTac Airport is among the more varied of the airport walks
+that I have done. It goes through suburbia, industrial Seattle, and some
+surprisingly exurban areas, before ending up downtown.
+All the while, you get glimpses of Mount Rainier, and the various
+Seattle waterways are never far. All in all a pretty fun walk.&lt;/p&gt;
+&lt;h4&gt;Distance: 12 miles&lt;/h4&gt;
+&lt;h4&gt;Would I do it again? Sure, given enough time.&lt;/h4&gt;
+&lt;p&gt;&lt;iframe data-city="sea" src=/visualization/airports/leaflet_airport.html?lat=47.5330&amp;lon=-122.2730&amp;zoom=11 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;h2&gt;San Francisco&lt;/h2&gt;
+&lt;p&gt;This one took two tries to get right.&lt;/p&gt;
+&lt;p&gt;The first time I tried to walk from SFO
+I tried to go along the Bay, past Brisbane. Unfortunately, none
+of the handful of roads that go that way have sidewalks, and all have
+extremely fast traffic. It was hot out, and eventually I got tired of cars zooming past me
+by the Brisbane Lagoon.
+I hopped on Muni in Visitacion Valley.&lt;/p&gt;
+&lt;p&gt;The second time I tried to walk from SFO, I decided to go the more pedestrian-friendly route:
+over San Bruno Mountain. This involved no cars, but did involve climbing over
+a 1000 foot peak (which is more than one typically does in these airport walks):
+&lt;img alt="san-bruno" src="articles/transit/images/san-bruno.jpg" title="View from the top towards downtown SF"&gt;&lt;/p&gt;
+&lt;p&gt;On the other side of the mountain, it's pretty straightforward to pick up Mission Street
+and take it the whole way downtown.&lt;/p&gt;
+&lt;p&gt;Overall, the walk from SFO is challenging but rewarding.
+Take San Bruno.
+Also, there are good burritos to be had in South San Francisco.&lt;/p&gt;
+&lt;h4&gt;Distance: 15 miles&lt;/h4&gt;
+&lt;h4&gt;Would I do it again? Yes, given enough time.&lt;/h4&gt;
+&lt;p&gt;&lt;iframe data-city="sf" src=/visualization/airports/leaflet_airport.html?lat=37.7126&amp;lon=-122.4076&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;h2&gt;New Orleans&lt;/h2&gt;
+&lt;p&gt;Okay, I screwed this one up.
+I walked from Carrollton to New Orleans International,
+across miles and miles of suburbia. It was mostly hot and boring,
+although Lafreniere Park was enjoyable:
+&lt;img alt="lafreniere" src="articles/transit/images/lafreniere.jpg" title="Lots of ducks"&gt;&lt;/p&gt;
+&lt;p&gt;And then when I arrived at the airport, I learned that I had walked to the
+wrong &lt;em&gt;side&lt;/em&gt; of the airport.
+And so it came to pass that I walked around the airport, on a grassy strip
+between a highway and a runway. I do not recommend this.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="msy" src="articles/transit/images/msy.png" title="An unpleasant walk"&gt;&lt;/p&gt;
+&lt;p&gt;The worst part is this: you could do this entire walk along the levees of the
+Mississippi. There is a nice pedestrian path, and people walking their dogs,
+and New Orleans ne'er-do-wells. It is really nice!
+&lt;img alt="bywater" src="articles/transit/images/bywater.jpg" title="A pleasant levee walk"&gt;&lt;/p&gt;
+&lt;p&gt;Anyways, the moral is: walk along more levees.&lt;/p&gt;
+&lt;h4&gt;Distance: 13 miles&lt;/h4&gt;
+&lt;h4&gt;Would I do it again? Only along the Mississippi.&lt;/h4&gt;
+&lt;p&gt;&lt;iframe data-city="no" src=/visualization/airports/leaflet_airport.html?lat=29.9690&amp;lon=-90.1624&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;h2&gt;New York (JFK)&lt;/h2&gt;
+&lt;p&gt;This one also took two attempts.
+In the first try, I started at the Jamaica AirTrain station and walked towards midtown
+Manhattan. The roads I took were arterials, and I ran out of time, so hopped on the subway.&lt;/p&gt;
+&lt;p&gt;On my next attempt, I started from JFK proper, and spent most of the time
+in Brooklyn. It was mostly...uneventful.
+The Jamaica sewage plant smells bad. I had avocado toast in Crown Heights.
+Tourists on the Brooklyn Bridge made the last 30 minutes exceedingly slow.&lt;/p&gt;
+&lt;h4&gt;Distance: 15 miles&lt;/h4&gt;
+&lt;h4&gt;Would I do it again? Yes, given enough time.&lt;/h4&gt;
+&lt;p&gt;&lt;iframe data-city="nyu" src=/visualization/airports/leaflet_airport.html?lat=40.7194&amp;lon=-73.9000&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;</content></entry><entry><title>Buses are bosons, or How I learned to stop worrying and love AC Transit (Part two)</title><link href="/bus-bunching-2.html" rel="alternate"></link><published>2018-04-24T00:00:00-07:00</published><updated>2018-04-24T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2018-04-24:/bus-bunching-2.html</id><summary type="html">&lt;p&gt;&lt;img alt="bunch" src="/articles/transit/images/6-bunch.jpg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="6-bunch" src="articles/transit/images/6-bunch.jpg" title="Bunching on the 6 bus line in Oakland"&gt;&lt;/p&gt;
 &lt;p&gt;This is the second and final part of a short series of articles
 on constructing a mathematical model for why buses always seem to travel in packs
 (known as bus bunching).&lt;/p&gt;

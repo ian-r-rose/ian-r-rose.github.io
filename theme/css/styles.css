@@ -184,7 +184,7 @@ sub {
 
 .content * img {
     display: block;
-    margin: 0 auto 0 auto;
+    margin: 12px auto 12px auto;
     max-width: 600px;
     height: auto;
 }
