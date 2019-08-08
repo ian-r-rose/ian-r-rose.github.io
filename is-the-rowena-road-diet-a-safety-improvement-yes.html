@@ -1,0 +1,1949 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+      <title>Blueschisting</title>
+      <link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32" />
+      <link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16" />
+      <link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css' />
+      <link href='//fonts.googleapis.com/css?family=Merriweather:300' rel='stylesheet' type='text/css'/>
+      <link href='//fonts.googleapis.com/css?family=Source+Code+Pro:200,400,700' rel='stylesheet' type='text/css'/>
+      <link rel="stylesheet" type="text/css" href="/theme/css/icons.css"/>
+      <link rel="stylesheet" type="text/css" href="/theme/css/styles.css"/>
+      <meta charset="utf-8" />
+  </head>
+
+  <body id="index">
+    <!-- header -->
+    <header class="siteheader">
+      <!-- site image -->
+        <div class= "siteimage">
+          <a class="nodec" href=/images/escape_of_the_core.png>
+            <img width="200" height="200" src=/images/escape_of_the_core.png>
+          </a>
+        </div>
+
+      <div class = "sitebanner">
+        <h1><a class="sitetitle nodec" href="/index.html">Blueschisting</a></h1>
+        <h3 class ="sitesubtitle">Thoughts on planetary science, fluid dynamics, transit, and scientific computing</h3>
+        <!-- nav -->
+        <nav class="menu">
+          <ul>
+            <!-- menu items-->
+              <li><a class="nodec" href="/pages/about.html">Ian Rose</a></li>
+              <li><a class="nodec" href="/blog_index.html">blog</a></li>
+            <!--pages-->
+            <!-- services icons -->
+              <li><a class="nodec icon-github" href="http://github.com/ian-r-rose"></a></li>
+              <li><a class="nodec icon-twitter" href="http://twitter.com/IanRRose"></a></li>
+          </ul>
+        </nav>
+      </div> <!-- sitebanner -->
+    </header>
+
+    <!-- content -->
+    <div id="main">
+      <div id="content">
+
+<section class="content">
+
+  <h3 class="posttitle">
+    <a class="nodec" href="/is-the-rowena-road-diet-a-safety-improvement-yes.html" rel="bookmark" title="Permalink to Is the Rowena Road Diet a Safety Improvement? (yes)">
+      Is the Rowena Road Diet a Safety Improvement? (yes)
+    </a>
+  </h3>
+
+  <div class="postinfo">
+    <p class="published" title="2019-09-07T00:00:00-07:00">
+      Sat 07 September 2019
+    </p>
+
+  </div><!-- .postinfo -->
+
+  <div class="article">
+    <style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
+.ansibold {
+  font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
+  border-color: #ababab;
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
+}
+@media print {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
+  border: 0;
+  border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+div.output_area .mglyph > img {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 1px 0 1px 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+
+
+
+.rendered_html pre,
+
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell > div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+</style>
+<style type="text/css">.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<style type="text/css">
+/* Temporary definitions which will become obsolete with Notebook release 5.0 */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+    <style type="text/css">
+
+    div.output_area .MathJax_Display {
+      text-align: center !important;
+    }
+
+    div.output_area {
+      justify-content: center;
+    }
+    </style>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In 2012 a pedestrian was struck by a car and killed on Rowena Avenue in Silver Lake,
+the neighborhood in Los Angeles where I live.
+In 2013 the city put in place a number of safety improvements along that stretch of road,
+including reducing the number of car traffic lanes from four to two,
+adding bike lanes, and including a center-left-turn lane.
+The combination of these changes are termed a "road diet",
+intended to slow the flow of traffic and produce less hazardous conditions for users of the road.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/articles/transit/images/rowena-before.png" alt="Rownena pre-road-diet" title="Rowena pre-road-diet">
+<img src="/articles/transit/images/rowena-after.png" alt="Rownena post-road-diet" title="Rowena post-road-diet"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Anybody who walks around Los Angeles as a pedestrian knows how hostile of an environment it can be,
+including in Silver Lake, where cars regularly exceed 40 miles per hour on mixed-use boulevards
+like Fountain, Hyperion, Glendale, and Rowena.
+Nevertheless, the reconfiguration of Rowena prompted significant backlash among local residents,
+who worried about reduced parking, increased congestion, and more cut-through traffic on neighborhood streets.
+A similar road diet along Venice Boulevard in Mar Vista led to a threat of a <a href="https://www.latimes.com/local/lanow/la-me-ln-bonin-recall-20170915-story.html">
+recall campaign</a> of the local city council member.</p>
+<p>Clearly, changes to the streetscape such as the Rowena road diet can inflame the community,
+and can effect risks for politicians.
+So are road diets worth it? Do they actually provide the safety improvements that they are claimed to do?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The LA Department of Transportation (LADOT) 
+<a href="http://clkrep.lacity.org/onlinedocs/2011/11-2130-s4_rpt_DOT_04-09-2019.pdf">recently published</a>
+a study on the results of the road diet.
+In the study, they claimed that the rate of auto crashes on the relevant stretch of Rowena
+dropped by 37%.
+This number was obtained by looking at the difference in the average rate of crashes per year
+before and after the road reconfiguration.
+However, the data are noisy, and there is considerable variability in the number of crashes from year to year.
+A road diet skeptic might take a look at the crash statistics and claim there is not enough data,
+that the study has not averaged over a sufficiently long time,
+and will soon <a href="https://en.wikipedia.org/wiki/Regression_toward_the_mean">regress to the mean</a>.</p>
+<p>Here we perform a more in-depth analysis of the limited data included in the LADOT report.
+In particular, we will construct a statistical model for crashes along Rowena,
+fit it to the observed data, and consider whether it shows a decrease in crashes.</p>
+<p>We will use the Python package PyMC3 to do the modeling, and Altair to make charts.
+We begin by importing the Python packages needed for the analysis,
+namely Pandas, Altair, and PyMC3.
+We also customzize the Altair rendering process to make the charts render more easily on this-here blog:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pymc3</span>
+<span class="n">alt</span><span class="o">.</span><span class="n">data_transformers</span><span class="o">.</span><span class="n">disable_max_rows</span><span class="p">()</span>
+<span class="n">alt</span><span class="o">.</span><span class="n">renderers</span><span class="o">.</span><span class="n">enable</span><span class="p">(</span><span class="s1">&#39;svg&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>RendererRegistry.enable(&#39;svg&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Loading-the-data">Loading the data<a class="anchor-link" href="#Loading-the-data">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We construct a Pandas dataframe of the crash data by reading the data off of Attachment B in the LADOT report,
+and plot it on a bar chart:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;crashes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+    <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2003</span><span class="p">,</span> <span class="mi">2018</span><span class="p">))</span>
+<span class="p">})</span>
+<span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;year:O&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;crashes&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_svg output_subarea output_execute_result">
+<svg class="marks" width="344" height="360" viewbox="0 0 344 360" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g transform="translate(39,10)"><g class="mark-group role-frame root"><g transform="translate(0,0)"><path class="background" d="M0.5,0.5h300v300h-300Z" style="fill: none; stroke: #ddd;"></path><g><g class="mark-group role-axis"><g transform="translate(0.5,0.5)"><path class="background" d="M0,0h0v0h0Z" style="pointer-events: none; fill: none;"></path><g><g class="mark-rule role-axis-grid" style="pointer-events: none;"><line transform="translate(0,300)" x2="300" y2="0" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,263)" x2="300" y2="0" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,225)" x2="300" y2="0" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,188)" x2="300" y2="0" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,150)" x2="300" y2="0" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,113)" x2="300" y2="0" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,75)" x2="300" y2="0" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,38)" x2="300" y2="0" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,0)" x2="300" y2="0" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line></g></g></g></g><g class="mark-rect role-mark marks"><path d="M1,112.5h18v187.5h-18Z" style="fill: #4c78a8;"></path><path d="M21,112.5h18v187.5h-18Z" style="fill: #4c78a8;"></path><path d="M41,18.75h18v281.25h-18Z" style="fill: #4c78a8;"></path><path d="M61,112.5h18v187.5h-18Z" style="fill: #4c78a8;"></path><path d="M81,56.25h18v243.75h-18Z" style="fill: #4c78a8;"></path><path d="M101,18.75h18v281.25h-18Z" style="fill: #4c78a8;"></path><path d="M121,93.75h18v206.25h-18Z" style="fill: #4c78a8;"></path><path d="M141,56.25h18v243.75h-18Z" style="fill: #4c78a8;"></path><path d="M161,93.75h18v206.25h-18Z" style="fill: #4c78a8;"></path><path d="M181,37.5h18v262.5h-18Z" style="fill: #4c78a8;"></path><path d="M201,168.75h18v131.25h-18Z" style="fill: #4c78a8;"></path><path d="M221,75h18v225h-18Z" style="fill: #4c78a8;"></path><path d="M241,168.75h18v131.25h-18Z" style="fill: #4c78a8;"></path><path d="M261,150h18v150h-18Z" style="fill: #4c78a8;"></path><path d="M281,206.25h18v93.75h-18Z" style="fill: #4c78a8;"></path></g><g class="mark-group role-axis"><g transform="translate(0.5,300.5)"><path class="background" d="M0,0h0v0h0Z" style="pointer-events: none; fill: none;"></path><g><g class="mark-rule role-axis-tick" style="pointer-events: none;"><line transform="translate(9,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(29,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(49,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(69,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(89,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(109,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(129,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(149,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(169,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(189,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(209,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(229,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(249,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(269,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(289,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line></g><g class="mark-text role-axis-label" style="pointer-events: none;"><text text-anchor="end" transform="translate(9,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2003</text><text text-anchor="end" transform="translate(29,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2004</text><text text-anchor="end" transform="translate(49,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2005</text><text text-anchor="end" transform="translate(69,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2006</text><text text-anchor="end" transform="translate(89,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2007</text><text text-anchor="end" transform="translate(109,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2008</text><text text-anchor="end" transform="translate(129,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2009</text><text text-anchor="end" transform="translate(149,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2010</text><text text-anchor="end" transform="translate(169,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2011</text><text text-anchor="end" transform="translate(189,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2012</text><text text-anchor="end" transform="translate(209,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2013</text><text text-anchor="end" transform="translate(229,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2014</text><text text-anchor="end" transform="translate(249,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2015</text><text text-anchor="end" transform="translate(269,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2016</text><text text-anchor="end" transform="translate(289,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2017</text></g><g class="mark-rule role-axis-domain" style="pointer-events: none;"><line transform="translate(0,0)" x2="300" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line></g><g class="mark-text role-axis-title" style="pointer-events: none;"><text text-anchor="middle" transform="translate(150,42.24609375)" style="font-family: sans-serif; font-size: 11px; font-weight: bold; fill: #000; opacity: 1;">year</text></g></g></g></g><g class="mark-group role-axis"><g transform="translate(0.5,0.5)"><path class="background" d="M0,0h0v0h0Z" style="pointer-events: none; fill: none;"></path><g><g class="mark-rule role-axis-tick" style="pointer-events: none;"><line transform="translate(0,300)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,263)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,225)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,188)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,150)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,113)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,75)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,38)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,0)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line></g><g class="mark-text role-axis-label" style="pointer-events: none;"><text text-anchor="end" transform="translate(-7,303)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">0</text><text text-anchor="end" transform="translate(-7,265.5)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2</text><text text-anchor="end" transform="translate(-7,228)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">4</text><text text-anchor="end" transform="translate(-7,190.5)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">6</text><text text-anchor="end" transform="translate(-7,153)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">8</text><text text-anchor="end" transform="translate(-7,115.5)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">10</text><text text-anchor="end" transform="translate(-7,78)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">12</text><text text-anchor="end" transform="translate(-7,40.5)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">14</text><text text-anchor="end" transform="translate(-7,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">16</text></g><g class="mark-rule role-axis-domain" style="pointer-events: none;"><line transform="translate(0,300)" x2="0" y2="-300" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line></g><g class="mark-text role-axis-title" style="pointer-events: none;"><text text-anchor="middle" transform="translate(-22.123046875,150) rotate(-90) translate(0,-2)" style="font-family: sans-serif; font-size: 11px; font-weight: bold; fill: #000; opacity: 1;">crashes</text></g></g></g></g></g></g></g></g></svg>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As noted above, it certainly looks like there is a decrease in the number of crashes towards the end of the chart,
+but it's difficult to say with certainty. So let's model it.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Bayesian-Markov-Chain-Monte-Carlo-methods.">Bayesian Markov-Chain Monte-Carlo methods.<a class="anchor-link" href="#Bayesian-Markov-Chain-Monte-Carlo-methods.">&#182;</a></h2><p>PyMC3 works by constructing a statistical model for generating your data.
+It then fits the model by means of Bayesian Markov-Chain Monte-Carlo (MCMC) analysis.
+A full explication of MCMC methods is well beyond the scope of this article,
+but here is a brief qualitative description of how they work:
+A Markov-Chain method describes a process that moves through parameter space,
+where the transition to each state depends only on the previous state.
+A Monte-Carlo method is a general term for a computational method
+where there are many random draws of values in performing the computation
+(for a fun example of this, see <a href="https://en.wikipedia.org/wiki/Buffon%27s_needle_problem">Buffon's needle</a>).</p>
+<p>Bayesian MCMC methods typically involve constructing a statistical model with some unknown parameter values.
+An MCMC algorithm then explores the space of these possible parameter values,
+testing how well each point in parameter space fits the observed data.
+They do this by hopping generally towards points of higher probability
+(roughly the Markov-chain part), with an element of randomness (roughly the Monte-Carlo part)
+so they don't get caught in local maxima.</p>
+<p>As a result of this approach, Bayesian MCMC methods tend to explore not only the best model fit to the data,
+but also a broad region around the best fit.
+Therefore, they furnish not only an estimate of the best parameter values,
+but also an estimate of the uncertainties and tradeoffs.
+This estimate of the uncertainty is particularly useful to us in looking at the Rowena road diet.
+We are not just interested in how much the rate of crashes has decreased, but how much we can trust that number.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-model-for-crashes">A model for crashes<a class="anchor-link" href="#A-model-for-crashes">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will model the rate of crashes along Rowena as a Poisson process.
+Poisson processes describe counting statistics which are memory-less.
+Events described by a such a process have fixed probability of occurring at any given time,
+and these events are statistically independent of each other.
+Poisson processes are routinely used to model earthquakes, pedestrian counts,
+website traffic, and, indeed, car crashes.</p>
+<p>Now, the features of constant-rates and memorylessness are probably not completely accurate.
+Over the last few years, rates of car crashes, especially those involving pedestrians,
+have been on a persistent increase in the United States. And over time periods of seconds,
+car crashes are certainly not statistically unrelated (crashes beget more crashes).
+However, we will assume that bunched crashes on a second-time-scale are considered a single event,
+and that local effects on Rowena are more important than longer-term city-wide secular changes,
+and therefore move forward with a Poisson process.</p>
+<p>We will consider a model where there is an early rate of collisions,
+a later rate of collisions, and a time point at which the rate changes from early to late.
+This makes for a three parameter model (early rate, late rate, and change point).</p>
+<p>Bayesian methods require us to define prior distributions for each of the parameters for which we are fitting.
+These represent our prior beliefs about the values of the parameters.
+Sometimes the need to choose a prior is a cause of some angst for the practitioner,
+but I would argue that they provide much of the power and expressiveness of Bayesian methods.
+They allow us to build in our understanding of the physics of the model,
+and are a natural way to regularize the model, providing a powerful tool against overfitting.</p>
+<p>We will make the following choices for the priors of our three parameters:</p>
+<ul>
+<li>For the change point we will assign a uniform prior from 2003 to 2017, indicating that we consider
+any point from 2003 to 2017 to be equally likely to contain a change.</li>
+<li>For the rate parameters we will choose exponential distributions.
+Exponential distributions are useful for representing strictly positive real number values (as the rate must be),
+where very high numbers are less likely than very low number.
+Exponential distributions are specified via a scale parameter $\lambda$
+(a so-called "hyperparameter" for our model),
+which characterizes how quickly the probability density decays.
+The mean of an exponential distribution is equal to $1/\lambda$,
+so we will use the overall mean of the number of crashes per year on Rowena
+to choose the $\lambda$ for our priors on both the early and late rates.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Constructing-the-model-with-PyMC3">Constructing the model with PyMC3<a class="anchor-link" href="#Constructing-the-model-with-PyMC3">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>PyMC3 provides a nice API for constructing statistical models out of our chosen distributions,
+including ways of specifying random variables with our chosen prior distributions.
+We begin by declaring our rate variables, with $\lambda$ equal to one over the overall mean of the crash rate:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">pymc3</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span> <span class="k">as</span> <span class="n">road_diet_model</span><span class="p">:</span>   
+    <span class="n">early_rate</span> <span class="o">=</span> <span class="n">pymc3</span><span class="o">.</span><span class="n">Exponential</span><span class="p">(</span><span class="s1">&#39;early_rate&#39;</span><span class="p">,</span> <span class="mf">1.</span><span class="o">/</span><span class="n">df</span><span class="o">.</span><span class="n">crashes</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+    <span class="n">late_rate</span> <span class="o">=</span> <span class="n">pymc3</span><span class="o">.</span><span class="n">Exponential</span><span class="p">(</span><span class="s1">&#39;late_rate&#39;</span><span class="p">,</span> <span class="mf">1.</span><span class="o">/</span><span class="n">df</span><span class="o">.</span><span class="n">crashes</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, we declare the switch point variable with a discrete uniform prior between the years of our dataset:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">road_diet_model</span><span class="p">:</span>
+    <span class="n">switchpoint</span> <span class="o">=</span> <span class="n">pymc3</span><span class="o">.</span><span class="n">DiscreteUniform</span><span class="p">(</span>
+        <span class="s1">&#39;switchpoint&#39;</span><span class="p">,</span>
+        <span class="n">lower</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+        <span class="n">upper</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We need to stitch together these random variables with a meta-random variable for the overall rate,
+which switches from <code>early_rate</code> to <code>late_rate</code> after <code>switchpoint</code>.
+This can be accomplished using the pymc utility function <code>switch</code>:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">road_diet_model</span><span class="p">:</span>
+    <span class="n">rate</span> <span class="o">=</span> <span class="n">pymc3</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">switchpoint</span> <span class="o">&gt;=</span> <span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">early_rate</span><span class="p">,</span> <span class="n">late_rate</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Finally, we need to inform the model of the observed data, which we presume
+have been generated using a Poisson process:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">road_diet_model</span><span class="p">:</span>
+    <span class="n">pymc3</span><span class="o">.</span><span class="n">Poisson</span><span class="p">(</span><span class="s1">&#39;crashes&#39;</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">crashes</span><span class="p">)</span>    
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <code>observed</code> argument lets the model know that these are the observations which we are trying to fit,
+and it will use those observations when testing how good any particular realization is at describing the data.</p>
+<p>This completes the specification of the statistical model of crashes on Rowena.
+All that remains is to conduct the MCMC sampling:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># make pymc a bit less verbose</span>
+<span class="kn">import</span> <span class="nn">logging</span><span class="p">;</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;pymc3&#39;</span><span class="p">);</span> <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">FATAL</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">road_diet_model</span><span class="p">:</span>
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">pymc3</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">50000</span><span class="p">,</span> <span class="n">progressbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The resulting samples from the MCMC algorithm are stored in the <code>trace</code> object.
+We can put those samples in a dataframe for further analysis:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">trace_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;switchpoint&#39;</span><span class="p">:</span> <span class="n">trace</span><span class="p">[</span><span class="s1">&#39;switchpoint&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;early_rate&#39;</span><span class="p">:</span> <span class="n">trace</span><span class="p">[</span><span class="s1">&#39;early_rate&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;late_rate&#39;</span><span class="p">:</span> <span class="n">trace</span><span class="p">[</span><span class="s1">&#39;late_rate&#39;</span><span class="p">]</span>
+<span class="p">})</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Interpreting-the-results">Interpreting the results<a class="anchor-link" href="#Interpreting-the-results">&#182;</a></h2><p>If the model has converged, then resulting samples from the MCMC trace are representative of the model's posterior distribution.
+Descriptive statistics and plots can therefore give us insight into our beliefs about the random variables.</p>
+<p>The first question we want to ask is: did the rate of collisions actually change, and if so, by how much?
+The following histogram of our rate samples shows whether we should consider the rate to have changed:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span>
+    <span class="n">trace_df</span><span class="p">[(</span><span class="n">trace_df</span><span class="o">.</span><span class="n">late_rate</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">trace_df</span><span class="o">.</span><span class="n">early_rate</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">)]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">transform_fold</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;late_rate&#39;</span><span class="p">,</span> <span class="s1">&#39;early_rate&#39;</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">mark_area</span><span class="p">(</span>
+    <span class="n">opacity</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;value:Q&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Crashes/year&#39;</span><span class="p">,</span> <span class="nb">bin</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Bin</span><span class="p">(</span><span class="n">step</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;count()&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Number of Samples&#39;</span><span class="p">,</span> <span class="n">stack</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;key:N&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;set1&#39;</span><span class="p">))</span>
+<span class="p">)</span><span class="o">.</span><span class="n">configure_axis</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_svg output_subarea output_execute_result">
+<svg class="marks" width="542" height="347" viewbox="0 0 542 347" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><clippath id="clip1"><rect x="0" y="0" width="400" height="300"></rect></clippath><clippath id="clip2"><rect x="0" y="0" width="400" height="300"></rect></clippath></defs><g transform="translate(58,10)"><g class="mark-group role-frame root"><g transform="translate(0,0)"><path class="background" d="M0.5,0.5h400v300h-400Z" style="fill: none; stroke: #ddd;"></path><g><g class="mark-group role-scope pathgroup"><g transform="translate(0,0)"><path class="background" d="M0,0h400v300h-400Z" style="fill: none;"></path><g><g class="mark-area role-mark marks" clip-path="url(#clip1)"><path d="M397.5,299.35L395,299.35L395,299.48333333333335L390,299.48333333333335L390,299.28333333333336L385,299.28333333333336L385,299.1666666666667L380,299.1666666666667L380,299.45L375,299.45L375,299.28333333333336L370,299.28333333333336L370,299.0833333333333L365,299.0833333333333L365,299.06666666666666L360,299.06666666666666L360,299.26666666666665L355,299.26666666666665L355,299.26666666666665L350,299.26666666666665L350,299.35L345,299.35L345,299.05L340,299.05L340,299.18333333333334L335,299.18333333333334L335,299.18333333333334L330,299.18333333333334L330,299.3833333333333L325,299.3833333333333L325,299.1166666666667L320,299.1166666666667L320,299.01666666666665L315,299.01666666666665L315,299.01666666666665L310,299.01666666666665L310,298.75L305,298.75L305,298.8L300,298.8L300,298.9L295,298.9L295,298.68333333333334L290,298.68333333333334L290,298.5833333333333L285,298.5833333333333L285,298.73333333333335L280,298.73333333333335L280,298.8333333333333L275,298.8333333333333L275,298.3L270,298.3L270,297.8L265,297.8L265,296.51666666666665L260,296.51666666666665L260,295.35L255,295.35L255,295.23333333333335L250,295.23333333333335L250,292.05L245,292.05L245,289.3L240,289.3L240,284.96666666666664L235,284.96666666666664L235,278.01666666666665L230,278.01666666666665L230,272.5333333333333L225,272.5333333333333L225,263.68333333333334L220,263.68333333333334L220,252.96666666666667L215,252.96666666666667L215,245.78333333333333L210,245.78333333333333L210,238.81666666666666L205,238.81666666666666L205,228.93333333333334L200,228.93333333333334L200,220.56666666666666L195,220.56666666666666L195,209.96666666666667L190,209.96666666666667L190,200.16666666666669L185,200.16666666666669L185,192.8L180,192.8L180,181.38333333333333L175,181.38333333333333L175,171.48333333333335L170,171.48333333333335L170,163.78333333333333L165,163.78333333333333L165,152.76666666666668L160,152.76666666666668L160,146.5L155,146.5L155,146.61666666666665L150,146.61666666666665L150,140.76666666666665L145,140.76666666666665L145,143.11666666666667L140,143.11666666666667L140,147.78333333333333L135,147.78333333333333L135,153.76666666666665L130,153.76666666666665L130,160.36666666666667L125,160.36666666666667L125,172.13333333333333L120,172.13333333333333L120,182.08333333333334L115,182.08333333333334L115,195.26666666666665L110,195.26666666666665L110,207.13333333333333L105,207.13333333333333L105,218.01666666666665L100,218.01666666666665L100,231.03333333333333L95,231.03333333333333L95,240.98333333333335L90,240.98333333333335L90,251L85,251L85,259.06666666666666L80,259.06666666666666L80,265.1666666666667L75,265.1666666666667L75,271.28333333333336L70,271.28333333333336L70,275.01666666666665L65,275.01666666666665L65,279.1166666666667L60,279.1166666666667L60,282.9166666666667L55,282.9166666666667L55,285.35L50,285.35L50,288.23333333333335L45,288.23333333333335L45,290.6166666666667L40,290.6166666666667L40,292L35,292L35,293.35L30,293.35L30,294.78333333333336L25,294.78333333333336L25,295.9166666666667L20,295.9166666666667L20,295.9L15,295.9L15,296.3333333333333L10,296.3333333333333L10,295.25L5,295.25L5,295.28333333333336L2.5,295.28333333333336L2.5,300L5,300L5,300L10,300L10,300L15,300L15,300L20,300L20,300L25,300L25,300L30,300L30,300L35,300L35,300L40,300L40,300L45,300L45,300L50,300L50,300L55,300L55,300L60,300L60,300L65,300L65,300L70,300L70,300L75,300L75,300L80,300L80,300L85,300L85,300L90,300L90,300L95,300L95,300L100,300L100,300L105,300L105,300L110,300L110,300L115,300L115,300L120,300L120,300L125,300L125,300L130,300L130,300L135,300L135,300L140,300L140,300L145,300L145,300L150,300L150,300L155,300L155,300L160,300L160,300L165,300L165,300L170,300L170,300L175,300L175,300L180,300L180,300L185,300L185,300L190,300L190,300L195,300L195,300L200,300L200,300L205,300L205,300L210,300L210,300L215,300L215,300L220,300L220,300L225,300L225,300L230,300L230,300L235,300L235,300L240,300L240,300L245,300L245,300L250,300L250,300L255,300L255,300L260,300L260,300L265,300L265,300L270,300L270,300L275,300L275,300L280,300L280,300L285,300L285,300L290,300L290,300L295,300L295,300L300,300L300,300L305,300L305,300L310,300L310,300L315,300L315,300L320,300L320,300L325,300L325,300L330,300L330,300L335,300L335,300L340,300L340,300L345,300L345,300L350,300L350,300L355,300L355,300L360,300L360,300L365,300L365,300L370,300L370,300L375,300L375,300L380,300L380,300L385,300L385,300L390,300L390,300L395,300L395,300L397.5,300Z" style="fill: #377eb8; opacity: 0.6;"></path></g></g></g><g transform="translate(0,0)"><path class="background" d="M0,0h400v300h-400Z" style="fill: none;"></path><g><g class="mark-area role-mark marks" clip-path="url(#clip2)"><path d="M397.5,299.95L392.5,299.95L392.5,299.8333333333333L385,299.8333333333333L385,299.98333333333335L375,299.98333333333335L375,299.81666666666666L365,299.81666666666666L365,299.73333333333335L360,299.73333333333335L360,299.93333333333334L355,299.93333333333334L355,299.9166666666667L350,299.9166666666667L350,299.6166666666667L345,299.6166666666667L345,299.73333333333335L340,299.73333333333335L340,299.8666666666667L335,299.8666666666667L335,299.65L330,299.65L330,299.31666666666666L325,299.31666666666666L325,299.28333333333336L320,299.28333333333336L320,298.4166666666667L315,298.4166666666667L315,297.3833333333333L310,297.3833333333333L310,296.0833333333333L305,296.0833333333333L305,293.8833333333333L300,293.8833333333333L300,290.55L295,290.55L295,284.6333333333333L290,284.6333333333333L290,277.95L285,277.95L285,267.8333333333333L280,267.8333333333333L280,254.18333333333334L275,254.18333333333334L275,233.43333333333334L270,233.43333333333334L270,212.78333333333333L265,212.78333333333333L265,184.55L260,184.55L260,150.9L255,150.9L255,110.73333333333332L250,110.73333333333332L250,73.43333333333334L245,73.43333333333334L245,45.06666666666666L240,45.06666666666666L240,19.01666666666671L235,19.01666666666671L235,8.100000000000023L230,8.100000000000023L230,13.633333333333326L225,13.633333333333326L225,25.48333333333335L220,25.48333333333335L220,59.98333333333335L215,59.98333333333335L215,96.56666666666666L210,96.56666666666666L210,143.41666666666666L205,143.41666666666666L205,188.53333333333336L200,188.53333333333336L200,222.10000000000002L195,222.10000000000002L195,249.95L190,249.95L190,268.73333333333335L185,268.73333333333335L185,281.76666666666665L180,281.76666666666665L180,289.8833333333333L175,289.8833333333333L175,292.65L170,292.65L170,294.55L165,294.55L165,295.96666666666664L160,295.96666666666664L160,296.5L155,296.5L155,296.6333333333333L150,296.6333333333333L150,297.46666666666664L145,297.46666666666664L145,297.95L140,297.95L140,297.56666666666666L135,297.56666666666666L135,298L130,298L130,297.6166666666667L125,297.6166666666667L125,298.23333333333335L120,298.23333333333335L120,299.6333333333333L115,299.6333333333333L115,299.1166666666667L110,299.1166666666667L110,299.5833333333333L105,299.5833333333333L105,298.98333333333335L100,298.98333333333335L100,299.75L95,299.75L95,299.95L90,299.95L90,298.96666666666664L85,298.96666666666664L85,299.6L80,299.6L80,299.35L75,299.35L75,299.81666666666666L70,299.81666666666666L70,299.68333333333334L65,299.68333333333334L65,299.55L60,299.55L60,299.8666666666667L57.49999999999999,299.8666666666667L57.49999999999999,300L60,300L60,300L65,300L65,300L70,300L70,300L75,300L75,300L80,300L80,300L85,300L85,300L90,300L90,300L95,300L95,300L100,300L100,300L105,300L105,300L110,300L110,300L115,300L115,300L120,300L120,300L125,300L125,300L130,300L130,300L135,300L135,300L140,300L140,300L145,300L145,300L150,300L150,300L155,300L155,300L160,300L160,300L165,300L165,300L170,300L170,300L175,300L175,300L180,300L180,300L185,300L185,300L190,300L190,300L195,300L195,300L200,300L200,300L205,300L205,300L210,300L210,300L215,300L215,300L220,300L220,300L225,300L225,300L230,300L230,300L235,300L235,300L240,300L240,300L245,300L245,300L250,300L250,300L255,300L255,300L260,300L260,300L265,300L265,300L270,300L270,300L275,300L275,300L280,300L280,300L285,300L285,300L290,300L290,300L295,300L295,300L300,300L300,300L305,300L305,300L310,300L310,300L315,300L315,300L320,300L320,300L325,300L325,300L330,300L330,300L335,300L335,300L340,300L340,300L345,300L345,300L350,300L350,300L355,300L355,300L360,300L360,300L365,300L365,300L375,300L375,300L385,300L385,300L392.5,300L392.5,300L397.5,300Z" style="fill: #e41a1c; opacity: 0.6;"></path></g></g></g></g><g class="mark-group role-legend"><g transform="translate(418,0)"><path class="background" d="M0,0h61v40h-61Z" style="pointer-events: none; fill: none;"></path><g><g class="mark-group role-legend-entry"><g transform="translate(0,16)"><path class="background" d="M0,0h0v0h0Z" style="pointer-events: none; fill: none;"></path><g><g class="mark-group role-scope"><g transform="translate(0,0)"><path class="background" d="M0,0h60.4677734375v11h-60.4677734375Z" style="pointer-events: none; fill: none; opacity: 1;"></path><g><g class="mark-symbol role-legend-symbol" style="pointer-events: none;"><path transform="translate(6,6)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: #e41a1c; stroke-width: 1.5; opacity: 0.6;"></path></g><g class="mark-text role-legend-label" style="pointer-events: none;"><text text-anchor="start" transform="translate(16,9)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">early_rate</text></g></g></g><g transform="translate(0,13)"><path class="background" d="M0,0h60.4677734375v11h-60.4677734375Z" style="pointer-events: none; fill: none; opacity: 1;"></path><g><g class="mark-symbol role-legend-symbol" style="pointer-events: none;"><path transform="translate(6,6)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: #377eb8; stroke-width: 1.5; opacity: 0.6;"></path></g><g class="mark-text role-legend-label" style="pointer-events: none;"><text text-anchor="start" transform="translate(16,9)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">late_rate</text></g></g></g></g></g></g></g><g class="mark-text role-legend-title" style="pointer-events: none;"><text text-anchor="start" transform="translate(0,9)" style="font-family: sans-serif; font-size: 11px; font-weight: bold; fill: #000; opacity: 1;">key</text></g></g></g></g><g class="mark-group role-axis"><g transform="translate(0.5,300.5)"><path class="background" d="M0,0h0v0h0Z" style="pointer-events: none; fill: none;"></path><g><g class="mark-rule role-axis-tick" style="pointer-events: none;"><line transform="translate(0,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(10,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(20,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(30,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(40,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(50,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(60,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(70,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(80,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(90,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(100,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(110,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(120,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(130,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(140,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(150,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(160,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(170,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(180,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(190,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(200,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(210,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(220,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(230,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(240,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(250,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(260,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(270,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(280,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(290,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(300,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(310,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(320,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(330,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(340,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(350,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(360,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(370,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(380,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(390,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(400,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line></g><g class="mark-text role-axis-label" style="pointer-events: none;"><text text-anchor="start" transform="translate(0,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">0.0</text><text text-anchor="middle" transform="translate(10,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">0.5</text><text text-anchor="middle" transform="translate(20,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">1.0</text><text text-anchor="middle" transform="translate(30,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">1.5</text><text text-anchor="middle" transform="translate(40,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2.0</text><text text-anchor="middle" transform="translate(50,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">2.5</text><text text-anchor="middle" transform="translate(60,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">3.0</text><text text-anchor="middle" transform="translate(70,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">3.5</text><text text-anchor="middle" transform="translate(80,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">4.0</text><text text-anchor="middle" transform="translate(90,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">4.5</text><text text-anchor="middle" transform="translate(100,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">5.0</text><text text-anchor="middle" transform="translate(110.00000000000001,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">5.5</text><text text-anchor="middle" transform="translate(120,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">6.0</text><text text-anchor="middle" transform="translate(130,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">6.5</text><text text-anchor="middle" transform="translate(140,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">7.0</text><text text-anchor="middle" transform="translate(150,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">7.5</text><text text-anchor="middle" transform="translate(160,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">8.0</text><text text-anchor="middle" transform="translate(170,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">8.5</text><text text-anchor="middle" transform="translate(180,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">9.0</text><text text-anchor="middle" transform="translate(190,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">9.5</text><text text-anchor="middle" transform="translate(200,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">10.0</text><text text-anchor="middle" transform="translate(210,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">10.5</text><text text-anchor="middle" transform="translate(220.00000000000003,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">11.0</text><text text-anchor="middle" transform="translate(229.99999999999997,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">11.5</text><text text-anchor="middle" transform="translate(240,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">12.0</text><text text-anchor="middle" transform="translate(250,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">12.5</text><text text-anchor="middle" transform="translate(260,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">13.0</text><text text-anchor="middle" transform="translate(270,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">13.5</text><text text-anchor="middle" transform="translate(280,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">14.0</text><text text-anchor="middle" transform="translate(290,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">14.5</text><text text-anchor="middle" transform="translate(300,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">15.0</text><text text-anchor="middle" transform="translate(310,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">15.5</text><text text-anchor="middle" transform="translate(320,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">16.0</text><text text-anchor="middle" transform="translate(330,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">16.5</text><text text-anchor="middle" transform="translate(340,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">17.0</text><text text-anchor="middle" transform="translate(350,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">17.5</text><text text-anchor="middle" transform="translate(360,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">18.0</text><text text-anchor="middle" transform="translate(370,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">18.5</text><text text-anchor="middle" transform="translate(380,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">19.0</text><text text-anchor="middle" transform="translate(390,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">19.5</text><text text-anchor="end" transform="translate(400,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">20.0</text></g><g class="mark-rule role-axis-domain" style="pointer-events: none;"><line transform="translate(0,0)" x2="400" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line></g><g class="mark-text role-axis-title" style="pointer-events: none;"><text text-anchor="middle" transform="translate(200,30)" style="font-family: sans-serif; font-size: 11px; font-weight: bold; fill: #000; opacity: 1;">Crashes/year</text></g></g></g></g><g class="mark-group role-axis"><g transform="translate(0.5,0.5)"><path class="background" d="M0,0h0v0h0Z" style="pointer-events: none; fill: none;"></path><g><g class="mark-rule role-axis-tick" style="pointer-events: none;"><line transform="translate(0,300)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,267)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,233)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,200)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,167)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,133)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,100)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,67)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,33)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,0)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line></g><g class="mark-text role-axis-label" style="pointer-events: none;"><text text-anchor="end" transform="translate(-7,303)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">0</text><text text-anchor="end" transform="translate(-7,269.6666666666667)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2,000</text><text text-anchor="end" transform="translate(-7,236.33333333333334)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">4,000</text><text text-anchor="end" transform="translate(-7,203)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">6,000</text><text text-anchor="end" transform="translate(-7,169.66666666666669)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">8,000</text><text text-anchor="end" transform="translate(-7,136.33333333333331)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">10,000</text><text text-anchor="end" transform="translate(-7,103)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">12,000</text><text text-anchor="end" transform="translate(-7,69.66666666666666)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">14,000</text><text text-anchor="end" transform="translate(-7,36.33333333333337)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">16,000</text><text text-anchor="end" transform="translate(-7,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">18,000</text></g><g class="mark-rule role-axis-domain" style="pointer-events: none;"><line transform="translate(0,300)" x2="0" y2="-300" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line></g><g class="mark-text role-axis-title" style="pointer-events: none;"><text text-anchor="middle" transform="translate(-41.5859375,150) rotate(-90) translate(0,-2)" style="font-family: sans-serif; font-size: 11px; font-weight: bold; fill: #000; opacity: 1;">Number of Samples</text></g></g></g></g></g></g></g></g></svg>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As described in the LADOT report, the later rate of crashes appears to be significantly less than the early rate.
+The early rate peaks at around twelve crashes per year, and the later rate peaks at around seven crashes per year.
+However, there is a fair amount uncertainty in the value of each of them, and there is some overlap.
+So while it seems likely that there was a drop, it is not a certainty.</p>
+<p>From these samples we can also calculate the mean and standard deviations of the posteriors:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">Latex</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Latex</span><span class="p">(</span>
+    <span class="n">f</span><span class="s2">&quot;Early Rate: ${trace_df[&#39;early_rate&#39;].mean():.1f} &quot;</span>
+    <span class="n">f</span><span class="s2">&quot;\pm  {trace_df[&#39;early_rate&#39;].std():.1f}$ crashes/yr&quot;</span>
+<span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Latex</span><span class="p">(</span>
+    <span class="n">f</span><span class="s2">&quot;Later Rate: ${trace_df[&#39;late_rate&#39;].mean():.1f} &quot;</span>
+    <span class="n">f</span><span class="s2">&quot;\pm  {trace_df[&#39;late_rate&#39;].std():.1f}$ crashes/yr&quot;</span>
+<span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_latex output_subarea ">
+Early Rate: $11.6 \pm  1.3$ crashes/yr
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_latex output_subarea ">
+Later Rate: $7.6 \pm  3.2$ crashes/yr
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We are also interested in the posterior distribution for the change point:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">trace_df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">(</span>
+    <span class="n">opacity</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;switchpoint:O&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Change point&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;count()&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Number of Samples&#39;</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;key:N&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;set1&#39;</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">configure_axis</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_svg output_subarea output_execute_result">
+<svg class="marks" width="363" height="360" viewbox="0 0 363 360" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><clippath id="clip1"><rect x="0" y="0" width="300" height="300"></rect></clippath></defs><g transform="translate(58,10)"><g class="mark-group role-frame root"><g transform="translate(0,0)"><path class="background" d="M0.5,0.5h300v300h-300Z" style="fill: none; stroke: #ddd;"></path><g><g class="mark-rect role-mark marks" clip-path="url(#clip1)"><path d="M201,224.84727272727272h18v75.15272727272728h-18Z" style="fill: #e41a1c; opacity: 0.6;"></path><path d="M101,278.59090909090907h18v21.409090909090935h-18Z" style="fill: #e41a1c; opacity: 0.6;"></path><path d="M121,278.7218181818182h18v21.278181818181793h-18Z" style="fill: #e41a1c; opacity: 0.6;"></path><path d="M181,81.31090909090909h18v218.6890909090909h-18Z" style="fill: #e41a1c; opacity: 0.6;"></path><path d="M161,251.64545454545456h18v48.354545454545445h-18Z" style="fill: #e41a1c; opacity: 0.6;"></path><path d="M241,178.55454545454546h18v121.44545454545454h-18Z" style="fill: #e41a1c; opacity: 0.6;"></path><path d="M261,162.6109090909091h18v137.3890909090909h-18Z" style="fill: #e41a1c; opacity: 0.6;"></path><path d="M221,11.612727272727284h18v288.3872727272727h-18Z" style="fill: #e41a1c; opacity: 0.6;"></path><path d="M61,290.34h18v9.660000000000025h-18Z" style="fill: #e41a1c; opacity: 0.6;"></path><path d="M21,287.2090909090909h18v12.79090909090911h-18Z" style="fill: #e41a1c; opacity: 0.6;"></path><path d="M81,289.09090909090907h18v10.909090909090935h-18Z" style="fill: #e41a1c; opacity: 0.6;"></path><path d="M1,282.23454545454547h18v17.76545454545453h-18Z" style="fill: #e41a1c; opacity: 0.6;"></path><path d="M141,260.14363636363635h18v39.85636363636365h-18Z" style="fill: #e41a1c; opacity: 0.6;"></path><path d="M281,243.34363636363636h18v56.656363636363636h-18Z" style="fill: #e41a1c; opacity: 0.6;"></path><path d="M41,288.83454545454543h18v11.165454545454566h-18Z" style="fill: #e41a1c; opacity: 0.6;"></path></g><g class="mark-group role-axis"><g transform="translate(0.5,300.5)"><path class="background" d="M0,0h0v0h0Z" style="pointer-events: none; fill: none;"></path><g><g class="mark-rule role-axis-tick" style="pointer-events: none;"><line transform="translate(9,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(29,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(49,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(69,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(89,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(109,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(129,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(149,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(169,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(189,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(209,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(229,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(249,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(269,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(289,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line></g><g class="mark-text role-axis-label" style="pointer-events: none;"><text text-anchor="end" transform="translate(9,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2003</text><text text-anchor="end" transform="translate(29,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2004</text><text text-anchor="end" transform="translate(49,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2005</text><text text-anchor="end" transform="translate(69,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2006</text><text text-anchor="end" transform="translate(89,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2007</text><text text-anchor="end" transform="translate(109,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2008</text><text text-anchor="end" transform="translate(129,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2009</text><text text-anchor="end" transform="translate(149,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2010</text><text text-anchor="end" transform="translate(169,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2011</text><text text-anchor="end" transform="translate(189,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2012</text><text text-anchor="end" transform="translate(209,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2013</text><text text-anchor="end" transform="translate(229,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2014</text><text text-anchor="end" transform="translate(249,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2015</text><text text-anchor="end" transform="translate(269,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2016</text><text text-anchor="end" transform="translate(289,7) rotate(270) translate(0,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2017</text></g><g class="mark-rule role-axis-domain" style="pointer-events: none;"><line transform="translate(0,0)" x2="300" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line></g><g class="mark-text role-axis-title" style="pointer-events: none;"><text text-anchor="middle" transform="translate(150,42.24609375)" style="font-family: sans-serif; font-size: 11px; font-weight: bold; fill: #000; opacity: 1;">Change point</text></g></g></g></g><g class="mark-group role-axis"><g transform="translate(0.5,0.5)"><path class="background" d="M0,0h0v0h0Z" style="pointer-events: none; fill: none;"></path><g><g class="mark-rule role-axis-tick" style="pointer-events: none;"><line transform="translate(0,300)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,273)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,245)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,218)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,191)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,164)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,136)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,109)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,82)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,55)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,27)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,0)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line></g><g class="mark-text role-axis-label" style="pointer-events: none;"><text text-anchor="end" transform="translate(-7,303)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">0</text><text text-anchor="end" transform="translate(-7,275.72727272727275)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">5,000</text><text text-anchor="end" transform="translate(-7,248.45454545454544)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">10,000</text><text text-anchor="end" transform="translate(-7,221.1818181818182)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">15,000</text><text text-anchor="end" transform="translate(-7,193.9090909090909)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">20,000</text><text text-anchor="end" transform="translate(-7,166.63636363636365)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">25,000</text><text text-anchor="end" transform="translate(-7,139.36363636363637)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">30,000</text><text text-anchor="end" transform="translate(-7,112.0909090909091)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">35,000</text><text text-anchor="end" transform="translate(-7,84.81818181818181)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">40,000</text><text text-anchor="end" transform="translate(-7,57.54545454545453)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">45,000</text><text text-anchor="end" transform="translate(-7,30.27272727272731)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">50,000</text><text text-anchor="end" transform="translate(-7,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">55,000</text></g><g class="mark-rule role-axis-domain" style="pointer-events: none;"><line transform="translate(0,300)" x2="0" y2="-300" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line></g><g class="mark-text role-axis-title" style="pointer-events: none;"><text text-anchor="middle" transform="translate(-41.5859375,150) rotate(-90) translate(0,-2)" style="font-family: sans-serif; font-size: 11px; font-weight: bold; fill: #000; opacity: 1;">Number of Samples</text></g></g></g></g></g></g></g></g></svg>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There is considerable uncertainty in when the posterior distribution for the change point,
+though the great majority of the probability density is in the latter portion of the time interval.
+The most likely year for the rates to have switched is 2014, the year after the road diet was enacted.</p>
+<p>Finally, we would like to see if we can reproduce the top-line number from the LADOT report:
+by how much has the rate of crashes changed?
+And what is the uncertainty in that number?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">trace_df</span><span class="p">[</span><span class="s1">&#39;rate_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trace_df</span><span class="o">.</span><span class="n">early_rate</span><span class="o">-</span><span class="n">trace_df</span><span class="o">.</span><span class="n">late_rate</span>
+<span class="n">trace_df</span><span class="p">[</span><span class="s1">&#39;change&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">trace_df</span><span class="o">.</span><span class="n">rate_diff</span><span class="o">/</span><span class="n">trace_df</span><span class="o">.</span><span class="n">early_rate</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+
+<span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">trace_df</span><span class="p">[</span><span class="n">trace_df</span><span class="o">.</span><span class="n">change</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">])</span><span class="o">.</span><span class="n">mark_area</span><span class="p">(</span>
+    <span class="n">opacity</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;change:Q&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Percent Change&quot;</span><span class="p">,</span> <span class="nb">bin</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Bin</span><span class="p">(</span><span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">)),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;count()&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Samples&quot;</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;key:N&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;set1&#39;</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">configure_axis</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_svg output_subarea output_execute_result">
+<svg class="marks" width="464" height="347" viewbox="0 0 464 347" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><clippath id="clip1"><rect x="0" y="0" width="400" height="300"></rect></clippath></defs><g transform="translate(58,10)"><g class="mark-group role-frame root"><g transform="translate(0,0)"><path class="background" d="M0.5,0.5h400v300h-400Z" style="fill: none; stroke: #ddd;"></path><g><g class="mark-group role-scope pathgroup"><g transform="translate(0,0)"><path class="background" d="M0,0h400v300h-400Z" style="fill: none;"></path><g><g class="mark-area role-mark marks" clip-path="url(#clip1)"><path d="M395,298.85L390,298.85L390,298.925L380,298.925L380,298.8375L370,298.8375L370,298.2375L360,298.2375L360,297.7L350,297.7L350,297.675L340,297.675L340,298.55L330,298.55L330,297.325L320,297.325L320,297.6L310,297.6L310,296.7125L300,296.7125L300,296.4375L290,296.4375L290,295.55L280,295.55L280,294.6125L270,294.6125L270,294.8L260,294.8L260,293.7875L250,293.7875L250,291.7375L240,291.7375L240,289.2L230,289.2L230,286.1125L220,286.1125L220,279.2L210,279.2L210,269.55L200,269.55L200,257.1L190,257.1L190,235.46249999999998L180,235.46249999999998L180,207.7L170,207.7L170,165.9375L160,165.9375L160,126.4L150,126.4L150,79.975L140,79.975L140,38.375L130,38.375L130,22.61250000000001L120,22.61250000000001L120,26.724999999999966L110,26.724999999999966L110,59.80000000000001L100,59.80000000000001L100,108.51249999999999L90,108.51249999999999L90,163.1375L80,163.1375L80,211.05L70,211.05L70,243.2625L60,243.2625L60,263.9625L50,263.9625L50,277.25L40,277.25L40,285.4625L30,285.4625L30,291.3875L20,291.3875L20,293.7375L10,293.7375L10,292.375L5,292.375L5,300L10,300L10,300L20,300L20,300L30,300L30,300L40,300L40,300L50,300L50,300L60,300L60,300L70,300L70,300L80,300L80,300L90,300L90,300L100,300L100,300L110,300L110,300L120,300L120,300L130,300L130,300L140,300L140,300L150,300L150,300L160,300L160,300L170,300L170,300L180,300L180,300L190,300L190,300L200,300L200,300L210,300L210,300L220,300L220,300L230,300L230,300L240,300L240,300L250,300L250,300L260,300L260,300L270,300L270,300L280,300L280,300L290,300L290,300L300,300L300,300L310,300L310,300L320,300L320,300L330,300L330,300L340,300L340,300L350,300L350,300L360,300L360,300L370,300L370,300L380,300L380,300L390,300L390,300L395,300Z" style="fill: #e41a1c; opacity: 0.6;"></path></g></g></g></g><g class="mark-group role-axis"><g transform="translate(0.5,300.5)"><path class="background" d="M0,0h0v0h0Z" style="pointer-events: none; fill: none;"></path><g><g class="mark-rule role-axis-tick" style="pointer-events: none;"><line transform="translate(0,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(10,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(20,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(30,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(40,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(50,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(60,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(70,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(80,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(90,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(100,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(110,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(120,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(130,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(140,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(150,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(160,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(170,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(180,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(190,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(200,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(210,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(220,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(230,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(240,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(250,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(260,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(270,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(280,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(290,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(300,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(310,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(320,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(330,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(340,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(350,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(360,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(370,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(380,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(390,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(400,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line></g><g class="mark-text role-axis-label" style="pointer-events: none;"><text text-anchor="start" transform="translate(0,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">-100</text><text text-anchor="middle" transform="translate(10,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">-95</text><text text-anchor="middle" transform="translate(20,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">-90</text><text text-anchor="middle" transform="translate(30,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">-85</text><text text-anchor="middle" transform="translate(40,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">-80</text><text text-anchor="middle" transform="translate(50,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">-75</text><text text-anchor="middle" transform="translate(60,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">-70</text><text text-anchor="middle" transform="translate(70,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">-65</text><text text-anchor="middle" transform="translate(80,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">-60</text><text text-anchor="middle" transform="translate(90,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">-55</text><text text-anchor="middle" transform="translate(100,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">-50</text><text text-anchor="middle" transform="translate(110.00000000000001,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">-45</text><text text-anchor="middle" transform="translate(120,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">-40</text><text text-anchor="middle" transform="translate(130,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">-35</text><text text-anchor="middle" transform="translate(140,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">-30</text><text text-anchor="middle" transform="translate(150,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">-25</text><text text-anchor="middle" transform="translate(160,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">-20</text><text text-anchor="middle" transform="translate(170,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">-15</text><text text-anchor="middle" transform="translate(180,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">-10</text><text text-anchor="middle" transform="translate(190,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">-5</text><text text-anchor="middle" transform="translate(200,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">0</text><text text-anchor="middle" transform="translate(210,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">5</text><text text-anchor="middle" transform="translate(220.00000000000003,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">10</text><text text-anchor="middle" transform="translate(229.99999999999997,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">15</text><text text-anchor="middle" transform="translate(240,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">20</text><text text-anchor="middle" transform="translate(250,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">25</text><text text-anchor="middle" transform="translate(260,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">30</text><text text-anchor="middle" transform="translate(270,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">35</text><text text-anchor="middle" transform="translate(280,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">40</text><text text-anchor="middle" transform="translate(290,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">45</text><text text-anchor="middle" transform="translate(300,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">50</text><text text-anchor="middle" transform="translate(310,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">55</text><text text-anchor="middle" transform="translate(320,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">60</text><text text-anchor="middle" transform="translate(330,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">65</text><text text-anchor="middle" transform="translate(340,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">70</text><text text-anchor="middle" transform="translate(350,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">75</text><text text-anchor="middle" transform="translate(360,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">80</text><text text-anchor="middle" transform="translate(370,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">85</text><text text-anchor="middle" transform="translate(380,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">90</text><text text-anchor="middle" transform="translate(390,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 0;">95</text><text text-anchor="end" transform="translate(400,15)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">100</text></g><g class="mark-rule role-axis-domain" style="pointer-events: none;"><line transform="translate(0,0)" x2="400" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line></g><g class="mark-text role-axis-title" style="pointer-events: none;"><text text-anchor="middle" transform="translate(200,30)" style="font-family: sans-serif; font-size: 11px; font-weight: bold; fill: #000; opacity: 1;">Percent Change</text></g></g></g></g><g class="mark-group role-axis"><g transform="translate(0.5,0.5)"><path class="background" d="M0,0h0v0h0Z" style="pointer-events: none; fill: none;"></path><g><g class="mark-rule role-axis-tick" style="pointer-events: none;"><line transform="translate(0,300)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,275)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,250)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,225)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,200)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,175)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,150)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,125)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,100)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,75)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,50)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,25)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line><line transform="translate(0,0)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line></g><g class="mark-text role-axis-label" style="pointer-events: none;"><text text-anchor="end" transform="translate(-7,303)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">0</text><text text-anchor="end" transform="translate(-7,278)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">2,000</text><text text-anchor="end" transform="translate(-7,253)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">4,000</text><text text-anchor="end" transform="translate(-7,228)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">6,000</text><text text-anchor="end" transform="translate(-7,203)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">8,000</text><text text-anchor="end" transform="translate(-7,178)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">10,000</text><text text-anchor="end" transform="translate(-7,153)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">12,000</text><text text-anchor="end" transform="translate(-7,128)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">14,000</text><text text-anchor="end" transform="translate(-7,103)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">16,000</text><text text-anchor="end" transform="translate(-7,78)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">18,000</text><text text-anchor="end" transform="translate(-7,53)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">20,000</text><text text-anchor="end" transform="translate(-7,28)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">22,000</text><text text-anchor="end" transform="translate(-7,3)" style="font-family: sans-serif; font-size: 10px; fill: #000; opacity: 1;">24,000</text></g><g class="mark-rule role-axis-domain" style="pointer-events: none;"><line transform="translate(0,300)" x2="0" y2="-300" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line></g><g class="mark-text role-axis-title" style="pointer-events: none;"><text text-anchor="middle" transform="translate(-41.5859375,150) rotate(-90) translate(0,-2)" style="font-family: sans-serif; font-size: 11px; font-weight: bold; fill: #000; opacity: 1;">Samples</text></g></g></g></g></g></g></g></g></svg>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The change in the rate of crashes is given by:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Latex</span><span class="p">(</span>
+    <span class="n">f</span><span class="s2">&quot;Percent change in crashes/yr: ${trace_df[&#39;change&#39;].mean():.1f} &quot;</span>
+    <span class="n">f</span><span class="s2">&quot;\pm  {trace_df[&#39;change&#39;].std():.1f}\%$ &quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+Percent change in crashes/yr: $-33.5 \pm  32.0\%$ 
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is a pretty sizable decrease, and fairly close to the LADOT figure!
+The uncertainty, on the value is large, however, so I would be hesitant to report it to too many digits.</p>
+<p>Finally, we can compute a 95% credible interval for the percent change,
+indicating the bounds beween which 95% of the samples fell:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hpd</span> <span class="o">=</span> <span class="n">pymc3</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">hpd</span><span class="p">(</span><span class="n">trace_df</span><span class="o">.</span><span class="n">change</span><span class="p">)</span>
+<span class="n">Latex</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;95</span><span class="si">% c</span><span class="s2">redible interval for percent change: $ </span><span class="si">{hpd[0]}</span><span class="s2">\%, \, </span><span class="si">{hpd[1]}</span><span class="s2">\%  $&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+95% credible interval for percent change: $ -82.18553638451415\%, \, 11.224291937160935\%  $
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This indicates that the great majority of the posterior shows an overall decrease in the rate of crashes.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Conclusions">Conclusions<a class="anchor-link" href="#Conclusions">&#182;</a></h2><p>The results of this analysis are roughly consistent with that of the LADOT report.
+There was a significant decrease in the rate of collisions on the order of 30%,
+and that decrease roughly coincides with the installation of the road diet.
+And all this occurred during a period of
+<a href="https://www.latimes.com/local/lanow/la-me-ln-traffic-deaths-bike-pedestrian-los-angeles-vision-zero-20190425-story.html">increasing pedestrian fatalities</a>,
+both locally and nationally.</p>
+<p>There remains significant uncertainties on exactly by how much it has decreased.
+However, these are not a bad thing!
+The uncertainties are largely due to length of the elapsed time since the road diet was installed:
+there has not really been enough time to say with absolute confidence that the road has a lower rate of crashes.
+As time goes on, and more crash data is collected, we will be able to have more confidence in our conclusions.
+But when lives are at stake, it's worthwhile to conduct such analyses as soon as feasible, and often thereafter.</p>
+<p>The council member for the neighborhood has since
+<a href="https://la.curbed.com/2019/5/17/18629671/rowena-avenue-road-diet-silver-lake-bike-lanes">announced his support</a>
+for the road diet, and it seems that it is likely to stay.</p>
+
+</div>
+</div>
+</div>
+ 
+
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
+  </div><!-- .content -->
+
+</section>
+
+      </div>
+     </div>
+
+    <!-- footer -->
+    <footer>
+      <p>
+        Copyright © Ian Rose.
+        Generated by <a href= "http://docs.getpelican.com/">Pelican</a> with
+        <a href="http://github.com/ian-r-rose/pelican-blueschisting">blueschisting</a> theme.
+      </p>
+    </footer>
+  </body>
+</html>
