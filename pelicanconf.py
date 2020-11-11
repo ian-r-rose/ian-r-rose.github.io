@@ -1,6 +1,5 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*- #
-from __future__ import unicode_literals
+from pelican_jupyter import markup as nb_markup
+
 
 AUTHOR = u'Ian Rose'
 SITENAME = u'Blueschisting'
@@ -48,12 +47,14 @@ MENUITEMS=[
 #RELATIVE_URLS = True
 
 THEME='pelican-blueschisting'
-PLUGIN_PATHS=['pelican-plugins',]
-PLUGINS = ['summary', \
-           'render_math',\
-           'pelican-ipynb.markup',\
-           'autopages',
-           'liquid_tags']
+PLUGIN_PATHS=['pelican-plugins']
+PLUGINS = [
+    'summary',
+    'render_math',
+    nb_markup,
+    'autopages',
+    'liquid_tags',
+]
 CATEGORY_PAGE_PATH = PATH + '/categories'
 IPYNB_USE_META_SUMMARY = True
 
