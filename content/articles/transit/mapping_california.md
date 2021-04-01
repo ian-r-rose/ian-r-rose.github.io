@@ -1,11 +1,11 @@
 Title: Mapping California Cities
 Date: 2018-02-08
-Summary: ![la_cities](/articles/coding/images/la_cities_small.png)
+Summary: ![la_cities](/articles/transit/images/la_cities_small.png)
 
 TL;DR: We are making these maps:
 
-![los-angeles](/articles/coding/images/la_cities_small.png)
-![bay-area](/articles/coding/images/bay_area_cities_small.png)
+![los-angeles](/articles/transit/images/la_cities_small.png)
+![bay-area](/articles/transit/images/bay_area_cities_small.png)
 
 A couple of weeks ago a colleague told me that she was moving out of Oakland, California,
 to a city on the San Francisco peninsula called San Carlos.
@@ -126,7 +126,7 @@ ax.imshow(z_data, cmap='gist_gray', alpha=0.5, origin='upper',
 
 plt.savefig('images/socal_elev.png', bbox_inches='tight', dpi=300)
 ```
-![socal_elev](/articles/coding/images/socal_elev.png)
+![socal_elev](/articles/transit/images/socal_elev.png)
 
 Okay, so this does indeed show the topography of the LA metro area.
 The San Gabriel Mountains are in the bright spot in the center,
@@ -156,7 +156,7 @@ ax.imshow(intensity, cmap='gist_gray', alpha=0.5, origin='upper',
 
 plt.savefig('images/socal_hillshade.png', bbox_inches='tight', dpi=300)
 ```
-![socal_hillshade](/articles/coding/images/socal_hillshade.png)
+![socal_hillshade](/articles/transit/images/socal_hillshade.png)
 
 Much better! We can much more easily see the topographic features of the region,
 including the coastal plain, the San Fernando and San Gabriel Valleys, and the San
@@ -189,7 +189,7 @@ ax.imshow(water, cmap=cm, origin='upper', alpha=1.0, extent=srtm_extent, zorder=
 
 plt.savefig('images/socal_hillshade_water.png', bbox_inches='tight', dpi=300)
 ```
-![socal_hillshade](/articles/coding/images/socal_hillshade_water.png)
+![socal_hillshade](/articles/transit/images/socal_hillshade_water.png)
 Okay, *this* is something we can work with.
 
 # Plotting the cities
@@ -218,7 +218,7 @@ for record in reader.records():
 
 plt.savefig('images/socal_cities.png', bbox_inches='tight', dpi=300)
 ```
-![los-angeles-monochrome](/articles/coding/images/socal_cities.png)
+![los-angeles-monochrome](/articles/transit/images/socal_cities.png)
 
 This map isn't terrible, but it is awfully monochromatic.
 We would like to have a map where the cities colored so that
@@ -248,7 +248,7 @@ for record in reader.records():
                       alpha=0.3, edgecolor='k', lw=0.5, zorder=5)
 plt.savefig('images/socal_cities_color.png', bbox_inches='tight', dpi=300)
 ```
-![los-angeles-color](/articles/coding/images/socal_cities_color.png)
+![los-angeles-color](/articles/transit/images/socal_cities_color.png)
 
 This is looking much better! However, if you look closely,
 you can see that there are many places where neighboring cities
@@ -360,7 +360,7 @@ for record in reader.records():
                       alpha=0.3, edgecolor='k', lw=0.5, zorder=5)
 plt.savefig('images/socal_cities_color_2.png', bbox_inches='tight', dpi=300)
 ```
-![los-angeles-color-2](/articles/coding/images/socal_cities_color_2.png)
+![los-angeles-color-2](/articles/transit/images/socal_cities_color_2.png)
 Much better!
 
 ## Adding labels
@@ -396,7 +396,7 @@ for record in reader.records():
 plt.savefig('images/socal_cities_color_labels.png', bbox_inches='tight', dpi=300)
 ```
 
-![los-angeles-color-labels](/articles/coding/images/socal_cities_color_labels.png)
+![los-angeles-color-labels](/articles/transit/images/socal_cities_color_labels.png)
 
 This is okay, but in some of the densest areas, the labels are overlapping each other.
 Furthermore, it would be nice for the labels for large, populous cities (like LA proper)
@@ -455,7 +455,7 @@ for record in reader.records():
 
 plt.savefig('images/socal_cities_color_labels_2.png', bbox_inches='tight', dpi=300)
 ```
-![los-angeles-color-labels2](/articles/coding/images/socal_cities_color_labels_2.png)
+![los-angeles-color-labels2](/articles/transit/images/socal_cities_color_labels_2.png)
 
 # Putting it all together
 
@@ -507,7 +507,7 @@ ax.imshow(water, cmap=cm, origin='upper', alpha=1.0, extent=srtm_extent, zorder=
 
 plt.savefig('images/socal_total.png', bbox_inches='tight', dpi=300)
 ```
-![los-angeles-total](/articles/coding/images/socal_total.png)
+![los-angeles-total](/articles/transit/images/socal_total.png)
 And we are basically done!
 
 # Conclusions

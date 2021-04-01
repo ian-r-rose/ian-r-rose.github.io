@@ -21,14 +21,14 @@ save_as: index.html
   </div>
   <div class="card">
     <a href=/category/transit.html>
-      <div class="card-text">Transit</div>
+      <div class="card-text">Cities and Transit</div>
       <div class="card-image">
-        <img src=/images/bus.svg />
+        <img src=/articles/transit/images/vermont.png />
       </div>
     </a>
   </div>
   <div class="card">
-    <a href=/category/coding.html>
+    <a href=https://github.com/ian-r-rose>
       <div class="card-text">Coding</div>
       <div class="card-image">
         <img src=/images/coding.png />
