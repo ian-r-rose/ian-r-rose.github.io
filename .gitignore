@@ -2,4 +2,5 @@ output/*
 *.pyc
 cache/*
 _nb_header.html
-content/.ipynb_checkpoints/*
+**/.ipynb_checkpoints/*
+*.shp.zip
