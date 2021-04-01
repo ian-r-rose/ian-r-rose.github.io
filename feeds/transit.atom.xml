@@ -1042,8 +1042,13 @@ h6:hover .anchor-link {
   font-style: italic;
 }
 &lt;/style&gt;
-&lt;style type="text/css"&gt;.highlight .hll { background-color: #ffffcc }
-.highlight  { background: #f8f8f8; }
+&lt;style type="text/css"&gt;pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #f8f8f8; }
 .highlight .c { color: #408080; font-style: italic } /* Comment */
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #008000; font-weight: bold } /* Keyword */
@@ -1110,45 +1115,7 @@ h6:hover .anchor-link {
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
 .highlight .vm { color: #19177C } /* Name.Variable.Magic */
-.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;
-&lt;style type="text/css"&gt;
-/* Temporary definitions which will become obsolete with Notebook release 5.0 */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-bold { font-weight: bold; }
-&lt;/style&gt;
-    &lt;style type="text/css"&gt;
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;    &lt;style type="text/css"&gt;
 
     div.output_area .MathJax_Display {
       text-align: center !important;
@@ -1597,14 +1564,14 @@ So while it seems likely that there was a drop, it is not a certainty.&lt;/p&gt;
 
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;IPython.display&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Latex&lt;/span&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;IPython.display&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Latex&lt;/span&gt;
 &lt;span class="n"&gt;display&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Latex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Early Rate: ${trace_df[&amp;#39;early_rate&amp;#39;].mean():.1f} &amp;quot;&lt;/span&gt;
-    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;\pm  {trace_df[&amp;#39;early_rate&amp;#39;].std():.1f}$ crashes/yr&amp;quot;&lt;/span&gt;
+    &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Early Rate: $&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;trace_df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;early_rate&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s2"&gt;.1f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; &amp;quot;&lt;/span&gt;
+    &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;\pm  &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;trace_df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;early_rate&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s2"&gt;.1f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;$ crashes/yr&amp;quot;&lt;/span&gt;
 &lt;span class="p"&gt;))&lt;/span&gt;
 &lt;span class="n"&gt;display&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Latex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Later Rate: ${trace_df[&amp;#39;late_rate&amp;#39;].mean():.1f} &amp;quot;&lt;/span&gt;
-    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;\pm  {trace_df[&amp;#39;late_rate&amp;#39;].std():.1f}$ crashes/yr&amp;quot;&lt;/span&gt;
+    &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Later Rate: $&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;trace_df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;late_rate&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s2"&gt;.1f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; &amp;quot;&lt;/span&gt;
+    &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;\pm  &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;trace_df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;late_rate&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s2"&gt;.1f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;$ crashes/yr&amp;quot;&lt;/span&gt;
 &lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -1742,8 +1709,8 @@ And what is the uncertainty in that number?&lt;/p&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Latex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Percent change in crashes/yr: ${trace_df[&amp;#39;change&amp;#39;].mean():.1f} &amp;quot;&lt;/span&gt;
-    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;\pm  {trace_df[&amp;#39;change&amp;#39;].std():.1f}\%$ &amp;quot;&lt;/span&gt;
+    &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Percent change in crashes/yr: $&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;trace_df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;change&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s2"&gt;.1f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; &amp;quot;&lt;/span&gt;
+    &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;\pm  &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;trace_df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;change&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s2"&gt;.1f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;\%$ &amp;quot;&lt;/span&gt;
 &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -1784,7 +1751,7 @@ indicating the bounds beween which 95% of the samples fell:&lt;/p&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;hpd&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pymc3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stats&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hpd&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;trace_df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;change&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;Latex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;95&lt;/span&gt;&lt;span class="si"&gt;% c&lt;/span&gt;&lt;span class="s2"&gt;redible interval for percent change: $ &lt;/span&gt;&lt;span class="si"&gt;{hpd[0]}&lt;/span&gt;&lt;span class="s2"&gt;\%, \, &lt;/span&gt;&lt;span class="si"&gt;{hpd[1]}&lt;/span&gt;&lt;span class="s2"&gt;\%  $&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Latex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;95% credible interval for percent change: $ &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;hpd&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;\%, \, &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;hpd&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;\%  $&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1900,7 +1867,8 @@ It also passed through
 home of the &lt;a href="https://en.wikipedia.org/wiki/Sally%27s_Apizza"&gt;best pizza&lt;/a&gt; to be found anywhere.&lt;/p&gt;
 &lt;h5&gt;Distance: 5 miles&lt;/h5&gt;
 &lt;h5&gt;Would I do it again? Yes.&lt;/h5&gt;
-&lt;p&gt;&lt;iframe data-city="nh" src=/visualization/airports/leaflet_airport.html?lat=41.2912&amp;lon=-72.9179&amp;zoom=13 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;iframe data-city="nh" src=/visualization/airports/leaflet_airport.html?lat=41.2912&amp;lon=-72.9179&amp;zoom=13 width=700 height=700&gt;&lt;/iframe&gt;
+
 &lt;h2&gt;Boston&lt;/h2&gt;
 &lt;p&gt;Logan Airport is a tricky place to walk from. It is only about two miles from downtown Boston,
 but the only road there is a tunnel under the estuary with no pedestrian access.
@@ -1914,7 +1882,8 @@ and involved three bridges.&lt;/p&gt;
 It was &lt;em&gt;extremely&lt;/em&gt; difficult to leave without getting hit by a car.&lt;/p&gt;
 &lt;h4&gt;Distance: 8 miles&lt;/h4&gt;
 &lt;h4&gt;Would I do it again? Sure.&lt;/h4&gt;
-&lt;p&gt;&lt;iframe data-city="bo" src=/visualization/airports/leaflet_airport.html?lat=42.3714&amp;lon=-71.0584&amp;zoom=13 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;iframe data-city="bo" src=/visualization/airports/leaflet_airport.html?lat=42.3714&amp;lon=-71.0584&amp;zoom=13 width=700 height=700&gt;&lt;/iframe&gt;
+
 &lt;h2&gt;College Station&lt;/h2&gt;
 &lt;p&gt;Boy, there is not a lot in College Station.
 But there is a &lt;a href="https://en.wikipedia.org/wiki/Texas_A%26M_University"&gt;University&lt;/a&gt;
@@ -1923,7 +1892,8 @@ There weren't really any sidewalks on the road to the airport,
 but there also weren't many cars, so the walk was brief and uneventful.&lt;/p&gt;
 &lt;h4&gt;Distance: 3 miles&lt;/h4&gt;
 &lt;h4&gt;Would I do it again? Yes.&lt;/h4&gt;
-&lt;p&gt;&lt;iframe data-city="cs" src=/visualization/airports/leaflet_airport.html?lat=30.6115&amp;lon=-96.3502&amp;zoom=14 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;iframe data-city="cs" src=/visualization/airports/leaflet_airport.html?lat=30.6115&amp;lon=-96.3502&amp;zoom=14 width=700 height=700&gt;&lt;/iframe&gt;
+
 &lt;h2&gt;San Jose&lt;/h2&gt;
 &lt;p&gt;Mineta Airport is very close to downtown San Jose,
 so the walk from the airport was quick and easy.
@@ -1931,7 +1901,8 @@ It was also boring, and has mostly left my brain.
 Next time I'll take the &lt;a href="https://www.grpg.org/"&gt;river path&lt;/a&gt;.&lt;/p&gt;
 &lt;h4&gt;Distance: 4 miles&lt;/h4&gt;
 &lt;h4&gt;Would I do it again? Yes.&lt;/h4&gt;
-&lt;p&gt;&lt;iframe data-city="sj" src=/visualization/airports/leaflet_airport.html?lat=37.3835&amp;lon=-121.9342&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;iframe data-city="sj" src=/visualization/airports/leaflet_airport.html?lat=37.3835&amp;lon=-121.9342&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;
+
 &lt;h2&gt;Philadelphia&lt;/h2&gt;
 &lt;p&gt;Philadelphia International was a fun airport to walk from.
 The George C. Platt bridge was cool to walk over, if not particularly pedestrian-friendly:
@@ -1940,7 +1911,8 @@ There are also cheese-steaks to be had on the road,
 and one can end up at the Liberty Bell.&lt;/p&gt;
 &lt;h4&gt;Distance: 8 miles&lt;/h4&gt;
 &lt;h4&gt;Would I do it again? Sure.&lt;/h4&gt;
-&lt;p&gt;&lt;iframe data-city="ph" src=/visualization/airports/leaflet_airport.html?lat=39.9305&amp;lon=-75.195236&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;iframe data-city="ph" src=/visualization/airports/leaflet_airport.html?lat=39.9305&amp;lon=-75.195236&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;
+
 &lt;h2&gt;Oakland&lt;/h2&gt;
 &lt;p&gt;Hey, this one is a straight-up nice walk: nice enough that I have done it twice.
 The bulk of it goes across the odd estuary community of Bay Farm Island
@@ -1961,14 +1933,16 @@ crossing the &lt;a href="https://en.wikipedia.org/wiki/Posey_and_Webster_Street_
 to the mainland is no fun at all.&lt;/p&gt;
 &lt;h4&gt;Distance: 10 miles&lt;/h4&gt;
 &lt;h4&gt;Would I do it again? Definitely.&lt;/h4&gt;
-&lt;p&gt;&lt;iframe data-city="oak" src=/visualization/airports/leaflet_airport.html?lat=37.7637&amp;lon=-122.2634&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;iframe data-city="oak" src=/visualization/airports/leaflet_airport.html?lat=37.7637&amp;lon=-122.2634&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;
+
 &lt;h2&gt;Los Angeles (incomplete)&lt;/h2&gt;
 &lt;p&gt;I have not completed the walk from LAX: I got as far as Culver City.
 The main takeaways from this unfinished effort are the Westchester is a lovely neighborhood,
 and that LAX is (surprisingly enough) among the more pedestrian accessible airports.&lt;/p&gt;
 &lt;h4&gt;Distance: 8 miles&lt;/h4&gt;
 &lt;h4&gt;Would I do it again? Absolutely, I want to finish it.&lt;/h4&gt;
-&lt;p&gt;&lt;iframe data-city="lau" src=/visualization/airports/leaflet_airport.html?lat=34.0236&amp;lon=-118.3530&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;iframe data-city="lau" src=/visualization/airports/leaflet_airport.html?lat=34.0236&amp;lon=-118.3530&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;
+
 &lt;h2&gt;Seattle&lt;/h2&gt;
 &lt;p&gt;The walk from SeaTac Airport is among the more varied of the airport walks
 that I have done. It goes through suburbia, industrial Seattle, and some
@@ -1977,7 +1951,8 @@ All the while, you get glimpses of Mount Rainier, and the various
 Seattle waterways are never far. All in all a pretty fun walk.&lt;/p&gt;
 &lt;h4&gt;Distance: 12 miles&lt;/h4&gt;
 &lt;h4&gt;Would I do it again? Sure, given enough time.&lt;/h4&gt;
-&lt;p&gt;&lt;iframe data-city="sea" src=/visualization/airports/leaflet_airport.html?lat=47.5330&amp;lon=-122.2730&amp;zoom=11 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;iframe data-city="sea" src=/visualization/airports/leaflet_airport.html?lat=47.5330&amp;lon=-122.2730&amp;zoom=11 width=700 height=700&gt;&lt;/iframe&gt;
+
 &lt;h2&gt;San Francisco&lt;/h2&gt;
 &lt;p&gt;This one took two tries to get right.&lt;/p&gt;
 &lt;p&gt;The first time I tried to walk from SFO
@@ -1997,7 +1972,8 @@ Take San Bruno.
 Also, there are good burritos to be had in South San Francisco.&lt;/p&gt;
 &lt;h4&gt;Distance: 15 miles&lt;/h4&gt;
 &lt;h4&gt;Would I do it again? Yes, given enough time.&lt;/h4&gt;
-&lt;p&gt;&lt;iframe data-city="sf" src=/visualization/airports/leaflet_airport.html?lat=37.7126&amp;lon=-122.4076&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;iframe data-city="sf" src=/visualization/airports/leaflet_airport.html?lat=37.7126&amp;lon=-122.4076&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;
+
 &lt;h2&gt;New Orleans&lt;/h2&gt;
 &lt;p&gt;Okay, I screwed this one up.
 I walked from Carrollton to New Orleans International,
@@ -2016,7 +1992,8 @@ and New Orleans ne'er-do-wells. It is really nice!
 &lt;p&gt;Anyways, the moral is: walk along more levees.&lt;/p&gt;
 &lt;h4&gt;Distance: 13 miles&lt;/h4&gt;
 &lt;h4&gt;Would I do it again? Only along the Mississippi.&lt;/h4&gt;
-&lt;p&gt;&lt;iframe data-city="no" src=/visualization/airports/leaflet_airport.html?lat=29.9690&amp;lon=-90.1624&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;iframe data-city="no" src=/visualization/airports/leaflet_airport.html?lat=29.9690&amp;lon=-90.1624&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;
+
 &lt;h2&gt;New York (JFK)&lt;/h2&gt;
 &lt;p&gt;This one also took two attempts.
 In the first try, I started at the Jamaica AirTrain station and walked towards midtown
@@ -2027,7 +2004,7 @@ The Jamaica sewage plant smells bad. I had avocado toast in Crown Heights.
 Tourists on the Brooklyn Bridge made the last 30 minutes exceedingly slow.&lt;/p&gt;
 &lt;h4&gt;Distance: 15 miles&lt;/h4&gt;
 &lt;h4&gt;Would I do it again? Yes, given enough time.&lt;/h4&gt;
-&lt;p&gt;&lt;iframe data-city="nyu" src=/visualization/airports/leaflet_airport.html?lat=40.7194&amp;lon=-73.9000&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;</content></entry><entry><title>Buses are bosons, or How I learned to stop worrying and love AC Transit (Part two)</title><link href="/bus-bunching-2.html" rel="alternate"></link><published>2018-04-24T00:00:00-07:00</published><updated>2018-04-24T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2018-04-24:/bus-bunching-2.html</id><summary type="html">&lt;p&gt;&lt;img alt="bunch" src="/articles/transit/images/6-bunch.jpg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="6-bunch" src="articles/transit/images/6-bunch.jpg" title="Bunching on the 6 bus line in Oakland"&gt;&lt;/p&gt;
+&lt;iframe data-city="nyu" src=/visualization/airports/leaflet_airport.html?lat=40.7194&amp;lon=-73.9000&amp;zoom=12 width=700 height=700&gt;&lt;/iframe&gt;</content></entry><entry><title>Buses are bosons, or How I learned to stop worrying and love AC Transit (Part two)</title><link href="/bus-bunching-2.html" rel="alternate"></link><published>2018-04-24T00:00:00-07:00</published><updated>2018-04-24T00:00:00-07:00</updated><author><name>Ian Rose</name></author><id>tag:None,2018-04-24:/bus-bunching-2.html</id><summary type="html">&lt;p&gt;&lt;img alt="bunch" src="/articles/transit/images/6-bunch.jpg"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="6-bunch" src="articles/transit/images/6-bunch.jpg" title="Bunching on the 6 bus line in Oakland"&gt;&lt;/p&gt;
 &lt;p&gt;This is the second and final part of a short series of articles
 on constructing a mathematical model for why buses always seem to travel in packs
 (known as bus bunching).&lt;/p&gt;
@@ -2052,8 +2029,9 @@ v_e = v_0 \left[ 1 - \frac{2 \pi \gamma}{N} \right]
 \label{equilibrium}
 \end{equation}&lt;/div&gt;
 &lt;p&gt;In system with five buses, and in reference frame traveling at a velocity of &lt;span class="math"&gt;\(v_e\)&lt;/span&gt;,
-this equilibrium solution looks like this:
-&lt;iframe src=/visualization/bus/bus-bunching.html?interactive=false&amp;equilibrium=true&amp;boost=true&amp;gamma=0.15&amp;n=5 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+this equilibrium solution looks like this:&lt;/p&gt;
+&lt;iframe src=/visualization/bus/bus-bunching.html?interactive=false&amp;equilibrium=true&amp;boost=true&amp;gamma=0.15&amp;n=5 width=700 height=700&gt;&lt;/iframe&gt;
+
 &lt;p&gt;In this article we will demonstrating that this equilibrium solution is not stable,
 and that it will inevitably result in the buses bunching.&lt;/p&gt;
 &lt;h2&gt;Stability analysis&lt;/h2&gt;
@@ -2288,10 +2266,12 @@ start to drift, bunching is inevitable.&lt;/p&gt;
 &lt;p&gt;There are two versions of the simulation: one in the &lt;span class="math"&gt;\(v_e\)&lt;/span&gt; reference frame,
 where we see the velocities of the buses relative to their equilibrium velocity,
 and one in the street frame, where we see the velocities of the buses relative to the road.&lt;/p&gt;
-&lt;p&gt;In the &lt;span class="math"&gt;\(v_e\)&lt;/span&gt; reference frame:
-&lt;iframe src=/visualization/bus/bus-bunching.html?interactive=true&amp;equilibrium=false&amp;boost=true&amp;gamma=0.15&amp;n=5 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
-&lt;p&gt;In the street reference frame:
-&lt;iframe src=/visualization/bus/bus-bunching.html?interactive=true&amp;equilibrium=false&amp;boost=false&amp;gamma=0.15&amp;n=5 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;p&gt;In the &lt;span class="math"&gt;\(v_e\)&lt;/span&gt; reference frame:&lt;/p&gt;
+&lt;iframe src=/visualization/bus/bus-bunching.html?interactive=true&amp;equilibrium=false&amp;boost=true&amp;gamma=0.15&amp;n=5 width=700 height=700&gt;&lt;/iframe&gt;
+
+&lt;p&gt;In the street reference frame:&lt;/p&gt;
+&lt;iframe src=/visualization/bus/bus-bunching.html?interactive=true&amp;equilibrium=false&amp;boost=false&amp;gamma=0.15&amp;n=5 width=700 height=700&gt;&lt;/iframe&gt;
+
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;The model we analyzed here was probably about as simple as it could be
 while still exhibiting bunching behavior. We used a simplified geometry,
@@ -2398,8 +2378,9 @@ We can then identify the speed of the bus with the time derivative of &lt;span c
 \frac{d \theta}{d t} = v_0
 \end{equation}&lt;/div&gt;
 &lt;p&gt;
-Or, expressed in a simulation:
-&lt;iframe src=/visualization/bus/bus-bunching.html?interactive=false&amp;boost=false&amp;equilibrium=true&amp;gamma=0&amp;n=1 width=700 height=700&gt;&lt;/iframe&gt;&lt;/p&gt;
+Or, expressed in a simulation:&lt;/p&gt;
+&lt;iframe src=/visualization/bus/bus-bunching.html?interactive=false&amp;boost=false&amp;equilibrium=true&amp;gamma=0&amp;n=1 width=700 height=700&gt;&lt;/iframe&gt;
+
 &lt;p&gt;Now, this model isn't very interesting.
 There is only a single bus, and it is traveling at a fixed speed,
 so it has no hope of exhibiting the kind of bunching behavior that we want to explain.&lt;/p&gt;
@@ -2416,9 +2397,9 @@ with possible scheduled variations depending on the time of day
 \label{constant}
 \end{equation}&lt;/div&gt;
 &lt;p&gt;In this equation the subscript indicates the &lt;span class="math"&gt;\(n\)&lt;/span&gt;th bus out of &lt;span class="math"&gt;\(N\)&lt;/span&gt;,
-so a simulation with five buses looks like this:
+so a simulation with five buses looks like this:&lt;/p&gt;
 &lt;iframe src=/visualization/bus/bus-bunching.html?interactive=false&amp;equilibrium=true&amp;boost=false&amp;gamma=0&amp;n=5 width=700 height=700&gt;&lt;/iframe&gt;
-Okay, so this is starting to more closely resemble a bus route.
+&lt;p&gt;Okay, so this is starting to more closely resemble a bus route.
 However, the buses are still moving at a constant speed, and have no effect on each other.
 In order for our model to exhibit the richer characteristics of a system that can bunch,
 there must be some way for their speed to be a function of conditions on the road.&lt;/p&gt;

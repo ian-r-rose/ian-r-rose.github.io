@@ -86,8 +86,9 @@ v_e = v_0 \left[ 1 - \frac{2 \pi \gamma}{N} \right]
 \label{equilibrium}
 \end{equation}</div>
 <p>In system with five buses, and in reference frame traveling at a velocity of <span class="math">\(v_e\)</span>,
-this equilibrium solution looks like this:
-<iframe src=/visualization/bus/bus-bunching.html?interactive=false&equilibrium=true&boost=true&gamma=0.15&n=5 width=700 height=700></iframe></p>
+this equilibrium solution looks like this:</p>
+<iframe src=/visualization/bus/bus-bunching.html?interactive=false&equilibrium=true&boost=true&gamma=0.15&n=5 width=700 height=700></iframe>
+
 <p>In this article we will demonstrating that this equilibrium solution is not stable,
 and that it will inevitably result in the buses bunching.</p>
 <h2>Stability analysis</h2>
@@ -322,10 +323,12 @@ start to drift, bunching is inevitable.</p>
 <p>There are two versions of the simulation: one in the <span class="math">\(v_e\)</span> reference frame,
 where we see the velocities of the buses relative to their equilibrium velocity,
 and one in the street frame, where we see the velocities of the buses relative to the road.</p>
-<p>In the <span class="math">\(v_e\)</span> reference frame:
-<iframe src=/visualization/bus/bus-bunching.html?interactive=true&equilibrium=false&boost=true&gamma=0.15&n=5 width=700 height=700></iframe></p>
-<p>In the street reference frame:
-<iframe src=/visualization/bus/bus-bunching.html?interactive=true&equilibrium=false&boost=false&gamma=0.15&n=5 width=700 height=700></iframe></p>
+<p>In the <span class="math">\(v_e\)</span> reference frame:</p>
+<iframe src=/visualization/bus/bus-bunching.html?interactive=true&equilibrium=false&boost=true&gamma=0.15&n=5 width=700 height=700></iframe>
+
+<p>In the street reference frame:</p>
+<iframe src=/visualization/bus/bus-bunching.html?interactive=true&equilibrium=false&boost=false&gamma=0.15&n=5 width=700 height=700></iframe>
+
 <h2>Conclusion</h2>
 <p>The model we analyzed here was probably about as simple as it could be
 while still exhibiting bunching behavior. We used a simplified geometry,

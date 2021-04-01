@@ -82,8 +82,9 @@ We can then identify the speed of the bus with the time derivative of <span clas
 \frac{d \theta}{d t} = v_0
 \end{equation}</div>
 <p>
-Or, expressed in a simulation:
-<iframe src=/visualization/bus/bus-bunching.html?interactive=false&boost=false&equilibrium=true&gamma=0&n=1 width=700 height=700></iframe></p>
+Or, expressed in a simulation:</p>
+<iframe src=/visualization/bus/bus-bunching.html?interactive=false&boost=false&equilibrium=true&gamma=0&n=1 width=700 height=700></iframe>
+
 <p>Now, this model isn't very interesting.
 There is only a single bus, and it is traveling at a fixed speed,
 so it has no hope of exhibiting the kind of bunching behavior that we want to explain.</p>
@@ -100,9 +101,9 @@ with possible scheduled variations depending on the time of day
 \label{constant}
 \end{equation}</div>
 <p>In this equation the subscript indicates the <span class="math">\(n\)</span>th bus out of <span class="math">\(N\)</span>,
-so a simulation with five buses looks like this:
+so a simulation with five buses looks like this:</p>
 <iframe src=/visualization/bus/bus-bunching.html?interactive=false&equilibrium=true&boost=false&gamma=0&n=5 width=700 height=700></iframe>
-Okay, so this is starting to more closely resemble a bus route.
+<p>Okay, so this is starting to more closely resemble a bus route.
 However, the buses are still moving at a constant speed, and have no effect on each other.
 In order for our model to exhibit the richer characteristics of a system that can bunch,
 there must be some way for their speed to be a function of conditions on the road.</p>
