@@ -1,6 +1,6 @@
 Title: The Population of Vermont 
 Slug: vermont-population
-Summary: ![oakland](/articles/transit/images/oakland.jpg)
+Summary: ![oakland](/articles/transit/images/vermont.png)
 Date: 1 April, 2021
 
 <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
