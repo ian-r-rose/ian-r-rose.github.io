@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+      <title>Blueschisting</title>
+      <link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32" />
+      <link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16" />
+      <link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css' />
+      <link href='//fonts.googleapis.com/css?family=Merriweather:300' rel='stylesheet' type='text/css'/>
+      <link href='//fonts.googleapis.com/css?family=Source+Code+Pro:200,400,700' rel='stylesheet' type='text/css'/>
+      <link rel="stylesheet" type="text/css" href="/theme/css/icons.css"/>
+      <link rel="stylesheet" type="text/css" href="/theme/css/styles.css"/>
+      <meta charset="utf-8" />
+  </head>
+
+  <body id="index">
+    <!-- header -->
+    <header class="siteheader">
+      <!-- site image -->
+        <div class= "siteimage">
+          <a class="nodec" href=/images/escape_of_the_core.png>
+            <img width="200" height="200" src=/images/escape_of_the_core.png>
+          </a>
+        </div>
+
+      <div class = "sitebanner">
+        <h1><a class="sitetitle nodec" href="/index.html">Blueschisting</a></h1>
+        <h3 class ="sitesubtitle">Thoughts on planetary science, fluid dynamics, transit, and scientific computing</h3>
+        <!-- nav -->
+        <nav class="menu">
+          <ul>
+            <!-- menu items-->
+              <li><a class="nodec" href="/pages/about.html">Ian Rose</a></li>
+              <li><a class="nodec" href="/blog_index.html">blog</a></li>
+            <!--pages-->
+            <!-- services icons -->
+              <li><a class="nodec icon-github" href="http://github.com/ian-r-rose"></a></li>
+              <li><a class="nodec icon-twitter" href="http://twitter.com/IanRRose"></a></li>
+          </ul>
+        </nav>
+      </div> <!-- sitebanner -->
+    </header>
+
+    <!-- content -->
+    <div id="main">
+      <div id="content">
+
+<section class="content">
+
+  <h3 class="posttitle">
+    <a class="nodec" href="/vermont-population.html" rel="bookmark" title="Permalink to The Population of Vermont">
+      The Population of Vermont
+    </a>
+  </h3>
+
+  <div class="postinfo">
+    <p class="published" title="2021-04-01T00:00:00-07:00">
+      Thu 01 April 2021
+    </p>
+
+  </div><!-- .postinfo -->
+
+  <div class="article">
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+<style>
+form.vega-bindings {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+
+#view {
+  float: right;
+  margin-left: 1em;
+  margin-bottom: 3em;
+}
+
+</style>
+<div id="view"></div>
+<script>
+  vegaEmbed(
+    '#view',
+    '/articles/transit/images/vermont.json'
+  );
+</script>
+
+<p>There has been a lot of chatter recently about the indefensible malapportionment of the United States Senate.
+A senator from small, rural states like Wyoming, Montana, or Vermont,
+has exactly the same voting power as a senator from large, urban states like California or New York,
+leaving the citizens of those larger states enormously disenfranchised.</p>
+<p>Ruminating on this in Los Angeles County (larger than most states), I had a question:
+do more people live along the Vermont Avenue corridor
+(one of the largest, most important boulevards in the county, with a subway, good food, and cultural landmarks),
+or the state of Vermont, <a href="https://www.census.gov/quickfacts/fact/table/VT/PST045219">population 623,989</a>
+(has a high-profile senator, but is otherwise not particularly economically important)?</p>
+<p>So I put together this quick visualization using
+<a href="https://geohub.lacity.org/datasets/lacounty::2010-census-data-by-block">Census block population data</a>
+and <a href="https://download.geofabrik.de/north-america/us/california/">street data</a> from Open Street Map (OSM).
+The answer to the above question depends on what you mean by the "Vermont Avenue corridor":</p>
+<ul>
+<li>If the corridor is defined to be strictly within a city block of Vermont Avenue, which I have approximated by census blocks, then Vermont state has a higher population.</li>
+<li>If the corridor is defined to be within a mile of Vermont Avenue, which is a reasonable walkshed for transit and commerce purposes, then Vermont Avenue has a higher population.</li>
+<li>Vermont Avenue starts to win when you include people living up to three-quarters of a mile from the street.</li>
+</ul>
+<p>As a coda, I wonder if there are any other major boulevards in the US that are named after states
+and have higher populations than their namesake. I could not come up with one myself.</p>
+  </div><!-- .content -->
+
+</section>
+
+      </div>
+     </div>
+
+    <!-- footer -->
+    <footer>
+      <p>
+        Copyright © Ian Rose.
+        Generated by <a href= "http://docs.getpelican.com/">Pelican</a> with
+        <a href="http://github.com/ian-r-rose/pelican-blueschisting">blueschisting</a> theme.
+      </p>
+    </footer>
+  </body>
+</html>

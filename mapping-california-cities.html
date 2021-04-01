@@ -62,8 +62,8 @@
 
   <div class="article">
     <p>TL;DR: We are making these maps:</p>
-<p><img alt="los-angeles" src="/articles/coding/images/la_cities_small.png">
-<img alt="bay-area" src="/articles/coding/images/bay_area_cities_small.png"></p>
+<p><img alt="los-angeles" src="/articles/transit/images/la_cities_small.png">
+<img alt="bay-area" src="/articles/transit/images/bay_area_cities_small.png"></p>
 <p>A couple of weeks ago a colleague told me that she was moving out of Oakland, California,
 to a city on the San Francisco peninsula called San Carlos.
 I had been a resident of the Bay Area for most of my life,
@@ -165,7 +165,7 @@ and then plot it using the mapping library <a href="http://scitools.org.uk/carto
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/socal_elev.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </code></pre></div>
 
-<p><img alt="socal_elev" src="/articles/coding/images/socal_elev.png"></p>
+<p><img alt="socal_elev" src="/articles/transit/images/socal_elev.png"></p>
 <p>Okay, so this does indeed show the topography of the LA metro area.
 The San Gabriel Mountains are in the bright spot in the center,
 the Santa Monica Mountains/Hollywood Hills are to the southwest of them.
@@ -192,7 +192,7 @@ Thankfully, matplotlib contains an illumination tool that does the job for us:</
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/socal_hillshade.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </code></pre></div>
 
-<p><img alt="socal_hillshade" src="/articles/coding/images/socal_hillshade.png"></p>
+<p><img alt="socal_hillshade" src="/articles/transit/images/socal_hillshade.png"></p>
 <p>Much better! We can much more easily see the topographic features of the region,
 including the coastal plain, the San Fernando and San Gabriel Valleys, and the San
 Andreas fault.</p>
@@ -222,7 +222,7 @@ and color that blue:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/socal_hillshade_water.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </code></pre></div>
 
-<p><img alt="socal_hillshade" src="/articles/coding/images/socal_hillshade_water.png">
+<p><img alt="socal_hillshade" src="/articles/transit/images/socal_hillshade_water.png">
 Okay, <em>this</em> is something we can work with.</p>
 <h1>Plotting the cities</h1>
 <h2>Drawing shapes</h2>
@@ -246,7 +246,7 @@ We have already preprocessed the data into shapefiles above, for which cartopy h
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/socal_cities.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </code></pre></div>
 
-<p><img alt="los-angeles-monochrome" src="/articles/coding/images/socal_cities.png"></p>
+<p><img alt="los-angeles-monochrome" src="/articles/transit/images/socal_cities.png"></p>
 <p>This map isn't terrible, but it is awfully monochromatic.
 We would like to have a map where the cities colored so that
 it is easier to distinguish them.</p>
@@ -272,7 +272,7 @@ and cycling throught them to assign colors to the map.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/socal_cities_color.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </code></pre></div>
 
-<p><img alt="los-angeles-color" src="/articles/coding/images/socal_cities_color.png"></p>
+<p><img alt="los-angeles-color" src="/articles/transit/images/socal_cities_color.png"></p>
 <p>This is looking much better! However, if you look closely,
 you can see that there are many places where neighboring cities
 have been assigned the same color, which looks kind of funky,
@@ -375,7 +375,7 @@ we can apply the greedy color assignment (step 3):</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/socal_cities_color_2.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </code></pre></div>
 
-<p><img alt="los-angeles-color-2" src="/articles/coding/images/socal_cities_color_2.png">
+<p><img alt="los-angeles-color-2" src="/articles/transit/images/socal_cities_color_2.png">
 Much better!</p>
 <h2>Adding labels</h2>
 <p>This map is still not that useful if we want to know the names of any of the cities shown.
@@ -407,7 +407,7 @@ We can naively try to plot them at the center of each city:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/socal_cities_color_labels.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </code></pre></div>
 
-<p><img alt="los-angeles-color-labels" src="/articles/coding/images/socal_cities_color_labels.png"></p>
+<p><img alt="los-angeles-color-labels" src="/articles/transit/images/socal_cities_color_labels.png"></p>
 <p>This is okay, but in some of the densest areas, the labels are overlapping each other.
 Furthermore, it would be nice for the labels for large, populous cities (like LA proper)
 to have larger labels than tiny towns. We could scale the label sizes with the population
@@ -461,7 +461,7 @@ Instead, we will scale the label size with the log of the population.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/socal_cities_color_labels_2.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </code></pre></div>
 
-<p><img alt="los-angeles-color-labels2" src="/articles/coding/images/socal_cities_color_labels_2.png"></p>
+<p><img alt="los-angeles-color-labels2" src="/articles/transit/images/socal_cities_color_labels_2.png"></p>
 <h1>Putting it all together</h1>
 <p>We are now ready to make the final map. We will plot the following, in order:
 1. SRTM hillshade data
@@ -510,7 +510,7 @@ Instead, we will scale the label size with the log of the population.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/socal_total.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </code></pre></div>
 
-<p><img alt="los-angeles-total" src="/articles/coding/images/socal_total.png">
+<p><img alt="los-angeles-total" src="/articles/transit/images/socal_total.png">
 And we are basically done!</p>
 <h1>Conclusions</h1>
 <p>There are a bunch of more detailed tweaks that can make this map better than
